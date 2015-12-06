@@ -3,9 +3,9 @@
   <title><![CDATA[Hexo]]></title>
   
   <link href="/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
+  <link href="http://ernestyj.github.io/"/>
   <updated>2015-12-06T01:56:26.600Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://ernestyj.github.io/</id>
   
   <author>
     <name><![CDATA[Jian Yang]]></name>
@@ -16,8 +16,8 @@
   
   <entry>
     <title><![CDATA[N Queens - 皇后问题]]></title>
-    <link href="http://yoursite.com/2015/12/04/N%20Queens%20-%20%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/"/>
-    <id>http://yoursite.com/2015/12/04/N Queens - 皇后问题/</id>
+    <link href="http://ernestyj.github.io/2015/12/04/N%20Queens%20-%20%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/"/>
+    <id>http://ernestyj.github.io/2015/12/04/N Queens - 皇后问题/</id>
     <published>2015-12-04T12:44:47.000Z</published>
     <updated>2015-12-06T01:56:26.600Z</updated>
     <content type="html"><![CDATA[<h3 id="N_Queens_-_皇后问题">N Queens - 皇后问题</h3><p><strong>Description</strong>: Given an integer n, return all distinct solutions to the n-queens puzzle.</p>
@@ -31,20 +31,20 @@
     <![CDATA[<h3 id="N_Queens_-_皇后问题">N Queens - 皇后问题</h3><p><strong>Description</strong>: Given an integer n, return all distinct solutions to the n-que]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Pow(x, n) - 求指数]]></title>
-    <link href="http://yoursite.com/2015/12/03/Pow(x,%20n)%20-%20%E6%B1%82%E6%8C%87%E6%95%B0/"/>
-    <id>http://yoursite.com/2015/12/03/Pow(x, n) - 求指数/</id>
+    <link href="http://ernestyj.github.io/2015/12/03/Pow(x,%20n)%20-%20%E6%B1%82%E6%8C%87%E6%95%B0/"/>
+    <id>http://ernestyj.github.io/2015/12/03/Pow(x, n) - 求指数/</id>
     <published>2015-12-03T12:44:47.000Z</published>
     <updated>2015-12-03T09:49:19.319Z</updated>
     <content type="html"><![CDATA[<h3 id="Pow(x,_n)_-_求指数">Pow(x, n) - 求指数</h3><p><strong>Description</strong>: Implement pow(x, n).</p>
@@ -58,20 +58,20 @@
 <p>完整的java代码如下：</p]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Group Anagrams - 易位构词分组]]></title>
-    <link href="http://yoursite.com/2015/12/02/Group%20Anagrams%20-%20%E6%98%93%E4%BD%8D%E6%9E%84%E8%AF%8D%E5%88%86%E7%BB%84/"/>
-    <id>http://yoursite.com/2015/12/02/Group Anagrams - 易位构词分组/</id>
+    <link href="http://ernestyj.github.io/2015/12/02/Group%20Anagrams%20-%20%E6%98%93%E4%BD%8D%E6%9E%84%E8%AF%8D%E5%88%86%E7%BB%84/"/>
+    <id>http://ernestyj.github.io/2015/12/02/Group Anagrams - 易位构词分组/</id>
     <published>2015-12-02T12:44:47.000Z</published>
     <updated>2015-12-03T08:24:00.954Z</updated>
     <content type="html"><![CDATA[<h3 id="Group_Anagrams_-_易位构词分组">Group Anagrams - 易位构词分组</h3><p><strong>Description</strong>: Given an array of strings, group anagrams together.</p>
@@ -84,20 +84,20 @@
     <![CDATA[<h3 id="Group_Anagrams_-_易位构词分组">Group Anagrams - 易位构词分组</h3><p><strong>Description</strong>: Given an array of strings, group anagrams toge]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Rotate Image - 图像旋转]]></title>
-    <link href="http://yoursite.com/2015/12/01/Rotate%20Image%20-%20%E5%9B%BE%E5%83%8F%E6%97%8B%E8%BD%AC/"/>
-    <id>http://yoursite.com/2015/12/01/Rotate Image - 图像旋转/</id>
+    <link href="http://ernestyj.github.io/2015/12/01/Rotate%20Image%20-%20%E5%9B%BE%E5%83%8F%E6%97%8B%E8%BD%AC/"/>
+    <id>http://ernestyj.github.io/2015/12/01/Rotate Image - 图像旋转/</id>
     <published>2015-12-01T12:44:47.000Z</published>
     <updated>2015-12-01T07:27:39.232Z</updated>
     <content type="html"><![CDATA[<h3 id="Rotate_Image_-_图像旋转">Rotate Image - 图像旋转</h3><p><strong>Description</strong>: You are given an n x n 2D matrix representing an image.<br> Rotate the image by 90 degrees (clockwise).</p>
@@ -110,20 +110,20 @@
     <![CDATA[<h3 id="Rotate_Image_-_图像旋转">Rotate Image - 图像旋转</h3><p><strong>Description</strong>: You are given an n x n 2D matrix representing an image]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Permutations II - 含重复元素的全排列]]></title>
-    <link href="http://yoursite.com/2015/11/30/Permutations%20II%20-%20%E5%90%AB%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%E7%9A%84%E5%85%A8%E6%8E%92%E5%88%97/"/>
-    <id>http://yoursite.com/2015/11/30/Permutations II - 含重复元素的全排列/</id>
+    <link href="http://ernestyj.github.io/2015/11/30/Permutations%20II%20-%20%E5%90%AB%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%E7%9A%84%E5%85%A8%E6%8E%92%E5%88%97/"/>
+    <id>http://ernestyj.github.io/2015/11/30/Permutations II - 含重复元素的全排列/</id>
     <published>2015-11-30T12:44:47.000Z</published>
     <updated>2015-11-30T13:01:51.808Z</updated>
     <content type="html"><![CDATA[<h3 id="Permutations_II_-_含重复元素的全排列">Permutations II - 含重复元素的全排列</h3><p><strong>Description</strong>: Given a collection of numbers that might contain duplicates, return all possible unique permutations.</p>
@@ -145,20 +145,20 @@
     <![CDATA[<h3 id="Permutations_II_-_含重复元素的全排列">Permutations II - 含重复元素的全排列</h3><p><strong>Description</strong>: Given a collection of numbers that mig]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Permutations - 全排列]]></title>
-    <link href="http://yoursite.com/2015/11/29/Permutations%20-%20%E5%85%A8%E6%8E%92%E5%88%97/"/>
-    <id>http://yoursite.com/2015/11/29/Permutations - 全排列/</id>
+    <link href="http://ernestyj.github.io/2015/11/29/Permutations%20-%20%E5%85%A8%E6%8E%92%E5%88%97/"/>
+    <id>http://ernestyj.github.io/2015/11/29/Permutations - 全排列/</id>
     <published>2015-11-29T12:44:47.000Z</published>
     <updated>2015-11-29T14:47:44.790Z</updated>
     <content type="html"><![CDATA[<h3 id="Permutations_-_全排列">Permutations - 全排列</h3><p><strong>Description</strong>: Given a collection of numbers, return all possible permutations.</p>
@@ -178,20 +178,20 @@
     <![CDATA[<h3 id="Permutations_-_全排列">Permutations - 全排列</h3><p><strong>Description</strong>: Given a collection of numbers, return all possible permu]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Jump Game II - 跳数游戏]]></title>
-    <link href="http://yoursite.com/2015/11/28/Jump%20Game%20II%20-%20%E8%B7%B3%E6%95%B0%E6%B8%B8%E6%88%8F/"/>
-    <id>http://yoursite.com/2015/11/28/Jump Game II - 跳数游戏/</id>
+    <link href="http://ernestyj.github.io/2015/11/28/Jump%20Game%20II%20-%20%E8%B7%B3%E6%95%B0%E6%B8%B8%E6%88%8F/"/>
+    <id>http://ernestyj.github.io/2015/11/28/Jump Game II - 跳数游戏/</id>
     <published>2015-11-28T12:44:47.000Z</published>
     <updated>2015-11-28T12:45:24.707Z</updated>
     <content type="html"><![CDATA[<h3 id="Jump_Game_II_-_跳数游戏">Jump Game II - 跳数游戏</h3><p><strong>Description</strong>: Given an array of non-negative integers, you are initially positioned at the first index of the array.</p>
@@ -208,20 +208,20 @@
     <![CDATA[<h3 id="Jump_Game_II_-_跳数游戏">Jump Game II - 跳数游戏</h3><p><strong>Description</strong>: Given an array of non-negative integers, you are initi]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Multiply Strings - 大整数乘法]]></title>
-    <link href="http://yoursite.com/2015/11/26/Multiply%20Strings%20-%20%E5%A4%A7%E6%95%B4%E6%95%B0%E4%B9%98%E6%B3%95/"/>
-    <id>http://yoursite.com/2015/11/26/Multiply Strings - 大整数乘法/</id>
+    <link href="http://ernestyj.github.io/2015/11/26/Multiply%20Strings%20-%20%E5%A4%A7%E6%95%B4%E6%95%B0%E4%B9%98%E6%B3%95/"/>
+    <id>http://ernestyj.github.io/2015/11/26/Multiply Strings - 大整数乘法/</id>
     <published>2015-11-26T12:44:47.000Z</published>
     <updated>2015-11-26T12:05:20.649Z</updated>
     <content type="html"><![CDATA[<h3 id="Multiply_Strings_-_大整数乘法">Multiply Strings - 大整数乘法</h3><p><strong>Description</strong>: Given two numbers represented as strings, return multiplication of the numbers as a string.<br>Note: The numbers can be arbitrarily large and are non-negative.</p>
@@ -233,20 +233,20 @@
     <![CDATA[<h3 id="Multiply_Strings_-_大整数乘法">Multiply Strings - 大整数乘法</h3><p><strong>Description</strong>: Given two numbers represented as strings, re]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Trapping Rain Water]]></title>
-    <link href="http://yoursite.com/2015/11/25/Trapping%20Rain%20Water/"/>
-    <id>http://yoursite.com/2015/11/25/Trapping Rain Water/</id>
+    <link href="http://ernestyj.github.io/2015/11/25/Trapping%20Rain%20Water/"/>
+    <id>http://ernestyj.github.io/2015/11/25/Trapping Rain Water/</id>
     <published>2015-11-25T12:44:47.000Z</published>
     <updated>2015-11-25T05:19:38.057Z</updated>
     <content type="html"><![CDATA[<h3 id="Trapping_Rain_Water">Trapping Rain Water</h3><p><strong>Description</strong>: Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.</p>
@@ -259,20 +259,20 @@
     <![CDATA[<h3 id="Trapping_Rain_Water">Trapping Rain Water</h3><p><strong>Description</strong>: Given n non-negative integers representing an elevatio]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[First Missing Positive - 第一个缺失的正整数]]></title>
-    <link href="http://yoursite.com/2015/11/24/First%20Missing%20Positive%20-%20%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%AD%A3%E6%95%B4%E6%95%B0/"/>
-    <id>http://yoursite.com/2015/11/24/First Missing Positive - 第一个缺失的正整数/</id>
+    <link href="http://ernestyj.github.io/2015/11/24/First%20Missing%20Positive%20-%20%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%AD%A3%E6%95%B4%E6%95%B0/"/>
+    <id>http://ernestyj.github.io/2015/11/24/First Missing Positive - 第一个缺失的正整数/</id>
     <published>2015-11-24T12:44:47.000Z</published>
     <updated>2015-11-24T11:26:41.537Z</updated>
     <content type="html"><![CDATA[<h3 id="First_Missing_Positive_-_第一个缺失的正整数">First Missing Positive - 第一个缺失的正整数</h3><p><strong>Description</strong>: Given an unsorted integer array, find the first missing positive integer.</p>
@@ -286,20 +286,20 @@
     <![CDATA[<h3 id="First_Missing_Positive_-_第一个缺失的正整数">First Missing Positive - 第一个缺失的正整数</h3><p><strong>Description</strong>: Given an unsorted intege]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Combination Sum II (unique) - 组合数求和 II]]></title>
-    <link href="http://yoursite.com/2015/11/23/Combination%20Sum%20II%20(unique)%20-%20%E7%BB%84%E5%90%88%E6%95%B0%E6%B1%82%E5%92%8C%20II/"/>
-    <id>http://yoursite.com/2015/11/23/Combination Sum II (unique) - 组合数求和 II/</id>
+    <link href="http://ernestyj.github.io/2015/11/23/Combination%20Sum%20II%20(unique)%20-%20%E7%BB%84%E5%90%88%E6%95%B0%E6%B1%82%E5%92%8C%20II/"/>
+    <id>http://ernestyj.github.io/2015/11/23/Combination Sum II (unique) - 组合数求和 II/</id>
     <published>2015-11-23T12:44:47.000Z</published>
     <updated>2015-11-23T10:57:28.751Z</updated>
     <content type="html"><![CDATA[<h3 id="Combination_Sum_II_(unique)_-_组合数求和_II">Combination Sum II (unique) - 组合数求和 II</h3><p><strong>Description</strong>: Given a collection of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T. Each number in C may only be used once in the combination.</p>
@@ -313,20 +313,20 @@
     <![CDATA[<h3 id="Combination_Sum_II_(unique)_-_组合数求和_II">Combination Sum II (unique) - 组合数求和 II</h3><p><strong>Description</strong>: Given a collecti]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Combination Sum - 组合数求和]]></title>
-    <link href="http://yoursite.com/2015/11/22/Combination%20Sum%20-%20%E7%BB%84%E5%90%88%E6%95%B0%E6%B1%82%E5%92%8C/"/>
-    <id>http://yoursite.com/2015/11/22/Combination Sum - 组合数求和/</id>
+    <link href="http://ernestyj.github.io/2015/11/22/Combination%20Sum%20-%20%E7%BB%84%E5%90%88%E6%95%B0%E6%B1%82%E5%92%8C/"/>
+    <id>http://ernestyj.github.io/2015/11/22/Combination Sum - 组合数求和/</id>
     <published>2015-11-22T12:44:47.000Z</published>
     <updated>2015-11-22T06:54:25.315Z</updated>
     <content type="html"><![CDATA[<h3 id="Combination_Sum_-_组合数求和">Combination Sum - 组合数求和</h3><p><strong>Description</strong>: Given a set of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.<br> The same repeated number may be chosen from C unlimited number of times.</p>
@@ -346,20 +346,20 @@
     <![CDATA[<h3 id="Combination_Sum_-_组合数求和">Combination Sum - 组合数求和</h3><p><strong>Description</strong>: Given a set of candidate numbers (C) and a tar]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Longest Substring Without Repeating Characters - 最长无重复子串]]></title>
-    <link href="http://yoursite.com/2015/11/21/Longest%20Substring%20Without%20Repeating%20Characters%20-%20%E6%9C%80%E9%95%BF%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%90%E4%B8%B2/"/>
-    <id>http://yoursite.com/2015/11/21/Longest Substring Without Repeating Characters - 最长无重复子串/</id>
+    <link href="http://ernestyj.github.io/2015/11/21/Longest%20Substring%20Without%20Repeating%20Characters%20-%20%E6%9C%80%E9%95%BF%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%90%E4%B8%B2/"/>
+    <id>http://ernestyj.github.io/2015/11/21/Longest Substring Without Repeating Characters - 最长无重复子串/</id>
     <published>2015-11-21T12:44:47.000Z</published>
     <updated>2015-11-22T08:37:17.041Z</updated>
     <content type="html"><![CDATA[<h3 id="Longest_Substring_Without_Repeating_Characters_-_最长无重复子串">Longest Substring Without Repeating Characters - 最长无重复子串</h3><p><strong>Description</strong>: Given a string, find the length of the longest substring without repeating characters.</p>
@@ -376,20 +376,20 @@
     <![CDATA[<h3 id="Longest_Substring_Without_Repeating_Characters_-_最长无重复子串">Longest Substring Without Repeating Characters - 最长无重复子串</h3><p><strong>De]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Sudoku Solver]]></title>
-    <link href="http://yoursite.com/2015/11/20/Sudoku%20Solver/"/>
-    <id>http://yoursite.com/2015/11/20/Sudoku Solver/</id>
+    <link href="http://ernestyj.github.io/2015/11/20/Sudoku%20Solver/"/>
+    <id>http://ernestyj.github.io/2015/11/20/Sudoku Solver/</id>
     <published>2015-11-20T12:44:47.000Z</published>
     <updated>2015-11-20T04:26:11.046Z</updated>
     <content type="html"><![CDATA[<h3 id="Sudoku_Solver">Sudoku Solver</h3><p><strong>Description</strong>: Write a program to solve a Sudoku puzzle by filling the empty cells.<br>Empty cells are indicated by the character ‘.’. You may assume that there will be only one unique solution.</p>
@@ -401,20 +401,20 @@
     <![CDATA[<h3 id="Sudoku_Solver">Sudoku Solver</h3><p><strong>Description</strong>: Write a program to solve a Sudoku puzzle by filling the empty cell]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Valid Sudoku]]></title>
-    <link href="http://yoursite.com/2015/11/19/Valid%20Sudoku/"/>
-    <id>http://yoursite.com/2015/11/19/Valid Sudoku/</id>
+    <link href="http://ernestyj.github.io/2015/11/19/Valid%20Sudoku/"/>
+    <id>http://ernestyj.github.io/2015/11/19/Valid Sudoku/</id>
     <published>2015-11-19T12:44:47.000Z</published>
     <updated>2015-11-20T04:24:13.082Z</updated>
     <content type="html"><![CDATA[<h3 id="Valid_Sudoku">Valid Sudoku</h3><p><strong>Description</strong>: Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules.<br>The Sudoku board could be partially filled, where empty cells are filled with the character ‘.’.</p>
@@ -426,20 +426,20 @@
     <![CDATA[<h3 id="Valid_Sudoku">Valid Sudoku</h3><p><strong>Description</strong>: Determine if a Sudoku is valid, according to: Sudoku Puzzles - The R]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Search Insert Position]]></title>
-    <link href="http://yoursite.com/2015/11/18/Search%20Insert%20Position/"/>
-    <id>http://yoursite.com/2015/11/18/Search Insert Position/</id>
+    <link href="http://ernestyj.github.io/2015/11/18/Search%20Insert%20Position/"/>
+    <id>http://ernestyj.github.io/2015/11/18/Search Insert Position/</id>
     <published>2015-11-18T12:44:47.000Z</published>
     <updated>2015-11-18T14:02:31.322Z</updated>
     <content type="html"><![CDATA[<h3 id="Search_Insert_Position">Search Insert Position</h3><p><strong>Description</strong>: Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order. You may assume no duplicates in the array.</p>
@@ -451,20 +451,20 @@
     <![CDATA[<h3 id="Search_Insert_Position">Search Insert Position</h3><p><strong>Description</strong>: Given a sorted array and a target value, return ]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Search for a Range]]></title>
-    <link href="http://yoursite.com/2015/11/17/Search%20for%20a%20Range/"/>
-    <id>http://yoursite.com/2015/11/17/Search for a Range/</id>
+    <link href="http://ernestyj.github.io/2015/11/17/Search%20for%20a%20Range/"/>
+    <id>http://ernestyj.github.io/2015/11/17/Search for a Range/</id>
     <published>2015-11-17T12:44:47.000Z</published>
     <updated>2015-11-18T14:02:39.182Z</updated>
     <content type="html"><![CDATA[<h3 id="Search_for_a_Range">Search for a Range</h3><p><strong>Description</strong>: Given a sorted array of integers, find the starting and ending position of a given target value.<br> Your algorithm’s runtime complexity must be in the order of O(log n).<br> If the target is not found in the array, return [-1, -1].</p>
@@ -476,20 +476,20 @@
     <![CDATA[<h3 id="Search_for_a_Range">Search for a Range</h3><p><strong>Description</strong>: Given a sorted array of integers, find the starting and ]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Search In Rotated Sorted Array]]></title>
-    <link href="http://yoursite.com/2015/11/15/Search%20In%20Rotated%20Sorted%20Array%20-%20Copy/"/>
-    <id>http://yoursite.com/2015/11/15/Search In Rotated Sorted Array - Copy/</id>
+    <link href="http://ernestyj.github.io/2015/11/15/Search%20In%20Rotated%20Sorted%20Array%20-%20Copy/"/>
+    <id>http://ernestyj.github.io/2015/11/15/Search In Rotated Sorted Array - Copy/</id>
     <published>2015-11-15T12:44:47.000Z</published>
     <updated>2015-11-18T14:02:45.411Z</updated>
     <content type="html"><![CDATA[<h3 id="Search_In_Rotated_Sorted_Array">Search In Rotated Sorted Array</h3><p><strong>Description</strong>: Suppose a sorted array is rotated at some pivot unknown to you beforehand. (i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2). You are given a target value to search. If found in the array return its index, otherwise return -1. You may assume no duplicate exists in the array.</p>
@@ -503,20 +503,20 @@
     <![CDATA[<h3 id="Search_In_Rotated_Sorted_Array">Search In Rotated Sorted Array</h3><p><strong>Description</strong>: Suppose a sorted array is rotate]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Next Permutation]]></title>
-    <link href="http://yoursite.com/2015/11/14/Next%20Permutation/"/>
-    <id>http://yoursite.com/2015/11/14/Next Permutation/</id>
+    <link href="http://ernestyj.github.io/2015/11/14/Next%20Permutation/"/>
+    <id>http://ernestyj.github.io/2015/11/14/Next Permutation/</id>
     <published>2015-11-14T12:44:47.000Z</published>
     <updated>2015-11-14T08:37:58.504Z</updated>
     <content type="html"><![CDATA[<h3 id="Next_Permutation">Next Permutation</h3><p><strong>Description</strong>: Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.</p>
@@ -532,20 +532,20 @@
     <![CDATA[<h3 id="Next_Permutation">Next Permutation</h3><p><strong>Description</strong>: Implement next permutation, which rearranges numbers into th]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Substring with Concatenation of All Words - 在字符串中查找指定字符串组合]]></title>
-    <link href="http://yoursite.com/2015/11/13/Substring%20with%20Concatenation%20of%20All%20Words%20-%20%E5%9C%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%9F%A5%E6%89%BE%E6%8C%87%E5%AE%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%E5%90%88%20-%20Copy/"/>
-    <id>http://yoursite.com/2015/11/13/Substring with Concatenation of All Words - 在字符串中查找指定字符串组合 - Copy/</id>
+    <link href="http://ernestyj.github.io/2015/11/13/Substring%20with%20Concatenation%20of%20All%20Words%20-%20%E5%9C%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%9F%A5%E6%89%BE%E6%8C%87%E5%AE%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%E5%90%88%20-%20Copy/"/>
+    <id>http://ernestyj.github.io/2015/11/13/Substring with Concatenation of All Words - 在字符串中查找指定字符串组合 - Copy/</id>
     <published>2015-11-13T12:44:47.000Z</published>
     <updated>2015-11-13T13:01:05.238Z</updated>
     <content type="html"><![CDATA[<h3 id="Substring_with_Concatenation_of_All_Words_-_在字符串中查找指定字符串组合">Substring with Concatenation of All Words - 在字符串中查找指定字符串组合</h3><p><strong>Description</strong>: You are given a string, s, and a list of words, words, that are all of the same length. Find all starting indices of substring(s) in s that is a concatenation of each word in words exactly once and without any intervening characters.<br>注意：words中的word可以重复<br>For example, given:<br> s: “barfoothefoobarman”<br> words: [“foo”, “bar”]<br> You should return the indices: [0,9]. (order does not matter).</p>
@@ -569,13 +569,13 @@
     <![CDATA[<h3 id="Substring_with_Concatenation_of_All_Words_-_在字符串中查找指定字符串组合">Substring with Concatenation of All Words - 在字符串中查找指定字符串组合</h3><p><stron]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
