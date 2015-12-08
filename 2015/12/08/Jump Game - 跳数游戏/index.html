@@ -41,19 +41,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Jump Game II - 跳数游戏Description: Given an array of non-negative integers, you are initially positioned at the first index of the array.
- Each element in the array represents your maximum jump length at">
+<meta name="description" content="Jump Game - 跳数游戏Description: Given an array of non-negative integers, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at tha">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jump Game II - 跳数游戏">
-<meta property="og:url" content="http://ernestyj.github.io/2015/11/28/Jump Game II - 跳数游戏/index.html">
+<meta property="og:title" content="Jump Game - 跳数游戏">
+<meta property="og:url" content="http://ernestyj.github.io/2015/12/08/Jump Game - 跳数游戏/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Jump Game II - 跳数游戏Description: Given an array of non-negative integers, you are initially positioned at the first index of the array.
- Each element in the array represents your maximum jump length at">
-<meta property="og:updated_time" content="2015-11-28T12:45:24.707Z">
+<meta property="og:description" content="Jump Game - 跳数游戏Description: Given an array of non-negative integers, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at tha">
+<meta property="og:updated_time" content="2015-12-08T04:52:00.961Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jump Game II - 跳数游戏">
-<meta name="twitter:description" content="Jump Game II - 跳数游戏Description: Given an array of non-negative integers, you are initially positioned at the first index of the array.
- Each element in the array represents your maximum jump length at">
+<meta name="twitter:title" content="Jump Game - 跳数游戏">
+<meta name="twitter:description" content="Jump Game - 跳数游戏Description: Given an array of non-negative integers, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at tha">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -65,7 +62,7 @@
 
 
 
-  <title> Jump Game II - 跳数游戏 | Hexo </title>
+  <title> Jump Game - 跳数游戏 | Hexo </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -223,7 +220,7 @@
           
           
             
-              Jump Game II - 跳数游戏
+              Jump Game - 跳数游戏
             
           
         </h1>
@@ -232,8 +229,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-11-28T20:44:47+08:00" content="2015-11-28">
-            2015-11-28
+          <time itemprop="dateCreated" datetime="2015-12-08T20:44:47+08:00" content="2015-12-08">
+            2015-12-08
           </time>
         </span>
 
@@ -258,8 +255,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/11/28/Jump Game II - 跳数游戏/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/28/Jump Game II - 跳数游戏/" itemprop="commentsCount"></span>
+              <a href="/2015/12/08/Jump Game - 跳数游戏/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/08/Jump Game - 跳数游戏/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -274,15 +271,13 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="Jump_Game_II_-_跳数游戏">Jump Game II - 跳数游戏</h3><p><strong>Description</strong>: Given an array of non-negative integers, you are initially positioned at the first index of the array.</p>
-<p> Each element in the array represents your maximum jump length at that position.</p>
-<p> Your goal is to reach the last index in the minimum number of jumps.</p>
-<p> For example:<br> Given array A = [2,3,1,1,4]<br> The minimum number of jumps to reach the last index is 2.<br> (Jump 1 step from index 0 to 1, then 3 steps to the last index.)</p>
-<p>首先明白，这个题只要我们求跳数，怎么跳、最后距离是多少都没让求，不要做无必要的计算。</p>
-<p>贪心思路：<br>last:用最小跳数jumps可达的最大距离；<br>curr:用jumps + 1跳可达的最大距离；（贪心值）<br>有curr = max(i+nums[i]), 0 &lt;= i &lt;= last</p>
-<p>分析图：<br><a href="http://www.cnblogs.com/lichen782/p/leetcode_Jump_Game_II.html" target="_blank" rel="external">http://www.cnblogs.com/lichen782/p/leetcode_Jump_Game_II.html</a></p>
+        <span itemprop="articleBody"><h3 id="Jump_Game_-_跳数游戏">Jump Game - 跳数游戏</h3><p><strong>Description</strong>: Given an array of non-negative integers, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position. Determine if you are able to reach the last index.</p>
+<p> For example:<br> A = [2,3,1,1,4], return true.<br> A = [3,2,1,0,4], return false.</p>
+<p>注意与Jump Game II的区别。<br>如果采用DP（复杂度为O(n^2)），大数据测试用例将无法通过。</p>
+<p>贪心思路：（复杂度O(n)）<br>用maxLen维护一个从开始位置能到达的最远距离，然后判断<br>     ①在当前位置是否能够到达最后一个位置：(i + nums[i]) &gt;= nums.length - 1<br>     ②当前位置是否可达：maxLen &gt;= i<br>     如果两个条件都满足则返回true；<br>     如果当前位置是0，并且最远距离不能超过当前位置，那么只能返回false；<br>     此外，注意更新最远距离maxLen。</p>
+<p>参考：<a href="http://blog.csdn.net/xiaozhuaixifu/article/details/13628465" target="_blank" rel="external">http://blog.csdn.net/xiaozhuaixifu/article/details/13628465</a></p>
 <p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JumpGame</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">4</span>&#125;;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        System.out.println(<span class="keyword">new</span> JumpGame().jump(nums));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 首先明白，这个题只要我们求跳数，怎么跳、最后距离是多少都没让求，不要做无必要的计算。</span><br><span class="line">     * 分析图：http://www.cnblogs.com/lichen782/p/leetcode_Jump_Game_II.html</span><br><span class="line">     * 贪心：</span><br><span class="line">     * last:用最小跳数jumps可达的最大距离；</span><br><span class="line">     * curr:用jumps + 1跳可达的最大距离；（贪心值）</span><br><span class="line">     * 有curr = max(i+nums[i]), 0 &lt;= i &lt;= last</span><br><span class="line">     * <span class="doctag">@param</span> nums</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">jump</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> jumps = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> last = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> curr = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt; last) &#123;</span><br><span class="line">                ++jumps;</span><br><span class="line">                last = curr;</span><br><span class="line">            &#125;</span><br><span class="line">            curr = Math.max(curr, i + nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> jumps;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JumpGame</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;<span class="number">5</span>,<span class="number">4</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        System.out.println(<span class="keyword">new</span> JumpGame().canJump(nums));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * http://blog.csdn.net/xiaozhuaixifu/article/details/13628465</span><br><span class="line">     * 注意与Jump Game II的区别。</span><br><span class="line">     * 如果采用DP（复杂度为O(n^2)），大数据测试用例将无法通过。</span><br><span class="line">     * 贪心思路：（复杂度O(n)）</span><br><span class="line">     * 用maxLen维护一个从开始位置能到达的最远距离，然后判断</span><br><span class="line">     ①在当前位置是否能够到达最后一个位置：(i + nums[i]) &gt;= nums.length - 1</span><br><span class="line">     ②当前位置是否可达：maxLen &gt;= i</span><br><span class="line">     如果两个条件都满足则返回true；</span><br><span class="line">     如果当前位置是0，并且最远距离不能超过当前位置，那么只能返回false；</span><br><span class="line">     此外，注意更新最远距离maxLen。</span><br><span class="line">     * <span class="doctag">@param</span> nums</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canJump</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.length &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(nums[<span class="number">0</span>] &gt;= nums.length - <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(nums[<span class="number">0</span>] == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> maxLen = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length - <span class="number">1</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(maxLen &gt;= i &amp;&amp; (i + nums[i]) &gt;= nums.length - <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">if</span>(maxLen &lt;= i &amp;&amp; nums[i] == <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            maxLen = Math.max(i + nums[i], maxLen);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
@@ -304,13 +299,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/29/Permutations - 全排列/" rel="prev">Permutations - 全排列</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/26/Multiply Strings - 大整数乘法/" rel="next">Multiply Strings - 大整数乘法</a>
+              <a href="/2015/12/07/Spiral Matrix - 螺旋矩阵/" rel="next">Spiral Matrix - 螺旋矩阵</a>
             
           </div>
         </div>
@@ -362,8 +355,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/11/28/Jump Game II - 跳数游戏/"
-                   data-title="Jump Game II - 跳数游戏" data-url="http://ernestyj.github.io/2015/11/28/Jump Game II - 跳数游戏/">
+              <div class="ds-thread" data-thread-key="2015/12/08/Jump Game - 跳数游戏/"
+                   data-title="Jump Game - 跳数游戏" data-url="http://ernestyj.github.io/2015/12/08/Jump Game - 跳数游戏/">
               </div>
             
           </div>
@@ -403,7 +396,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -465,7 +458,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Jump_Game_II_-_跳数游戏"><span class="nav-number">1.</span> <span class="nav-text">Jump Game II - 跳数游戏</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Jump_Game_-_跳数游戏"><span class="nav-number">1.</span> <span class="nav-text">Jump Game - 跳数游戏</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
