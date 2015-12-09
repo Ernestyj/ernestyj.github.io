@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[Hexo]]></title>
-  
+  <title><![CDATA[Eugene's Blog]]></title>
+  <subtitle><![CDATA[成长之旅]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://ernestyj.github.io/"/>
   <updated>2015-12-08T04:52:00.961Z</updated>
