@@ -2,6 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ernestyj.github.io/2015/12/18/Valid%20Number%20-%20%E5%90%88%E6%B3%95%E6%95%B0%E5%AD%97/</loc>
+    <lastmod>2015-12-18T13:42:32.961Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ernestyj.github.io/2015/12/18/Springmvc4%E9%9B%86%E6%88%90springfox,%20Swagger%20UI,%20springfox-staticdocs/</loc>
+    <lastmod>2015-12-18T12:43:08.058Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ernestyj.github.io/2015/12/17/Minimum%20Path%20Sum%20-%20%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/</loc>
+    <lastmod>2015-12-17T02:53:07.397Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://ernestyj.github.io/2015/12/16/Unique%20Paths%20II%20-%20%E5%94%AF%E4%B8%80%E8%B7%AF%E5%BE%84II/</loc>
     <lastmod>2015-12-16T10:35:21.421Z</lastmod>
   </url>

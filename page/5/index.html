@@ -221,6 +221,273 @@
           
           
             
+              <a class="post-title-link" href="/2015/11/26/Multiply Strings - 大整数乘法/" itemprop="url">
+                Multiply Strings - 大整数乘法
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-26T20:44:47+08:00" content="2015-11-26">
+            2015-11-26
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/26/Multiply Strings - 大整数乘法/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/26/Multiply Strings - 大整数乘法/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Multiply_Strings_-_大整数乘法">Multiply Strings - 大整数乘法</h3><p><strong>Description</strong>: Given two numbers represented as strings, return multiplication of the numbers as a string.<br>Note: The numbers can be arbitrarily large and are non-negative.</p>
+<p>思路：首先我们把每一位相乘，得到一个没有进位的临时结果，然后把临时结果从低位起依次进位。对于一个m位整数乘以n位整数的结果，最多只有m+n位。<br>要点：1. 字符串逆转问题；2. 进位（开辟m+n长度数组足以存储所有进位）；3. 结果最高位为0的情况。<br>参考图：<a href="http://www.cnblogs.com/TenosDoIt/p/3735309.html" target="_blank" rel="external">http://www.cnblogs.com/TenosDoIt/p/3735309.html</a></p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">    * http://www.cnblogs.com/TenosDoIt/p/3735309.html</span><br><span class="line">    * 首先我们把每一位相乘，得到一个没有进位的临时结果，然后把临时结果从低位起依次进位。</span><br><span class="line">    * 对于一个m位整数乘以n位整数的结果，最多只有m+n位。</span><br><span class="line">    * <span class="doctag">@param</span> num1</span><br><span class="line">    * <span class="doctag">@param</span> num2</span><br><span class="line">    * <span class="doctag">@return</span></span><br><span class="line">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">multiply</span><span class="params">(String num1, String num2)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (num1.equals(<span class="string">"0"</span>) || num2.equals(<span class="string">"0"</span>)) <span class="keyword">return</span> <span class="string">"0"</span>;</span><br><span class="line">       <span class="keyword">char</span>[] l = <span class="keyword">new</span> StringBuilder(num1).reverse().toString().toCharArray();</span><br><span class="line">       <span class="keyword">char</span>[] r = <span class="keyword">new</span> StringBuilder(num2).reverse().toString().toCharArray();</span><br><span class="line">       <span class="keyword">int</span>[] ints = <span class="keyword">new</span> <span class="keyword">int</span>[num1. length() + num2.length()];</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num1.length(); i++)&#123;</span><br><span class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; num2.length(); j++)&#123;</span><br><span class="line">               ints[i + j] += (l[i] - <span class="string">'0'</span>) * (r[j] - <span class="string">'0'</span>);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       StringBuilder builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ints.length; i++)&#123;</span><br><span class="line">           builder.append(ints[i] % <span class="number">10</span>);</span><br><span class="line">           <span class="keyword">if</span> (i + <span class="number">1</span> &lt; ints.length) ints[i + <span class="number">1</span>] += ints[i] / <span class="number">10</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (builder.charAt(ints.length - <span class="number">1</span>) == <span class="string">'0'</span>) builder.deleteCharAt(ints.length - <span class="number">1</span>);</span><br><span class="line">       <span class="keyword">return</span> builder.reverse().toString();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/11/25/Trapping Rain Water/" itemprop="url">
+                Trapping Rain Water
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-25T20:44:47+08:00" content="2015-11-25">
+            2015-11-25
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/25/Trapping Rain Water/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/25/Trapping Rain Water/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Trapping_Rain_Water">Trapping Rain Water</h3><p><strong>Description</strong>: Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.</p>
+<p>For example,<br> Given [0,1,0,2,1,0,1,3,2,1,2,1], return 6.<br> Ref: <a href="https://leetcode.com/problems/trapping-rain-water/" target="_blank" rel="external">https://leetcode.com/problems/trapping-rain-water/</a></p>
+<p>思路：对某个值A[i]来说，能trapped的最多的water取决于在i之前最高的值leftMostHeight[i]和在i右边的最高的值rightMostHeight[i]（均不包含自身）。如果min(left,right) &gt; A[i]，那么在i这个位置上能trapped的water就是min(left,right) – A[i]。<br>第一遍从左到右计算数组leftMostHeight，第二遍从右到左计算rightMostHeight，在第二遍的同时就可以计算出i位置的结果了，而且并不需要开空间来存放rightMostHeight数组。<br>时间复杂度是O(n)，只扫了两遍。<br>参考：<br><a href="http://blog.unieagle.net/2012/10/31/leetcode%E9%A2%98%E7%9B%AE%EF%BC%9Atrapping-rain-water/" target="_blank" rel="external">http://blog.unieagle.net/2012/10/31/leetcode%E9%A2%98%E7%9B%AE%EF%BC%9Atrapping-rain-water/</a></p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TrappingRainWater</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] height = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>&#125;;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        <span class="keyword">int</span> trapped = <span class="keyword">new</span> TrappingRainWater().trap(height);</span><br><span class="line">        System.out.println(trapped);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/** http://blog.unieagle.net/2012/10/31/leetcode%E9%A2%98%E7%9B%AE%EF%BC%9Atrapping-rain-water/</span><br><span class="line">     * 思路：对某个值A[i]来说，能trapped的最多的water取决于在i之前最高的值leftMostHeight[i]</span><br><span class="line">     和在i右边的最高的值rightMostHeight[i]（均不包含自身）。</span><br><span class="line">     如果min(left,right) &gt; A[i]，那么在i这个位置上能trapped的water就是min(left,right) – A[i]。</span><br><span class="line">     * 第一遍从左到右计算数组leftMostHeight，第二遍从右到左计算rightMostHeight，</span><br><span class="line">     在第二遍的同时就可以计算出i位置的结果了，而且并不需要开空间来存放rightMostHeight数组。</span><br><span class="line">     * 时间复杂度是O(n)，只扫了两遍。</span><br><span class="line">     * <span class="doctag">@param</span> height</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">trap</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (height == <span class="keyword">null</span> || height.length &lt;= <span class="number">2</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] leftMostHeight = <span class="keyword">new</span> <span class="keyword">int</span>[height.length];</span><br><span class="line">        <span class="keyword">int</span> len = height.length;</span><br><span class="line">        <span class="keyword">int</span> max = height[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> trapped = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;    <span class="comment">//left -&gt; right</span></span><br><span class="line">            leftMostHeight[i] = max;</span><br><span class="line">            <span class="keyword">if</span> (height[i] &gt; max) max = height[i];</span><br><span class="line">        &#125;</span><br><span class="line">        max = height[len - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = len - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;    <span class="comment">//right -&gt; left</span></span><br><span class="line">            <span class="keyword">if</span> (Math.min(leftMostHeight[i], max) &gt; height[i])&#123;</span><br><span class="line">                trapped += Math.min(leftMostHeight[i], max) - height[i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (height[i] &gt; max) max = height[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> trapped;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/11/24/First Missing Positive - 第一个缺失的正整数/" itemprop="url">
+                First Missing Positive - 第一个缺失的正整数
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-24T20:44:47+08:00" content="2015-11-24">
+            2015-11-24
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/24/First Missing Positive - 第一个缺失的正整数/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/24/First Missing Positive - 第一个缺失的正整数/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="First_Missing_Positive_-_第一个缺失的正整数">First Missing Positive - 第一个缺失的正整数</h3><p><strong>Description</strong>: Given an unsorted integer array, find the first missing positive integer.</p>
+<p>For example,<br> Given [1,2,0] return 3,<br> and [3,4,-1,1] return 2.</p>
+<p> Your algorithm should run in O(n) time and uses constant space.</p>
+<p>思路：交换数组元素，使得数组中第i位存放数值(i+1)。最后遍历数组，寻找第一个不符合此要求的元素，返回这个元素。整个过程需要遍历两次数组，复杂度为O(n)。<br>参考图：<br><a href="http://www.cnblogs.com/AnnieKim/archive/2013/04/21/3034631.html" target="_blank" rel="external">http://www.cnblogs.com/AnnieKim/archive/2013/04/21/3034631.html</a></p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstMissingPositive</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;<span class="number">3</span>,-<span class="number">1</span>,<span class="number">23</span>,<span class="number">7</span>,<span class="number">21</span>,<span class="number">12</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">18</span>,<span class="number">21</span>,-<span class="number">1</span>,<span class="number">16</span>,<span class="number">1</span>,<span class="number">13</span>,-<span class="number">3</span>,<span class="number">22</span>,<span class="number">23</span>,<span class="number">13</span>,<span class="number">7</span>,<span class="number">14</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">4</span>,-<span class="number">3</span>&#125;;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        <span class="keyword">int</span> result = <span class="keyword">new</span> FirstMissingPositive().firstMissingPositive(nums);</span><br><span class="line">        System.out.println(result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 交换数组元素，使得数组中第i位存放数值(i+1)。最后遍历数组，寻找第一个不符合此要求的元素，</span><br><span class="line">     * 返回这个元素。整个过程需要遍历两次数组，复杂度为O(n)。</span><br><span class="line">     * 参考图：http://www.cnblogs.com/AnnieKim/archive/2013/04/21/3034631.html</span><br><span class="line">     * <span class="doctag">@param</span> nums</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstMissingPositive</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; nums.length)&#123;    <span class="comment">//这里不使用for循环</span></span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt; <span class="number">0</span> &amp;&amp; nums[i] &lt; nums.length &amp;&amp; nums[i] != i + <span class="number">1</span> &amp;&amp;</span><br><span class="line">                    nums[nums[i] - <span class="number">1</span>] != nums[i])&#123; <span class="comment">//TODO 此条件易漏，否则进入无限循环</span></span><br><span class="line">                swap(nums, i, nums[i] - <span class="number">1</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] != i + <span class="number">1</span>) <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = nums[i];</span><br><span class="line">        nums[i] = nums[j];</span><br><span class="line">        nums[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/11/23/Combination Sum II (unique) - 组合数求和 II/" itemprop="url">
                 Combination Sum II (unique) - 组合数求和 II
               </a>
@@ -396,280 +663,11 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/11/21/Longest Substring Without Repeating Characters - 最长无重复子串/" itemprop="url">
-                Longest Substring Without Repeating Characters - 最长无重复子串
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-11-21T20:44:47+08:00" content="2015-11-21">
-            2015-11-21
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/11/21/Longest Substring Without Repeating Characters - 最长无重复子串/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/21/Longest Substring Without Repeating Characters - 最长无重复子串/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Longest_Substring_Without_Repeating_Characters_-_最长无重复子串">Longest Substring Without Repeating Characters - 最长无重复子串</h3><p><strong>Description</strong>: Given a string, find the length of the longest substring without repeating characters.</p>
-<p>For example, the longest substring without repeating letters for “abcabcbb” is “abc”, which the length is 3. For “bbbbb” the longest substring is “b”, with the length of 1.</p>
-<p>思路：</p>
-<ol>
-<li>滑动窗口法：维护一个窗口，每次关注窗口中的字符串，在每次判断中，左窗口和右窗口选择其一向前移动。同样是维护一个HashSet，①正常情况下移动右窗口，如果没有出现重复则继续移动右窗口；②如果发现重复字符，则说明当前窗口中的串已经不满足要求，继续移动右窗口不可能得到更好的结果，此时移动左窗口，直到不再有重复字符为止，中间跳过的这些串中不会有更好的结果，因为他们不是重复就是更短。<br>复杂度：因为左窗口和右窗口都只向前，所以两个窗口都对每个元素访问不超过一遍，因此时间复杂度为O(2*n)=O(n),是线性算法。空间复杂度为HashSet的size,也是O(n)。<br>参考：<a href="http://blog.csdn.net/linhuanmars/article/details/19949159" target="_blank" rel="external">http://blog.csdn.net/linhuanmars/article/details/19949159</a></li>
-<li>每次定一个起点pre，然后从起点走到有重复字符位置，过程用一个HashSet维护当前字符集，认为是constant操作，这样算法要进行两层循环，复杂度是O(n^2)。<br>参考：<a href="http://blog.csdn.net/likecool21/article/details/10858799" target="_blank" rel="external">http://blog.csdn.net/likecool21/article/details/10858799</a> 中的解析图</li>
-</ol>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LongestSubstringWithoutRepeatingCharacters</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s = <span class="string">"bbbbb"</span>;</span><br><span class="line">        <span class="keyword">int</span> x = <span class="keyword">new</span> LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring(s);</span><br><span class="line"><span class="comment">//        int x = lengthOfLongestSubstring1(s);</span></span><br><span class="line">        System.out.print(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 滑动窗口法 TODO</span><br><span class="line">     * 思路：维护一个窗口，每次关注窗口中的字符串，在每次判断中，左窗口和右窗口选择其一向前移动。</span><br><span class="line">     * 同样是维护一个HashSet,①正常情况下移动右窗口，如果没有出现重复则继续移动右窗口；</span><br><span class="line">     * ②如果发现重复字符，则说明当前窗口中的串已经不满足要求，继续移动右窗口不可能得到更好的结果，</span><br><span class="line">     * 此时移动左窗口，直到不再有重复字符为止，中间跳过的这些串中不会有更好的结果，</span><br><span class="line">     * 因为他们不是重复就是更短。</span><br><span class="line">     *</span><br><span class="line">     * 复杂度：因为左窗口和右窗口都只向前，所以两个窗口都对每个元素访问不超过一遍，</span><br><span class="line">     * 因此时间复杂度为O(2*n)=O(n),是线性算法。空间复杂度为HashSet的size,也是O(n)。</span><br><span class="line">     * http://blog.csdn.net/linhuanmars/article/details/19949159</span><br><span class="line">     * <span class="doctag">@param</span> s</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s == <span class="keyword">null</span> || s.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (s.length() == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">char</span>[] chars = s.toCharArray();</span><br><span class="line">        Set&lt;Character&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> r = <span class="number">0</span>, l = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (r &lt; chars.length)&#123;</span><br><span class="line">            <span class="keyword">if</span> (!set.contains(chars[r])) set.add(chars[r]);</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (max &lt; r - l) max = r - l;</span><br><span class="line">                <span class="keyword">while</span> (chars[r] != chars[l])&#123;</span><br><span class="line">                    set.remove(chars[l]);</span><br><span class="line">                    l++;</span><br><span class="line">                &#125;</span><br><span class="line">                l++;</span><br><span class="line">            &#125;</span><br><span class="line">            r++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.max(max, r - l);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 此算法利于理解</span><br><span class="line">     * 思路：每次定一个起点pre，然后从起点走到有重复字符位置，过程用一个HashSet维护当前字符集，</span><br><span class="line">     * 认为是constant操作，这样算法要进行两层循环，复杂度是O(n^2)</span><br><span class="line">     * 参考http://blog.csdn.net/likecool21/article/details/10858799中的图</span><br><span class="line">     * <span class="doctag">@param</span> s</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring1</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s == <span class="keyword">null</span> || s.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (s.length() == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">char</span>[] arr = s.toCharArray();</span><br><span class="line">        HashMap&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Character, Integer&gt;();</span><br><span class="line">        <span class="keyword">int</span> pre = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!map.containsKey(arr[i])) &#123;</span><br><span class="line">                map.put(arr[i], i);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                pre = Math.max(pre, map.size());</span><br><span class="line">                i = map.get(arr[i]);</span><br><span class="line">                map.clear();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.max(pre, map.size());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/11/20/Sudoku Solver/" itemprop="url">
-                Sudoku Solver
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-11-20T20:44:47+08:00" content="2015-11-20">
-            2015-11-20
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/11/20/Sudoku Solver/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/20/Sudoku Solver/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Sudoku_Solver">Sudoku Solver</h3><p><strong>Description</strong>: Write a program to solve a Sudoku puzzle by filling the empty cells.<br>Empty cells are indicated by the character ‘.’. You may assume that there will be only one unique solution.</p>
-<p>思路：回溯法。和Valid Sudoku这题相比，此题中的输入保证是有效的。这样用回溯法我们只要检查新加入的值能否在行、列以及小方块里有效即可，没有必要检查整个矩阵。<br>参考：<br><a href="http://www.cnblogs.com/panda_lin/archive/2013/11/04/sudoku_solver.html" target="_blank" rel="external">http://www.cnblogs.com/panda_lin/archive/2013/11/04/sudoku_solver.html</a></p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SudokuSolver</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String[] input = &#123;<span class="string">"..9748..."</span>,<span class="string">"7........"</span>,<span class="string">".2.1.9..."</span>,<span class="string">"..7...24."</span>,<span class="string">".64.1.59."</span>,<span class="string">".98...3.."</span>,<span class="string">"...8.3.2."</span>,<span class="string">"........6"</span>,<span class="string">"...2759.."</span>&#125;;</span><br><span class="line">        <span class="keyword">char</span>[][] in = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) in[i] = input[i].toCharArray();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        <span class="keyword">new</span> SudokuSolver().solveSudoku(in);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> row = <span class="number">0</span>; row &lt; <span class="number">9</span>; ++row) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> col = <span class="number">0</span>; col &lt; <span class="number">9</span>; ++col) System.out.print(in[row][col] + <span class="string">" "</span>);</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 回溯法</span><br><span class="line">     * 和Valid Sudoku这题相比，此题中的输入保证是有效的。这样用回溯法我们只要检查新加入的值</span><br><span class="line">     * 能否在行、列以及小方块里有效即可，没有必要检查整个矩阵。</span><br><span class="line">     * http://www.cnblogs.com/panda_lin/archive/2013/11/04/sudoku_solver.html</span><br><span class="line">     * <span class="doctag">@param</span> board</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">solveSudoku</span><span class="params">(<span class="keyword">char</span>[][] board)</span> </span>&#123;</span><br><span class="line">        backTrackSolveSudoku(board);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">backTrackSolveSudoku</span><span class="params">(<span class="keyword">char</span>[][] board)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> row = <span class="number">0</span>; row &lt; <span class="number">9</span>; ++row) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> col = <span class="number">0</span>; col &lt; <span class="number">9</span>; ++col) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (board[row][col] == <span class="string">'.'</span>)&#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">char</span> c = <span class="string">'1'</span>; c &lt;= <span class="string">'9'</span>; c++)&#123;</span><br><span class="line">                        board[row][col] = c;</span><br><span class="line">                        <span class="keyword">if</span> (isValidSudoku(board, row, col))&#123;    <span class="comment">//限制条件</span></span><br><span class="line">                            <span class="keyword">if</span> (backTrackSolveSudoku(board)) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                        board[row][col] = <span class="string">'.'</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//只要检查新加入的值能否在行、列以及小方块里有效即可，没有必要检查整个矩阵</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isValidSudoku</span><span class="params">(<span class="keyword">char</span>[][] board, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;   <span class="comment">//x,y为坐标</span></span><br><span class="line">        <span class="keyword">int</span> row, col;</span><br><span class="line">        <span class="comment">// Same value in the same column?</span></span><br><span class="line">        <span class="keyword">for</span> (row = <span class="number">0</span>; row &lt; <span class="number">9</span>; ++row) &#123;</span><br><span class="line">            <span class="keyword">if</span> ((x != row) &amp;&amp; (board[row][y] == board[x][y])) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// Same value in the same row?</span></span><br><span class="line">        <span class="keyword">for</span> (col = <span class="number">0</span>; col &lt; <span class="number">9</span>; ++col) &#123;</span><br><span class="line">            <span class="keyword">if</span> ((y != col) &amp;&amp; (board[x][col] == board[x][y])) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// Same value in the 3 * 3 block it belong to?</span></span><br><span class="line">        <span class="keyword">for</span> (row = (x / <span class="number">3</span>) * <span class="number">3</span>; row &lt; (x / <span class="number">3</span> + <span class="number">1</span>) * <span class="number">3</span>; ++row) &#123;</span><br><span class="line">            <span class="keyword">for</span> (col = (y / <span class="number">3</span>) * <span class="number">3</span>; col &lt; (y / <span class="number">3</span> + <span class="number">1</span>) * <span class="number">3</span>; ++col) &#123;</span><br><span class="line">                <span class="keyword">if</span> ((x != row) &amp;&amp; (y != col) &amp;&amp; (board[row][col] == board[x][y])) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/11/19/Valid Sudoku/" itemprop="url">
-                Valid Sudoku
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-11-19T20:44:47+08:00" content="2015-11-19">
-            2015-11-19
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/11/19/Valid Sudoku/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/19/Valid Sudoku/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Valid_Sudoku">Valid Sudoku</h3><p><strong>Description</strong>: Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules.<br>The Sudoku board could be partially filled, where empty cells are filled with the character ‘.’.</p>
-<p>思路：Brute force，对每个九宫格，行号起始block/3<em>3，列号起始block%3</em>3。另一种思路，如果把九宫格按照行从0开始标号，那么数字board[i][j]位于第 i/3<em>3+j/3 个九宫格内。<br>时间复杂度：O(3</em>n^2), n=9</p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ValidSudoku</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String[] input = &#123;<span class="string">".87654321"</span>,<span class="string">"2........"</span>,<span class="string">"3........"</span>,<span class="string">"4........"</span>,<span class="string">"5........"</span>,<span class="string">"6........"</span>,<span class="string">"7........"</span>,</span><br><span class="line">                <span class="string">"8........"</span>,<span class="string">"9........"</span>&#125;;</span><br><span class="line">        <span class="keyword">char</span>[][] in = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) in[i] = input[i].toCharArray();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        <span class="keyword">boolean</span> result = <span class="keyword">new</span> ValidSudoku().isValidSudoku(in);</span><br><span class="line">        System.out.println(result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Brute force，对每个九宫格，行号起始block/3*3，列号起始block%3*3</span></span><br><span class="line">    <span class="comment">// 如果把九宫格按照行从0开始标号，那么数字board[i][j]位于第 i/3*3+j/3 个九宫格内</span></span><br><span class="line">    <span class="comment">// 时间复杂度：O(3*n^2), n=9</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidSudoku</span><span class="params">(<span class="keyword">char</span>[][] board)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = board[<span class="number">0</span>].length;</span><br><span class="line">        HashMap&lt;Character, Integer&gt; map, book = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c = <span class="string">'1'</span>; c &lt;= <span class="string">'9'</span>; c++) book.put(c, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">            map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span> (board[i][j] == <span class="string">'.'</span>) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (book.containsKey(board[i][j]) &amp;&amp; !map.containsKey(board[i][j]))</span><br><span class="line">                    map.put(board[i][j], <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">            map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span> (board[j][i] == <span class="string">'.'</span>) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (book.containsKey(board[j][i]) &amp;&amp; !map.containsKey(board[j][i]))</span><br><span class="line">                    map.put(board[j][i], <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> block = <span class="number">0</span>; block &lt; <span class="number">9</span>; block++)&#123;</span><br><span class="line">            map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = block/<span class="number">3</span>*<span class="number">3</span>; i &lt; block/<span class="number">3</span>*<span class="number">3</span> + <span class="number">3</span>; i++)&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = block%<span class="number">3</span>*<span class="number">3</span>; j &lt; block%<span class="number">3</span>*<span class="number">3</span> + <span class="number">3</span>; j++)&#123;</span><br><span class="line">                    <span class="keyword">if</span> (board[i][j] == <span class="string">'.'</span>) <span class="keyword">continue</span>;</span><br><span class="line">                    <span class="keyword">if</span> (book.containsKey(board[i][j]) &amp;&amp; !map.containsKey(board[i][j]))</span><br><span class="line">                        map.put(board[i][j], <span class="number">1</span>);</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/6/">&raquo;</a>
   </nav>
 
  </div>
@@ -703,21 +701,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">46</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

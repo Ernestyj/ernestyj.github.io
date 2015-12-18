@@ -1,0 +1,777 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="成长之旅" />
+
+
+
+  <meta name="keywords" content="doc,java,spring,web," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Eugene's Blog" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="Springmvc4集成springfox, swagger UI, springfox-staticdocs下面给出相关组件的链接：Swagger: http://swagger.io/Springfox: http://springfox.github.io/springfox/Asciidoctor: http://asciidoctor.org/
+Swagger可以用来生成RESTful">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Springmvc4集成springfox, swagger UI, springfox-staticdocs">
+<meta property="og:url" content="http://ernestyj.github.io/2015/12/18/Springmvc4集成springfox, Swagger UI, springfox-staticdocs/index.html">
+<meta property="og:site_name" content="Eugene's Blog">
+<meta property="og:description" content="Springmvc4集成springfox, swagger UI, springfox-staticdocs下面给出相关组件的链接：Swagger: http://swagger.io/Springfox: http://springfox.github.io/springfox/Asciidoctor: http://asciidoctor.org/
+Swagger可以用来生成RESTful">
+<meta property="og:updated_time" content="2015-12-18T12:43:08.058Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Springmvc4集成springfox, swagger UI, springfox-staticdocs">
+<meta name="twitter:description" content="Springmvc4集成springfox, swagger UI, springfox-staticdocs下面给出相关组件的链接：Swagger: http://swagger.io/Springfox: http://springfox.github.io/springfox/Asciidoctor: http://asciidoctor.org/
+Swagger可以用来生成RESTful">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+
+
+  <title> Springmvc4集成springfox, swagger UI, springfox-staticdocs | Eugene's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-69053272-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?adb3d489a19a11945d6d5095f22b7480";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">Eugene's Blog</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '7xXAWnaAmpRJe35DS8xs','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              Springmvc4集成springfox, swagger UI, springfox-staticdocs
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-12-18T22:44:47+08:00" content="2015-12-18">
+            2015-12-18
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/spring/" itemprop="url" rel="index">
+                  <span itemprop="name">spring</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/12/18/Springmvc4集成springfox, Swagger UI, springfox-staticdocs/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/18/Springmvc4集成springfox, Swagger UI, springfox-staticdocs/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h2 id="Springmvc4集成springfox,_swagger_UI,_springfox-staticdocs">Springmvc4集成springfox, swagger UI, springfox-staticdocs</h2><p>下面给出相关组件的链接：<br>Swagger: <a href="http://swagger.io/" target="_blank" rel="external">http://swagger.io/</a><br>Springfox: <a href="http://springfox.github.io/springfox/" target="_blank" rel="external">http://springfox.github.io/springfox/</a><br>Asciidoctor: <a href="http://asciidoctor.org/" target="_blank" rel="external">http://asciidoctor.org/</a></p>
+<p>Swagger可以用来生成RESTful API文档，Springfox由Swagger-springmvc演变而来。Asciidoctor是将AsciiDoc转为HTML, PDF等文档的转换工具。</p>
+<h3 id="Springmvc3集成Swagger-springmvc,_Swagger-ui">Springmvc3集成Swagger-springmvc, Swagger-ui</h3><p>Swagger-springmvc适用于与Springmvc3的集成，具体方法参考：<br><a href="https://github.com/springfox/springfox/blob/v1.0.2/README.md" target="_blank" rel="external">https://github.com/springfox/springfox/blob/v1.0.2/README.md</a><br><a href="https://github.com/albertchendao/demos/tree/master/java/spring/HelloWorld-MVC-Swagger" target="_blank" rel="external">https://github.com/albertchendao/demos/tree/master/java/spring/HelloWorld-MVC-Swagger</a><br>集成 后可以通过手动拷贝的方式引入Swagger-ui，<br>访问<a href="http://host:port/projectName/swagger/index.html" target="_blank" rel="external">http://host:port/projectName/swagger/index.html</a> 即可看到Swagger-ui。</p>
+<h4 id="Springmvc4集成springfox">Springmvc4集成springfox</h4><p>查看最新的<a href="http://springfox.github.io/springfox/docs/current/" target="_blank" rel="external">Springfox Reference Documentation</a>，这里给出的说明对初学者来说可能较难上手。可以参考其给出的<a href="https://github.com/springfox/springfox-demos" target="_blank" rel="external">springfox-demos</a>，按照示例在Springmvc4中引入springfox。</p>
+<p>Maven依赖：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;dependency&#62;&#10;    &#60;groupId&#62;io.springfox&#60;/groupId&#62;&#10;    &#60;artifactId&#62;springfox-swagger2&#60;/artifactId&#62;&#10;    &#60;version&#62;2.2.2&#60;/version&#62;&#10;&#60;/dependency&#62;</span><br></pre></td></tr></table></figure></p>
+<p>配置：这里采用java注解方式配置，当然也可以用xml配置。用xml配置的话，@ComponentScan和@EnableWebMvc注解去掉，同时在xml中引入<mvc:annotation-driven>和其bean的声明。<br>里面相关代码和注解具体的含义可以参考<a href="http://springfox.github.io/springfox/docs/current/" target="_blank" rel="external">Springfox Reference Documentation</a>。<br>集成之后，访问/api-docs可以看到json数据。</mvc:annotation-driven></p>
+<p>注意：整个工程编码方式应该设置为UTF-8，否则生成的json数据中，中文会出现乱码。如果不行，参考<a href="http://www.cnblogs.com/yuananyun/p/4993426.html" target="_blank" rel="external">Swagger+Spring mvc生成Restful接口文档</a> 自定义MappingJackson2HttpMessageConverter 来设置转换字符编码等。</p>
+<p>java注解方式配置如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.google.common.base.Predicate;</span><br><span class="line"><span class="keyword">import</span> com.google.common.collect.Sets;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.ComponentScan;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.config.annotation.EnableWebMvc;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.ApiInfoBuilder;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.AuthorizationScopeBuilder;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.ApiInfo;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.AuthorizationScope;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.BasicAuth;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.SecurityReference;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spi.DocumentationType;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spi.service.contexts.SecurityContext;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spring.web.plugins.Docket;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.swagger2.annotations.EnableSwagger2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> com.google.common.base.Predicates.or;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> com.google.common.collect.Lists.newArrayList;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> springfox.documentation.builders.PathSelectors.regex;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by DCLab on 12/17/2015.</span><br><span class="line"> */</span></span><br><span class="line"><span class="annotation">@Configuration</span></span><br><span class="line"><span class="annotation">@EnableWebMvc</span> <span class="comment">//<span class="doctag">NOTE:</span> Only needed in a non-springboot application</span></span><br><span class="line"><span class="annotation">@EnableSwagger</span>2 <span class="comment">//Enable swagger 2.0 spec</span></span><br><span class="line"><span class="annotation">@ComponentScan</span>(<span class="string">"com.eugene.controller"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringfoxDocConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">petApi</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .groupName(<span class="string">"full-petstore"</span>)</span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .forCodeGeneration(<span class="keyword">true</span>)</span><br><span class="line">                .select()</span><br><span class="line">                .paths(petstorePaths())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> Predicate&lt;String&gt; <span class="title">petstorePaths</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> or(</span><br><span class="line">                regex(<span class="string">"/api/pet.*"</span>),</span><br><span class="line">                regex(<span class="string">"/api/user.*"</span>),</span><br><span class="line">                regex(<span class="string">"/api/store.*"</span>)</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">adminApi</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .groupName(<span class="string">"admins"</span>)</span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .forCodeGeneration(<span class="keyword">true</span>)</span><br><span class="line">                .select()</span><br><span class="line">                .paths(regex(<span class="string">"/admins.*"</span>))</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">userApi</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        AuthorizationScope[] authScopes = <span class="keyword">new</span> AuthorizationScope[<span class="number">1</span>];</span><br><span class="line">        authScopes[<span class="number">0</span>] = <span class="keyword">new</span> AuthorizationScopeBuilder()</span><br><span class="line">                .scope(<span class="string">"read"</span>)</span><br><span class="line">                .description(<span class="string">"read access"</span>)</span><br><span class="line">                .build();</span><br><span class="line">        SecurityReference securityReference = SecurityReference.builder()</span><br><span class="line">                .reference(<span class="string">"test"</span>)</span><br><span class="line">                .scopes(authScopes)</span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;SecurityContext&gt; securityContexts = newArrayList(SecurityContext.builder().securityReferences</span><br><span class="line">                (newArrayList(securityReference)).build());</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .securitySchemes(newArrayList(<span class="keyword">new</span> BasicAuth(<span class="string">"test"</span>)))</span><br><span class="line">                .securityContexts(securityContexts)</span><br><span class="line">                .groupName(<span class="string">"user"</span>)</span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .select()</span><br><span class="line">                .paths(userOnlyEndpoints())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> Predicate&lt;String&gt; <span class="title">userOnlyEndpoints</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Predicate&lt;String&gt;() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">apply</span><span class="params">(String input)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> input.contains(<span class="string">"user"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ApiInfo <span class="title">apiInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ApiInfoBuilder()</span><br><span class="line">                .title(<span class="string">"Springfox REST API"</span>)</span><br><span class="line">                .description(<span class="string">"Descriptions."</span>)</span><br><span class="line">                .termsOfServiceUrl(<span class="string">"http://springfox.io"</span>)</span><br><span class="line">                .contact(<span class="string">"springfox"</span>)</span><br><span class="line">                .license(<span class="string">"Apache License Version 2.0"</span>)</span><br><span class="line">                .licenseUrl(<span class="string">"https://github.com/springfox/springfox/blob/master/LICENSE"</span>)</span><br><span class="line">                .version(<span class="string">"2.0"</span>)</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">configSpringfoxDocket_all</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .produces(Sets.newHashSet(<span class="string">"application/json"</span>))</span><br><span class="line">                .consumes(Sets.newHashSet(<span class="string">"application/json"</span>))</span><br><span class="line">                .protocols(Sets.newHashSet(<span class="string">"http"</span>, <span class="string">"https"</span>))</span><br><span class="line">                .forCodeGeneration(<span class="keyword">true</span>)</span><br><span class="line">                .select().paths(regex(<span class="string">".*"</span>))</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">configSpringfoxDocket_foo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .groupName(<span class="string">"foo"</span>)</span><br><span class="line">                .produces(Sets.newHashSet(<span class="string">"application/json"</span>))</span><br><span class="line">                .consumes(Sets.newHashSet(<span class="string">"application/json"</span>))</span><br><span class="line">                .protocols(Sets.newHashSet(<span class="string">"http"</span>, <span class="string">"https"</span>))</span><br><span class="line">                .forCodeGeneration(<span class="keyword">true</span>)</span><br><span class="line">                .select().paths(regex(<span class="string">".*foo.*"</span>))</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Springmvc4集成swagger_UI">Springmvc4集成swagger UI</h3><p>如果项目使用了Spring Boot，集成swagger UI可以参考<a href="http://springfox.github.io/springfox/docs/current/" target="_blank" rel="external">Springfox Reference Documentation</a>，非常简单。如果没有使用Spring Boot，需要增加一些额外配置。建议参考官方给出的<a href="https://github.com/springfox/springfox-demos" target="_blank" rel="external">springfox-demos</a> 来集成swagger UI。</p>
+<p>Maven依赖：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;dependency&#62;&#10;    &#60;groupId&#62;io.springfox&#60;/groupId&#62;&#10;    &#60;artifactId&#62;springfox-swagger-ui&#60;/artifactId&#62;&#10;    &#60;version&#62;2.2.2&#60;/version&#62;&#10;&#60;/dependency&#62;</span><br></pre></td></tr></table></figure></p>
+<p>由于springfox-swagger-ui采用webjar的方式引入页面，需要在sping xml中配置静态资源访问（使用了Spring Boot则不需要）：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Enables swgger ui--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">mvc:resources</span> <span class="attribute">mapping</span>=<span class="value">"swagger-ui.html"</span> <span class="attribute">location</span>=<span class="value">"classpath:/META-INF/resources/"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">mvc:resources</span> <span class="attribute">mapping</span>=<span class="value">"/webjars/**"</span> <span class="attribute">location</span>=<span class="value">"classpath:/META-INF/resources/webjars/"</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>集成swagger UI之后访问<a href="http://localhost:8080/swagger-ui.html" target="_blank" rel="external">http://localhost:8080/swagger-ui.html</a> 即可看到swagger界面。</p>
+<p>注意：swagger UI基于/api-docs中提供的数据，若设置springfox时没有在/api-docs中添加相关json数据，swagger UI编译验证过程会报错。验证需要引入commons-lang3包，没有的需要添加依赖。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;dependency&#62;&#10;    &#60;groupId&#62;org.apache.commons&#60;/groupId&#62;&#10;    &#60;artifactId&#62;commons-lang3&#60;/artifactId&#62;&#10;    &#60;version&#62;3.4&#60;/version&#62;&#10;&#60;/dependency&#62;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Springmvc4集成springfox-staticdocs">Springmvc4集成springfox-staticdocs</h3><p>使用springfox-staticdocs可以生成asciidoc和markdown文档。</p>
+<p>同样，如果项目使用了Spring Boot，集成swagger UI可以参考<a href="http://springfox.github.io/springfox/docs/current/" target="_blank" rel="external">Springfox Reference Documentation</a>，也可以参考 <a href="https://swagger2markup.readme.io/docs/springfox-staticdocs" target="_blank" rel="external">https://swagger2markup.readme.io/docs/springfox-staticdocs</a> 。</p>
+<p>如果没有使用Spring Boot，则在使用Spring Test时修改一下相关代码和注解即可。写好测试代码后，运行单元测试即可生成asciidoctor和markdown文档。Spring Unit Test代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.eugene.service.AdminService;</span><br><span class="line"><span class="keyword">import</span> io.github.robwin.markup.builder.MarkupLanguage;</span><br><span class="line"><span class="keyword">import</span> org.junit.Before;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.http.MediaType;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.ContextConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.junit4.SpringJUnit4ClassRunner;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.web.WebAppConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.web.servlet.MockMvc;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.web.servlet.request.MockMvcRequestBuilders;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.web.servlet.result.MockMvcResultMatchers;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.web.servlet.setup.MockMvcBuilders;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.context.WebApplicationContext;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.staticdocs.Swagger2MarkupResultHandler;</span><br><span class="line"></span><br><span class="line"><span class="annotation">@WebAppConfiguration</span></span><br><span class="line"><span class="annotation">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line"><span class="annotation">@ContextConfiguration</span>(value = &#123;<span class="string">"file:src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml"</span>,</span><br><span class="line">        <span class="string">"file:src/main/resources/applicationContext.xml"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Swagger2MarkupTest</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> WebApplicationContext context;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> AdminService adminService;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> MockMvc mockMvc;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mockMvc = MockMvcBuilders.webAppContextSetup(<span class="keyword">this</span>.context).build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convertSwaggerToAsciiDoc</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mockMvc.perform(MockMvcRequestBuilders.get(<span class="string">"/v2/api-docs"</span>)</span><br><span class="line">                .accept(MediaType.APPLICATION_JSON))</span><br><span class="line">                .andDo(Swagger2MarkupResultHandler.outputDirectory(<span class="string">"src/docs/asciidoc/generated"</span>).build())</span><br><span class="line">                .andExpect(MockMvcResultMatchers.status().isOk());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convertSwaggerToMarkdown</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mockMvc.perform(MockMvcRequestBuilders.get(<span class="string">"/v2/api-docs"</span>)</span><br><span class="line">                .accept(MediaType.APPLICATION_JSON))</span><br><span class="line">                .andDo(Swagger2MarkupResultHandler.outputDirectory(<span class="string">"src/docs/markdown/generated"</span>)</span><br><span class="line">                        .withMarkupLanguage(MarkupLanguage.MARKDOWN).build())</span><br><span class="line">                .andExpect(MockMvcResultMatchers.status().isOk());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="AsciiDoc转为HTML,_PDF等格式文档">AsciiDoc转为HTML, PDF等格式文档</h3><p>Maven项目中可以集成asciidoctor maven插件，将AsciiDoc转为HTML, PDF等格式文档。可以参考<a href="https://github.com/asciidoctor/asciidoctor-maven-examples" target="_blank" rel="external">asciidoctor-maven-examples</a> 来集成asciidoctor maven插件。集成之后，执行mvn install可以根据指定位置的AsciiDoc文件来生成HTML或PDF文档。</p>
+<p>Maven插件设置时的参数含义参考<a href="https://github.com/asciidoctor/asciidoctor-maven-plugin" target="_blank" rel="external">asciidoctor-maven-plugin</a> 。下面给出的配置包含asciidoc-to-html和asciidoc-to-pdf，其中转成pdf对中文字符的支持不完善，部分中文字符会消失。</p>
+<p>注意：配置插件时，请不要省略jruby-complete和asciidoctorj的依赖（虽然demo中提示可以省略），否则执行mvn install时很可能会报错。此外，jruby-complete的版本也应注意，尽量使用最新版。</p>
+<p>Maven插件配置如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;plugin&#62;&#10;   &#60;groupId&#62;org.asciidoctor&#60;/groupId&#62;&#10;   &#60;artifactId&#62;asciidoctor-maven-plugin&#60;/artifactId&#62;&#10;   &#60;version&#62;1.5.2&#60;/version&#62;&#10;   &#60;dependencies&#62;&#10;       &#60;dependency&#62;&#10;           &#60;groupId&#62;org.asciidoctor&#60;/groupId&#62;&#10;           &#60;artifactId&#62;asciidoctorj-pdf&#60;/artifactId&#62;&#10;           &#60;version&#62;1.5.0-alpha.10.1&#60;/version&#62;&#10;       &#60;/dependency&#62;&#10;       &#60;dependency&#62;&#10;           &#60;groupId&#62;org.jruby&#60;/groupId&#62;&#10;           &#60;artifactId&#62;jruby-complete&#60;/artifactId&#62;&#10;           &#60;version&#62;9.0.0.0.rc1&#60;/version&#62;&#10;       &#60;/dependency&#62;&#10;       &#60;dependency&#62;&#10;           &#60;groupId&#62;org.asciidoctor&#60;/groupId&#62;&#10;           &#60;artifactId&#62;asciidoctorj&#60;/artifactId&#62;&#10;           &#60;version&#62;1.5.3.2&#60;/version&#62;&#10;       &#60;/dependency&#62;&#10;   &#60;/dependencies&#62;&#10;&#10;   &#60;configuration&#62;&#10;       &#60;sourceDirectory&#62;src/docs/asciidoc&#60;/sourceDirectory&#62;&#10;       &#60;outputDirectory&#62;target/docs/asciidoc&#60;/outputDirectory&#62;&#10;   &#60;/configuration&#62;&#10;&#10;   &#60;executions&#62;&#10;       &#60;execution&#62;&#10;           &#60;id&#62;asciidoc-to-html&#60;/id&#62;&#10;           &#60;phase&#62;generate-resources&#60;/phase&#62;&#10;           &#60;goals&#62;&#10;               &#60;goal&#62;process-asciidoc&#60;/goal&#62;&#10;           &#60;/goals&#62;&#10;           &#60;configuration&#62;&#10;               &#60;backend&#62;html5&#60;/backend&#62;&#10;               &#60;doctype&#62;book&#60;/doctype&#62;&#10;               &#60;sourceHighlighter&#62;coderay&#60;/sourceHighlighter&#62;&#10;               &#60;attributes&#62;&#10;                   &#60;imagesdir&#62;./images&#60;/imagesdir&#62;&#10;                   &#60;toc&#62;left&#60;/toc&#62;&#10;                   &#60;icons&#62;font&#60;/icons&#62;&#10;                   &#60;sectanchors&#62;true&#60;/sectanchors&#62;&#10;                   &#60;!-- set the idprefix to blank --&#62;&#10;                   &#60;idprefix/&#62;&#10;                   &#60;idseparator&#62;-&#60;/idseparator&#62;&#10;                   &#60;docinfo1&#62;true&#60;/docinfo1&#62;&#10;               &#60;/attributes&#62;&#10;           &#60;/configuration&#62;&#10;       &#60;/execution&#62;&#10;       &#60;!--asciidoc&#29983;&#25104;pdf&#23545;&#20013;&#25991;&#23383;&#31526;&#30340;&#25903;&#25345;&#19981;&#23436;&#21892;--&#62;&#10;       &#60;!--&#60;execution&#62;--&#62;&#10;           &#60;!--&#60;id&#62;generate-pdf-doc&#60;/id&#62;--&#62;&#10;           &#60;!--&#60;phase&#62;generate-resources&#60;/phase&#62;--&#62;&#10;           &#60;!--&#60;goals&#62;--&#62;&#10;               &#60;!--&#60;goal&#62;process-asciidoc&#60;/goal&#62;--&#62;&#10;           &#60;!--&#60;/goals&#62;--&#62;&#10;           &#60;!--&#60;configuration&#62;--&#62;&#10;               &#60;!--&#60;backend&#62;pdf&#60;/backend&#62;--&#62;&#10;               &#60;!--&#38;lt;!&#38;ndash; Since 1.5.0-alpha.9 PDF back-end can use &#39;rouge&#39; as well as &#39;coderay&#39; source highlighting &#38;ndash;&#38;gt;--&#62;&#10;               &#60;!--&#60;sourceHighlighter&#62;rouge&#60;/sourceHighlighter&#62;--&#62;&#10;               &#60;!--&#60;attributes&#62;--&#62;&#10;                   &#60;!--&#60;icons&#62;font&#60;/icons&#62;--&#62;&#10;                   &#60;!--&#60;pagenums/&#62;--&#62;&#10;                   &#60;!--&#60;toc/&#62;--&#62;&#10;                   &#60;!--&#60;idprefix/&#62;--&#62;&#10;                   &#60;!--&#60;idseparator&#62;-&#60;/idseparator&#62;--&#62;&#10;               &#60;!--&#60;/attributes&#62;--&#62;&#10;           &#60;!--&#60;/configuration&#62;--&#62;&#10;       &#60;!--&#60;/execution&#62;--&#62;&#10;   &#60;/executions&#62;&#10;&#60;/plugin&#62;</span><br></pre></td></tr></table></figure></p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/doc/" rel="tag">#doc</a>
+          
+            <a href="/tags/java/" rel="tag">#java</a>
+          
+            <a href="/tags/spring/" rel="tag">#spring</a>
+          
+            <a href="/tags/web/" rel="tag">#web</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/18/Valid Number - 合法数字/" rel="next">Valid Number - 合法数字</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+            <!-- 多说热评文章-->
+            <p>热评文章</p>
+            <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/12/18/Springmvc4集成springfox, Swagger UI, springfox-staticdocs/"
+                   data-title="Springmvc4集成springfox, swagger UI, springfox-staticdocs" data-url="http://ernestyj.github.io/2015/12/18/Springmvc4集成springfox, Swagger UI, springfox-staticdocs/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/uploads/avatar.ico" alt="Jian Yang" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Jian Yang</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">成长之旅</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Ernestyj" target="_blank">GitHub</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://macshuo.com/" target="_blank">MacTalk</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Springmvc4集成springfox,_swagger_UI,_springfox-staticdocs"><span class="nav-number">1.</span> <span class="nav-text">Springmvc4集成springfox, swagger UI, springfox-staticdocs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Springmvc3集成Swagger-springmvc,_Swagger-ui"><span class="nav-number">1.1.</span> <span class="nav-text">Springmvc3集成Swagger-springmvc, Swagger-ui</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Springmvc4集成springfox"><span class="nav-number">1.1.1.</span> <span class="nav-text">Springmvc4集成springfox</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Springmvc4集成swagger_UI"><span class="nav-number">1.2.</span> <span class="nav-text">Springmvc4集成swagger UI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Springmvc4集成springfox-staticdocs"><span class="nav-number">1.3.</span> <span class="nav-text">Springmvc4集成springfox-staticdocs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AsciiDoc转为HTML,_PDF等格式文档"><span class="nav-number">1.4.</span> <span class="nav-text">AsciiDoc转为HTML, PDF等格式文档</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jian Yang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"eugeneyj"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

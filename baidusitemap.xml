@@ -4,6 +4,80 @@
 
     
   <url>
+    <loc>http://ernestyj.github.io/2015/12/18/Valid%20Number%20-%20%E5%90%88%E6%B3%95%E6%95%B0%E5%AD%97/</loc>
+    <lastmod>2015-12-18T13:42:32.961Z</lastmod>
+    <data>
+        <display>
+        <title>Valid Number - 合法数字</title>
+        <pubTime>2015-12-18T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ernestyj.github.io/2015/12/18/Springmvc4%E9%9B%86%E6%88%90springfox,%20Swagger%20UI,%20springfox-staticdocs/</loc>
+    <lastmod>2015-12-18T12:43:08.058Z</lastmod>
+    <data>
+        <display>
+        <title>Springmvc4集成springfox, swagger UI, springfox-staticdocs</title>
+        <pubTime>2015-12-18T14:44:47.000Z</pubTime>
+        
+        <tag>doc</tag>
+         
+        <tag>java</tag>
+         
+        <tag>spring</tag>
+         
+        <tag>web</tag>
+         
+         
+           
+             
+              <breadCrumb title="spring" url="http://ernestyj.github.io/categories/spring/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ernestyj.github.io/2015/12/17/Minimum%20Path%20Sum%20-%20%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/</loc>
+    <lastmod>2015-12-17T02:53:07.397Z</lastmod>
+    <data>
+        <display>
+        <title>Minimum Path Sum - 最小路径和</title>
+        <pubTime>2015-12-17T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ernestyj.github.io/2015/12/16/Unique%20Paths%20II%20-%20%E5%94%AF%E4%B8%80%E8%B7%AF%E5%BE%84II/</loc>
     <lastmod>2015-12-16T10:35:21.421Z</lastmod>
     <data>
