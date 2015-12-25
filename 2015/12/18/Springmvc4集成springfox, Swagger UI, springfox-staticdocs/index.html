@@ -49,7 +49,7 @@ Swagger可以用来生成RESTful">
 <meta property="og:site_name" content="Eugene's Blog">
 <meta property="og:description" content="Springmvc4集成springfox, swagger UI, springfox-staticdocs下面给出相关组件的链接：Swagger: http://swagger.io/Springfox: http://springfox.github.io/springfox/Asciidoctor: http://asciidoctor.org/
 Swagger可以用来生成RESTful">
-<meta property="og:updated_time" content="2015-12-18T12:43:08.058Z">
+<meta property="og:updated_time" content="2015-12-18T13:52:12.069Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Springmvc4集成springfox, swagger UI, springfox-staticdocs">
 <meta name="twitter:description" content="Springmvc4集成springfox, swagger UI, springfox-staticdocs下面给出相关组件的链接：Swagger: http://swagger.io/Springfox: http://springfox.github.io/springfox/Asciidoctor: http://asciidoctor.org/
@@ -277,7 +277,7 @@ Swagger可以用来生成RESTful">
         <span itemprop="articleBody"><h2 id="Springmvc4集成springfox,_swagger_UI,_springfox-staticdocs">Springmvc4集成springfox, swagger UI, springfox-staticdocs</h2><p>下面给出相关组件的链接：<br>Swagger: <a href="http://swagger.io/" target="_blank" rel="external">http://swagger.io/</a><br>Springfox: <a href="http://springfox.github.io/springfox/" target="_blank" rel="external">http://springfox.github.io/springfox/</a><br>Asciidoctor: <a href="http://asciidoctor.org/" target="_blank" rel="external">http://asciidoctor.org/</a></p>
 <p>Swagger可以用来生成RESTful API文档，Springfox由Swagger-springmvc演变而来。Asciidoctor是将AsciiDoc转为HTML, PDF等文档的转换工具。</p>
 <h3 id="Springmvc3集成Swagger-springmvc,_Swagger-ui">Springmvc3集成Swagger-springmvc, Swagger-ui</h3><p>Swagger-springmvc适用于与Springmvc3的集成，具体方法参考：<br><a href="https://github.com/springfox/springfox/blob/v1.0.2/README.md" target="_blank" rel="external">https://github.com/springfox/springfox/blob/v1.0.2/README.md</a><br><a href="https://github.com/albertchendao/demos/tree/master/java/spring/HelloWorld-MVC-Swagger" target="_blank" rel="external">https://github.com/albertchendao/demos/tree/master/java/spring/HelloWorld-MVC-Swagger</a><br>集成 后可以通过手动拷贝的方式引入Swagger-ui，<br>访问<a href="http://host:port/projectName/swagger/index.html" target="_blank" rel="external">http://host:port/projectName/swagger/index.html</a> 即可看到Swagger-ui。</p>
-<h4 id="Springmvc4集成springfox">Springmvc4集成springfox</h4><p>查看最新的<a href="http://springfox.github.io/springfox/docs/current/" target="_blank" rel="external">Springfox Reference Documentation</a>，这里给出的说明对初学者来说可能较难上手。可以参考其给出的<a href="https://github.com/springfox/springfox-demos" target="_blank" rel="external">springfox-demos</a>，按照示例在Springmvc4中引入springfox。</p>
+<h3 id="Springmvc4集成springfox">Springmvc4集成springfox</h3><p>查看最新的<a href="http://springfox.github.io/springfox/docs/current/" target="_blank" rel="external">Springfox Reference Documentation</a>，这里给出的说明对初学者来说可能较难上手。可以参考其给出的<a href="https://github.com/springfox/springfox-demos" target="_blank" rel="external">springfox-demos</a>，按照示例在Springmvc4中引入springfox。</p>
 <p>Maven依赖：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;dependency&#62;&#10;    &#60;groupId&#62;io.springfox&#60;/groupId&#62;&#10;    &#60;artifactId&#62;springfox-swagger2&#60;/artifactId&#62;&#10;    &#60;version&#62;2.2.2&#60;/version&#62;&#10;&#60;/dependency&#62;</span><br></pre></td></tr></table></figure></p>
 <p>配置：这里采用java注解方式配置，当然也可以用xml配置。用xml配置的话，@ComponentScan和@EnableWebMvc注解去掉，同时在xml中引入<mvc:annotation-driven>和其bean的声明。<br>里面相关代码和注解具体的含义可以参考<a href="http://springfox.github.io/springfox/docs/current/" target="_blank" rel="external">Springfox Reference Documentation</a>。<br>集成之后，访问/api-docs可以看到json数据。</mvc:annotation-driven></p>
 <p>注意：整个工程编码方式应该设置为UTF-8，否则生成的json数据中，中文会出现乱码。如果不行，参考<a href="http://www.cnblogs.com/yuananyun/p/4993426.html" target="_blank" rel="external">Swagger+Spring mvc生成Restful接口文档</a> 自定义MappingJackson2HttpMessageConverter 来设置转换字符编码等。</p>
@@ -317,6 +317,8 @@ Swagger可以用来生成RESTful">
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/19/Add Binary - 二进制数加法/" rel="prev">Add Binary - 二进制数加法</a>
             
           </div>
 
@@ -415,7 +417,7 @@ Swagger可以用来生成RESTful">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">52</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -477,7 +479,7 @@ Swagger可以用来生成RESTful">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Springmvc4集成springfox,_swagger_UI,_springfox-staticdocs"><span class="nav-number">1.</span> <span class="nav-text">Springmvc4集成springfox, swagger UI, springfox-staticdocs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Springmvc3集成Swagger-springmvc,_Swagger-ui"><span class="nav-number">1.1.</span> <span class="nav-text">Springmvc3集成Swagger-springmvc, Swagger-ui</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Springmvc4集成springfox"><span class="nav-number">1.1.1.</span> <span class="nav-text">Springmvc4集成springfox</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Springmvc4集成swagger_UI"><span class="nav-number">1.2.</span> <span class="nav-text">Springmvc4集成swagger UI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Springmvc4集成springfox-staticdocs"><span class="nav-number">1.3.</span> <span class="nav-text">Springmvc4集成springfox-staticdocs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AsciiDoc转为HTML,_PDF等格式文档"><span class="nav-number">1.4.</span> <span class="nav-text">AsciiDoc转为HTML, PDF等格式文档</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Springmvc4集成springfox,_swagger_UI,_springfox-staticdocs"><span class="nav-number">1.</span> <span class="nav-text">Springmvc4集成springfox, swagger UI, springfox-staticdocs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Springmvc3集成Swagger-springmvc,_Swagger-ui"><span class="nav-number">1.1.</span> <span class="nav-text">Springmvc3集成Swagger-springmvc, Swagger-ui</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Springmvc4集成springfox"><span class="nav-number">1.2.</span> <span class="nav-text">Springmvc4集成springfox</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Springmvc4集成swagger_UI"><span class="nav-number">1.3.</span> <span class="nav-text">Springmvc4集成swagger UI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Springmvc4集成springfox-staticdocs"><span class="nav-number">1.4.</span> <span class="nav-text">Springmvc4集成springfox-staticdocs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AsciiDoc转为HTML,_PDF等格式文档"><span class="nav-number">1.5.</span> <span class="nav-text">AsciiDoc转为HTML, PDF等格式文档</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
