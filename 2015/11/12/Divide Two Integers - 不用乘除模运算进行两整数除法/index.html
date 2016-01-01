@@ -41,19 +41,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Remove Duplicates from Sorted Array - 从有序数组中移除重复元素Description: Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.
- Do not allocate">
+<meta name="description" content="Divide Two Integers - 不用乘除模运算进行两整数除法Description: Divide two integers without using multiplication, division and mod operator. If it is overflow, return MAX_INT.
+方法1：笔算法，即按照笔算思路按字符进行运算，易错；方法2：转换为减法，但是普">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Remove Duplicates from Sorted Array - 从有序数组中移除重复元素">
-<meta property="og:url" content="http://ernestyj.github.io/2015/11/06/Remove Duplicates from Sorted Array - 从有序数组中移除重复元素 - Copy/index.html">
+<meta property="og:title" content="Divide Two Integers - 不用乘除模运算进行两整数除法">
+<meta property="og:url" content="http://ernestyj.github.io/2015/11/12/Divide Two Integers - 不用乘除模运算进行两整数除法/index.html">
 <meta property="og:site_name" content="Eugene's Blog">
-<meta property="og:description" content="Remove Duplicates from Sorted Array - 从有序数组中移除重复元素Description: Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.
- Do not allocate">
-<meta property="og:updated_time" content="2015-11-09T04:30:53.353Z">
+<meta property="og:description" content="Divide Two Integers - 不用乘除模运算进行两整数除法Description: Divide two integers without using multiplication, division and mod operator. If it is overflow, return MAX_INT.
+方法1：笔算法，即按照笔算思路按字符进行运算，易错；方法2：转换为减法，但是普">
+<meta property="og:updated_time" content="2015-11-13T12:25:22.617Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Remove Duplicates from Sorted Array - 从有序数组中移除重复元素">
-<meta name="twitter:description" content="Remove Duplicates from Sorted Array - 从有序数组中移除重复元素Description: Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.
- Do not allocate">
+<meta name="twitter:title" content="Divide Two Integers - 不用乘除模运算进行两整数除法">
+<meta name="twitter:description" content="Divide Two Integers - 不用乘除模运算进行两整数除法Description: Divide two integers without using multiplication, division and mod operator. If it is overflow, return MAX_INT.
+方法1：笔算法，即按照笔算思路按字符进行运算，易错；方法2：转换为减法，但是普">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -65,7 +65,7 @@
 
 
 
-  <title> Remove Duplicates from Sorted Array - 从有序数组中移除重复元素 | Eugene's Blog </title>
+  <title> Divide Two Integers - 不用乘除模运算进行两整数除法 | Eugene's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -223,7 +223,7 @@
           
           
             
-              Remove Duplicates from Sorted Array - 从有序数组中移除重复元素
+              Divide Two Integers - 不用乘除模运算进行两整数除法
             
           
         </h1>
@@ -232,8 +232,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-11-06T20:44:47+08:00" content="2015-11-06">
-            2015-11-06
+          <time itemprop="dateCreated" datetime="2015-11-12T20:44:47+08:00" content="2015-11-12">
+            2015-11-12
           </time>
         </span>
 
@@ -258,8 +258,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/11/06/Remove Duplicates from Sorted Array - 从有序数组中移除重复元素 - Copy/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/06/Remove Duplicates from Sorted Array - 从有序数组中移除重复元素 - Copy/" itemprop="commentsCount"></span>
+              <a href="/2015/11/12/Divide Two Integers - 不用乘除模运算进行两整数除法/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/12/Divide Two Integers - 不用乘除模运算进行两整数除法/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -274,14 +274,12 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="Remove_Duplicates_from_Sorted_Array_-_从有序数组中移除重复元素">Remove Duplicates from Sorted Array - 从有序数组中移除重复元素</h3><p><strong>Description</strong>: Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.</p>
-<p> Do not allocate extra space for another array, you must do this in place with constant memory.</p>
-<p> For example, Given input array nums = [1,1,2], Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively. It doesn’t matter what you leave beyond the new length.</p>
-<p>思路：注意题目要求不分配新的数组空间，而在原数组内in place置换。可以用index存不同数字的个数，遍历数组判断当前值是否和前一个值不一样。如果不一样，就是一个新的值，更新数组并对index加1。</p>
-<p>这个算法虽然很简单，但是我在拿到题目的时候却采用了一种很笨、很容易出错且耗时很多的方法（运行测试用例的时候超时了，那么挫的代码就不好意思贴上来了）。</p>
-<p>对于这类数组in place操作的问题，可以用一个指针指向要操作的位，用另一个指针来遍历数组，然后进行相关操作。</p>
-<p>java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RemoveDuplicatesFromSortedArray</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;-<span class="number">2</span>, -<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>&#125;;</span><br><span class="line"><span class="comment">//        int[] nums = &#123;1&#125;;</span></span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"************************"</span>);</span><br><span class="line">        <span class="keyword">int</span> count = <span class="keyword">new</span> RemoveDuplicatesFromSortedArray().removeDuplicates(nums);</span><br><span class="line">        System.out.println(count);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : nums) System.out.print(i + <span class="string">" "</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 用index存不同数字的个数，遍历数组判断当前值是否和前一个值不一样。</span><br><span class="line">     如果不一样，就是一个新的值，更新数组并对index加1。</span><br><span class="line">     * <span class="doctag">@param</span> nums</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] != nums[i - <span class="number">1</span>]) nums[index++] = nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <span itemprop="articleBody"><h3 id="Divide_Two_Integers_-_不用乘除模运算进行两整数除法">Divide Two Integers - 不用乘除模运算进行两整数除法</h3><p><strong>Description</strong>: Divide two integers without using multiplication, division and mod operator. If it is overflow, return MAX_INT.</p>
+<p>方法1：笔算法，即按照笔算思路按字符进行运算，易错；<br>方法2：转换为减法，但是普通减法会超时。可以利用批量减法来提速。<br>方法3：将数拆分为一组基的线性组合，结合位运算进行减法。<br>参考<a href="http://www.programcreek.com/2014/05/leetcode-divide-two-integers-java/" target="_blank" rel="external">http://www.programcreek.com/2014/05/leetcode-divide-two-integers-java/</a><br>方法4：<br>参考<a href="http://www.lifeincode.net/programming/leetcode-divide-two-integers-java/" target="_blank" rel="external">http://www.lifeincode.net/programming/leetcode-divide-two-integers-java/</a></p>
+<p>对于后三种方法，有一个公共部分（边界值处理）比较关键：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//handle special cases</span></span><br><span class="line">     <span class="keyword">if</span>(divisor == <span class="number">0</span>) <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">     <span class="comment">//TODO （入参不可能溢出）只有结果才可能溢出，且只有Integer.MIN_VALUE / -1这一种情况会溢出</span></span><br><span class="line">     <span class="keyword">if</span>(divisor == -<span class="number">1</span> &amp;&amp; dividend == Integer.MIN_VALUE) <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">     <span class="comment">//get sign</span></span><br><span class="line">     <span class="keyword">boolean</span> isPositive = <span class="keyword">false</span>;</span><br><span class="line">     <span class="keyword">if</span> (dividend &lt; <span class="number">0</span> &amp;&amp; divisor &lt; <span class="number">0</span> || dividend &gt; <span class="number">0</span> &amp;&amp; divisor &gt; <span class="number">0</span>) isPositive = <span class="keyword">true</span>;</span><br><span class="line">     <span class="comment">//get positive values</span></span><br><span class="line">     <span class="keyword">long</span> l = Math.abs((<span class="keyword">long</span>)dividend);</span><br><span class="line">     <span class="keyword">long</span> r = Math.abs((<span class="keyword">long</span>)divisor);</span><br></pre></td></tr></table></figure></p>
+<p>注意入参不可能溢出，只有结果才可能溢出，且只有Integer.MIN_VALUE / -1这一种情况会溢出。</p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DivideTwoIntegers</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = Integer.MIN_VALUE;</span><br><span class="line">        <span class="keyword">int</span> r = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        <span class="keyword">int</span> x = <span class="keyword">new</span> DivideTwoIntegers().divide1(l, r);</span><br><span class="line">        System.out.println(x);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 另一种思路 TODO http://www.lifeincode.net/programming/leetcode-divide-two-integers-java/</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**TODO</span><br><span class="line">     * http://www.programcreek.com/2014/05/leetcode-divide-two-integers-java/</span><br><span class="line">     * 任何一个整数可以表示成以2的幂为底的一组基的线性组合，即num=a0*2^0+a1*2^1+a2*2^2+...+an*2^n。</span><br><span class="line">     * 基于以上这个公式以及左移一位相当于乘以2，我们先让除数左移直到大于被除数之前得到一个最大的基。</span><br><span class="line">     * 然后接下来我们每次尝试减去这个基，如果可以则结果增加2^k,然后基继续右移迭代，直到基为0为止。</span><br><span class="line">     *</span><br><span class="line">     * 因为这个方法的迭代次数是按2的幂直到超过结果，所以时间复杂度为O(logn)。</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> dividend</span><br><span class="line">     * <span class="doctag">@param</span> divisor</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> dividend, <span class="keyword">int</span> divisor)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//handle special cases</span></span><br><span class="line">        <span class="keyword">if</span>(divisor==<span class="number">0</span>) <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">if</span>(divisor==-<span class="number">1</span> &amp;&amp; dividend == Integer.MIN_VALUE) <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">        <span class="comment">//get positive values</span></span><br><span class="line">        <span class="keyword">long</span> pDividend = Math.abs((<span class="keyword">long</span>)dividend);</span><br><span class="line">        <span class="keyword">long</span> pDivisor = Math.abs((<span class="keyword">long</span>)divisor);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(pDividend&gt;=pDivisor)&#123;</span><br><span class="line">            <span class="comment">//calculate number of left shifts</span></span><br><span class="line">            <span class="keyword">int</span> numShift = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(pDividend&gt;=(pDivisor&lt;&lt;numShift))&#123;</span><br><span class="line">                numShift++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//dividend minus the largest shifted divisor</span></span><br><span class="line">            result += <span class="number">1</span>&lt;&lt;(numShift-<span class="number">1</span>);</span><br><span class="line">            pDividend -= (pDivisor&lt;&lt;(numShift-<span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>((dividend&gt;<span class="number">0</span> &amp;&amp; divisor&gt;<span class="number">0</span>) || (dividend&lt;<span class="number">0</span> &amp;&amp; divisor&lt;<span class="number">0</span>)) <span class="keyword">return</span> result;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> -result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 转化为减法，为防止超时采用批量减 TODO 注意采用普通减法会超时</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">divide1</span><span class="params">(<span class="keyword">int</span> dividend, <span class="keyword">int</span> divisor)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//handle special cases</span></span><br><span class="line">        <span class="keyword">if</span>(divisor == <span class="number">0</span>) <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">        <span class="comment">//TODO （入参不可能溢出）只有结果才可能溢出，且只有Integer.MIN_VALUE / -1这一种情况会溢出</span></span><br><span class="line">        <span class="keyword">if</span>(divisor == -<span class="number">1</span> &amp;&amp; dividend == Integer.MIN_VALUE) <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">        <span class="comment">//get sign</span></span><br><span class="line">        <span class="keyword">boolean</span> isPositive = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (dividend &lt; <span class="number">0</span> &amp;&amp; divisor &lt; <span class="number">0</span> || dividend &gt; <span class="number">0</span> &amp;&amp; divisor &gt; <span class="number">0</span>) isPositive = <span class="keyword">true</span>;</span><br><span class="line">        <span class="comment">//get positive values</span></span><br><span class="line">        <span class="keyword">long</span> l = Math.abs((<span class="keyword">long</span>)dividend);</span><br><span class="line">        <span class="keyword">long</span> r = Math.abs((<span class="keyword">long</span>)divisor);</span><br><span class="line">        <span class="keyword">int</span> tempResult = positiveDivide1(l, r);</span><br><span class="line">        <span class="keyword">return</span> isPositive == <span class="keyword">true</span> ? tempResult : -tempResult;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//入参有l &gt; r &gt; 0</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">positiveDivide1</span><span class="params">(<span class="keyword">long</span> l, <span class="keyword">long</span> r)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> times = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (l &gt;= times * r)&#123;</span><br><span class="line">            l -= times * r;</span><br><span class="line">            count += times;</span><br><span class="line">            times++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (l &gt;= r)&#123;</span><br><span class="line">            l -= r;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
@@ -303,13 +301,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/11/Implement strStr() - 查找重复字符串/" rel="prev">Implement strStr() - 查找重复字符串</a>
+              <a href="/2015/11/13/Substring with Concatenation of All Words - 在字符串中查找指定字符串组合/" rel="prev">Substring with Concatenation of All Words - 在字符串中查找指定字符串组合</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/05/Reverse Nodes in k-Group - 按k个一组逆转链表节点 - Copy/" rel="next">Reverse Nodes in k-Group - 按k个一组逆转链表节点</a>
+              <a href="/2015/11/11/Implement strStr() - 查找重复字符串/" rel="next">Implement strStr() - 查找重复字符串</a>
             
           </div>
         </div>
@@ -361,8 +359,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/11/06/Remove Duplicates from Sorted Array - 从有序数组中移除重复元素 - Copy/"
-                   data-title="Remove Duplicates from Sorted Array - 从有序数组中移除重复元素" data-url="http://ernestyj.github.io/2015/11/06/Remove Duplicates from Sorted Array - 从有序数组中移除重复元素 - Copy/">
+              <div class="ds-thread" data-thread-key="2015/11/12/Divide Two Integers - 不用乘除模运算进行两整数除法/"
+                   data-title="Divide Two Integers - 不用乘除模运算进行两整数除法" data-url="http://ernestyj.github.io/2015/11/12/Divide Two Integers - 不用乘除模运算进行两整数除法/">
               </div>
             
           </div>
@@ -402,7 +400,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">58</span>
+              <span class="site-state-item-count">59</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -464,7 +462,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove_Duplicates_from_Sorted_Array_-_从有序数组中移除重复元素"><span class="nav-number">1.</span> <span class="nav-text">Remove Duplicates from Sorted Array - 从有序数组中移除重复元素</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Divide_Two_Integers_-_不用乘除模运算进行两整数除法"><span class="nav-number">1.</span> <span class="nav-text">Divide Two Integers - 不用乘除模运算进行两整数除法</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -480,8 +478,8 @@
     <footer id="footer" class="footer">
       <div class="footer-inner"> <div class="copyright" >
   
-  &copy; &nbsp; 
-  <span itemprop="copyrightYear">2015</span>
+  &copy; &nbsp;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>

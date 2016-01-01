@@ -41,16 +41,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Three Sum Closest - 三数最接近和Description: Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may as">
+<meta name="description" content="Remove Duplicates from Sorted Array - 从有序数组中移除重复元素Description: Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.
+ Do not allocate">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Three Sum Closest - 三数最接近和">
-<meta property="og:url" content="http://ernestyj.github.io/2015/10/31/Three Sum Closest - 三数最接近和 - Copy/index.html">
+<meta property="og:title" content="Remove Duplicates from Sorted Array - 从有序数组中移除重复元素">
+<meta property="og:url" content="http://ernestyj.github.io/2015/11/06/Remove Duplicates from Sorted Array - 从有序数组中移除重复元素/index.html">
 <meta property="og:site_name" content="Eugene's Blog">
-<meta property="og:description" content="Three Sum Closest - 三数最接近和Description: Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may as">
-<meta property="og:updated_time" content="2015-11-09T03:53:00.678Z">
+<meta property="og:description" content="Remove Duplicates from Sorted Array - 从有序数组中移除重复元素Description: Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.
+ Do not allocate">
+<meta property="og:updated_time" content="2015-11-09T04:30:53.353Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Three Sum Closest - 三数最接近和">
-<meta name="twitter:description" content="Three Sum Closest - 三数最接近和Description: Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may as">
+<meta name="twitter:title" content="Remove Duplicates from Sorted Array - 从有序数组中移除重复元素">
+<meta name="twitter:description" content="Remove Duplicates from Sorted Array - 从有序数组中移除重复元素Description: Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.
+ Do not allocate">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -62,7 +65,7 @@
 
 
 
-  <title> Three Sum Closest - 三数最接近和 | Eugene's Blog </title>
+  <title> Remove Duplicates from Sorted Array - 从有序数组中移除重复元素 | Eugene's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -220,7 +223,7 @@
           
           
             
-              Three Sum Closest - 三数最接近和
+              Remove Duplicates from Sorted Array - 从有序数组中移除重复元素
             
           
         </h1>
@@ -229,8 +232,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-31T20:44:47+08:00" content="2015-10-31">
-            2015-10-31
+          <time itemprop="dateCreated" datetime="2015-11-06T20:44:47+08:00" content="2015-11-06">
+            2015-11-06
           </time>
         </span>
 
@@ -255,8 +258,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/10/31/Three Sum Closest - 三数最接近和 - Copy/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/31/Three Sum Closest - 三数最接近和 - Copy/" itemprop="commentsCount"></span>
+              <a href="/2015/11/06/Remove Duplicates from Sorted Array - 从有序数组中移除重复元素/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/06/Remove Duplicates from Sorted Array - 从有序数组中移除重复元素/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -271,11 +274,14 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="Three_Sum_Closest_-_三数最接近和">Three Sum Closest - 三数最接近和</h3><p><strong>Description</strong>: Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may assume that each input would have exactly one solution.</p>
-<p> For example, given array S = {-1 2 1 -4}, and target = 1.<br> The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).</p>
-<p>思路：与Three Sum的思路一致。</p>
+        <span itemprop="articleBody"><h3 id="Remove_Duplicates_from_Sorted_Array_-_从有序数组中移除重复元素">Remove Duplicates from Sorted Array - 从有序数组中移除重复元素</h3><p><strong>Description</strong>: Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.</p>
+<p> Do not allocate extra space for another array, you must do this in place with constant memory.</p>
+<p> For example, Given input array nums = [1,1,2], Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively. It doesn’t matter what you leave beyond the new length.</p>
+<p>思路：注意题目要求不分配新的数组空间，而在原数组内in place置换。可以用index存不同数字的个数，遍历数组判断当前值是否和前一个值不一样。如果不一样，就是一个新的值，更新数组并对index加1。</p>
+<p>这个算法虽然很简单，但是我在拿到题目的时候却采用了一种很笨、很容易出错且耗时很多的方法（运行测试用例的时候超时了，那么挫的代码就不好意思贴上来了）。</p>
+<p>对于这类数组in place操作的问题，可以用一个指针指向要操作的位，用另一个指针来遍历数组，然后进行相关操作。</p>
 <p>java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreeSumClosest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;  <span class="comment">//&#123;-1, 2, 1, -4&#125;排序后是 -4 -1 1 2</span></span><br><span class="line">        <span class="keyword">int</span> target = -<span class="number">1000</span>;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="keyword">new</span> ThreeSumClosest().threeSumClosest(nums, target);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"************************"</span>);</span><br><span class="line">        System.out.print(result);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">threeSumClosest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">int</span> closestDiff = Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">int</span> threeSum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">2</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i - <span class="number">1</span>]) <span class="keyword">continue</span>;  <span class="comment">//去重</span></span><br><span class="line">            <span class="keyword">int</span> m = i + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> n = nums.length - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (m &lt; n)&#123;</span><br><span class="line">                <span class="keyword">int</span> tempThreeSum = nums[m] + nums[n] + nums[i];</span><br><span class="line">                <span class="keyword">int</span> tempDiff = Math.abs(tempThreeSum - target);</span><br><span class="line">                <span class="keyword">if</span> (tempThreeSum == target) <span class="keyword">return</span> tempThreeSum;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (tempThreeSum &gt; target)&#123;</span><br><span class="line">                    n--;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    m++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (tempDiff &lt; closestDiff)&#123;</span><br><span class="line">                    threeSum = tempThreeSum;</span><br><span class="line">                    closestDiff = tempDiff;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> threeSum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RemoveDuplicatesFromSortedArray</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;-<span class="number">2</span>, -<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>&#125;;</span><br><span class="line"><span class="comment">//        int[] nums = &#123;1&#125;;</span></span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"************************"</span>);</span><br><span class="line">        <span class="keyword">int</span> count = <span class="keyword">new</span> RemoveDuplicatesFromSortedArray().removeDuplicates(nums);</span><br><span class="line">        System.out.println(count);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : nums) System.out.print(i + <span class="string">" "</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 用index存不同数字的个数，遍历数组判断当前值是否和前一个值不一样。</span><br><span class="line">     如果不一样，就是一个新的值，更新数组并对index加1。</span><br><span class="line">     * <span class="doctag">@param</span> nums</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] != nums[i - <span class="number">1</span>]) nums[index++] = nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
@@ -297,13 +303,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/01/Four Sum - 四数和/" rel="prev">Four Sum - 四数和</a>
+              <a href="/2015/11/11/Implement strStr() - 查找重复字符串/" rel="prev">Implement strStr() - 查找重复字符串</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/30/Three Sum - 三数和 - Copy/" rel="next">Three Sum - 三数和</a>
+              <a href="/2015/11/05/Reverse Nodes in k-Group - 按k个一组逆转链表节点/" rel="next">Reverse Nodes in k-Group - 按k个一组逆转链表节点</a>
             
           </div>
         </div>
@@ -355,8 +361,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/10/31/Three Sum Closest - 三数最接近和 - Copy/"
-                   data-title="Three Sum Closest - 三数最接近和" data-url="http://ernestyj.github.io/2015/10/31/Three Sum Closest - 三数最接近和 - Copy/">
+              <div class="ds-thread" data-thread-key="2015/11/06/Remove Duplicates from Sorted Array - 从有序数组中移除重复元素/"
+                   data-title="Remove Duplicates from Sorted Array - 从有序数组中移除重复元素" data-url="http://ernestyj.github.io/2015/11/06/Remove Duplicates from Sorted Array - 从有序数组中移除重复元素/">
               </div>
             
           </div>
@@ -396,7 +402,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">58</span>
+              <span class="site-state-item-count">59</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -458,7 +464,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Three_Sum_Closest_-_三数最接近和"><span class="nav-number">1.</span> <span class="nav-text">Three Sum Closest - 三数最接近和</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove_Duplicates_from_Sorted_Array_-_从有序数组中移除重复元素"><span class="nav-number">1.</span> <span class="nav-text">Remove Duplicates from Sorted Array - 从有序数组中移除重复元素</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -474,8 +480,8 @@
     <footer id="footer" class="footer">
       <div class="footer-inner"> <div class="copyright" >
   
-  &copy; &nbsp; 
-  <span itemprop="copyrightYear">2015</span>
+  &copy; &nbsp;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>

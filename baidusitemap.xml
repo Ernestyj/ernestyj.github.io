@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://ernestyj.github.io/2016/01/01/Remove%20Duplicates%20from%20Sorted%20Array%20II%20-%20%E4%BB%8E%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%A7%BB%E9%99%A4%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0II/</loc>
+    <lastmod>2016-01-01T11:18:04.047Z</lastmod>
+    <data>
+        <display>
+        <title>Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素II</title>
+        <pubTime>2016-01-01T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ernestyj.github.io/2015/12/31/Word%20Search%20-%20%E5%8D%95%E8%AF%8D%E4%BA%8C%E7%BB%B4%E6%90%9C%E7%B4%A2/</loc>
     <lastmod>2015-12-31T05:26:42.652Z</lastmod>
     <data>
@@ -966,7 +990,7 @@
 
     
   <url>
-    <loc>http://ernestyj.github.io/2015/11/15/Search%20In%20Rotated%20Sorted%20Array%20-%20Copy/</loc>
+    <loc>http://ernestyj.github.io/2015/11/15/Search%20In%20Rotated%20Sorted%20Array/</loc>
     <lastmod>2015-11-18T14:02:45.411Z</lastmod>
     <data>
         <display>
@@ -1062,7 +1086,7 @@
 
     
   <url>
-    <loc>http://ernestyj.github.io/2015/11/13/Substring%20with%20Concatenation%20of%20All%20Words%20-%20%E5%9C%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%9F%A5%E6%89%BE%E6%8C%87%E5%AE%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%E5%90%88%20-%20Copy/</loc>
+    <loc>http://ernestyj.github.io/2015/11/13/Substring%20with%20Concatenation%20of%20All%20Words%20-%20%E5%9C%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%9F%A5%E6%89%BE%E6%8C%87%E5%AE%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%E5%90%88/</loc>
     <lastmod>2015-11-13T13:01:05.238Z</lastmod>
     <data>
         <display>
@@ -1086,7 +1110,7 @@
 
     
   <url>
-    <loc>http://ernestyj.github.io/2015/11/12/Divide%20Two%20Integers%20-%20%E4%B8%8D%E7%94%A8%E4%B9%98%E9%99%A4%E6%A8%A1%E8%BF%90%E7%AE%97%E8%BF%9B%E8%A1%8C%E4%B8%A4%E6%95%B4%E6%95%B0%E9%99%A4%E6%B3%95%20-%20Copy/</loc>
+    <loc>http://ernestyj.github.io/2015/11/12/Divide%20Two%20Integers%20-%20%E4%B8%8D%E7%94%A8%E4%B9%98%E9%99%A4%E6%A8%A1%E8%BF%90%E7%AE%97%E8%BF%9B%E8%A1%8C%E4%B8%A4%E6%95%B4%E6%95%B0%E9%99%A4%E6%B3%95/</loc>
     <lastmod>2015-11-13T12:25:22.617Z</lastmod>
     <data>
         <display>
@@ -1134,7 +1158,7 @@
 
     
   <url>
-    <loc>http://ernestyj.github.io/2015/11/06/Remove%20Duplicates%20from%20Sorted%20Array%20-%20%E4%BB%8E%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%A7%BB%E9%99%A4%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%20-%20Copy/</loc>
+    <loc>http://ernestyj.github.io/2015/11/06/Remove%20Duplicates%20from%20Sorted%20Array%20-%20%E4%BB%8E%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%A7%BB%E9%99%A4%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/</loc>
     <lastmod>2015-11-09T04:30:53.353Z</lastmod>
     <data>
         <display>
@@ -1158,7 +1182,7 @@
 
     
   <url>
-    <loc>http://ernestyj.github.io/2015/11/05/Reverse%20Nodes%20in%20k-Group%20-%20%E6%8C%89k%E4%B8%AA%E4%B8%80%E7%BB%84%E9%80%86%E8%BD%AC%E9%93%BE%E8%A1%A8%E8%8A%82%E7%82%B9%20-%20Copy/</loc>
+    <loc>http://ernestyj.github.io/2015/11/05/Reverse%20Nodes%20in%20k-Group%20-%20%E6%8C%89k%E4%B8%AA%E4%B8%80%E7%BB%84%E9%80%86%E8%BD%AC%E9%93%BE%E8%A1%A8%E8%8A%82%E7%82%B9/</loc>
     <lastmod>2015-11-09T04:21:46.860Z</lastmod>
     <data>
         <display>
@@ -1182,7 +1206,7 @@
 
     
   <url>
-    <loc>http://ernestyj.github.io/2015/11/04/Swap%20Nodes%20In%20Pairs%20-%20%E6%8C%89%E5%AF%B9%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E8%8A%82%E7%82%B9%20-%20Copy/</loc>
+    <loc>http://ernestyj.github.io/2015/11/04/Swap%20Nodes%20In%20Pairs%20-%20%E6%8C%89%E5%AF%B9%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E8%8A%82%E7%82%B9/</loc>
     <lastmod>2015-11-09T04:06:54.050Z</lastmod>
     <data>
         <display>
@@ -1206,7 +1230,7 @@
 
     
   <url>
-    <loc>http://ernestyj.github.io/2015/11/03/Merge%20K%20Sorted%20Lists%20-%20%E5%90%88%E5%B9%B6K%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%20-%20Copy/</loc>
+    <loc>http://ernestyj.github.io/2015/11/03/Merge%20K%20Sorted%20Lists%20-%20%E5%90%88%E5%B9%B6K%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/</loc>
     <lastmod>2015-11-09T04:03:45.052Z</lastmod>
     <data>
         <display>
@@ -1230,7 +1254,7 @@
 
     
   <url>
-    <loc>http://ernestyj.github.io/2015/11/02/Generate%20Parentheses%20-%20%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90%20-%20Copy/</loc>
+    <loc>http://ernestyj.github.io/2015/11/02/Generate%20Parentheses%20-%20%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/</loc>
     <lastmod>2015-11-09T03:59:46.918Z</lastmod>
     <data>
         <display>
@@ -1278,7 +1302,7 @@
 
     
   <url>
-    <loc>http://ernestyj.github.io/2015/10/31/Three%20Sum%20Closest%20-%20%E4%B8%89%E6%95%B0%E6%9C%80%E6%8E%A5%E8%BF%91%E5%92%8C%20-%20Copy/</loc>
+    <loc>http://ernestyj.github.io/2015/10/31/Three%20Sum%20Closest%20-%20%E4%B8%89%E6%95%B0%E6%9C%80%E6%8E%A5%E8%BF%91%E5%92%8C/</loc>
     <lastmod>2015-11-09T03:53:00.678Z</lastmod>
     <data>
         <display>
@@ -1302,7 +1326,7 @@
 
     
   <url>
-    <loc>http://ernestyj.github.io/2015/10/30/Three%20Sum%20-%20%E4%B8%89%E6%95%B0%E5%92%8C%20-%20Copy/</loc>
+    <loc>http://ernestyj.github.io/2015/10/30/Three%20Sum%20-%20%E4%B8%89%E6%95%B0%E5%92%8C/</loc>
     <lastmod>2015-11-09T03:51:06.938Z</lastmod>
     <data>
         <display>
@@ -1326,7 +1350,7 @@
 
     
   <url>
-    <loc>http://ernestyj.github.io/2015/10/29/Add%20Two%20Numbers%20-%20%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E6%95%B0%E7%9B%B8%E5%8A%A0%20-%20Copy/</loc>
+    <loc>http://ernestyj.github.io/2015/10/29/Add%20Two%20Numbers%20-%20%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E6%95%B0%E7%9B%B8%E5%8A%A0/</loc>
     <lastmod>2015-11-09T03:46:56.741Z</lastmod>
     <data>
         <display>
@@ -1350,7 +1374,7 @@
 
     
   <url>
-    <loc>http://ernestyj.github.io/2015/10/28/%E6%96%87%E4%BB%B6%E5%AD%97%E7%AC%A6%E6%93%8D%E4%BD%9C%E5%B0%8F%E7%A8%8B%E5%BA%8F%20-%20Copy/</loc>
+    <loc>http://ernestyj.github.io/2015/10/28/%E6%96%87%E4%BB%B6%E5%AD%97%E7%AC%A6%E6%93%8D%E4%BD%9C%E5%B0%8F%E7%A8%8B%E5%BA%8F/</loc>
     <lastmod>2015-10-31T06:08:45.484Z</lastmod>
     <data>
         <display>

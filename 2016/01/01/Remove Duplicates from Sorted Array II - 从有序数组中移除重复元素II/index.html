@@ -41,19 +41,20 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Reverse Nodes in k-Group - 按k个一组逆转链表节点Description: Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.
- If the number of nodes is not a multiple of k then">
+<meta name="description" content="Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素IIDescription: Follow up for “Remove Duplicates”: What if duplicates are allowed at most twice?
+ Note: Do not allocate extra space for another arra">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reverse Nodes in k-Group - 按k个一组逆转链表节点">
-<meta property="og:url" content="http://ernestyj.github.io/2015/11/05/Reverse Nodes in k-Group - 按k个一组逆转链表节点 - Copy/index.html">
+<meta property="og:title" content="Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素II">
+<meta property="og:url" content="http://ernestyj.github.io/2016/01/01/Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素II/index.html">
 <meta property="og:site_name" content="Eugene's Blog">
-<meta property="og:description" content="Reverse Nodes in k-Group - 按k个一组逆转链表节点Description: Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.
- If the number of nodes is not a multiple of k then">
-<meta property="og:updated_time" content="2015-11-09T04:21:46.860Z">
+<meta property="og:description" content="Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素IIDescription: Follow up for “Remove Duplicates”: What if duplicates are allowed at most twice?
+ Note: Do not allocate extra space for another arra">
+<meta property="og:image" content="http://ernestyj.github.io/images/2016.png">
+<meta property="og:updated_time" content="2016-01-01T11:18:04.047Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reverse Nodes in k-Group - 按k个一组逆转链表节点">
-<meta name="twitter:description" content="Reverse Nodes in k-Group - 按k个一组逆转链表节点Description: Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.
- If the number of nodes is not a multiple of k then">
+<meta name="twitter:title" content="Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素II">
+<meta name="twitter:description" content="Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素IIDescription: Follow up for “Remove Duplicates”: What if duplicates are allowed at most twice?
+ Note: Do not allocate extra space for another arra">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -65,7 +66,7 @@
 
 
 
-  <title> Reverse Nodes in k-Group - 按k个一组逆转链表节点 | Eugene's Blog </title>
+  <title> Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素II | Eugene's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -223,7 +224,7 @@
           
           
             
-              Reverse Nodes in k-Group - 按k个一组逆转链表节点
+              Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素II
             
           
         </h1>
@@ -232,8 +233,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-11-05T20:44:47+08:00" content="2015-11-05">
-            2015-11-05
+          <time itemprop="dateCreated" datetime="2016-01-01T20:44:47+08:00" content="2016-01-01">
+            2016-01-01
           </time>
         </span>
 
@@ -258,8 +259,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/11/05/Reverse Nodes in k-Group - 按k个一组逆转链表节点 - Copy/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/05/Reverse Nodes in k-Group - 按k个一组逆转链表节点 - Copy/" itemprop="commentsCount"></span>
+              <a href="/2016/01/01/Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素II/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/01/Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素II/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -274,15 +275,13 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="Reverse_Nodes_in_k-Group_-_按k个一组逆转链表节点">Reverse Nodes in k-Group - 按k个一组逆转链表节点</h3><p><strong>Description</strong>: Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.</p>
-<p> If the number of nodes is not a multiple of k then left-out nodes in the end should remain as it is.<br> You may not alter the values in the nodes, only nodes itself may be changed.</p>
-<p> Only constant memory is allowed.</p>
-<p> For example,<br> Given this linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5<br> For k = 2, you should return: 2-&gt;1-&gt;4-&gt;3-&gt;5<br> For k = 3, you should return: 3-&gt;2-&gt;1-&gt;4-&gt;5</p>
-<p>思路：首先搞清楚怎么逆转一个单链表。其实O(n)就可以了。第一个肯定是last one，然后我们每遍历到一个node，就把它放到最链表的首位，最后一个就成为第一个了。<br>参考：<a href="http://www.cnblogs.com/lichen782/p/leetcode_Reverse_Nodes_in_kGroup.html" target="_blank" rel="external">Reverse Nodes in k-Group [学习如何逆转一个单链表]</a></p>
-<p>这个算法按照普通的逻辑思维去做，极易出错。写算法前再花一点时间想想有没有更简洁的方法，别急于下手。好的算法一般都是简单明了，思路清晰。</p>
-<p>对于很多算法，我们可以抓住问题中的不变量，以此不变量为线索，开展下去（ex. 逆转链表中，第一个数肯定是last one，抓住这个last one，算法的思路就清晰了，写的过程中也不易出错）。</p>
-<p>java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReverseNodesInKGroup</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ListNode l11 = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</span><br><span class="line">        ListNode l12 = <span class="keyword">new</span> ListNode(<span class="number">2</span>);</span><br><span class="line">        ListNode l13 = <span class="keyword">new</span> ListNode(<span class="number">3</span>);</span><br><span class="line">        ListNode l14 = <span class="keyword">new</span> ListNode(<span class="number">4</span>);</span><br><span class="line">        ListNode l15 = <span class="keyword">new</span> ListNode(<span class="number">5</span>);</span><br><span class="line">        l11.next = l12; l12.next = l13; l13.next = l14; l14.next = l15; l15.next = <span class="keyword">null</span>;</span><br><span class="line">        ListNode l21 = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        ListNode node = <span class="keyword">new</span> ReverseNodesInKGroup().reverseKGroup(l11, <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">while</span> (node != <span class="keyword">null</span>)&#123;</span><br><span class="line">            System.out.print(node.val + <span class="string">" "</span>);</span><br><span class="line">            node = node.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        ListNode next;</span><br><span class="line">        ListNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * http://www.cnblogs.com/lichen782/p/leetcode_Reverse_Nodes_in_kGroup.html</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> head</span><br><span class="line">     * <span class="doctag">@param</span> k</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseKGroup</span><span class="params">(ListNode head, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span> || k == <span class="number">1</span>) <span class="keyword">return</span> head;</span><br><span class="line">        ListNode dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>);   <span class="comment">//因为有“放到链表首位”的操作，需要一个dummy的头节点</span></span><br><span class="line">        dummy.next = head;</span><br><span class="line">        ListNode pre = dummy;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(head != <span class="keyword">null</span>)&#123;</span><br><span class="line">            i++;</span><br><span class="line">            <span class="keyword">if</span>(i % k ==<span class="number">0</span>)&#123;</span><br><span class="line">                pre = reverse(pre, head.next);</span><br><span class="line">                head = pre.next;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                head = head.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**首先，搞清楚怎么逆转一个单链表。其实O(n)就可以了。</span><br><span class="line">     * 第一个肯定是last one，然后我们每遍历到一个node，就把它放到最链表的首位，最后一个就成为第一个了。</span><br><span class="line">     * Reverse a link list between pre and next exclusively</span><br><span class="line">     * an example:</span><br><span class="line">     * a linked list:</span><br><span class="line">     * 0-&gt;1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;6</span><br><span class="line">     * |           |</span><br><span class="line">     * pre        next</span><br><span class="line">     * after call pre = reverse(pre, next)</span><br><span class="line">     *</span><br><span class="line">     * 0-&gt;3-&gt;2-&gt;1-&gt;4-&gt;5-&gt;6</span><br><span class="line">     *          |  |</span><br><span class="line">     *          pre next</span><br><span class="line">     * <span class="doctag">@param</span> pre</span><br><span class="line">     * <span class="doctag">@param</span> next</span><br><span class="line">     * <span class="doctag">@return</span> the reversed list's last node, which is the precedence of parameter next</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ListNode <span class="title">reverse</span><span class="params">(ListNode pre, ListNode next)</span></span>&#123;</span><br><span class="line">        ListNode last = pre.next;   <span class="comment">//where first will be doomed "last"</span></span><br><span class="line">        ListNode cur = last.next;</span><br><span class="line">        <span class="keyword">while</span>(cur != next)&#123;</span><br><span class="line">            last.next = cur.next;</span><br><span class="line">            cur.next = pre.next;</span><br><span class="line">            pre.next = cur;</span><br><span class="line">            cur = last.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> last;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+        <span itemprop="articleBody"><h3 id="Remove_Duplicates_from_Sorted_Array_II_-_从有序数组中移除重复元素II">Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素II</h3><p><strong>Description</strong>: Follow up for “Remove Duplicates”: What if duplicates are allowed at most twice?</p>
+<p> Note: Do not allocate extra space for another array, you must do this in place with constant memory.</p>
+<p> For example,<br> Given sorted array nums = [1,1,1,2,2,3],<br> Your function should return length = 5, with the first five elements of nums being 1, 1, 2, 2 and 3. It doesn’t matter what you leave beyond the new length.</p>
+<p>今天是2016.1.1元旦节，新年快乐！<br><img src="/images/2016.png" alt="2016"></p>
+<p>思路：与Remove Duplicates from Sorted Array一致，用index存不同数字的个数(可以含两次重复的数字)，遍历数组判断当前值是否和前一个值不一样。如果不一样，就是一个新的值，更新数组并对index加1。</p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RemoveDuplicatesFromSortedArrayII</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;-<span class="number">2</span>, -<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>&#125;;</span><br><span class="line"><span class="comment">//        int[] nums = &#123;1&#125;;</span></span><br><span class="line">        System.out.println(<span class="string">"************************"</span>);</span><br><span class="line">        <span class="keyword">int</span> count = <span class="keyword">new</span> RemoveDuplicatesFromSortedArrayII().removeDuplicates(nums);</span><br><span class="line">        System.out.println(count);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : nums) System.out.print(i + <span class="string">" "</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 用index存不同数字的个数(可以含两次重复的数字)，遍历数组判断当前值是否和前一个值不一样。</span><br><span class="line">     如果不一样，就是一个新的值，更新数组并对index加1。</span><br><span class="line">     * <span class="doctag">@param</span> nums</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] != nums[i-<span class="number">1</span>])&#123;</span><br><span class="line">                nums[index++] = nums[i];    <span class="comment">//其实 index++; 即可</span></span><br><span class="line">                count = <span class="number">0</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                count++;</span><br><span class="line">                <span class="keyword">if</span> (count &lt; <span class="number">2</span>)&#123;</span><br><span class="line">                    nums[index++] = nums[i];    <span class="comment">//其实 index++; 即可</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> index;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
@@ -304,13 +303,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/06/Remove Duplicates from Sorted Array - 从有序数组中移除重复元素 - Copy/" rel="prev">Remove Duplicates from Sorted Array - 从有序数组中移除重复元素</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/04/Swap Nodes In Pairs - 按对交换链表节点 - Copy/" rel="next">Swap Nodes In Pairs - 按对交换链表节点</a>
+              <a href="/2015/12/31/Word Search - 单词二维搜索/" rel="next">Word Search - 单词二维搜索</a>
             
           </div>
         </div>
@@ -362,8 +359,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/11/05/Reverse Nodes in k-Group - 按k个一组逆转链表节点 - Copy/"
-                   data-title="Reverse Nodes in k-Group - 按k个一组逆转链表节点" data-url="http://ernestyj.github.io/2015/11/05/Reverse Nodes in k-Group - 按k个一组逆转链表节点 - Copy/">
+              <div class="ds-thread" data-thread-key="2016/01/01/Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素II/"
+                   data-title="Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素II" data-url="http://ernestyj.github.io/2016/01/01/Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素II/">
               </div>
             
           </div>
@@ -403,7 +400,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">58</span>
+              <span class="site-state-item-count">59</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -465,7 +462,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reverse_Nodes_in_k-Group_-_按k个一组逆转链表节点"><span class="nav-number">1.</span> <span class="nav-text">Reverse Nodes in k-Group - 按k个一组逆转链表节点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove_Duplicates_from_Sorted_Array_II_-_从有序数组中移除重复元素II"><span class="nav-number">1.</span> <span class="nav-text">Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素II</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -481,8 +478,8 @@
     <footer id="footer" class="footer">
       <div class="footer-inner"> <div class="copyright" >
   
-  &copy; &nbsp; 
-  <span itemprop="copyrightYear">2015</span>
+  &copy; &nbsp;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>

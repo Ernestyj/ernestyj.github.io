@@ -41,16 +41,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Add Two Numbers - 两个链表数相加Description: You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add t">
+<meta name="description" content="Merge K Sorted Lists - 合并K个有序链表Description: Merge k sorted linked lists and return it as one sorted list.Analyze and describe its complexity.
+思路：二分法（分治法）时间复杂度：nklogk分析：假设总共有k个list，每个list的最大长度是n，那么运行时间">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Add Two Numbers - 两个链表数相加">
-<meta property="og:url" content="http://ernestyj.github.io/2015/10/29/Add Two Numbers - 两个链表数相加 - Copy/index.html">
+<meta property="og:title" content="Merge K Sorted Lists - 合并K个有序链表">
+<meta property="og:url" content="http://ernestyj.github.io/2015/11/03/Merge K Sorted Lists - 合并K个有序链表/index.html">
 <meta property="og:site_name" content="Eugene's Blog">
-<meta property="og:description" content="Add Two Numbers - 两个链表数相加Description: You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add t">
-<meta property="og:updated_time" content="2015-11-09T03:46:56.741Z">
+<meta property="og:description" content="Merge K Sorted Lists - 合并K个有序链表Description: Merge k sorted linked lists and return it as one sorted list.Analyze and describe its complexity.
+思路：二分法（分治法）时间复杂度：nklogk分析：假设总共有k个list，每个list的最大长度是n，那么运行时间">
+<meta property="og:updated_time" content="2015-11-09T04:03:45.052Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Add Two Numbers - 两个链表数相加">
-<meta name="twitter:description" content="Add Two Numbers - 两个链表数相加Description: You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add t">
+<meta name="twitter:title" content="Merge K Sorted Lists - 合并K个有序链表">
+<meta name="twitter:description" content="Merge K Sorted Lists - 合并K个有序链表Description: Merge k sorted linked lists and return it as one sorted list.Analyze and describe its complexity.
+思路：二分法（分治法）时间复杂度：nklogk分析：假设总共有k个list，每个list的最大长度是n，那么运行时间">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -62,7 +65,7 @@
 
 
 
-  <title> Add Two Numbers - 两个链表数相加 | Eugene's Blog </title>
+  <title> Merge K Sorted Lists - 合并K个有序链表 | Eugene's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -220,7 +223,7 @@
           
           
             
-              Add Two Numbers - 两个链表数相加
+              Merge K Sorted Lists - 合并K个有序链表
             
           
         </h1>
@@ -229,8 +232,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-29T20:44:47+08:00" content="2015-10-29">
-            2015-10-29
+          <time itemprop="dateCreated" datetime="2015-11-03T20:44:47+08:00" content="2015-11-03">
+            2015-11-03
           </time>
         </span>
 
@@ -255,8 +258,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/10/29/Add Two Numbers - 两个链表数相加 - Copy/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/29/Add Two Numbers - 两个链表数相加 - Copy/" itemprop="commentsCount"></span>
+              <a href="/2015/11/03/Merge K Sorted Lists - 合并K个有序链表/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/03/Merge K Sorted Lists - 合并K个有序链表/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -271,11 +274,10 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="Add_Two_Numbers_-_两个链表数相加">Add Two Numbers - 两个链表数相加</h3><p><strong>Description</strong>: You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
-<p> <strong>Input</strong>: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br> <strong>Output</strong>: 7 -&gt; 0 -&gt; 8</p>
-<p>思路：采用竖式法对链表数进行相加，注意进位。</p>
+        <span itemprop="articleBody"><h3 id="Merge_K_Sorted_Lists_-_合并K个有序链表">Merge K Sorted Lists - 合并K个有序链表</h3><p><strong>Description</strong>: Merge k sorted linked lists and return it as one sorted list.<br>Analyze and describe its complexity.</p>
+<p>思路：二分法（分治法）<br>时间复杂度：nklogk<br>分析：假设总共有k个list，每个list的最大长度是n，那么运行时间满足递推式T(k) = 2T(k/2)+O(n*k)。根据主定理，可以算出算法的总复杂度是O(nklogk)</p>
 <p>java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AddTwoNumbers</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ListNode l11 = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        l11.next = <span class="keyword">null</span>;</span><br><span class="line">        ListNode l21 = <span class="keyword">new</span> ListNode(<span class="number">7</span>);</span><br><span class="line">        ListNode l22 = <span class="keyword">new</span> ListNode(<span class="number">3</span>);</span><br><span class="line">        l21.next = l22; l22.next = <span class="keyword">null</span>;</span><br><span class="line">        ListNode node = <span class="keyword">new</span> AddTwoNumbers().addTwoNumbers(l11, l21);</span><br><span class="line">        <span class="keyword">while</span> (node != <span class="keyword">null</span>)&#123;</span><br><span class="line">            System.out.print(node.val + <span class="string">" "</span>);</span><br><span class="line">            node = node.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Definition for singly-linked list.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        ListNode next;</span><br><span class="line">        ListNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        StringBuilder builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="keyword">null</span>)&#123;</span><br><span class="line">            builder.append(l1.val);</span><br><span class="line">            l1 = l1.next;</span><br><span class="line">        &#125;</span><br><span class="line">        String first = builder.toString();</span><br><span class="line">        builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">while</span> (l2 != <span class="keyword">null</span>)&#123;</span><br><span class="line">            builder.append(l2.val);</span><br><span class="line">            l2 = l2.next;</span><br><span class="line">        &#125;</span><br><span class="line">        String second = builder.toString();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> diffLength = first.length() - second.length();</span><br><span class="line">        <span class="keyword">if</span> (diffLength &gt;= <span class="number">0</span>) second = populateZero(second, diffLength);</span><br><span class="line">        <span class="keyword">else</span> first = populateZero(first, Math.abs(diffLength)); <span class="comment">//TODO 注意取绝对值</span></span><br><span class="line"></span><br><span class="line">        builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">int</span> carryVal = <span class="number">0</span>;   <span class="comment">//进位值</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; first.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> temp = first.charAt(i) - <span class="string">'0'</span> + second.charAt(i) - <span class="string">'0'</span> + carryVal;</span><br><span class="line">            <span class="keyword">int</span> remainder = temp % <span class="number">10</span>;</span><br><span class="line">            carryVal = temp / <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span> (i == first.length() - <span class="number">1</span>)&#123;   <span class="comment">//最高位</span></span><br><span class="line">                builder.append(remainder).append(carryVal == <span class="number">0</span> ? <span class="string">""</span> : <span class="string">"1"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                builder.append(remainder);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        String ans = builder.toString();</span><br><span class="line">        ListNode[] nodes = <span class="keyword">new</span> ListNode[ans.length()];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ans.length(); i++)&#123;</span><br><span class="line">            nodes[i] = <span class="keyword">new</span> ListNode(Integer.parseInt(String.valueOf(ans.charAt(i))));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ans.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (i == ans.length() - <span class="number">1</span>) nodes[i].next = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">else</span> nodes[i].next = nodes[i + <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> nodes[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">populateZero</span><span class="params">(String s, <span class="keyword">int</span> populateLength)</span></span>&#123;</span><br><span class="line">        StringBuilder builder = <span class="keyword">new</span> StringBuilder(s);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; populateLength; i++)&#123;</span><br><span class="line">            builder.append(<span class="string">'0'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> builder.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeKSortedLists</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ListNode l11 = <span class="keyword">new</span> ListNode(<span class="number">2</span>);</span><br><span class="line">        ListNode l12 = <span class="keyword">new</span> ListNode(<span class="number">3</span>);</span><br><span class="line">        ListNode l13 = <span class="keyword">new</span> ListNode(<span class="number">5</span>);</span><br><span class="line">        l11.next = l12; l12.next = l13; l13.next = <span class="keyword">null</span>;</span><br><span class="line">        ListNode l21 = <span class="keyword">null</span>;</span><br><span class="line">        ListNode[] lists = <span class="keyword">new</span> ListNode[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        ListNode node = <span class="keyword">new</span> MergeKSortedLists().mergeKLists1(lists);</span><br><span class="line">        <span class="keyword">while</span> (node != <span class="keyword">null</span>)&#123;</span><br><span class="line">            System.out.print(node.val + <span class="string">" "</span>);</span><br><span class="line">            node = node.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Definition for singly-linked list.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        ListNode next;</span><br><span class="line">        ListNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 二分法（分治法）</span><br><span class="line">     * http://blog.csdn.net/linhuanmars/article/details/19899259</span><br><span class="line">     *</span><br><span class="line">     * 时间复杂度：nklogk</span><br><span class="line">     * 分析：假设总共有k个list，每个list的最大长度是n，那么运行时间满足递推式T(k) = 2T(k/2)+O(n*k)。</span><br><span class="line">     * 根据主定理，可以算出算法的总复杂度是O(nklogk)</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> lists</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeKLists1</span><span class="params">(ListNode[] lists)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (lists == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">return</span> mergeSort(lists, <span class="number">0</span>, lists.length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> ListNode <span class="title">mergeSort</span><span class="params">(ListNode[] lists, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (left &lt; right)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">return</span> mergeTwoLists(mergeSort(lists, left, mid),</span><br><span class="line">                    mergeSort(lists, mid + <span class="number">1</span>, right));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lists.length == <span class="number">0</span> ? <span class="keyword">null</span> : lists[left];  <span class="comment">//TODO 注意new ListNode[0];时的边界条件</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
@@ -297,13 +299,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/30/Three Sum - 三数和 - Copy/" rel="prev">Three Sum - 三数和</a>
+              <a href="/2015/11/04/Swap Nodes In Pairs - 按对交换链表节点/" rel="prev">Swap Nodes In Pairs - 按对交换链表节点</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/28/文件字符操作小程序 - Copy/" rel="next">文件字符操作小程序</a>
+              <a href="/2015/11/02/Generate Parentheses - 括号生成/" rel="next">Generate Parentheses - 括号生成</a>
             
           </div>
         </div>
@@ -355,8 +357,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/10/29/Add Two Numbers - 两个链表数相加 - Copy/"
-                   data-title="Add Two Numbers - 两个链表数相加" data-url="http://ernestyj.github.io/2015/10/29/Add Two Numbers - 两个链表数相加 - Copy/">
+              <div class="ds-thread" data-thread-key="2015/11/03/Merge K Sorted Lists - 合并K个有序链表/"
+                   data-title="Merge K Sorted Lists - 合并K个有序链表" data-url="http://ernestyj.github.io/2015/11/03/Merge K Sorted Lists - 合并K个有序链表/">
               </div>
             
           </div>
@@ -396,7 +398,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">58</span>
+              <span class="site-state-item-count">59</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -458,7 +460,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Add_Two_Numbers_-_两个链表数相加"><span class="nav-number">1.</span> <span class="nav-text">Add Two Numbers - 两个链表数相加</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Merge_K_Sorted_Lists_-_合并K个有序链表"><span class="nav-number">1.</span> <span class="nav-text">Merge K Sorted Lists - 合并K个有序链表</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -474,8 +476,8 @@
     <footer id="footer" class="footer">
       <div class="footer-inner"> <div class="copyright" >
   
-  &copy; &nbsp; 
-  <span itemprop="copyrightYear">2015</span>
+  &copy; &nbsp;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>

@@ -41,19 +41,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Merge K Sorted Lists - 合并K个有序链表Description: Merge k sorted linked lists and return it as one sorted list.Analyze and describe its complexity.
-思路：二分法（分治法）时间复杂度：nklogk分析：假设总共有k个list，每个list的最大长度是n，那么运行时间">
+<meta name="description" content="Generate Parentheses - 括号生成Description: Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+ For example, given n = 3, a solution set is: “((()))”,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Merge K Sorted Lists - 合并K个有序链表">
-<meta property="og:url" content="http://ernestyj.github.io/2015/11/03/Merge K Sorted Lists - 合并K个有序链表 - Copy/index.html">
+<meta property="og:title" content="Generate Parentheses - 括号生成">
+<meta property="og:url" content="http://ernestyj.github.io/2015/11/02/Generate Parentheses - 括号生成/index.html">
 <meta property="og:site_name" content="Eugene's Blog">
-<meta property="og:description" content="Merge K Sorted Lists - 合并K个有序链表Description: Merge k sorted linked lists and return it as one sorted list.Analyze and describe its complexity.
-思路：二分法（分治法）时间复杂度：nklogk分析：假设总共有k个list，每个list的最大长度是n，那么运行时间">
-<meta property="og:updated_time" content="2015-11-09T04:03:45.052Z">
+<meta property="og:description" content="Generate Parentheses - 括号生成Description: Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+ For example, given n = 3, a solution set is: “((()))”,">
+<meta property="og:updated_time" content="2015-11-09T03:59:46.918Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Merge K Sorted Lists - 合并K个有序链表">
-<meta name="twitter:description" content="Merge K Sorted Lists - 合并K个有序链表Description: Merge k sorted linked lists and return it as one sorted list.Analyze and describe its complexity.
-思路：二分法（分治法）时间复杂度：nklogk分析：假设总共有k个list，每个list的最大长度是n，那么运行时间">
+<meta name="twitter:title" content="Generate Parentheses - 括号生成">
+<meta name="twitter:description" content="Generate Parentheses - 括号生成Description: Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+ For example, given n = 3, a solution set is: “((()))”,">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -65,7 +65,7 @@
 
 
 
-  <title> Merge K Sorted Lists - 合并K个有序链表 | Eugene's Blog </title>
+  <title> Generate Parentheses - 括号生成 | Eugene's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -223,7 +223,7 @@
           
           
             
-              Merge K Sorted Lists - 合并K个有序链表
+              Generate Parentheses - 括号生成
             
           
         </h1>
@@ -232,8 +232,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-11-03T20:44:47+08:00" content="2015-11-03">
-            2015-11-03
+          <time itemprop="dateCreated" datetime="2015-11-02T20:44:47+08:00" content="2015-11-02">
+            2015-11-02
           </time>
         </span>
 
@@ -258,8 +258,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/11/03/Merge K Sorted Lists - 合并K个有序链表 - Copy/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/03/Merge K Sorted Lists - 合并K个有序链表 - Copy/" itemprop="commentsCount"></span>
+              <a href="/2015/11/02/Generate Parentheses - 括号生成/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/02/Generate Parentheses - 括号生成/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -274,10 +274,11 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="Merge_K_Sorted_Lists_-_合并K个有序链表">Merge K Sorted Lists - 合并K个有序链表</h3><p><strong>Description</strong>: Merge k sorted linked lists and return it as one sorted list.<br>Analyze and describe its complexity.</p>
-<p>思路：二分法（分治法）<br>时间复杂度：nklogk<br>分析：假设总共有k个list，每个list的最大长度是n，那么运行时间满足递推式T(k) = 2T(k/2)+O(n*k)。根据主定理，可以算出算法的总复杂度是O(nklogk)</p>
+        <span itemprop="articleBody"><h3 id="Generate_Parentheses_-_括号生成">Generate Parentheses - 括号生成</h3><p><strong>Description</strong>: Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.</p>
+<p> For example, given n = 3, a solution set is:<br> “((()))”, “(()())”, “(())()”, “()(())”, “()()()”</p>
+<p>思路：回溯法，其中剪枝条件1：左右括号数小于num；剪枝条件2：左括号数&gt;=右括号数。</p>
 <p>java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeKSortedLists</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ListNode l11 = <span class="keyword">new</span> ListNode(<span class="number">2</span>);</span><br><span class="line">        ListNode l12 = <span class="keyword">new</span> ListNode(<span class="number">3</span>);</span><br><span class="line">        ListNode l13 = <span class="keyword">new</span> ListNode(<span class="number">5</span>);</span><br><span class="line">        l11.next = l12; l12.next = l13; l13.next = <span class="keyword">null</span>;</span><br><span class="line">        ListNode l21 = <span class="keyword">null</span>;</span><br><span class="line">        ListNode[] lists = <span class="keyword">new</span> ListNode[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        ListNode node = <span class="keyword">new</span> MergeKSortedLists().mergeKLists1(lists);</span><br><span class="line">        <span class="keyword">while</span> (node != <span class="keyword">null</span>)&#123;</span><br><span class="line">            System.out.print(node.val + <span class="string">" "</span>);</span><br><span class="line">            node = node.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Definition for singly-linked list.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        ListNode next;</span><br><span class="line">        ListNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 二分法（分治法）</span><br><span class="line">     * http://blog.csdn.net/linhuanmars/article/details/19899259</span><br><span class="line">     *</span><br><span class="line">     * 时间复杂度：nklogk</span><br><span class="line">     * 分析：假设总共有k个list，每个list的最大长度是n，那么运行时间满足递推式T(k) = 2T(k/2)+O(n*k)。</span><br><span class="line">     * 根据主定理，可以算出算法的总复杂度是O(nklogk)</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> lists</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeKLists1</span><span class="params">(ListNode[] lists)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (lists == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">return</span> mergeSort(lists, <span class="number">0</span>, lists.length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> ListNode <span class="title">mergeSort</span><span class="params">(ListNode[] lists, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (left &lt; right)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">return</span> mergeTwoLists(mergeSort(lists, left, mid),</span><br><span class="line">                    mergeSort(lists, mid + <span class="number">1</span>, right));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lists.length == <span class="number">0</span> ? <span class="keyword">null</span> : lists[left];  <span class="comment">//TODO 注意new ListNode[0];时的边界条件</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenerateParentheses</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; result = <span class="keyword">new</span> GenerateParentheses().generateParenthesis(<span class="number">5</span>);</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        <span class="keyword">for</span> (String s : result) System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> StringBuilder builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    <span class="keyword">private</span> List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">generateParenthesis</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        num = n;</span><br><span class="line">        backtrack(<span class="number">1</span>, builder, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 剪枝条件1，左右括号数小于num</span><br><span class="line">     * 剪枝条件2，左括号数&gt;=右括号数</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> i</span><br><span class="line">     * <span class="doctag">@param</span> builder</span><br><span class="line">     * <span class="doctag">@param</span> rightCount</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="keyword">int</span> i, StringBuilder builder, <span class="keyword">int</span> rightCount)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt; num * <span class="number">2</span>)&#123;</span><br><span class="line">            list.add(builder.toString());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> isTake = <span class="number">0</span>; isTake &lt;= <span class="number">1</span>; isTake++)&#123;    <span class="comment">//0:( 1:)</span></span><br><span class="line">                <span class="keyword">char</span> c = isTake == <span class="number">0</span> ? <span class="string">'('</span> : <span class="string">')'</span>;</span><br><span class="line">                <span class="keyword">int</span> tempRightCount = rightCount + isTake * <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> (i - tempRightCount &lt;= num &amp;&amp;    <span class="comment">//剪枝条件1，左右括号数小于num</span></span><br><span class="line">                        i - tempRightCount &gt;= tempRightCount)&#123;  <span class="comment">//剪枝条件2，左括号数&gt;=右括号数</span></span><br><span class="line">                    builder.append(c);</span><br><span class="line">                    rightCount = tempRightCount;</span><br><span class="line">                    backtrack(i + <span class="number">1</span>, builder, rightCount);</span><br><span class="line">                    rightCount -= isTake * <span class="number">1</span>;</span><br><span class="line">                    builder.deleteCharAt(builder.length() - <span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
@@ -299,13 +300,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/04/Swap Nodes In Pairs - 按对交换链表节点 - Copy/" rel="prev">Swap Nodes In Pairs - 按对交换链表节点</a>
+              <a href="/2015/11/03/Merge K Sorted Lists - 合并K个有序链表/" rel="prev">Merge K Sorted Lists - 合并K个有序链表</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/02/Generate Parentheses - 括号生成 - Copy/" rel="next">Generate Parentheses - 括号生成</a>
+              <a href="/2015/11/01/Four Sum - 四数和/" rel="next">Four Sum - 四数和</a>
             
           </div>
         </div>
@@ -357,8 +358,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/11/03/Merge K Sorted Lists - 合并K个有序链表 - Copy/"
-                   data-title="Merge K Sorted Lists - 合并K个有序链表" data-url="http://ernestyj.github.io/2015/11/03/Merge K Sorted Lists - 合并K个有序链表 - Copy/">
+              <div class="ds-thread" data-thread-key="2015/11/02/Generate Parentheses - 括号生成/"
+                   data-title="Generate Parentheses - 括号生成" data-url="http://ernestyj.github.io/2015/11/02/Generate Parentheses - 括号生成/">
               </div>
             
           </div>
@@ -398,7 +399,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">58</span>
+              <span class="site-state-item-count">59</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -460,7 +461,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Merge_K_Sorted_Lists_-_合并K个有序链表"><span class="nav-number">1.</span> <span class="nav-text">Merge K Sorted Lists - 合并K个有序链表</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate_Parentheses_-_括号生成"><span class="nav-number">1.</span> <span class="nav-text">Generate Parentheses - 括号生成</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -476,8 +477,8 @@
     <footer id="footer" class="footer">
       <div class="footer-inner"> <div class="copyright" >
   
-  &copy; &nbsp; 
-  <span itemprop="copyrightYear">2015</span>
+  &copy; &nbsp;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>
