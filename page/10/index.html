@@ -221,6 +221,182 @@
           
           
             
+              <a class="post-title-link" href="/2015/11/18/Search Insert Position/" itemprop="url">
+                Search Insert Position
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-18T20:44:47+08:00" content="2015-11-18">
+            2015-11-18
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/18/Search Insert Position/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/18/Search Insert Position/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Search_Insert_Position">Search Insert Position</h3><p><strong>Description</strong>: Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order. You may assume no duplicates in the array.</p>
+<p> Here are few examples.<br> [1,3,5,6], 5 → 2<br> [1,3,5,6], 2 → 1<br> [1,3,5,6], 7 → 4<br> [1,3,5,6], 0 → 0</p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SearchInsertPosition</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="keyword">new</span> SearchInsertPosition().searchInsert(nums, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        System.out.println(index);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> m = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (l &lt;= r)&#123;</span><br><span class="line">            m = (l + r) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (target &lt; nums[m])&#123;</span><br><span class="line">                r = m - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[m] &lt; target)&#123;</span><br><span class="line">                l = m + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> m;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果没有找到目标元素，那么l一定停在恰好比target大的index上</span></span><br><span class="line">        <span class="comment">// r一定停在恰好比target小的index上</span></span><br><span class="line">        <span class="keyword">return</span> l;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/11/17/Search for a Range/" itemprop="url">
+                Search for a Range
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-17T20:44:47+08:00" content="2015-11-17">
+            2015-11-17
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/17/Search for a Range/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/17/Search for a Range/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Search_for_a_Range">Search for a Range</h3><p><strong>Description</strong>: Given a sorted array of integers, find the starting and ending position of a given target value.<br> Your algorithm’s runtime complexity must be in the order of O(log n).<br> If the target is not found in the array, return [-1, -1].</p>
+<p> For example,<br> Given [5, 7, 7, 8, 8, 10] and target value 8,<br> return [3, 4].</p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SearchForARange</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;<span class="number">5</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">10</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[] range = <span class="keyword">new</span> SearchForARange().searchRange(nums, <span class="number">7</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        System.out.println(range[<span class="number">0</span>] + <span class="string">", "</span> + range[<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] searchRange(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] range = &#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">        <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) <span class="keyword">return</span> range;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> m = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (l &lt;= r)&#123;</span><br><span class="line">            m = (l + r) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (target &lt; nums[m]) r = m - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[m] &lt; target) l = m + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = m; i &lt;= r; i++)&#123;</span><br><span class="line">                    <span class="keyword">if</span> (nums[i] == target) range[<span class="number">1</span>] = i;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = m; j &gt;= l; j--)&#123;</span><br><span class="line">                    <span class="keyword">if</span> (nums[j] == target) range[<span class="number">0</span>] = j;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> range;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> range;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/11/15/Search In Rotated Sorted Array/" itemprop="url">
                 Search In Rotated Sorted Array
               </a>
@@ -492,184 +668,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/11/12/Divide Two Integers - 不用乘除模运算进行两整数除法/" itemprop="url">
-                Divide Two Integers - 不用乘除模运算进行两整数除法
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-11-12T20:44:47+08:00" content="2015-11-12">
-            2015-11-12
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/11/12/Divide Two Integers - 不用乘除模运算进行两整数除法/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/12/Divide Two Integers - 不用乘除模运算进行两整数除法/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Divide_Two_Integers_-_不用乘除模运算进行两整数除法">Divide Two Integers - 不用乘除模运算进行两整数除法</h3><p><strong>Description</strong>: Divide two integers without using multiplication, division and mod operator. If it is overflow, return MAX_INT.</p>
-<p>方法1：笔算法，即按照笔算思路按字符进行运算，易错；<br>方法2：转换为减法，但是普通减法会超时。可以利用批量减法来提速。<br>方法3：将数拆分为一组基的线性组合，结合位运算进行减法。<br>参考<a href="http://www.programcreek.com/2014/05/leetcode-divide-two-integers-java/" target="_blank" rel="external">http://www.programcreek.com/2014/05/leetcode-divide-two-integers-java/</a><br>方法4：<br>参考<a href="http://www.lifeincode.net/programming/leetcode-divide-two-integers-java/" target="_blank" rel="external">http://www.lifeincode.net/programming/leetcode-divide-two-integers-java/</a></p>
-<p>对于后三种方法，有一个公共部分（边界值处理）比较关键：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//handle special cases</span></span><br><span class="line">     <span class="keyword">if</span>(divisor == <span class="number">0</span>) <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">     <span class="comment">//TODO （入参不可能溢出）只有结果才可能溢出，且只有Integer.MIN_VALUE / -1这一种情况会溢出</span></span><br><span class="line">     <span class="keyword">if</span>(divisor == -<span class="number">1</span> &amp;&amp; dividend == Integer.MIN_VALUE) <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">     <span class="comment">//get sign</span></span><br><span class="line">     <span class="keyword">boolean</span> isPositive = <span class="keyword">false</span>;</span><br><span class="line">     <span class="keyword">if</span> (dividend &lt; <span class="number">0</span> &amp;&amp; divisor &lt; <span class="number">0</span> || dividend &gt; <span class="number">0</span> &amp;&amp; divisor &gt; <span class="number">0</span>) isPositive = <span class="keyword">true</span>;</span><br><span class="line">     <span class="comment">//get positive values</span></span><br><span class="line">     <span class="keyword">long</span> l = Math.abs((<span class="keyword">long</span>)dividend);</span><br><span class="line">     <span class="keyword">long</span> r = Math.abs((<span class="keyword">long</span>)divisor);</span><br></pre></td></tr></table></figure></p>
-<p>注意入参不可能溢出，只有结果才可能溢出，且只有Integer.MIN_VALUE / -1这一种情况会溢出。</p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DivideTwoIntegers</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = Integer.MIN_VALUE;</span><br><span class="line">        <span class="keyword">int</span> r = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        <span class="keyword">int</span> x = <span class="keyword">new</span> DivideTwoIntegers().divide1(l, r);</span><br><span class="line">        System.out.println(x);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 另一种思路 TODO http://www.lifeincode.net/programming/leetcode-divide-two-integers-java/</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**TODO</span><br><span class="line">     * http://www.programcreek.com/2014/05/leetcode-divide-two-integers-java/</span><br><span class="line">     * 任何一个整数可以表示成以2的幂为底的一组基的线性组合，即num=a0*2^0+a1*2^1+a2*2^2+...+an*2^n。</span><br><span class="line">     * 基于以上这个公式以及左移一位相当于乘以2，我们先让除数左移直到大于被除数之前得到一个最大的基。</span><br><span class="line">     * 然后接下来我们每次尝试减去这个基，如果可以则结果增加2^k,然后基继续右移迭代，直到基为0为止。</span><br><span class="line">     *</span><br><span class="line">     * 因为这个方法的迭代次数是按2的幂直到超过结果，所以时间复杂度为O(logn)。</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> dividend</span><br><span class="line">     * <span class="doctag">@param</span> divisor</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> dividend, <span class="keyword">int</span> divisor)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//handle special cases</span></span><br><span class="line">        <span class="keyword">if</span>(divisor==<span class="number">0</span>) <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">if</span>(divisor==-<span class="number">1</span> &amp;&amp; dividend == Integer.MIN_VALUE) <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">        <span class="comment">//get positive values</span></span><br><span class="line">        <span class="keyword">long</span> pDividend = Math.abs((<span class="keyword">long</span>)dividend);</span><br><span class="line">        <span class="keyword">long</span> pDivisor = Math.abs((<span class="keyword">long</span>)divisor);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(pDividend&gt;=pDivisor)&#123;</span><br><span class="line">            <span class="comment">//calculate number of left shifts</span></span><br><span class="line">            <span class="keyword">int</span> numShift = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(pDividend&gt;=(pDivisor&lt;&lt;numShift))&#123;</span><br><span class="line">                numShift++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//dividend minus the largest shifted divisor</span></span><br><span class="line">            result += <span class="number">1</span>&lt;&lt;(numShift-<span class="number">1</span>);</span><br><span class="line">            pDividend -= (pDivisor&lt;&lt;(numShift-<span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>((dividend&gt;<span class="number">0</span> &amp;&amp; divisor&gt;<span class="number">0</span>) || (dividend&lt;<span class="number">0</span> &amp;&amp; divisor&lt;<span class="number">0</span>)) <span class="keyword">return</span> result;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> -result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 转化为减法，为防止超时采用批量减 TODO 注意采用普通减法会超时</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">divide1</span><span class="params">(<span class="keyword">int</span> dividend, <span class="keyword">int</span> divisor)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//handle special cases</span></span><br><span class="line">        <span class="keyword">if</span>(divisor == <span class="number">0</span>) <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">        <span class="comment">//TODO （入参不可能溢出）只有结果才可能溢出，且只有Integer.MIN_VALUE / -1这一种情况会溢出</span></span><br><span class="line">        <span class="keyword">if</span>(divisor == -<span class="number">1</span> &amp;&amp; dividend == Integer.MIN_VALUE) <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">        <span class="comment">//get sign</span></span><br><span class="line">        <span class="keyword">boolean</span> isPositive = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (dividend &lt; <span class="number">0</span> &amp;&amp; divisor &lt; <span class="number">0</span> || dividend &gt; <span class="number">0</span> &amp;&amp; divisor &gt; <span class="number">0</span>) isPositive = <span class="keyword">true</span>;</span><br><span class="line">        <span class="comment">//get positive values</span></span><br><span class="line">        <span class="keyword">long</span> l = Math.abs((<span class="keyword">long</span>)dividend);</span><br><span class="line">        <span class="keyword">long</span> r = Math.abs((<span class="keyword">long</span>)divisor);</span><br><span class="line">        <span class="keyword">int</span> tempResult = positiveDivide1(l, r);</span><br><span class="line">        <span class="keyword">return</span> isPositive == <span class="keyword">true</span> ? tempResult : -tempResult;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//入参有l &gt; r &gt; 0</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">positiveDivide1</span><span class="params">(<span class="keyword">long</span> l, <span class="keyword">long</span> r)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> times = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (l &gt;= times * r)&#123;</span><br><span class="line">            l -= times * r;</span><br><span class="line">            count += times;</span><br><span class="line">            times++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (l &gt;= r)&#123;</span><br><span class="line">            l -= r;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/11/11/Implement strStr() - 查找重复字符串/" itemprop="url">
-                Implement strStr() - 查找重复字符串
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-11-11T20:44:47+08:00" content="2015-11-11">
-            2015-11-11
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/11/11/Implement strStr() - 查找重复字符串/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/11/Implement strStr() - 查找重复字符串/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Implement_strStr()_-_查找重复字符串">Implement strStr() - 查找重复字符串</h3><p><strong>Description</strong>: Implement strStr().<br> Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.</p>
-<p>实现strstr()，返回needle(关键字)在haystack(字符串)中第一次出现的位置，如果needle不在haystack中，则返回-1。<br> 注：strstr()是c++中的一个函数。</p>
-<p>java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ImplementStrStr</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String haystack = <span class="string">"mississippi"</span>;</span><br><span class="line">        String key = <span class="string">"issipi"</span>;</span><br><span class="line"><span class="comment">//        String key = "issipisssssssss";</span></span><br><span class="line">        <span class="keyword">int</span> index = <span class="keyword">new</span> ImplementStrStr().strStr(haystack, key);</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        System.out.println(index);</span><br><span class="line">        <span class="keyword">if</span> (index != -<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = index; i &lt; key.length() + index; i++) System.out.print(haystack.charAt(i));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">strStr</span><span class="params">(String haystack, String needle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (haystack == <span class="keyword">null</span> || needle == <span class="keyword">null</span>) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (needle.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; haystack.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (needle.length() &lt;= haystack.length() - i &amp;&amp; <span class="comment">//TODO 注意此条件</span></span><br><span class="line">                    haystack.charAt(i) == needle.charAt(<span class="number">0</span>))&#123;</span><br><span class="line">                <span class="keyword">if</span> (needle.length() == <span class="number">1</span>) <span class="keyword">return</span> i;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; needle.length(); j++)&#123;</span><br><span class="line">                    <span class="keyword">if</span> (needle.charAt(j) != haystack.charAt(i + j)) <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">if</span> (j == needle.length() - <span class="number">1</span>) <span class="keyword">return</span> i;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -708,7 +706,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">63</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
