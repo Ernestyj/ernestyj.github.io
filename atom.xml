@@ -3,9 +3,9 @@
   <title><![CDATA[Eugene's Blog]]></title>
   <subtitle><![CDATA[成长之旅]]></subtitle>
   <link href="/atom.xml" rel="self"/>
-  <link href="http://ernestyj.github.io/"/>
+  <link href="http://eugeneyang.com/"/>
   <updated>2016-01-05T05:45:41.925Z</updated>
-  <id>http://ernestyj.github.io/</id>
+  <id>http://eugeneyang.com/</id>
   
   <author>
     <name><![CDATA[Jian Yang]]></name>
@@ -16,8 +16,8 @@
   
   <entry>
     <title><![CDATA[Largest Rectangle In Histogram - 柱状图中的最大长方形]]></title>
-    <link href="http://ernestyj.github.io/2016/01/05/Largest%20Rectangle%20In%20Histogram%20-%20%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E9%95%BF%E6%96%B9%E5%BD%A2/"/>
-    <id>http://ernestyj.github.io/2016/01/05/Largest Rectangle In Histogram - 柱状图中的最大长方形/</id>
+    <link href="http://eugeneyang.com/2016/01/05/Largest%20Rectangle%20In%20Histogram%20-%20%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E9%95%BF%E6%96%B9%E5%BD%A2/"/>
+    <id>http://eugeneyang.com/2016/01/05/Largest Rectangle In Histogram - 柱状图中的最大长方形/</id>
     <published>2016-01-05T12:44:47.000Z</published>
     <updated>2016-01-05T05:45:41.925Z</updated>
     <content type="html"><![CDATA[<h3 id="Largest_Rectangle_In_Histogram_-_柱状图中的最大长方形">Largest Rectangle In Histogram - 柱状图中的最大长方形</h3><p><strong>Description</strong>: Given n non-negative integers representing the histogram’s bar height where the width of each bar is 1, find the area of largest rectangle in the histogram.</p>
@@ -32,20 +32,20 @@
     <![CDATA[<h3 id="Largest_Rectangle_In_Histogram_-_柱状图中的最大长方形">Largest Rectangle In Histogram - 柱状图中的最大长方形</h3><p><strong>Description</strong>: Given ]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Remove Duplicates from Sorted List - 移除有序链表中的重复元素]]></title>
-    <link href="http://ernestyj.github.io/2016/01/04/Remove%20Duplicates%20from%20Sorted%20List%20-%20%E7%A7%BB%E9%99%A4%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/"/>
-    <id>http://ernestyj.github.io/2016/01/04/Remove Duplicates from Sorted List - 移除有序链表中的重复元素/</id>
+    <link href="http://eugeneyang.com/2016/01/04/Remove%20Duplicates%20from%20Sorted%20List%20-%20%E7%A7%BB%E9%99%A4%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/"/>
+    <id>http://eugeneyang.com/2016/01/04/Remove Duplicates from Sorted List - 移除有序链表中的重复元素/</id>
     <published>2016-01-04T12:44:47.000Z</published>
     <updated>2016-01-04T05:28:30.613Z</updated>
     <content type="html"><![CDATA[<h3 id="Remove_Duplicates_from_Sorted_List_-_移除有序链表中的重复元素">Remove Duplicates from Sorted List - 移除有序链表中的重复元素</h3><p><strong>Description</strong>: Given a sorted linked list, delete all duplicates such that each element appear only once.</p>
@@ -58,20 +58,20 @@
     <![CDATA[<h3 id="Remove_Duplicates_from_Sorted_List_-_移除有序链表中的重复元素">Remove Duplicates from Sorted List - 移除有序链表中的重复元素</h3><p><strong>Description</str]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Remove Duplicates from Sorted List II - 移除有序链表中的重复元素II]]></title>
-    <link href="http://ernestyj.github.io/2016/01/03/Remove%20Duplicates%20from%20Sorted%20List%20II%20-%20%E7%A7%BB%E9%99%A4%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0II/"/>
-    <id>http://ernestyj.github.io/2016/01/03/Remove Duplicates from Sorted List II - 移除有序链表中的重复元素II/</id>
+    <link href="http://eugeneyang.com/2016/01/03/Remove%20Duplicates%20from%20Sorted%20List%20II%20-%20%E7%A7%BB%E9%99%A4%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0II/"/>
+    <id>http://eugeneyang.com/2016/01/03/Remove Duplicates from Sorted List II - 移除有序链表中的重复元素II/</id>
     <published>2016-01-03T12:44:47.000Z</published>
     <updated>2016-01-04T05:23:45.155Z</updated>
     <content type="html"><![CDATA[<h3 id="Remove_Duplicates_from_Sorted_List_II_-_移除有序链表中的重复元素II">Remove Duplicates from Sorted List II - 移除有序链表中的重复元素II</h3><p><strong>Description</strong>: Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.</p>
@@ -85,20 +85,20 @@
     <![CDATA[<h3 id="Remove_Duplicates_from_Sorted_List_II_-_移除有序链表中的重复元素II">Remove Duplicates from Sorted List II - 移除有序链表中的重复元素II</h3><p><strong>Descri]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Search In Rotated Sorted Array II]]></title>
-    <link href="http://ernestyj.github.io/2016/01/02/Search%20In%20Rotated%20Sorted%20Array%20II/"/>
-    <id>http://ernestyj.github.io/2016/01/02/Search In Rotated Sorted Array II/</id>
+    <link href="http://eugeneyang.com/2016/01/02/Search%20In%20Rotated%20Sorted%20Array%20II/"/>
+    <id>http://eugeneyang.com/2016/01/02/Search In Rotated Sorted Array II/</id>
     <published>2016-01-02T12:44:47.000Z</published>
     <updated>2016-01-02T10:49:03.084Z</updated>
     <content type="html"><![CDATA[<h3 id="Search_In_Rotated_Sorted_Array_II">Search In Rotated Sorted Array II</h3><p><strong>Description</strong>: Follow up for “Search in Rotated Sorted Array”:<br> What if duplicates are allowed?<br> Would this affect the run-time complexity? How and why?<br> Write a function to determine if a given target is in the array.</p>
@@ -111,20 +111,20 @@
     <![CDATA[<h3 id="Search_In_Rotated_Sorted_Array_II">Search In Rotated Sorted Array II</h3><p><strong>Description</strong>: Follow up for “Search in R]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素II]]></title>
-    <link href="http://ernestyj.github.io/2016/01/01/Remove%20Duplicates%20from%20Sorted%20Array%20II%20-%20%E4%BB%8E%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%A7%BB%E9%99%A4%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0II/"/>
-    <id>http://ernestyj.github.io/2016/01/01/Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素II/</id>
+    <link href="http://eugeneyang.com/2016/01/01/Remove%20Duplicates%20from%20Sorted%20Array%20II%20-%20%E4%BB%8E%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%A7%BB%E9%99%A4%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0II/"/>
+    <id>http://eugeneyang.com/2016/01/01/Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素II/</id>
     <published>2016-01-01T12:44:47.000Z</published>
     <updated>2016-01-01T11:18:04.047Z</updated>
     <content type="html"><![CDATA[<h3 id="Remove_Duplicates_from_Sorted_Array_II_-_从有序数组中移除重复元素II">Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素II</h3><p><strong>Description</strong>: Follow up for “Remove Duplicates”: What if duplicates are allowed at most twice?</p>
@@ -139,20 +139,20 @@
     <![CDATA[<h3 id="Remove_Duplicates_from_Sorted_Array_II_-_从有序数组中移除重复元素II">Remove Duplicates from Sorted Array II - 从有序数组中移除重复元素II</h3><p><strong>Desc]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Word Search - 单词二维搜索]]></title>
-    <link href="http://ernestyj.github.io/2015/12/31/Word%20Search%20-%20%E5%8D%95%E8%AF%8D%E4%BA%8C%E7%BB%B4%E6%90%9C%E7%B4%A2/"/>
-    <id>http://ernestyj.github.io/2015/12/31/Word Search - 单词二维搜索/</id>
+    <link href="http://eugeneyang.com/2015/12/31/Word%20Search%20-%20%E5%8D%95%E8%AF%8D%E4%BA%8C%E7%BB%B4%E6%90%9C%E7%B4%A2/"/>
+    <id>http://eugeneyang.com/2015/12/31/Word Search - 单词二维搜索/</id>
     <published>2015-12-31T12:44:47.000Z</published>
     <updated>2015-12-31T05:26:42.652Z</updated>
     <content type="html"><![CDATA[<h3 id="Word_Search_-_单词二维搜索">Word Search - 单词二维搜索</h3><p><strong>Description</strong>: Given a 2D board and a word, find if the word exists in the grid. The word can be constructed from letters of sequentially adjacent cell, where “adjacent” cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.</p>
@@ -166,20 +166,20 @@
     <![CDATA[<h3 id="Word_Search_-_单词二维搜索">Word Search - 单词二维搜索</h3><p><strong>Description</strong>: Given a 2D board and a word, find if the word exists]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Subsets - 求子集]]></title>
-    <link href="http://ernestyj.github.io/2015/12/30/Subsets%20-%20%E6%B1%82%E5%AD%90%E9%9B%86/"/>
-    <id>http://ernestyj.github.io/2015/12/30/Subsets - 求子集/</id>
+    <link href="http://eugeneyang.com/2015/12/30/Subsets%20-%20%E6%B1%82%E5%AD%90%E9%9B%86/"/>
+    <id>http://eugeneyang.com/2015/12/30/Subsets - 求子集/</id>
     <published>2015-12-30T12:44:47.000Z</published>
     <updated>2015-12-31T05:22:46.970Z</updated>
     <content type="html"><![CDATA[<h3 id="Subsets_-_求子集">Subsets - 求子集</h3><p><strong>Description</strong>: Given a set of distinct integers, nums, return all possible subsets.</p>
@@ -193,20 +193,20 @@
     <![CDATA[<h3 id="Subsets_-_求子集">Subsets - 求子集</h3><p><strong>Description</strong>: Given a set of distinct integers, nums, return all possible subset]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Combinations - 组合数]]></title>
-    <link href="http://ernestyj.github.io/2015/12/29/Combinations%20-%20%E7%BB%84%E5%90%88%E6%95%B0/"/>
-    <id>http://ernestyj.github.io/2015/12/29/Combinations - 组合数/</id>
+    <link href="http://eugeneyang.com/2015/12/29/Combinations%20-%20%E7%BB%84%E5%90%88%E6%95%B0/"/>
+    <id>http://eugeneyang.com/2015/12/29/Combinations - 组合数/</id>
     <published>2015-12-29T12:44:47.000Z</published>
     <updated>2015-12-29T05:16:51.890Z</updated>
     <content type="html"><![CDATA[<h3 id="Combinations_-_组合数">Combinations - 组合数</h3><p><strong>Description</strong>: Given two integers n and k, return all possible combinations of k numbers out of 1 … n.</p>
@@ -220,20 +220,20 @@
     <![CDATA[<h3 id="Combinations_-_组合数">Combinations - 组合数</h3><p><strong>Description</strong>: Given two integers n and k, return all possible combinat]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Minimum Window Substring - 最小子串窗口]]></title>
-    <link href="http://ernestyj.github.io/2015/12/28/Minimum%20Window%20Substring%20-%20%E6%9C%80%E5%B0%8F%E5%AD%90%E4%B8%B2%E7%AA%97%E5%8F%A3/"/>
-    <id>http://ernestyj.github.io/2015/12/28/Minimum Window Substring - 最小子串窗口/</id>
+    <link href="http://eugeneyang.com/2015/12/28/Minimum%20Window%20Substring%20-%20%E6%9C%80%E5%B0%8F%E5%AD%90%E4%B8%B2%E7%AA%97%E5%8F%A3/"/>
+    <id>http://eugeneyang.com/2015/12/28/Minimum Window Substring - 最小子串窗口/</id>
     <published>2015-12-28T12:44:47.000Z</published>
     <updated>2015-12-28T12:22:00.533Z</updated>
     <content type="html"><![CDATA[<h3 id="Minimum_Window_Substring_-_最小子串窗口">Minimum Window Substring - 最小子串窗口</h3><p><strong>Description</strong>: Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).</p>
@@ -248,20 +248,20 @@
     <![CDATA[<h3 id="Minimum_Window_Substring_-_最小子串窗口">Minimum Window Substring - 最小子串窗口</h3><p><strong>Description</strong>: Given a string S and a str]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Sort Colors - 颜色排序]]></title>
-    <link href="http://ernestyj.github.io/2015/12/27/Sort%20Colors%20-%20%E9%A2%9C%E8%89%B2%E6%8E%92%E5%BA%8F/"/>
-    <id>http://ernestyj.github.io/2015/12/27/Sort Colors - 颜色排序/</id>
+    <link href="http://eugeneyang.com/2015/12/27/Sort%20Colors%20-%20%E9%A2%9C%E8%89%B2%E6%8E%92%E5%BA%8F/"/>
+    <id>http://eugeneyang.com/2015/12/27/Sort Colors - 颜色排序/</id>
     <published>2015-12-27T12:44:47.000Z</published>
     <updated>2015-12-27T08:50:29.033Z</updated>
     <content type="html"><![CDATA[<h3 id="Sort_Colors_-_颜色排序">Sort Colors - 颜色排序</h3><p><strong>Description</strong>: Given an array with n objects colored red, white or blue, sort them so that objects of the same color are adjacent, with the colors in the order red, white and blue.</p>
@@ -276,20 +276,20 @@
     <![CDATA[<h3 id="Sort_Colors_-_颜色排序">Sort Colors - 颜色排序</h3><p><strong>Description</strong>: Given an array with n objects colored red, white or blue]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Search 2D Matrix - 搜索2D矩阵]]></title>
-    <link href="http://ernestyj.github.io/2015/12/26/Search%202D%20Matrix%20-%20%E6%90%9C%E7%B4%A22D%E7%9F%A9%E9%98%B5/"/>
-    <id>http://ernestyj.github.io/2015/12/26/Search 2D Matrix - 搜索2D矩阵/</id>
+    <link href="http://eugeneyang.com/2015/12/26/Search%202D%20Matrix%20-%20%E6%90%9C%E7%B4%A22D%E7%9F%A9%E9%98%B5/"/>
+    <id>http://eugeneyang.com/2015/12/26/Search 2D Matrix - 搜索2D矩阵/</id>
     <published>2015-12-26T12:44:47.000Z</published>
     <updated>2015-12-26T05:21:55.955Z</updated>
     <content type="html"><![CDATA[<h3 id="Search_2D_Matrix_-_搜索2D矩阵">Search 2D Matrix - 搜索2D矩阵</h3><p><strong>Description</strong>: Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:</p>
@@ -307,20 +307,20 @@
     <![CDATA[<h3 id="Search_2D_Matrix_-_搜索2D矩阵">Search 2D Matrix - 搜索2D矩阵</h3><p><strong>Description</strong>: Write an efficient algorithm that searches]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Set Matrix Zeroes - 矩阵置零]]></title>
-    <link href="http://ernestyj.github.io/2015/12/25/Set%20Matrix%20Zeroes%20-%20%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6/"/>
-    <id>http://ernestyj.github.io/2015/12/25/Set Matrix Zeroes - 矩阵置零/</id>
+    <link href="http://eugeneyang.com/2015/12/25/Set%20Matrix%20Zeroes%20-%20%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6/"/>
+    <id>http://eugeneyang.com/2015/12/25/Set Matrix Zeroes - 矩阵置零/</id>
     <published>2015-12-25T12:44:47.000Z</published>
     <updated>2015-12-25T12:53:25.258Z</updated>
     <content type="html"><![CDATA[<h3 id="Set_Matrix_Zeroes_-_矩阵置零">Set Matrix Zeroes - 矩阵置零</h3><p><strong>Description</strong>: Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.</p>
@@ -334,20 +334,20 @@
     <![CDATA[<h3 id="Set_Matrix_Zeroes_-_矩阵置零">Set Matrix Zeroes - 矩阵置零</h3><p><strong>Description</strong>: Given a m x n matrix, if an element is 0, se]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Edit Distance - 最短编辑距离]]></title>
-    <link href="http://ernestyj.github.io/2015/12/24/Edit%20Distance%20-%20%E6%9C%80%E7%9F%AD%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB/"/>
-    <id>http://ernestyj.github.io/2015/12/24/Edit Distance - 最短编辑距离/</id>
+    <link href="http://eugeneyang.com/2015/12/24/Edit%20Distance%20-%20%E6%9C%80%E7%9F%AD%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB/"/>
+    <id>http://eugeneyang.com/2015/12/24/Edit Distance - 最短编辑距离/</id>
     <published>2015-12-24T12:44:47.000Z</published>
     <updated>2015-12-24T08:00:39.169Z</updated>
     <content type="html"><![CDATA[<h3 id="Edit_Distance_-_最短编辑距离">Edit Distance - 最短编辑距离</h3><p><strong>Description</strong>: Given two words word1 and word2, find the minimum number of steps required to convert word1 to word2. (each operation is counted as 1 step.)<br> You have the following 3 operations permitted on a word:<br> a) Insert a character<br> b) Delete a character<br> c) Replace a character</p>
@@ -361,20 +361,20 @@
     <![CDATA[<h3 id="Edit_Distance_-_最短编辑距离">Edit Distance - 最短编辑距离</h3><p><strong>Description</strong>: Given two words word1 and word2, find the minimu]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Simplify Path - 路径简化]]></title>
-    <link href="http://ernestyj.github.io/2015/12/23/Simplify%20Path%20-%20%E8%B7%AF%E5%BE%84%E7%AE%80%E5%8C%96/"/>
-    <id>http://ernestyj.github.io/2015/12/23/Simplify Path - 路径简化/</id>
+    <link href="http://eugeneyang.com/2015/12/23/Simplify%20Path%20-%20%E8%B7%AF%E5%BE%84%E7%AE%80%E5%8C%96/"/>
+    <id>http://eugeneyang.com/2015/12/23/Simplify Path - 路径简化/</id>
     <published>2015-12-23T12:44:47.000Z</published>
     <updated>2015-12-23T12:37:10.741Z</updated>
     <content type="html"><![CDATA[<h3 id="Simplify_Path_-_路径简化">Simplify Path - 路径简化</h3><p><strong>Description</strong>: Given an absolute path for a file (Unix-style), simplify it.</p>
@@ -387,20 +387,20 @@
     <![CDATA[<h3 id="Simplify_Path_-_路径简化">Simplify Path - 路径简化</h3><p><strong>Description</strong>: Given an absolute path for a file (Unix-style), simp]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Sqrt(x) - 求平方根]]></title>
-    <link href="http://ernestyj.github.io/2015/12/21/Sqrt(x)%20-%20%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/"/>
-    <id>http://ernestyj.github.io/2015/12/21/Sqrt(x) - 求平方根/</id>
+    <link href="http://eugeneyang.com/2015/12/21/Sqrt(x)%20-%20%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/"/>
+    <id>http://eugeneyang.com/2015/12/21/Sqrt(x) - 求平方根/</id>
     <published>2015-12-21T12:44:47.000Z</published>
     <updated>2015-12-21T04:53:20.713Z</updated>
     <content type="html"><![CDATA[<h3 id="Sqrt(x)_-_求平方根">Sqrt(x) - 求平方根</h3><p><strong>Description</strong>: Implement int sqrt(int x).<br> Compute and return the square root of x.</p>
@@ -413,20 +413,20 @@
     <![CDATA[<h3 id="Sqrt(x)_-_求平方根">Sqrt(x) - 求平方根</h3><p><strong>Description</strong>: Implement int sqrt(int x).<br> Compute and return the square roo]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Text Justification - 文本对齐]]></title>
-    <link href="http://ernestyj.github.io/2015/12/20/Text%20Justification%20-%20%E6%96%87%E6%9C%AC%E5%AF%B9%E9%BD%90/"/>
-    <id>http://ernestyj.github.io/2015/12/20/Text Justification - 文本对齐/</id>
+    <link href="http://eugeneyang.com/2015/12/20/Text%20Justification%20-%20%E6%96%87%E6%9C%AC%E5%AF%B9%E9%BD%90/"/>
+    <id>http://eugeneyang.com/2015/12/20/Text Justification - 文本对齐/</id>
     <published>2015-12-20T12:44:47.000Z</published>
     <updated>2015-12-20T11:39:20.124Z</updated>
     <content type="html"><![CDATA[<h3 id="Text_Justification_-_文本对齐">Text Justification - 文本对齐</h3><p><strong>Description</strong>: Given an array of words and a length L, format the text such that each line has exactly L characters and is fully (left and right) justified.</p>
@@ -443,20 +443,20 @@
     <![CDATA[<h3 id="Text_Justification_-_文本对齐">Text Justification - 文本对齐</h3><p><strong>Description</strong>: Given an array of words and a length L, fo]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Add Binary - 二进制数加法]]></title>
-    <link href="http://ernestyj.github.io/2015/12/19/Add%20Binary%20-%20%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E5%8A%A0%E6%B3%95/"/>
-    <id>http://ernestyj.github.io/2015/12/19/Add Binary - 二进制数加法/</id>
+    <link href="http://eugeneyang.com/2015/12/19/Add%20Binary%20-%20%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E5%8A%A0%E6%B3%95/"/>
+    <id>http://eugeneyang.com/2015/12/19/Add Binary - 二进制数加法/</id>
     <published>2015-12-19T12:44:47.000Z</published>
     <updated>2015-12-19T09:47:59.567Z</updated>
     <content type="html"><![CDATA[<h3 id="Add_Binary_-_二进制数加法">Add Binary - 二进制数加法</h3><p><strong>Description</strong>: Given two binary strings, return their sum (also a binary string).</p>
@@ -469,20 +469,20 @@
     <![CDATA[<h3 id="Add_Binary_-_二进制数加法">Add Binary - 二进制数加法</h3><p><strong>Description</strong>: Given two binary strings, return their sum (also a bin]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Springmvc4集成springfox, swagger UI, springfox-staticdocs]]></title>
-    <link href="http://ernestyj.github.io/2015/12/18/Springmvc4%E9%9B%86%E6%88%90springfox,%20Swagger%20UI,%20springfox-staticdocs/"/>
-    <id>http://ernestyj.github.io/2015/12/18/Springmvc4集成springfox, Swagger UI, springfox-staticdocs/</id>
+    <link href="http://eugeneyang.com/2015/12/18/Springmvc4%E9%9B%86%E6%88%90springfox,%20Swagger%20UI,%20springfox-staticdocs/"/>
+    <id>http://eugeneyang.com/2015/12/18/Springmvc4集成springfox, Swagger UI, springfox-staticdocs/</id>
     <published>2015-12-18T14:44:47.000Z</published>
     <updated>2015-12-18T13:52:12.069Z</updated>
     <content type="html"><![CDATA[<h2 id="Springmvc4集成springfox,_swagger_UI,_springfox-staticdocs">Springmvc4集成springfox, swagger UI, springfox-staticdocs</h2><p>下面给出相关组件的链接：<br>Swagger: <a href="http://swagger.io/" target="_blank" rel="external">http://swagger.io/</a><br>Springfox: <a href="http://springfox.github.io/springfox/" target="_blank" rel="external">http://springfox.github.io/springfox/</a><br>Asciidoctor: <a href="http://asciidoctor.org/" target="_blank" rel="external">http://asciidoctor.org/</a></p>
@@ -511,22 +511,22 @@
     <![CDATA[<h2 id="Springmvc4集成springfox,_swagger_UI,_springfox-staticdocs">Springmvc4集成springfox, swagger UI, springfox-staticdocs</h2><p>下面给出相关组件的链接：]]>
     </summary>
     
-      <category term="doc" scheme="http://ernestyj.github.io/tags/doc/"/>
+      <category term="doc" scheme="http://eugeneyang.com/tags/doc/"/>
     
-      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
     
-      <category term="spring" scheme="http://ernestyj.github.io/tags/spring/"/>
+      <category term="spring" scheme="http://eugeneyang.com/tags/spring/"/>
     
-      <category term="web" scheme="http://ernestyj.github.io/tags/web/"/>
+      <category term="web" scheme="http://eugeneyang.com/tags/web/"/>
     
-      <category term="spring" scheme="http://ernestyj.github.io/categories/spring/"/>
+      <category term="spring" scheme="http://eugeneyang.com/categories/spring/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Valid Number - 合法数字]]></title>
-    <link href="http://ernestyj.github.io/2015/12/18/Valid%20Number%20-%20%E5%90%88%E6%B3%95%E6%95%B0%E5%AD%97/"/>
-    <id>http://ernestyj.github.io/2015/12/18/Valid Number - 合法数字/</id>
+    <link href="http://eugeneyang.com/2015/12/18/Valid%20Number%20-%20%E5%90%88%E6%B3%95%E6%95%B0%E5%AD%97/"/>
+    <id>http://eugeneyang.com/2015/12/18/Valid Number - 合法数字/</id>
     <published>2015-12-18T12:44:47.000Z</published>
     <updated>2015-12-18T13:42:32.961Z</updated>
     <content type="html"><![CDATA[<h3 id="Valid_Number_-_合法数字">Valid Number - 合法数字</h3><p><strong>Description</strong>: Validate if a given string is numeric.</p>
@@ -541,20 +541,20 @@
 <p> Some ex]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Minimum Path Sum - 最小路径和]]></title>
-    <link href="http://ernestyj.github.io/2015/12/17/Minimum%20Path%20Sum%20-%20%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/"/>
-    <id>http://ernestyj.github.io/2015/12/17/Minimum Path Sum - 最小路径和/</id>
+    <link href="http://eugeneyang.com/2015/12/17/Minimum%20Path%20Sum%20-%20%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/"/>
+    <id>http://eugeneyang.com/2015/12/17/Minimum Path Sum - 最小路径和/</id>
     <published>2015-12-17T12:44:47.000Z</published>
     <updated>2015-12-17T02:53:07.397Z</updated>
     <content type="html"><![CDATA[<h3 id="Minimum_Path_Sum_-_最小路径和">Minimum Path Sum - 最小路径和</h3><p><strong>Description</strong>: Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path.</p>
@@ -567,13 +567,13 @@
     <![CDATA[<h3 id="Minimum_Path_Sum_-_最小路径和">Minimum Path Sum - 最小路径和</h3><p><strong>Description</strong>: Given a m x n grid filled with non-negative ]]>
     </summary>
     
-      <category term="LeetCode" scheme="http://ernestyj.github.io/tags/LeetCode/"/>
+      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
     
-      <category term="java" scheme="http://ernestyj.github.io/tags/java/"/>
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://ernestyj.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
