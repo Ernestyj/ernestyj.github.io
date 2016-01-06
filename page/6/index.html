@@ -221,6 +221,95 @@
           
           
             
+              <a class="post-title-link" href="/2015/12/12/Spiral Matrix II- 螺旋矩阵2/" itemprop="url">
+                Spiral Matrix II- 螺旋矩阵2
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-12-12T20:44:47+08:00" content="2015-12-12">
+            2015-12-12
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/12/12/Spiral Matrix II- 螺旋矩阵2/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/12/Spiral Matrix II- 螺旋矩阵2/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Spiral_Matrix_II-_螺旋矩阵2">Spiral Matrix II- 螺旋矩阵2</h3><p><strong>Description</strong>: Given an integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.</p>
+<p> For example,<br> Given n = 3,<br> You should return the following matrix:<br> [<br> [ 1, 2, 3 ],<br> [ 8, 9, 4 ],<br> [ 7, 6, 5 ]<br> ]</p>
+<p>思路：与Spiral Matrix的思路基本一致。</p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpiralMatrixII</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        <span class="keyword">int</span>[][] matrix = <span class="keyword">new</span> SpiralMatrixII().generateMatrix(<span class="number">5</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span>[] i : matrix)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j : i)&#123;</span><br><span class="line">                System.out.print(j + <span class="string">" "</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//若只剩下一行/列，则只处理此行/列，其余按circle方式处理</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[][] generateMatrix(<span class="keyword">int</span> n) &#123;</span><br><span class="line">        <span class="keyword">int</span>[][] matrix = <span class="keyword">new</span> <span class="keyword">int</span>[n][n];</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> matrix;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</span><br><span class="line">            matrix[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> matrix;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> x = <span class="number">0</span>, y = <span class="number">0</span>, k = <span class="number">1</span>, i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="comment">//if one row/column left, no circle can be formed</span></span><br><span class="line">            <span class="keyword">if</span>(n==<span class="number">1</span>)&#123;</span><br><span class="line">                matrix[x++][y] = k++;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//below, process a circle</span></span><br><span class="line">            <span class="comment">//top - move right</span></span><br><span class="line">            <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n-<span class="number">1</span>;i++) matrix[x][y++] = k++;</span><br><span class="line">            <span class="comment">//right - move down</span></span><br><span class="line">            <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n-<span class="number">1</span>;i++) matrix[x++][y] = k++;</span><br><span class="line">            <span class="comment">//bottom - move left</span></span><br><span class="line">            <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n-<span class="number">1</span>;i++) matrix[x][y--] = k++;</span><br><span class="line">            <span class="comment">//left - move up</span></span><br><span class="line">            <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n-<span class="number">1</span>;i++) matrix[x--][y] = k++;</span><br><span class="line">            x++;</span><br><span class="line">            y++;</span><br><span class="line">            n=n-<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> matrix;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/12/10/Insert Interval - 区间插入/" itemprop="url">
                 Insert Interval - 区间插入
               </a>
@@ -571,95 +660,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/12/06/Maximum Subarray - 最大子串/" itemprop="url">
-                Maximum Subarray - 最大子串
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-12-06T20:44:47+08:00" content="2015-12-06">
-            2015-12-06
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/12/06/Maximum Subarray - 最大子串/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/06/Maximum Subarray - 最大子串/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Maximum_Subarray_-_最大子串">Maximum Subarray - 最大子串</h3><p><strong>Description</strong>: Find the contiguous subarray within an array (containing at least one number) which has the largest sum.</p>
-<p> For example, given the array [−2,1,−3,4,−1,2,1,−5,4],<br> the contiguous subarray [4,−1,2,1] has the largest sum = 6.</p>
-<p>思路：动态规划。</p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MaximumSubarray</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;-<span class="number">2</span>,<span class="number">1</span>,-<span class="number">3</span>,<span class="number">4</span>,-<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,-<span class="number">5</span>,<span class="number">4</span>&#125;;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        <span class="keyword">int</span> result = <span class="keyword">new</span> MaximumSubarray().maxSubArray(nums);</span><br><span class="line">        System.out.println(result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line">        <span class="keyword">int</span> local = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> global = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt; len; k++)&#123;</span><br><span class="line">            <span class="comment">//TODO 注意不是Math.max(local + nums[k], local);</span></span><br><span class="line">            <span class="comment">//若local + nums[k] &lt; nums[k]则直接抛弃k前面的所有数</span></span><br><span class="line">            local = Math.max(local + nums[k], nums[k]);</span><br><span class="line">            global = Math.max(local, global);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> global;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -698,7 +698,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">63</span>
+              <span class="site-state-item-count">64</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
