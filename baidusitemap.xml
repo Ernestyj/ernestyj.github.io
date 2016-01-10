@@ -4,6 +4,54 @@
 
     
   <url>
+    <loc>http://eugeneyang.com/2016/01/10/Gray%20Code%20-%20%E6%A0%BC%E9%9B%B7%E7%A0%81/</loc>
+    <lastmod>2016-01-10T11:00:09.363Z</lastmod>
+    <data>
+        <display>
+        <title>Gray Code - 格雷码</title>
+        <pubTime>2016-01-10T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2016/01/09/Merge%20Sorted%20Array%20-%20%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/</loc>
+    <lastmod>2016-01-09T07:09:39.332Z</lastmod>
+    <data>
+        <display>
+        <title>Merge Sorted Array - 合并有序数组</title>
+        <pubTime>2016-01-09T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://eugeneyang.com/2016/01/08/Scramble%20String%20-%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8D%E7%BB%84/</loc>
     <lastmod>2016-01-08T07:05:21.834Z</lastmod>
     <data>
