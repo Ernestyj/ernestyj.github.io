@@ -41,19 +41,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Valid SudokuDescription: Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules.The Sudoku board could be partially filled, where empty cells are filled with the character ‘.’.
-思路：Br">
+<meta name="description" content="Decode Ways - 解码方式Description: A message containing letters from A-Z is being encoded to numbers using the following mapping: ‘A’ -&amp;gt; 1 ‘B’ -&amp;gt; 2 … ‘Z’ -&amp;gt; 26Given an encoded message containing">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Valid Sudoku">
-<meta property="og:url" content="http://eugeneyang.com/2015/11/19/Valid Sudoku/index.html">
+<meta property="og:title" content="Decode Ways - 解码方式">
+<meta property="og:url" content="http://eugeneyang.com/2016/01/12/Decode Ways - 解码方式/index.html">
 <meta property="og:site_name" content="Eugene's Blog">
-<meta property="og:description" content="Valid SudokuDescription: Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules.The Sudoku board could be partially filled, where empty cells are filled with the character ‘.’.
-思路：Br">
-<meta property="og:updated_time" content="2015-11-20T04:24:13.082Z">
+<meta property="og:description" content="Decode Ways - 解码方式Description: A message containing letters from A-Z is being encoded to numbers using the following mapping: ‘A’ -&amp;gt; 1 ‘B’ -&amp;gt; 2 … ‘Z’ -&amp;gt; 26Given an encoded message containing">
+<meta property="og:updated_time" content="2016-01-12T08:15:05.752Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Valid Sudoku">
-<meta name="twitter:description" content="Valid SudokuDescription: Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules.The Sudoku board could be partially filled, where empty cells are filled with the character ‘.’.
-思路：Br">
+<meta name="twitter:title" content="Decode Ways - 解码方式">
+<meta name="twitter:description" content="Decode Ways - 解码方式Description: A message containing letters from A-Z is being encoded to numbers using the following mapping: ‘A’ -&amp;gt; 1 ‘B’ -&amp;gt; 2 … ‘Z’ -&amp;gt; 26Given an encoded message containing">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -65,7 +62,7 @@
 
 
 
-  <title> Valid Sudoku | Eugene's Blog </title>
+  <title> Decode Ways - 解码方式 | Eugene's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -223,7 +220,7 @@
           
           
             
-              Valid Sudoku
+              Decode Ways - 解码方式
             
           
         </h1>
@@ -232,8 +229,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-11-19T20:44:47+08:00" content="2015-11-19">
-            2015-11-19
+          <time itemprop="dateCreated" datetime="2016-01-12T20:44:47+08:00" content="2016-01-12">
+            2016-01-12
           </time>
         </span>
 
@@ -258,8 +255,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/11/19/Valid Sudoku/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/19/Valid Sudoku/" itemprop="commentsCount"></span>
+              <a href="/2016/01/12/Decode Ways - 解码方式/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/12/Decode Ways - 解码方式/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -274,10 +271,16 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="Valid_Sudoku">Valid Sudoku</h3><p><strong>Description</strong>: Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules.<br>The Sudoku board could be partially filled, where empty cells are filled with the character ‘.’.</p>
-<p>思路：Brute force，对每个九宫格，行号起始block/3<em>3，列号起始block%3</em>3。另一种思路，如果把九宫格按照行从0开始标号，那么数字board[i][j]位于第 i/3<em>3+j/3 个九宫格内。<br>时间复杂度：O(3</em>n^2), n=9</p>
+        <span itemprop="articleBody"><h3 id="Decode_Ways_-_解码方式">Decode Ways - 解码方式</h3><p><strong>Description</strong>: A message containing letters from A-Z is being encoded to numbers using the following mapping:<br> ‘A’ -&gt; 1 ‘B’ -&gt; 2 … ‘Z’ -&gt; 26<br>Given an encoded message containing digits, determine the total number of ways to decode it.</p>
+<p>For example,<br> Given encoded message “12”, it could be decoded as “AB” (1 2) or “L” (12).<br> The number of ways decoding “12” is 2.</p>
+<p>思路：动态规划（类似Climbing Stairs问题，注意题目的输入是合法的encode，无需考虑不合法编码）：<br>对于当前位i(number数组头部额外分配一个)，考察前两位i-1, i-2：<br>递推式number[i] = number[i-1] + number[i-2]，但有以下限制：</p>
+<ol>
+<li>s[i-1]!=0，否则number[i]=number[i-2]；</li>
+<li>在s[i-1]!=0基础上，s[i-2]!=0 &amp;&amp; (1&lt;=s[i-2,i-1]&lt;=26)，否则number[i]=number[i-1]。</li>
+</ol>
+<p>参考：<a href="http://blog.csdn.net/worldwindjp/article/details/19938131" target="_blank" rel="external">http://blog.csdn.net/worldwindjp/article/details/19938131</a></p>
 <p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ValidSudoku</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String[] input = &#123;<span class="string">".87654321"</span>,<span class="string">"2........"</span>,<span class="string">"3........"</span>,<span class="string">"4........"</span>,<span class="string">"5........"</span>,<span class="string">"6........"</span>,<span class="string">"7........"</span>,</span><br><span class="line">                <span class="string">"8........"</span>,<span class="string">"9........"</span>&#125;;</span><br><span class="line">        <span class="keyword">char</span>[][] in = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) in[i] = input[i].toCharArray();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        <span class="keyword">boolean</span> result = <span class="keyword">new</span> ValidSudoku().isValidSudoku(in);</span><br><span class="line">        System.out.println(result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Brute force，对每个九宫格，行号起始block/3*3，列号起始block%3*3</span></span><br><span class="line">    <span class="comment">// 如果把九宫格按照行从0开始标号，那么数字board[i][j]位于第 i/3*3+j/3 个九宫格内</span></span><br><span class="line">    <span class="comment">// 时间复杂度：O(3*n^2), n=9</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidSudoku</span><span class="params">(<span class="keyword">char</span>[][] board)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = board[<span class="number">0</span>].length;</span><br><span class="line">        HashMap&lt;Character, Integer&gt; map, book = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c = <span class="string">'1'</span>; c &lt;= <span class="string">'9'</span>; c++) book.put(c, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">            map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span> (board[i][j] == <span class="string">'.'</span>) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (book.containsKey(board[i][j]) &amp;&amp; !map.containsKey(board[i][j]))</span><br><span class="line">                    map.put(board[i][j], <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">            map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span> (board[j][i] == <span class="string">'.'</span>) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (book.containsKey(board[j][i]) &amp;&amp; !map.containsKey(board[j][i]))</span><br><span class="line">                    map.put(board[j][i], <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> block = <span class="number">0</span>; block &lt; <span class="number">9</span>; block++)&#123;</span><br><span class="line">            map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = block/<span class="number">3</span>*<span class="number">3</span>; i &lt; block/<span class="number">3</span>*<span class="number">3</span> + <span class="number">3</span>; i++)&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = block%<span class="number">3</span>*<span class="number">3</span>; j &lt; block%<span class="number">3</span>*<span class="number">3</span> + <span class="number">3</span>; j++)&#123;</span><br><span class="line">                    <span class="keyword">if</span> (board[i][j] == <span class="string">'.'</span>) <span class="keyword">continue</span>;</span><br><span class="line">                    <span class="keyword">if</span> (book.containsKey(board[i][j]) &amp;&amp; !map.containsKey(board[i][j]))</span><br><span class="line">                        map.put(board[i][j], <span class="number">1</span>);</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DecodeWays</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 动态规划（类似Climbing Stairs问题，注意题目的输入是合法的encode，无需考虑不合法编码）：</span><br><span class="line">     * 对于当前位i(number数组头部额外分配一个)，考察前两位i-1, i-2：</span><br><span class="line">       递推式number[i] = number[i-1] + number[i-2]，但有以下限制：</span><br><span class="line">       1. s[i-1]!=0，否则number[i]=number[i-2]；</span><br><span class="line">       2. 在s[i-1]!=0基础上，s[i-2]!=0 &amp;&amp; (1&lt;=s[i-2,i-1]&lt;=26)，否则number[i]=number[i-1]。</span><br><span class="line">     * 参考：http://blog.csdn.net/worldwindjp/article/details/19938131</span><br><span class="line">     * <span class="doctag">@param</span> s</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numDecodings</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s==<span class="keyword">null</span> || s.length()==<span class="number">0</span> || s.charAt(<span class="number">0</span>)==<span class="string">'0'</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] number = <span class="keyword">new</span> <span class="keyword">int</span>[s.length()+<span class="number">1</span>];   <span class="comment">//额外分配一个</span></span><br><span class="line">        number[<span class="number">0</span>] = number[<span class="number">1</span>] = <span class="number">1</span>;  <span class="comment">//额外分配的number[0]存初始值，i从1开始</span></span><br><span class="line">        <span class="keyword">int</span> temp;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=s.length(); i++)&#123;</span><br><span class="line">            temp = Integer.parseInt(s.substring(i-<span class="number">1</span>, i));</span><br><span class="line">            <span class="keyword">if</span> (temp != <span class="number">0</span>) number[i] = number[i-<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (s.charAt(i-<span class="number">2</span>) != <span class="string">'0'</span>) &#123;</span><br><span class="line">                temp = Integer.parseInt(s.substring(i-<span class="number">2</span>, i));</span><br><span class="line">                <span class="keyword">if</span> (<span class="number">1</span>&lt;=temp &amp;&amp; temp&lt;=<span class="number">26</span>) number[i] += number[i-<span class="number">2</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> number[s.length()];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
@@ -299,13 +302,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/20/Sudoku Solver/" rel="prev">Sudoku Solver</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/18/Search Insert Position/" rel="next">Search Insert Position</a>
+              <a href="/2016/01/11/Subsets II - 求子集 II/" rel="next">Subsets II - 求子集 II</a>
             
           </div>
         </div>
@@ -357,8 +358,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/11/19/Valid Sudoku/"
-                   data-title="Valid Sudoku" data-url="http://eugeneyang.com/2015/11/19/Valid Sudoku/">
+              <div class="ds-thread" data-thread-key="2016/01/12/Decode Ways - 解码方式/"
+                   data-title="Decode Ways - 解码方式" data-url="http://eugeneyang.com/2016/01/12/Decode Ways - 解码方式/">
               </div>
             
           </div>
@@ -460,7 +461,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Valid_Sudoku"><span class="nav-number">1.</span> <span class="nav-text">Valid Sudoku</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Decode_Ways_-_解码方式"><span class="nav-number">1.</span> <span class="nav-text">Decode Ways - 解码方式</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
