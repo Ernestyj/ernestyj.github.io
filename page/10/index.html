@@ -221,6 +221,283 @@
           
           
             
+              <a class="post-title-link" href="/2015/11/29/Permutations - 全排列/" itemprop="url">
+                Permutations - 全排列
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-29T20:44:47+08:00" content="2015-11-29">
+            2015-11-29
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/29/Permutations - 全排列/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/29/Permutations - 全排列/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Permutations_-_全排列">Permutations - 全排列</h3><p><strong>Description</strong>: Given a collection of numbers, return all possible permutations.</p>
+<p> For example,<br> [1,2,3] have the following permutations:<br> [1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], and [3,2,1].</p>
+<p>回溯法：从集合依次选出每一个元素，作为排列的第一个元素，然后对剩余的元素进行全排列，如此递归处理。<br>时间复杂度：n! 空间复杂度：（in place置换）</p>
+<p>以abc为例子：</p>
+<ol>
+<li>a和a交换(固定a), 求后面bc的全排列： abc, acb。 求完后，a 和 b交换； 得到bac,开始第二轮</li>
+<li>b和b交换(固定b), 求后面ac的全排列： bac, bca。 求完后，b 和 c交换； 得到cab,开始第三轮</li>
+<li>c和c交换(固定c), 求后面ba的全排列： cab, cba.</li>
+</ol>
+<p>分析图：<a href="http://segmentfault.com/a/1190000002710424" target="_blank" rel="external">http://segmentfault.com/a/1190000002710424</a></p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Permutations</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> nums[] = &#123; <span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span> &#125;;</span><br><span class="line">        <span class="keyword">new</span> Permutations().permute(nums);</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; temp;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 回溯法：从集合依次选出每一个元素，作为排列的第一个元素，然后对剩余的元素进行全排列，如此递归处理。</span><br><span class="line">     * 时间复杂度：n! 空间复杂度：（in place置换）</span><br><span class="line">     * 以abc为例子：</span><br><span class="line">     1. a和a交换(固定a), 求后面bc的全排列： abc, acb。 求完后，a 和 b交换； 得到bac,开始第二轮</span><br><span class="line">     2. b和b交换(固定b), 求后面ac的全排列： bac, bca。 求完后，b 和 c交换； 得到cab,开始第三轮</span><br><span class="line">     3. c和c交换(固定c), 求后面ba的全排列： cab, cba.</span><br><span class="line">     * http://blog.csdn.net/randyjiawenjie/article/details/6313729</span><br><span class="line">     * <span class="doctag">@param</span> nums</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permute(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        permutation(nums, <span class="number">0</span>, nums.length);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">permutation</span><span class="params">(<span class="keyword">int</span>[] str, <span class="keyword">int</span> start, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (start == len - <span class="number">1</span>) &#123;</span><br><span class="line">            temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i ++) &#123;</span><br><span class="line">                temp.add(str[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            result.add(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt; len; i ++) &#123;</span><br><span class="line">                swap(str, start, i);</span><br><span class="line">                permutation(str, start + <span class="number">1</span>, len);</span><br><span class="line">                swap(str, start, i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] s, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = s[i];</span><br><span class="line">        s[i] = s[j];</span><br><span class="line">        s[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/11/28/Jump Game II - 跳数游戏2/" itemprop="url">
+                Jump Game II - 跳数游戏
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-28T20:44:47+08:00" content="2015-11-28">
+            2015-11-28
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/28/Jump Game II - 跳数游戏2/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/28/Jump Game II - 跳数游戏2/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Jump_Game_II_-_跳数游戏">Jump Game II - 跳数游戏</h3><p><strong>Description</strong>: Given an array of non-negative integers, you are initially positioned at the first index of the array.</p>
+<p> Each element in the array represents your maximum jump length at that position.</p>
+<p> Your goal is to reach the last index in the minimum number of jumps.</p>
+<p> For example:<br> Given array A = [2,3,1,1,4]<br> The minimum number of jumps to reach the last index is 2.<br> (Jump 1 step from index 0 to 1, then 3 steps to the last index.)</p>
+<p>首先明白，这个题只要我们求跳数，怎么跳、最后距离是多少都没让求，不要做无必要的计算。</p>
+<p>贪心思路：<br>last:用最小跳数jumps可达的最大距离；<br>curr:用jumps + 1跳可达的最大距离；（贪心值）<br>有curr = max(i+nums[i]), 0 &lt;= i &lt;= last</p>
+<p>分析图：<br><a href="http://www.cnblogs.com/lichen782/p/leetcode_Jump_Game_II.html" target="_blank" rel="external">http://www.cnblogs.com/lichen782/p/leetcode_Jump_Game_II.html</a></p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JumpGame</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">4</span>&#125;;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        System.out.println(<span class="keyword">new</span> JumpGame().jump(nums));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 首先明白，这个题只要我们求跳数，怎么跳、最后距离是多少都没让求，不要做无必要的计算。</span><br><span class="line">     * 分析图：http://www.cnblogs.com/lichen782/p/leetcode_Jump_Game_II.html</span><br><span class="line">     * 贪心：</span><br><span class="line">     * last:用最小跳数jumps可达的最大距离；</span><br><span class="line">     * curr:用jumps + 1跳可达的最大距离；（贪心值）</span><br><span class="line">     * 有curr = max(i+nums[i]), 0 &lt;= i &lt;= last</span><br><span class="line">     * <span class="doctag">@param</span> nums</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">jump</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> jumps = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> last = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> curr = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt; last) &#123;</span><br><span class="line">                ++jumps;</span><br><span class="line">                last = curr;</span><br><span class="line">            &#125;</span><br><span class="line">            curr = Math.max(curr, i + nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> jumps;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/11/26/Multiply Strings - 大整数乘法/" itemprop="url">
+                Multiply Strings - 大整数乘法
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-26T20:44:47+08:00" content="2015-11-26">
+            2015-11-26
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/26/Multiply Strings - 大整数乘法/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/26/Multiply Strings - 大整数乘法/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Multiply_Strings_-_大整数乘法">Multiply Strings - 大整数乘法</h3><p><strong>Description</strong>: Given two numbers represented as strings, return multiplication of the numbers as a string.<br>Note: The numbers can be arbitrarily large and are non-negative.</p>
+<p>思路：首先我们把每一位相乘，得到一个没有进位的临时结果，然后把临时结果从低位起依次进位。对于一个m位整数乘以n位整数的结果，最多只有m+n位。<br>要点：1. 字符串逆转问题；2. 进位（开辟m+n长度数组足以存储所有进位）；3. 结果最高位为0的情况。<br>参考图：<a href="http://www.cnblogs.com/TenosDoIt/p/3735309.html" target="_blank" rel="external">http://www.cnblogs.com/TenosDoIt/p/3735309.html</a></p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">    * http://www.cnblogs.com/TenosDoIt/p/3735309.html</span><br><span class="line">    * 首先我们把每一位相乘，得到一个没有进位的临时结果，然后把临时结果从低位起依次进位。</span><br><span class="line">    * 对于一个m位整数乘以n位整数的结果，最多只有m+n位。</span><br><span class="line">    * <span class="doctag">@param</span> num1</span><br><span class="line">    * <span class="doctag">@param</span> num2</span><br><span class="line">    * <span class="doctag">@return</span></span><br><span class="line">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">multiply</span><span class="params">(String num1, String num2)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (num1.equals(<span class="string">"0"</span>) || num2.equals(<span class="string">"0"</span>)) <span class="keyword">return</span> <span class="string">"0"</span>;</span><br><span class="line">       <span class="keyword">char</span>[] l = <span class="keyword">new</span> StringBuilder(num1).reverse().toString().toCharArray();</span><br><span class="line">       <span class="keyword">char</span>[] r = <span class="keyword">new</span> StringBuilder(num2).reverse().toString().toCharArray();</span><br><span class="line">       <span class="keyword">int</span>[] ints = <span class="keyword">new</span> <span class="keyword">int</span>[num1. length() + num2.length()];</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num1.length(); i++)&#123;</span><br><span class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; num2.length(); j++)&#123;</span><br><span class="line">               ints[i + j] += (l[i] - <span class="string">'0'</span>) * (r[j] - <span class="string">'0'</span>);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       StringBuilder builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ints.length; i++)&#123;</span><br><span class="line">           builder.append(ints[i] % <span class="number">10</span>);</span><br><span class="line">           <span class="keyword">if</span> (i + <span class="number">1</span> &lt; ints.length) ints[i + <span class="number">1</span>] += ints[i] / <span class="number">10</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (builder.charAt(ints.length - <span class="number">1</span>) == <span class="string">'0'</span>) builder.deleteCharAt(ints.length - <span class="number">1</span>);</span><br><span class="line">       <span class="keyword">return</span> builder.reverse().toString();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/11/25/Trapping Rain Water/" itemprop="url">
                 Trapping Rain Water
               </a>
@@ -389,290 +666,11 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/11/23/Combination Sum II (unique) - 组合数求和 II/" itemprop="url">
-                Combination Sum II (unique) - 组合数求和 II
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-11-23T20:44:47+08:00" content="2015-11-23">
-            2015-11-23
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/11/23/Combination Sum II (unique) - 组合数求和 II/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/23/Combination Sum II (unique) - 组合数求和 II/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Combination_Sum_II_(unique)_-_组合数求和_II">Combination Sum II (unique) - 组合数求和 II</h3><p><strong>Description</strong>: Given a collection of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T. Each number in C may only be used once in the combination.</p>
-<p> Note: All numbers (including target) will be positive integers.<br> Elements in a combination (a1, a2, … , ak) must be in non-descending order. (ie, a1 ≤ a2 ≤ … ≤ ak).<br> The solution set must not contain duplicate combinations.</p>
-<p> For example, given candidate set 10,1,2,7,6,1,5 and target 8,<br> A solution set is:<br> [1, 7]<br> [1, 2, 5]<br> [2, 6]<br> [1, 1, 6] </p>
-<p>思路：回溯法（与Combination Sum I的思路基本一致）。此题是典型的回溯法类型，注意元素不可以重复。</p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CombinationSumUnique</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;<span class="number">10</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">1</span>,<span class="number">5</span>&#125;;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        CombinationSumUnique instance = <span class="keyword">new</span> CombinationSumUnique();</span><br><span class="line">        instance.combinationSum2(nums, <span class="number">8</span>);</span><br><span class="line">        <span class="keyword">for</span> (List&lt;Integer&gt; ints : instance.result)&#123;</span><br><span class="line">            <span class="keyword">for</span> (Integer i : ints) System.out.print(i + <span class="string">" "</span>);</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; combinationSum2(<span class="keyword">int</span>[] candidates, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">if</span>(candidates == <span class="keyword">null</span> || candidates.length == <span class="number">0</span>) <span class="keyword">return</span> result;</span><br><span class="line">        Arrays.sort(candidates);</span><br><span class="line">        backTrack(candidates, target, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//入参candidates增序</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">backTrack</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (target == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span> (!result.contains(temp)) <span class="comment">//可能有重复结果</span></span><br><span class="line">                result.add(<span class="keyword">new</span> ArrayList&lt;&gt;(temp));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = k; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (target &lt; nums[i]) <span class="keyword">return</span>;</span><br><span class="line">            temp.add(nums[i]);</span><br><span class="line">            backTrack(nums, target - nums[i], i + <span class="number">1</span>);   <span class="comment">//传入i + 1而非i表明不可以重复</span></span><br><span class="line">            temp.remove(temp.size() - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/11/22/Combination Sum - 组合数求和/" itemprop="url">
-                Combination Sum - 组合数求和
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-11-22T20:44:47+08:00" content="2015-11-22">
-            2015-11-22
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/11/22/Combination Sum - 组合数求和/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/22/Combination Sum - 组合数求和/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Combination_Sum_-_组合数求和">Combination Sum - 组合数求和</h3><p><strong>Description</strong>: Given a set of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.<br> The same repeated number may be chosen from C unlimited number of times.</p>
-<p> Note:</p>
-<ol>
-<li>All numbers (including target) will be positive temp.</li>
-<li>Elements in a combination (a1, a2, … , ak) must be in non-descending order. (ie, a1 ≤ a2 ≤ … ≤ ak).</li>
-<li><p>The solution set must not contain duplicate combinations.</p>
-<p>For example, given candidate set 2,3,6,7 and target 7,<br>A solution set is:<br>[7]<br>[2, 2, 3]</p>
-</li>
-</ol>
-<p>思路：回溯法。此题是典型的回溯法类型，注意元素可以重复。</p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CombinationSum</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        CombinationSum instance = <span class="keyword">new</span> CombinationSum();</span><br><span class="line">        instance.combinationSum(nums, <span class="number">7</span>);</span><br><span class="line">        <span class="keyword">for</span> (List&lt;Integer&gt; ints : instance.result)&#123;</span><br><span class="line">            <span class="keyword">for</span> (Integer i : ints) System.out.print(i + <span class="string">" "</span>);</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; combinationSum(<span class="keyword">int</span>[] candidates, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">if</span>(candidates == <span class="keyword">null</span> || candidates.length == <span class="number">0</span>) <span class="keyword">return</span> result;</span><br><span class="line">        Arrays.sort(candidates);</span><br><span class="line">        backTrack(candidates, target, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//入参candidates增序</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">backTrack</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (target == <span class="number">0</span>)&#123;</span><br><span class="line">            result.add(<span class="keyword">new</span> ArrayList&lt;&gt;(temp));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = k; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (target &lt; nums[i]) <span class="keyword">return</span>;</span><br><span class="line">            temp.add(nums[i]);</span><br><span class="line">            backTrack(nums, target - nums[i], i);   <span class="comment">//传入i而非i + 1表明可以重复</span></span><br><span class="line">            temp.remove(temp.size() - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/11/21/Longest Substring Without Repeating Characters - 最长无重复子串/" itemprop="url">
-                Longest Substring Without Repeating Characters - 最长无重复子串
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-11-21T20:44:47+08:00" content="2015-11-21">
-            2015-11-21
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/11/21/Longest Substring Without Repeating Characters - 最长无重复子串/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/21/Longest Substring Without Repeating Characters - 最长无重复子串/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Longest_Substring_Without_Repeating_Characters_-_最长无重复子串">Longest Substring Without Repeating Characters - 最长无重复子串</h3><p><strong>Description</strong>: Given a string, find the length of the longest substring without repeating characters.</p>
-<p>For example, the longest substring without repeating letters for “abcabcbb” is “abc”, which the length is 3. For “bbbbb” the longest substring is “b”, with the length of 1.</p>
-<p>思路：</p>
-<ol>
-<li>滑动窗口法：维护一个窗口，每次关注窗口中的字符串，在每次判断中，左窗口和右窗口选择其一向前移动。同样是维护一个HashSet，①正常情况下移动右窗口，如果没有出现重复则继续移动右窗口；②如果发现重复字符，则说明当前窗口中的串已经不满足要求，继续移动右窗口不可能得到更好的结果，此时移动左窗口，直到不再有重复字符为止，中间跳过的这些串中不会有更好的结果，因为他们不是重复就是更短。<br>复杂度：因为左窗口和右窗口都只向前，所以两个窗口都对每个元素访问不超过一遍，因此时间复杂度为O(2*n)=O(n),是线性算法。空间复杂度为HashSet的size,也是O(n)。<br>参考：<a href="http://blog.csdn.net/linhuanmars/article/details/19949159" target="_blank" rel="external">http://blog.csdn.net/linhuanmars/article/details/19949159</a></li>
-<li>每次定一个起点pre，然后从起点走到有重复字符位置，过程用一个HashSet维护当前字符集，认为是constant操作，这样算法要进行两层循环，复杂度是O(n^2)。<br>参考：<a href="http://blog.csdn.net/likecool21/article/details/10858799" target="_blank" rel="external">http://blog.csdn.net/likecool21/article/details/10858799</a> 中的解析图</li>
-</ol>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LongestSubstringWithoutRepeatingCharacters</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s = <span class="string">"bbbbb"</span>;</span><br><span class="line">        <span class="keyword">int</span> x = <span class="keyword">new</span> LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring(s);</span><br><span class="line"><span class="comment">//        int x = lengthOfLongestSubstring1(s);</span></span><br><span class="line">        System.out.print(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 滑动窗口法 TODO</span><br><span class="line">     * 思路：维护一个窗口，每次关注窗口中的字符串，在每次判断中，左窗口和右窗口选择其一向前移动。</span><br><span class="line">     * 同样是维护一个HashSet,①正常情况下移动右窗口，如果没有出现重复则继续移动右窗口；</span><br><span class="line">     * ②如果发现重复字符，则说明当前窗口中的串已经不满足要求，继续移动右窗口不可能得到更好的结果，</span><br><span class="line">     * 此时移动左窗口，直到不再有重复字符为止，中间跳过的这些串中不会有更好的结果，</span><br><span class="line">     * 因为他们不是重复就是更短。</span><br><span class="line">     *</span><br><span class="line">     * 复杂度：因为左窗口和右窗口都只向前，所以两个窗口都对每个元素访问不超过一遍，</span><br><span class="line">     * 因此时间复杂度为O(2*n)=O(n),是线性算法。空间复杂度为HashSet的size,也是O(n)。</span><br><span class="line">     * http://blog.csdn.net/linhuanmars/article/details/19949159</span><br><span class="line">     * <span class="doctag">@param</span> s</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s == <span class="keyword">null</span> || s.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (s.length() == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">char</span>[] chars = s.toCharArray();</span><br><span class="line">        Set&lt;Character&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> r = <span class="number">0</span>, l = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (r &lt; chars.length)&#123;</span><br><span class="line">            <span class="keyword">if</span> (!set.contains(chars[r])) set.add(chars[r]);</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (max &lt; r - l) max = r - l;</span><br><span class="line">                <span class="keyword">while</span> (chars[r] != chars[l])&#123;</span><br><span class="line">                    set.remove(chars[l]);</span><br><span class="line">                    l++;</span><br><span class="line">                &#125;</span><br><span class="line">                l++;</span><br><span class="line">            &#125;</span><br><span class="line">            r++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.max(max, r - l);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 此算法利于理解</span><br><span class="line">     * 思路：每次定一个起点pre，然后从起点走到有重复字符位置，过程用一个HashSet维护当前字符集，</span><br><span class="line">     * 认为是constant操作，这样算法要进行两层循环，复杂度是O(n^2)</span><br><span class="line">     * 参考http://blog.csdn.net/likecool21/article/details/10858799中的图</span><br><span class="line">     * <span class="doctag">@param</span> s</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring1</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s == <span class="keyword">null</span> || s.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (s.length() == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">char</span>[] arr = s.toCharArray();</span><br><span class="line">        HashMap&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Character, Integer&gt;();</span><br><span class="line">        <span class="keyword">int</span> pre = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!map.containsKey(arr[i])) &#123;</span><br><span class="line">                map.put(arr[i], i);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                pre = Math.max(pre, map.size());</span><br><span class="line">                i = map.get(arr[i]);</span><br><span class="line">                map.clear();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.max(pre, map.size());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/11/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/9/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/11/">&raquo;</a>
   </nav>
 
  </div>
@@ -706,7 +704,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

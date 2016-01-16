@@ -221,6 +221,281 @@
           
           
             
+              <a class="post-title-link" href="/2016/01/15/Binary Tree Inorder Traversal - 二叉树中序遍历/" itemprop="url">
+                Binary Tree Inorder Traversal - 二叉树中序遍历
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-01-15T20:44:47+08:00" content="2016-01-15">
+            2016-01-15
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/01/15/Binary Tree Inorder Traversal - 二叉树中序遍历/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/15/Binary Tree Inorder Traversal - 二叉树中序遍历/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Binary_Tree_Inorder_Traversal_-_二叉树中序遍历">Binary Tree Inorder Traversal - 二叉树中序遍历</h3><p><strong>Description</strong>: Given a binary tree, return the inorder traversal of its nodes’ values.</p>
+<p>For example:<br> Given binary tree {1,#,2,3},<br> 1<br>　\<br>  　　2<br> 　 /<br> 3<br> return [1,3,2].</p>
+<p> Note: Recursive solution is trivial, could you do it iteratively?</p>
+<p>思路：<br>递归：中序遍历左+访问根节点+中序遍历右；<br>迭代：从根节点开始入栈，只要存在左节点就一直入栈；不存在左节点就出栈访问节点值，然后继续遍历出栈那个节点的右节点。</p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BinaryTreeInorderTraversal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//Definition for a binary tree node.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     *递归:中序遍历左+访问根节点+中序遍历右</span><br><span class="line">     * <span class="doctag">@param</span> root</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        inorderTraversalHelper(root, result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">inorderTraversalHelper</span><span class="params">(TreeNode root, List&lt;Integer&gt; result)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        inorderTraversalHelper(root.left, result);</span><br><span class="line">        result.add(root.val);</span><br><span class="line">        inorderTraversalHelper(root.right, result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 迭代:从根节点开始入栈，只要存在左节点就一直入栈;</span><br><span class="line">     * 不存在左节点就出栈访问节点值，然后继续遍历出栈那个节点的右节点。</span><br><span class="line">     * <span class="doctag">@param</span> root</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">inorderTraversal1</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack();</span><br><span class="line">        TreeNode node = root;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>)&#123;</span><br><span class="line">            <span class="keyword">while</span> (node != <span class="keyword">null</span>)&#123;</span><br><span class="line">                stack.push(node);</span><br><span class="line">                node = node.left;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (stack.isEmpty()) <span class="keyword">break</span>;</span><br><span class="line">            node = stack.pop();</span><br><span class="line">            result.add(node.val);</span><br><span class="line">            node = node.right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/01/14/Restore IP Addresses - 重建IP地址/" itemprop="url">
+                Restore IP Addresses - 重建IP地址
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-01-14T20:44:47+08:00" content="2016-01-14">
+            2016-01-14
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/01/14/Restore IP Addresses - 重建IP地址/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/14/Restore IP Addresses - 重建IP地址/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Restore_IP_Addresses_-_重建IP地址">Restore IP Addresses - 重建IP地址</h3><p><strong>Description</strong>: Given a string containing only digits, restore it by returning all possible valid IP address combinations.</p>
+<p> For example:<br> Given “25525511135”,<br> return [“255.255.11.135”, “255.255.111.35”]. (Order does not matter)</p>
+<p>思路：回溯法。一个有效的IP地址由4个数字组成，每个数字在0-255之间。对于其中的2位数或3位数，不能以0开头。所以对于以s[i]开头的数字有3种可能：</p>
+<pre><code><span class="number">1.</span> 一位s[i]；
+<span class="number">2.</span> 两位s[i:i+<span class="number">1</span>]，s[i]!=<span class="number">0</span>时；
+<span class="number">3.</span> 三位s[i:i+<span class="number">2</span>]，s[i]!=<span class="number">0</span>，且s[i : i+<span class="number">2</span>] &lt;= <span class="number">255</span>；
+根据以上规律，对s从头开始进行DFS寻找<span class="number">4</span>个数字即可。
+</code></pre><p>参考：<a href="http://bangbingsyb.blogspot.com/2014/11/leetcode-restore-ip-addresses.html" target="_blank" rel="external">http://bangbingsyb.blogspot.com/2014/11/leetcode-restore-ip-addresses.html</a></p>
+<p>下面的判定方法对开头涉及0的、有范围限制的数值类型值有一定通用性（Decode Ways中也可以使用），值得借鉴：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.charAt(<span class="number">0</span>) == <span class="string">'0'</span>)</span><br><span class="line">            <span class="keyword">return</span> s.equals(<span class="string">"0"</span>); <span class="comment">// to eliminate cases like "00", "10"</span></span><br><span class="line">        <span class="keyword">int</span> digit = Integer.valueOf(s);</span><br><span class="line">        <span class="keyword">return</span> digit &gt;= <span class="number">0</span> &amp;&amp; digit &lt;= <span class="number">255</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RestoreIPAddresses</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**参考：http://bangbingsyb.blogspot.com/2014/11/leetcode-restore-ip-addresses.html</span><br><span class="line">     * 回溯法：一个有效的IP地址由4个数字组成，每个数字在0-255之间。对于其中的2位数或3位数，不能以0开头。</span><br><span class="line">     所以对于以s[i]开头的数字有3种可能：</span><br><span class="line">     1. 一位s[i]；</span><br><span class="line">     2. 两位s[i:i+1]，s[i]!=0时；</span><br><span class="line">     3. 三位s[i:i+2]，s[i]!=0，且s[i : i+2] &lt;= 255；</span><br><span class="line">     根据以上规律，对s从头开始进行DFS寻找4个数字即可。</span><br><span class="line">     * <span class="doctag">@param</span> s</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">restoreIpAddresses</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        dfs(result, list, s, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(List&lt;String&gt; result, List&lt;String&gt; list, String s, <span class="keyword">int</span> start)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(list.size() == <span class="number">4</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(start != s.length()) <span class="keyword">return</span>;</span><br><span class="line">            StringBuilder builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;=<span class="number">2</span>; i++)&#123;</span><br><span class="line">                builder.append(list.get(i));</span><br><span class="line">                builder.append(<span class="string">"."</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            builder.append(list.get(<span class="number">3</span>));</span><br><span class="line">            result.add(builder.toString());</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=start; i&lt;s.length() &amp;&amp; i&lt;start+<span class="number">3</span>; i++)&#123;</span><br><span class="line">            String tmp = s.substring(start, i+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(isValid(tmp))&#123;</span><br><span class="line">                list.add(tmp);</span><br><span class="line">                dfs(result, list, s, i+<span class="number">1</span>);</span><br><span class="line">                list.remove(list.size()-<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 非常简洁的判定方法，注意学习</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.charAt(<span class="number">0</span>) == <span class="string">'0'</span>)</span><br><span class="line">            <span class="keyword">return</span> s.equals(<span class="string">"0"</span>); <span class="comment">// to eliminate cases like "00", "10"</span></span><br><span class="line">        <span class="keyword">int</span> digit = Integer.valueOf(s);</span><br><span class="line">        <span class="keyword">return</span> digit &gt;= <span class="number">0</span> &amp;&amp; digit &lt;= <span class="number">255</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/01/13/Reverse Linked List II - 逆转链表/" itemprop="url">
+                Reverse Linked List II - 逆转链表
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-01-13T20:44:47+08:00" content="2016-01-13">
+            2016-01-13
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/01/13/Reverse Linked List II - 逆转链表/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/13/Reverse Linked List II - 逆转链表/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Reverse_Linked_List_II_-_逆转链表">Reverse Linked List II - 逆转链表</h3><p><strong>Description</strong>: Reverse a linked list from position m to n. Do it in-place and in one-pass.</p>
+<p> For example:<br> Given 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2 and n = 4,<br> return 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL.</p>
+<p> Note:<br> Given m, n satisfy the following condition: 1 ≤ m ≤ n ≤ length of list.</p>
+<p>思路：与Reverse Nodes In K Group思路类似。</p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReverseLinkedListII</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Definition for singly-linked list.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        ListNode next;</span><br><span class="line">        ListNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 与Reverse Nodes In K Group思路类似，</span><br><span class="line">     * Reverse a link list between pre and next exclusively</span><br><span class="line">     * a linked list:</span><br><span class="line">     * 0-&gt;1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;6</span><br><span class="line">     * |           |</span><br><span class="line">     * pre        next</span><br><span class="line">     * after call pre = reverse(pre, next)</span><br><span class="line">     * 0-&gt;3-&gt;2-&gt;1-&gt;4-&gt;5-&gt;6</span><br><span class="line">     *          |  |</span><br><span class="line">     *          pre next</span><br><span class="line">     * <span class="doctag">@param</span> head</span><br><span class="line">     * <span class="doctag">@param</span> m</span><br><span class="line">     * <span class="doctag">@param</span> n</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseBetween</span><span class="params">(ListNode head, <span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        ListNode dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>);   <span class="comment">//因为有“放到链表首位”的操作，需要一个dummy的头节点</span></span><br><span class="line">        dummy.next = head;</span><br><span class="line">        ListNode pre = <span class="keyword">null</span>;</span><br><span class="line">        ListNode cur = dummy;</span><br><span class="line">        ListNode last = <span class="keyword">null</span>;   <span class="comment">//where first will be doomed "last"</span></span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt;= n)&#123;</span><br><span class="line">            <span class="keyword">if</span> (i == m-<span class="number">1</span>)&#123;  <span class="comment">//逆转开始</span></span><br><span class="line">                pre = cur;</span><br><span class="line">                last = pre.next;</span><br><span class="line">                cur = last.next;</span><br><span class="line">                i+=<span class="number">2</span>;</span><br><span class="line">                <span class="keyword">while</span> (i &lt;= n)&#123;</span><br><span class="line">                    last.next = cur.next;</span><br><span class="line">                    cur.next = pre.next;</span><br><span class="line">                    pre.next = cur;</span><br><span class="line">                    cur = last.next;</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            cur = cur.next;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/01/12/Decode Ways - 解码方式/" itemprop="url">
                 Decode Ways - 解码方式
               </a>
@@ -396,286 +671,11 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/01/10/Gray Code - 格雷码/" itemprop="url">
-                Gray Code - 格雷码
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-01-10T20:44:47+08:00" content="2016-01-10">
-            2016-01-10
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/01/10/Gray Code - 格雷码/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/10/Gray Code - 格雷码/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Gray_Code_-_格雷码">Gray Code - 格雷码</h3><p><strong>Description</strong>: The gray code is a binary numeral system where two successive values differ in only one bit.</p>
-<p>Given a non-negative integer n representing the total number of bits in the code, print the sequence of gray code. A gray code sequence must begin with 0.</p>
-<p> For example, given n = 2, return [0,1,3,2].</p>
-<p>注意：格雷码是唯一的（如果每次只是与上一个数有一个位不同的话，则会有很多种组合结果）。因此另一种解法是数学解：第i个数可以由如下公式产生，(i&gt;&gt;1)^i。</p>
-<p>这里主要讨论递归法。<br>规律：n位格雷码的前一半是：n-1位的所有格雷码；而后一半是：前一半逆序后，均加上2^(n-1)。<br>示例：n=3: 000, 001, 011, 010 | 110, 111, 101, 100 (0, 1, 3, 2 | 6, 7, 5, 4)</p>
-<p>参考：<a href="http://fisherlei.blogspot.com/2012/12/leetcode-gray-code.html" target="_blank" rel="external">http://fisherlei.blogspot.com/2012/12/leetcode-gray-code.html</a></p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GrayCode</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** http://fisherlei.blogspot.com/2012/12/leetcode-gray-code.html</span><br><span class="line">     * 注意：格雷码是唯一的（如果每次只是与上一个数有一个位不同的话，则会有很多种组合结果）。</span><br><span class="line">     因此另一种解法是数学解：第i个数可以由如下公式产生，(i&gt;&gt;1)^i。</span><br><span class="line">     * 递归法：</span><br><span class="line">     * 规律：n位格雷码的前一半是：n-1位的所有格雷码；而后一半是：前一半逆序后，均加上2^(n-1)。</span><br><span class="line">     * 示例：n=3: 000, 001, 011, 010 | 110, 111, 101, 100 (0, 1, 3, 2 | 6, 7, 5, 4)</span><br><span class="line">     * <span class="doctag">@param</span> n</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">grayCode</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>)&#123;</span><br><span class="line">            result.add(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        result = grayCode(n-<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">int</span> adds = <span class="number">1</span> &lt;&lt; (n-<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">int</span> size = result.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=size-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">            result.add(result.get(i) + adds);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/01/09/Merge Sorted Array - 合并有序数组/" itemprop="url">
-                Merge Sorted Array - 合并有序数组
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-01-09T20:44:47+08:00" content="2016-01-09">
-            2016-01-09
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/01/09/Merge Sorted Array - 合并有序数组/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/09/Merge Sorted Array - 合并有序数组/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Merge_Sorted_Array_-_合并有序数组">Merge Sorted Array - 合并有序数组</h3><p><strong>Description</strong>: Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.</p>
-<p>Note: You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2. The number of elements initialized in nums1 and nums2 are m and n respectively.</p>
-<p>思路：双指针遍历。</p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeSortedArray</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span> m, <span class="keyword">int</span>[] nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] num1Copy = Arrays.copyOf(nums1, m);</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>, j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;m)&#123;</span><br><span class="line">            <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">if</span> (num1Copy[i] &lt; nums2[j])&#123;</span><br><span class="line">                nums1[i+j] = num1Copy[i];</span><br><span class="line">                i++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                nums1[i+j] = nums2[j];</span><br><span class="line">                j++;</span><br><span class="line">                <span class="keyword">if</span> (!(j&lt;n)) <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (i&lt;m)&#123;</span><br><span class="line">            nums1[i+j] = num1Copy[i];</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (j&lt;n)&#123;</span><br><span class="line">            nums1[i+j] = nums2[j];</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/01/08/Scramble String - 字符串重组/" itemprop="url">
-                Scramble String - 字符串重组
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-01-08T20:44:47+08:00" content="2016-01-08">
-            2016-01-08
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/01/08/Scramble String - 字符串重组/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/08/Scramble String - 字符串重组/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Scramble_String_-_字符串重组">Scramble String - 字符串重组</h3><p><strong>Description</strong>: Given a string s1, we may represent it as a binary tree by partitioning it to two non-empty substrings recursively. Given two strings s1 and s2 of the same length, determine if s2 is a scrambled string of s1.</p>
-<p>原题链接：<a href="https://leetcode.com/problems/scramble-string/" target="_blank" rel="external">https://leetcode.com/problems/scramble-string/</a></p>
-<p>题解：<br>方法一：递归解法：时间复杂度最差为O(3^n)，要通过OJ需要加上剪枝条件：把两个字符串的字符排序后，然后比较是否相同。</p>
-<p>方法二：三维动态规划解法：提出维护量res[i][j][n]，其中i是s1的起始字符，j是s2的起始字符，而n是当前的字符串长度，res[i][j][len]表示的是以i和j分别为s1和s2起点的长度为len的字符串是不是互为scramble。</p>
-<p>递推式：首先是把当前s1[i…i+len-1]字符串劈一刀分成两部分，然后分两种情况：<br>第一种是左边和s2[j…j+len-1]左边部分是不是scramble，以及右边和s2[j…j+len-1]右边部分是不是scramble；<br>第二种情况是左边和s2[j…j+len-1]右边部分是不是scramble，以及右边和s2[j…j+len-1]左边部分是不是scramble。<br>如果以上两种情况有一种成立，说明s1[i…i+len-1]和s2[j…j+len-1]是scramble的。<br>上面说的是劈一刀的情况，对于s1[i…i+len-1]我们有len-1种劈法，在这些劈法中只要有一种成立，那么两个串就是scramble的。</p>
-<p>总结：res[i][j][len] |= (res[i][j][k]&amp;&amp;res[i+k][j+k][len-k] || res[i][j+len-k][k]&amp;&amp;res[i+k][j][len-k]),1&lt;=k&lt;len，也就是对于所有len-1种劈法的结果求或运算。</p>
-<p>复杂度：因为信息都是计算过的，对于每种劈法只需要常量操作，因此求解递推式需要线性时间（因为len-1种劈法）。如此总时间复杂度因为是三维动态规划需要三层循环，加上每一步需要线行时间求解递推式，所以是O(n\^4)。空间复杂度是O(n\^3)。</p>
-<p>参考：<a href="http://blog.csdn.net/fightforyourdream/article/details/17707187" target="_blank" rel="external">http://blog.csdn.net/fightforyourdream/article/details/17707187</a></p>
-<p>完整的java代码如下（不包括方法一）：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScrambleString</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * http://blog.csdn.net/fightforyourdream/article/details/17707187</span><br><span class="line">     * 递归解法：时间复杂度最差为O(3^n)，要通过OJ需要加上剪枝条件：把两个字符串的字符排序后，然后比较是否相同。</span><br><span class="line">     * 三维动态规划解法：提出维护量res[i][j][n]，其中i是s1的起始字符，j是s2的起始字符，而n是当前的字符串长度，</span><br><span class="line">      res[i][j][len]表示的是以i和j分别为s1和s2起点的长度为len的字符串是不是互为scramble。</span><br><span class="line">     * 递推式：首先是把当前s1[i...i+len-1]字符串劈一刀分成两部分，然后分两种情况：</span><br><span class="line">      第一种是左边和s2[j...j+len-1]左边部分是不是scramble，以及右边和s2[j...j+len-1]右边部分是不是scramble；</span><br><span class="line">      第二种情况是左边和s2[j...j+len-1]右边部分是不是scramble，以及右边和s2[j...j+len-1]左边部分是不是scramble。</span><br><span class="line">      如果以上两种情况有一种成立，说明s1[i...i+len-1]和s2[j...j+len-1]是scramble的。</span><br><span class="line">     上面说的是劈一刀的情况，对于s1[i...i+len-1]我们有len-1种劈法，在这些劈法中只要有一种成立，那么两个串就是scramble的。</span><br><span class="line">     总结：res[i][j][len] |= (res[i][j][k]&amp;&amp;res[i+k][j+k][len-k] || res[i][j+len-k][k]&amp;&amp;res[i+k][j][len-k]),1&lt;=k&lt;len，</span><br><span class="line">     也就是对于所有len-1种劈法的结果求或运算。</span><br><span class="line">     * 复杂度：因为信息都是计算过的，对于每种劈法只需要常量操作，因此求解递推式需要线性时间（因为len-1种劈法）。</span><br><span class="line">     如此总时间复杂度因为是三维动态规划需要三层循环，加上每一步需要线行时间求解递推式，所以是O(n^4)。空间复杂度是O(n^3)。</span><br><span class="line">     * <span class="doctag">@param</span> s1</span><br><span class="line">     * <span class="doctag">@param</span> s2</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isScramble</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = s1.length();</span><br><span class="line">        <span class="keyword">if</span>(len != s2.length()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">boolean</span>[][][] canScramble = <span class="keyword">new</span> <span class="keyword">boolean</span>[len][len][len+<span class="number">1</span>];   <span class="comment">// i,j with sub length</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;len; i++) &#123;  <span class="comment">// subLen=1</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;len; j++) &#123;</span><br><span class="line">                <span class="comment">// substring start from i with length 1, compared with substring start from j with length 1</span></span><br><span class="line">                canScramble[i][j][<span class="number">1</span>] = s1.charAt(i) == s2.charAt(j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> subLen=<span class="number">2</span>; subLen&lt;=len; subLen++) &#123;</span><br><span class="line">            <span class="comment">// (end_pos=i+subLen-1) &lt;= len-1, so i &lt;= len-subLen</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;=len-subLen; i++) &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;=len-subLen; j++) &#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> p=<span class="number">1</span>; p&lt;subLen; p++) &#123;   <span class="comment">// split position</span></span><br><span class="line">                        canScramble[i][j][subLen] |= (canScramble[i][j][p] &amp;&amp; canScramble[i+p][j+p][subLen-p]) ||</span><br><span class="line">                                (canScramble[i][j+subLen-p][p] &amp;&amp; canScramble[i+p][j][subLen-p]);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> canScramble[<span class="number">0</span>][<span class="number">0</span>][len];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
   </nav>
 
  </div>
@@ -709,7 +709,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">73</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
