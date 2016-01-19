@@ -4,8 +4,32 @@
 
     
   <url>
+    <loc>http://eugeneyang.com/2016/01/19/Recover%20Binary%20Search%20Tree%20-%20%E4%BF%AE%E5%A4%8D%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</loc>
+    <lastmod>2016-01-19T12:45:33.031Z</lastmod>
+    <data>
+        <display>
+        <title>Recover Binary Search Tree - 修复二叉搜索树</title>
+        <pubTime>2016-01-19T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://eugeneyang.com/2016/01/18/Validate%20Binary%20Search%20Tree%20-%20%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</loc>
-    <lastmod>2016-01-18T12:29:24.825Z</lastmod>
+    <lastmod>2016-01-19T12:45:33.029Z</lastmod>
     <data>
         <display>
         <title>Validate Binary Search Tree - 验证二叉搜索树</title>

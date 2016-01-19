@@ -41,28 +41,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Rotate Image - 图像旋转Description: You are given an n x n 2D matrix representing an image. Rotate the image by 90 degrees (clockwise).
- Follow up: Could you do this in-place?
-思路：先转置再行逆转。
-完整的java代码如下：
-123">
+<meta name="description" content="Recover Binary Search Tree - 修复二叉搜索树Description: Two elements of a binary search tree (BST) are swapped by mistake. Recover the tree without changing its structure.
+Note:A solution using O(n) space is">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Rotate Image - 图像旋转">
-<meta property="og:url" content="http://eugeneyang.com/2015/12/01/Rotate Image - 图像旋转/index.html">
+<meta property="og:title" content="Recover Binary Search Tree - 修复二叉搜索树">
+<meta property="og:url" content="http://eugeneyang.com/2016/01/19/Recover Binary Search Tree - 修复二叉搜索树/index.html">
 <meta property="og:site_name" content="Eugene's Blog">
-<meta property="og:description" content="Rotate Image - 图像旋转Description: You are given an n x n 2D matrix representing an image. Rotate the image by 90 degrees (clockwise).
- Follow up: Could you do this in-place?
-思路：先转置再行逆转。
-完整的java代码如下：
-123">
-<meta property="og:updated_time" content="2015-12-01T07:27:39.232Z">
+<meta property="og:description" content="Recover Binary Search Tree - 修复二叉搜索树Description: Two elements of a binary search tree (BST) are swapped by mistake. Recover the tree without changing its structure.
+Note:A solution using O(n) space is">
+<meta property="og:updated_time" content="2016-01-19T12:45:33.031Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rotate Image - 图像旋转">
-<meta name="twitter:description" content="Rotate Image - 图像旋转Description: You are given an n x n 2D matrix representing an image. Rotate the image by 90 degrees (clockwise).
- Follow up: Could you do this in-place?
-思路：先转置再行逆转。
-完整的java代码如下：
-123">
+<meta name="twitter:title" content="Recover Binary Search Tree - 修复二叉搜索树">
+<meta name="twitter:description" content="Recover Binary Search Tree - 修复二叉搜索树Description: Two elements of a binary search tree (BST) are swapped by mistake. Recover the tree without changing its structure.
+Note:A solution using O(n) space is">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -74,7 +65,7 @@
 
 
 
-  <title> Rotate Image - 图像旋转 | Eugene's Blog </title>
+  <title> Recover Binary Search Tree - 修复二叉搜索树 | Eugene's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -232,7 +223,7 @@
           
           
             
-              Rotate Image - 图像旋转
+              Recover Binary Search Tree - 修复二叉搜索树
             
           
         </h1>
@@ -241,8 +232,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-12-01T20:44:47+08:00" content="2015-12-01">
-            2015-12-01
+          <time itemprop="dateCreated" datetime="2016-01-19T20:44:47+08:00" content="2016-01-19">
+            2016-01-19
           </time>
         </span>
 
@@ -267,8 +258,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/12/01/Rotate Image - 图像旋转/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/01/Rotate Image - 图像旋转/" itemprop="commentsCount"></span>
+              <a href="/2016/01/19/Recover Binary Search Tree - 修复二叉搜索树/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/19/Recover Binary Search Tree - 修复二叉搜索树/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -283,11 +274,12 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="Rotate_Image_-_图像旋转">Rotate Image - 图像旋转</h3><p><strong>Description</strong>: You are given an n x n 2D matrix representing an image.<br> Rotate the image by 90 degrees (clockwise).</p>
-<p> Follow up: Could you do this in-place?</p>
-<p>思路：先转置再行逆转。</p>
+        <span itemprop="articleBody"><h3 id="Recover_Binary_Search_Tree_-_修复二叉搜索树">Recover Binary Search Tree - 修复二叉搜索树</h3><p><strong>Description</strong>: Two elements of a binary search tree (BST) are swapped by mistake. Recover the tree without changing its structure.</p>
+<p>Note:<br>A solution using O(n) space is pretty straight forward. Could you devise a constant space solution?</p>
+<p> 思路：<br> 1 空间复杂度O(1)：双指针；<br> 2 空间复杂度O(n)：借助数组。</p>
+<p>双指针方法参考：<a href="http://yucoding.blogspot.com/2013/03/leetcode-question-75-recover-binary.html" target="_blank" rel="external">http://yucoding.blogspot.com/2013/03/leetcode-question-75-recover-binary.html</a></p>
 <p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RotateImage</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] matrix = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,&#123;<span class="number">3</span>,<span class="number">4</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">int</span> len = matrix.length;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        <span class="keyword">new</span> RotateImage().rotate(matrix);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; j++)&#123;</span><br><span class="line">                System.out.print(matrix[i][j] + <span class="string">" "</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//先转置再行逆转</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = matrix.length;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; len; j++)&#123;</span><br><span class="line">                reverseSwap(matrix, i, j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len / <span class="number">2</span>; j++)&#123;</span><br><span class="line">                colSwap(matrix, i, j, len);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">reverseSwap</span><span class="params">(<span class="keyword">int</span>[][] matrix, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = matrix[i][j];</span><br><span class="line">        matrix[i][j] = matrix[j][i];</span><br><span class="line">        matrix[j][i] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">colSwap</span><span class="params">(<span class="keyword">int</span>[][] matrix, <span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = matrix[i][j];</span><br><span class="line">        matrix[i][j] = matrix[i][len - j - <span class="number">1</span>];</span><br><span class="line">        matrix[i][len - j - <span class="number">1</span>] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RecoverBinarySearchTree</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Definition for a binary tree node.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 空间复杂度O(1),注意pre存的是中序次序的上一个节点</span><br><span class="line">     * 示例:The inorder traversal is :  1 3 4 6 7 8 10 13 14</span><br><span class="line">     * If we change the value 4 and 8:  1 3 (8) 6 7 (4) 10 13 14</span><br><span class="line">     * 参考:http://yucoding.blogspot.com/2013/03/leetcode-question-75-recover-binary.html</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">private</span> TreeNode first=<span class="keyword">null</span>, second=<span class="keyword">null</span>, pre=<span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">recoverTree</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        inOrder(root);</span><br><span class="line">        <span class="keyword">int</span> temp = first.val;</span><br><span class="line">        first.val = second.val;</span><br><span class="line">        second.val = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">inOrder</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        inOrder(root.left);</span><br><span class="line">        <span class="keyword">if</span> (pre == <span class="keyword">null</span>) pre = root;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (pre.val &gt; root.val)&#123;</span><br><span class="line">                <span class="keyword">if</span> (first == <span class="keyword">null</span>) first = pre; <span class="comment">//第一个错误节点:当前节点的上一节点</span></span><br><span class="line">                second = root;<span class="comment">//第二个错误节点:当前节点</span></span><br><span class="line">            &#125;</span><br><span class="line">            pre = root;</span><br><span class="line">        &#125;</span><br><span class="line">        inOrder(root.right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 空间复杂度O(n)</span><br><span class="line">     * <span class="doctag">@param</span> root</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">recoverTree1</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; ints = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;TreeNode&gt; nodes = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        inOrderTraverse(root, ints, nodes);</span><br><span class="line">        Collections.sort(ints);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;ints.size(); i++)&#123;</span><br><span class="line">            nodes.get(i).val = ints.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">inOrderTraverse</span><span class="params">(TreeNode root, List&lt;Integer&gt; ints, List&lt;TreeNode&gt; nodes)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root==<span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        inOrderTraverse(root.left, ints, nodes);</span><br><span class="line">        ints.add(root.val);</span><br><span class="line">        nodes.add(root);</span><br><span class="line">        inOrderTraverse(root.right, ints, nodes);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
@@ -309,13 +301,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/12/02/Group Anagrams - 易位构词分组/" rel="prev">Group Anagrams - 易位构词分组</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/30/Permutations II - 含重复元素的全排列/" rel="next">Permutations II - 含重复元素的全排列</a>
+              <a href="/2016/01/18/Validate Binary Search Tree - 验证二叉搜索树/" rel="next">Validate Binary Search Tree - 验证二叉搜索树</a>
             
           </div>
         </div>
@@ -367,8 +357,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/12/01/Rotate Image - 图像旋转/"
-                   data-title="Rotate Image - 图像旋转" data-url="http://eugeneyang.com/2015/12/01/Rotate Image - 图像旋转/">
+              <div class="ds-thread" data-thread-key="2016/01/19/Recover Binary Search Tree - 修复二叉搜索树/"
+                   data-title="Recover Binary Search Tree - 修复二叉搜索树" data-url="http://eugeneyang.com/2016/01/19/Recover Binary Search Tree - 修复二叉搜索树/">
               </div>
             
           </div>
@@ -470,7 +460,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Rotate_Image_-_图像旋转"><span class="nav-number">1.</span> <span class="nav-text">Rotate Image - 图像旋转</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Recover_Binary_Search_Tree_-_修复二叉搜索树"><span class="nav-number">1.</span> <span class="nav-text">Recover Binary Search Tree - 修复二叉搜索树</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
