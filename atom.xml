@@ -4,7 +4,7 @@
   <subtitle><![CDATA[成长之旅]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://eugeneyang.com/"/>
-  <updated>2016-01-18T12:29:24.823Z</updated>
+  <updated>2016-01-18T12:29:24.825Z</updated>
   <id>http://eugeneyang.com/</id>
   
   <author>
@@ -13,6 +13,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Validate Binary Search Tree - 验证二叉搜索树]]></title>
+    <link href="http://eugeneyang.com/2016/01/18/Validate%20Binary%20Search%20Tree%20-%20%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/"/>
+    <id>http://eugeneyang.com/2016/01/18/Validate Binary Search Tree - 验证二叉搜索树/</id>
+    <published>2016-01-18T12:44:47.000Z</published>
+    <updated>2016-01-18T12:29:24.825Z</updated>
+    <content type="html"><![CDATA[<h3 id="Validate_Binary_Search_Tree_-_验证二叉搜索树">Validate Binary Search Tree - 验证二叉搜索树</h3><p><strong>Description</strong>: Given a binary tree, determine if it is a valid binary search tree (BST).<br> Assume a BST is defined as follows:<br> 1 The left subtree of a node contains only nodes with keys less than the node’s key.<br> 2 The right subtree of a node contains only nodes with keys greater than the node’s key.<br> 3 Both the left and right subtrees must also be binary search trees.</p>
+<p> 思路：递归。类似二叉树的中序遍历。</p>
+<p>参考：<a href="http://www.programcreek.com/2012/12/leetcode-validate-binary-search-tree-java/" target="_blank" rel="external">http://www.programcreek.com/2012/12/leetcode-validate-binary-search-tree-java/</a></p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ValidateBinarySearchTree</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Definition for a binary tree node.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> x) &#123;</span><br><span class="line">            val = x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * http://www.programcreek.com/2012/12/leetcode-validate-binary-search-tree-java/</span><br><span class="line">     * <span class="doctag">@param</span> root</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidBST</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> dfs(root, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">dfs</span><span class="params">(TreeNode root, <span class="keyword">double</span> min, <span class="keyword">double</span> max)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (min&gt;=root.val || root.val&gt;=max) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> dfs(root.left, min, root.val) &amp;&amp; dfs(root.right, root.val, max);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="Validate_Binary_Search_Tree_-_验证二叉搜索树">Validate Binary Search Tree - 验证二叉搜索树</h3><p><strong>Description</strong>: Given a binary tre]]>
+    </summary>
+    
+      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
+    
+      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
+    
+      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Interleaving String - 交叉字符串]]></title>
@@ -33,32 +59,6 @@
 ]]></content>
     <summary type="html">
     <![CDATA[<h3 id="Interleaving_String_-_交叉字符串">Interleaving String - 交叉字符串</h3><p><strong>Description</strong>: Given s1, s2, s3, find whether s3 is f]]>
-    </summary>
-    
-      <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
-    
-      <category term="java" scheme="http://eugeneyang.com/tags/java/"/>
-    
-      <category term="算法" scheme="http://eugeneyang.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="算法" scheme="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Validate Binary Search Tree - 验证二叉搜索树]]></title>
-    <link href="http://eugeneyang.com/2016/01/18/Validate%20Binary%20Search%20Tree%20-%20%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/"/>
-    <id>http://eugeneyang.com/2016/01/18/Validate Binary Search Tree - 验证二叉搜索树/</id>
-    <published>2016-01-18T12:44:47.000Z</published>
-    <updated>2016-01-18T12:29:24.825Z</updated>
-    <content type="html"><![CDATA[<h3 id="Validate_Binary_Search_Tree_-_验证二叉搜索树">Validate Binary Search Tree - 验证二叉搜索树</h3><p><strong>Description</strong>: Given a binary tree, determine if it is a valid binary search tree (BST).<br> Assume a BST is defined as follows:<br> 1 The left subtree of a node contains only nodes with keys less than the node’s key.<br> 2 The right subtree of a node contains only nodes with keys greater than the node’s key.<br> 3 Both the left and right subtrees must also be binary search trees.</p>
-<p> 思路：递归。类似二叉树的中序遍历。</p>
-<p>参考：<a href="http://www.programcreek.com/2012/12/leetcode-validate-binary-search-tree-java/" target="_blank" rel="external">http://www.programcreek.com/2012/12/leetcode-validate-binary-search-tree-java/</a></p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ValidateBinarySearchTree</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Definition for a binary tree node.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> x) &#123;</span><br><span class="line">            val = x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * http://www.programcreek.com/2012/12/leetcode-validate-binary-search-tree-java/</span><br><span class="line">     * <span class="doctag">@param</span> root</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidBST</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> dfs(root, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">dfs</span><span class="params">(TreeNode root, <span class="keyword">double</span> min, <span class="keyword">double</span> max)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (min&gt;=root.val || root.val&gt;=max) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> dfs(root.left, min, root.val) &amp;&amp; dfs(root.right, root.val, max);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-    <summary type="html">
-    <![CDATA[<h3 id="Validate_Binary_Search_Tree_-_验证二叉搜索树">Validate Binary Search Tree - 验证二叉搜索树</h3><p><strong>Description</strong>: Given a binary tre]]>
     </summary>
     
       <category term="LeetCode" scheme="http://eugeneyang.com/tags/LeetCode/"/>
