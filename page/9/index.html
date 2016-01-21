@@ -221,6 +221,191 @@
           
           
             
+              <a class="post-title-link" href="/2015/12/13/Permutation Sequence - 全排列有序序列/" itemprop="url">
+                Permutation Sequence - 全排列有序序列
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-12-13T20:44:47+08:00" content="2015-12-13">
+            2015-12-13
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/12/13/Permutation Sequence - 全排列有序序列/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/13/Permutation Sequence - 全排列有序序列/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Permutation_Sequence_-_全排列有序序列">Permutation Sequence - 全排列有序序列</h3><p><strong>Description</strong>: The set [1,2,3,…,n] contains a total of n! unique permutations.</p>
+<p> By listing and labeling all of the permutations in order, We get the following sequence (ie, for n = 3):<br> 1.”123” 2.”132” 3.”213” 4.”231” 5.”312” 6.”321”</p>
+<p> Given n and k, return the kth permutation sequence.</p>
+<p> Note: Given n will be between 1 and 9 inclusive.</p>
+<p>方法：</p>
+<ol>
+<li>使用Next Permutation的思路，但会大数据超时；</li>
+<li>题目要求全排列有序，而Permutations这题中用回溯法得到的全排列并非有序。使用另一种递归法思路，但是也会大数据超时，超时用例n=9, k=54494。<br>参考：<a href="http://www.ericleschinski.com/c/java_permutations_recursion/" target="_blank" rel="external">http://www.ericleschinski.com/c/java_permutations_recursion/</a></li>
+<li>发现数学规律进行解题：<br>  a. 以某一数字开头的排列有(n-1)!个，先计算(n-1)!；k=k-1将k转换为从0开始（原来k从1开始）；<br>  b. 第一位数字是“原字符串”位置k/(n-1)!处的字符；更新k=k%(n-1)!；<br>  c. 第二位数字是“原字符串”位置k/(n-2)!处的字符；更新k=k%(n-2)!；<br>  d. 不断重复b、c，直至第n位数字。（注意：每确定一位数字，“原字符串”应移除该数字）<br>  时间复杂度：O(n^2)；空间复杂度：O(n)；<br>  参考：<a href="http://blog.csdn.net/linhuanmars/article/details/22028697" target="_blank" rel="external">http://blog.csdn.net/linhuanmars/article/details/22028697</a></li>
+</ol>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PermutationSequence</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String result = <span class="keyword">new</span> PermutationSequence().getPermutation(<span class="number">9</span>, <span class="number">362880</span>);</span><br><span class="line">        System.out.println(result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 发现数学规律进行解题：</span><br><span class="line">     * 1. 以某一数字开头的排列有(n-1)!个，先计算(n-1)!；k=k-1将k转换为从0开始（原来k从1开始）；</span><br><span class="line">     2. 第一位数字是“原字符串”位置k/(n-1)!处的字符；更新k=k%(n-1)!；</span><br><span class="line">     3. 第二位数字是“原字符串”位置k/(n-2)!处的字符；更新k=k%(n-2)!；</span><br><span class="line">     4. 不断重复2、3，直至第n位数字。（注意：每确定一位数字，“原字符串”应移除该数字）</span><br><span class="line">     时间复杂度：O(n^2)；空间复杂度：O(n)；</span><br><span class="line">     参考：http://blog.csdn.net/linhuanmars/article/details/22028697</span><br><span class="line">     * <span class="doctag">@param</span> n</span><br><span class="line">     * <span class="doctag">@param</span> k</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPermutation</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="comment">//生成原字符串</span></span><br><span class="line">        List&lt;Integer&gt; origin = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) origin.add(i);</span><br><span class="line">        <span class="comment">//计算(n-1)!</span></span><br><span class="line">        <span class="keyword">int</span> factorial = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) factorial *= i;</span><br><span class="line">        <span class="comment">//k转换为从0开始</span></span><br><span class="line">        k = k - <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//计算Kth全排列串中第i位(0&lt;i&lt;n)数字</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> index = k / factorial;  <span class="comment">//得到第i位数字字符</span></span><br><span class="line">            k = k % factorial;  <span class="comment">//更新k</span></span><br><span class="line">            sb.append(origin.get(index));</span><br><span class="line">            origin.remove(index); <span class="comment">//每确定一位数字，“原字符串”应移除该数字</span></span><br><span class="line">            <span class="keyword">if</span> (i &lt; n - <span class="number">1</span>) &#123;    <span class="comment">//更新factorial</span></span><br><span class="line">                factorial = factorial / (n - <span class="number">1</span> - i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//TODO 使用Next Permutation会大数据超时</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;String&gt; strings = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="comment">/**TODO 此解法大数据超时，超时用例n=9, k=54494</span><br><span class="line">     * 题目要求全排列有序，而Permutations这题中用回溯法得到的全排列并非有序。</span><br><span class="line">     * 另一种思路：递归法。</span><br><span class="line">     * 参考：http://www.ericleschinski.com/c/java_permutations_recursion/</span><br><span class="line">     * <span class="doctag">@param</span> n</span><br><span class="line">     * <span class="doctag">@param</span> k</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPermutation1</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        StringBuilder builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) builder.append(i);</span><br><span class="line">        String s = builder.toString();</span><br><span class="line">        permutation(<span class="string">""</span>, s);</span><br><span class="line">        <span class="keyword">return</span> strings.get(k - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">permutation</span><span class="params">(String prefix, String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = str.length();</span><br><span class="line">        <span class="keyword">if</span> (len == <span class="number">0</span>) strings.add(prefix);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">                permutation(prefix + str.charAt(i), str.substring(<span class="number">0</span>, i) + str.substring(i+<span class="number">1</span>, len));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/12/12/Spiral Matrix II- 螺旋矩阵2/" itemprop="url">
+                Spiral Matrix II- 螺旋矩阵2
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-12-12T20:44:47+08:00" content="2015-12-12">
+            2015-12-12
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/12/12/Spiral Matrix II- 螺旋矩阵2/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/12/Spiral Matrix II- 螺旋矩阵2/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Spiral_Matrix_II-_螺旋矩阵2">Spiral Matrix II- 螺旋矩阵2</h3><p><strong>Description</strong>: Given an integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.</p>
+<p> For example,<br> Given n = 3,<br> You should return the following matrix:<br> [<br> [ 1, 2, 3 ],<br> [ 8, 9, 4 ],<br> [ 7, 6, 5 ]<br> ]</p>
+<p>思路：与Spiral Matrix的思路基本一致。</p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpiralMatrixII</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        <span class="keyword">int</span>[][] matrix = <span class="keyword">new</span> SpiralMatrixII().generateMatrix(<span class="number">5</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span>[] i : matrix)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j : i)&#123;</span><br><span class="line">                System.out.print(j + <span class="string">" "</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//若只剩下一行/列，则只处理此行/列，其余按circle方式处理</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[][] generateMatrix(<span class="keyword">int</span> n) &#123;</span><br><span class="line">        <span class="keyword">int</span>[][] matrix = <span class="keyword">new</span> <span class="keyword">int</span>[n][n];</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> matrix;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</span><br><span class="line">            matrix[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> matrix;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> x = <span class="number">0</span>, y = <span class="number">0</span>, k = <span class="number">1</span>, i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="comment">//if one row/column left, no circle can be formed</span></span><br><span class="line">            <span class="keyword">if</span>(n==<span class="number">1</span>)&#123;</span><br><span class="line">                matrix[x++][y] = k++;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//below, process a circle</span></span><br><span class="line">            <span class="comment">//top - move right</span></span><br><span class="line">            <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n-<span class="number">1</span>;i++) matrix[x][y++] = k++;</span><br><span class="line">            <span class="comment">//right - move down</span></span><br><span class="line">            <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n-<span class="number">1</span>;i++) matrix[x++][y] = k++;</span><br><span class="line">            <span class="comment">//bottom - move left</span></span><br><span class="line">            <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n-<span class="number">1</span>;i++) matrix[x][y--] = k++;</span><br><span class="line">            <span class="comment">//left - move up</span></span><br><span class="line">            <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n-<span class="number">1</span>;i++) matrix[x--][y] = k++;</span><br><span class="line">            x++;</span><br><span class="line">            y++;</span><br><span class="line">            n=n-<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> matrix;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/12/10/Insert Interval - 区间插入/" itemprop="url">
                 Insert Interval - 区间插入
               </a>
@@ -482,184 +667,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/12/07/Spiral Matrix - 螺旋矩阵/" itemprop="url">
-                Spiral Matrix - 螺旋矩阵
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-12-07T20:44:47+08:00" content="2015-12-07">
-            2015-12-07
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/12/07/Spiral Matrix - 螺旋矩阵/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/07/Spiral Matrix - 螺旋矩阵/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Spiral_Matrix_-_螺旋矩阵">Spiral Matrix - 螺旋矩阵</h3><p><strong>Description</strong>: Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.</p>
-<p> For example,<br> Given the following matrix:<br> [<br> [ 1, 2, 3 ],<br> [ 4, 5, 6 ],<br> [ 7, 8, 9 ]<br> ]<br> You should return [1,2,3,6,9,8,7,4,5].</p>
-<p>注意：若只剩下一行/列，则只处理此行/列，其余按circle方式处理。<br>参考：<a href="http://www.programcreek.com/2013/01/leetcode-spiral-matrix-java/" target="_blank" rel="external">http://www.programcreek.com/2013/01/leetcode-spiral-matrix-java/</a></p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpiralMatrix</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] matrix = &#123; &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;, &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;, &#123;<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125; &#125;;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> SpiralMatrix().spiralOrder(matrix);</span><br><span class="line">        <span class="keyword">for</span> (Integer i : result) System.out.print(i + <span class="string">" "</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 若只剩下一行/列，则只处理此行/列，其余按circle方式处理</span><br><span class="line">     * http://www.programcreek.com/2013/01/leetcode-spiral-matrix-java/</span><br><span class="line">     * <span class="doctag">@param</span> matrix</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title">spiralOrder</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">if</span>(matrix == <span class="keyword">null</span> || matrix.length == <span class="number">0</span>) <span class="keyword">return</span> result;</span><br><span class="line">        <span class="keyword">int</span> m = matrix.length;</span><br><span class="line">        <span class="keyword">int</span> n = matrix[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> x=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> y=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(m&gt;<span class="number">0</span> &amp;&amp; n&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="comment">//if one row/column left, no circle can be formed</span></span><br><span class="line">            <span class="keyword">if</span>(m==<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) result.add(matrix[x][y++]);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(n==<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;m; i++) result.add(matrix[x++][y]);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//below, process a circle</span></span><br><span class="line">            <span class="comment">//top - move right</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n-<span class="number">1</span>;i++) result.add(matrix[x][y++]);</span><br><span class="line">            <span class="comment">//right - move down</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m-<span class="number">1</span>;i++) result.add(matrix[x++][y]);</span><br><span class="line">            <span class="comment">//bottom - move left</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n-<span class="number">1</span>;i++) result.add(matrix[x][y--]);</span><br><span class="line">            <span class="comment">//left - move up</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m-<span class="number">1</span>;i++) result.add(matrix[x--][y]);</span><br><span class="line">            x++;</span><br><span class="line">            y++;</span><br><span class="line">            m=m-<span class="number">2</span>;</span><br><span class="line">            n=n-<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/12/06/Maximum Subarray - 最大子串/" itemprop="url">
-                Maximum Subarray - 最大子串
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-12-06T20:44:47+08:00" content="2015-12-06">
-            2015-12-06
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/12/06/Maximum Subarray - 最大子串/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/06/Maximum Subarray - 最大子串/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Maximum_Subarray_-_最大子串">Maximum Subarray - 最大子串</h3><p><strong>Description</strong>: Find the contiguous subarray within an array (containing at least one number) which has the largest sum.</p>
-<p> For example, given the array [−2,1,−3,4,−1,2,1,−5,4],<br> the contiguous subarray [4,−1,2,1] has the largest sum = 6.</p>
-<p>思路：动态规划。</p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MaximumSubarray</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;-<span class="number">2</span>,<span class="number">1</span>,-<span class="number">3</span>,<span class="number">4</span>,-<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,-<span class="number">5</span>,<span class="number">4</span>&#125;;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        <span class="keyword">int</span> result = <span class="keyword">new</span> MaximumSubarray().maxSubArray(nums);</span><br><span class="line">        System.out.println(result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line">        <span class="keyword">int</span> local = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> global = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt; len; k++)&#123;</span><br><span class="line">            <span class="comment">//TODO 注意不是Math.max(local + nums[k], local);</span></span><br><span class="line">            <span class="comment">//若local + nums[k] &lt; nums[k]则直接抛弃k前面的所有数</span></span><br><span class="line">            local = Math.max(local + nums[k], nums[k]);</span><br><span class="line">            global = Math.max(local, global);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> global;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -698,7 +705,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">78</span>
+              <span class="site-state-item-count">80</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
