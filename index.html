@@ -221,6 +221,94 @@
           
           
             
+              <a class="post-title-link" href="/2016/01/22/Binary Tree Level Order Traversal -二叉树层次遍历/" itemprop="url">
+                Binary Tree Level Order Traversal -二叉树层次遍历
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-01-22T20:44:47+08:00" content="2016-01-22">
+            2016-01-22
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/01/22/Binary Tree Level Order Traversal -二叉树层次遍历/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/22/Binary Tree Level Order Traversal -二叉树层次遍历/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Binary_Tree_Level_Order_Traversal_-二叉树层次遍历">Binary Tree Level Order Traversal -二叉树层次遍历</h3><p><strong>Description</strong>: Given a binary tree, return the level order traversal of its nodes’ values. (ie, from left to right, level by level).<br> For example:<br> Given binary tree {3,9,20,#,#,15,7},<br> return its level order traversal as: [ [3], [9,20], [15,7] ]</p>
+<p> 思路：广度优先搜索，使用队列实现。<br>     a. 队列初始化，将根节点压入队列。<br>     b. 当队列不为空，进行如下操作：弹出一个节点，访问；若左子节点或右子节点不为空，将其压入队列。<br>     由于题目要求按层返回结果,需要利用两个队列.</p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BinaryTreeLevelOrderTraversal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Definition for a binary tree node.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 广度优先搜索，使用队列实现。</span><br><span class="line">     a. 队列初始化，将根节点压入队列。</span><br><span class="line">     b. 当队列不为空，进行如下操作：弹出一个节点，访问；若左子节点或右子节点不为空，将其压入队列。</span><br><span class="line">     由于题目要求按层返回结果,需要利用两个队列.</span><br><span class="line">     * <span class="doctag">@param</span> root</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (root==<span class="keyword">null</span>) <span class="keyword">return</span> result;</span><br><span class="line">        Queue&lt;TreeNode&gt; curQueue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        Queue&lt;TreeNode&gt; nextQueue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        curQueue.offer(root);</span><br><span class="line">        <span class="keyword">while</span> (!curQueue.isEmpty())&#123;</span><br><span class="line">            TreeNode node = curQueue.poll();</span><br><span class="line">            temp.add(node.val);</span><br><span class="line">            <span class="keyword">if</span> (node.left!=<span class="keyword">null</span>) nextQueue.offer(node.left);</span><br><span class="line">            <span class="keyword">if</span> (node.right!=<span class="keyword">null</span>) nextQueue.offer(node.right);</span><br><span class="line">            <span class="keyword">if</span> (curQueue.isEmpty()) &#123;</span><br><span class="line">                result.add(temp);</span><br><span class="line">                temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                curQueue = nextQueue;</span><br><span class="line">                nextQueue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/01/21/Symmetric Tree - 对称二叉树/" itemprop="url">
                 Symmetric Tree - 对称二叉树
               </a>
@@ -568,105 +656,11 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/01/18/Interleaving String - 交叉字符串/" itemprop="url">
-                Interleaving String - 交叉字符串
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-01-18T20:44:47+08:00" content="2016-01-18">
-            2016-01-18
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/01/18/Interleaving String - 交叉字符串/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/18/Interleaving String - 交叉字符串/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Interleaving_String_-_交叉字符串">Interleaving String - 交叉字符串</h3><p><strong>Description</strong>: Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.</p>
-<p>For example,<br>Given:<br>s1 = “aabcc”,<br>s2 = “dbbca”,<br>When s3 = “aadbbcbcac”, return true.<br>When s3 = “aadbbbaccc”, return false.</p>
-<p> 思路：二维动态规划。用matched[l1][l2]表示s1取l1长度，s2取l2长度，是否能匹配s3的l1+12长度。<br>     递推式：</p>
-<blockquote>
-<p>matched[i][j] =<br>　s1.charAt(i-1)==s3.char(i+j-1) &amp;&amp; matched[i-1][j] ||<br>　s2.charAt(j-1)==s3.charAt(i+j-1) &amp;&amp; matched[i][j-1];</p>
-</blockquote>
-<p>边界条件:<br>l1=0 &amp;&amp; l2=0时，matched[0][0] = true;<br>     i=0时，s3[j-1]==s2[j-1], matched[0][j] = matched[0][j-1]<br>            　　　s3[j-1]!=s2[j-1], matched[0][j] = false;<br>     j=0时，s3[i-1]==s1[i-1], matched[i][0] = matched[i-1][0]<br>            　　　s3[i-1]!=s1[i-1], matched[i][0] = false;</p>
-<p>参考：<a href="http://fisherlei.blogspot.in/2012/12/leetcode-interleaving-string.html" target="_blank" rel="external">http://fisherlei.blogspot.in/2012/12/leetcode-interleaving-string.html</a></p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InterleavingString</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**http://fisherlei.blogspot.in/2012/12/leetcode-interleaving-string.html</span><br><span class="line">     * 二维动态规划:matched[l1][l2]表示s1取l1长度，s2取l2长度，是否能匹配s3的l1+12长度。</span><br><span class="line">     递推式:matched[i][j] = s1.charAt(i-1)==s3.charAt(i+j-1) &amp;&amp; matched[i-1][j] ||</span><br><span class="line">                            s2.charAt(j-1)==s3.charAt(i+j-1) &amp;&amp; matched[i][j-1];</span><br><span class="line">     边界条件:l1=0 &amp;&amp; l2=0时，matched[0][0] = true;</span><br><span class="line">     i=0时，s3[j-1]==s2[j-1], matched[0][j] = matched[0][j-1]</span><br><span class="line">            s3[j-1]!=s2[j-1], matched[0][j] = false;</span><br><span class="line">     j=0时，s3[i-1]==s1[i-1], matched[i][0] = matched[i-1][0]</span><br><span class="line">            s3[i-1]!=s1[i-1], matched[i][0] = false;</span><br><span class="line">     * <span class="doctag">@param</span> s1</span><br><span class="line">     * <span class="doctag">@param</span> s2</span><br><span class="line">     * <span class="doctag">@param</span> s3</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isInterleave</span><span class="params">(String s1, String s2, String s3)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len1 = s1.length(), len2 = s2.length(), len3 = s3.length();</span><br><span class="line">        <span class="keyword">if</span> (len1==<span class="number">0</span> &amp;&amp; len2==<span class="number">0</span> &amp;&amp; len3==<span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (len1 + len2 != len3) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">boolean</span>[][] matched = <span class="keyword">new</span> <span class="keyword">boolean</span>[len1+<span class="number">1</span>][len2+<span class="number">1</span>];</span><br><span class="line">        matched[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">true</span>;   <span class="comment">//二维初始</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=len2; j++)&#123;    <span class="comment">//j一维初始</span></span><br><span class="line">            <span class="keyword">if</span> (s2.charAt(j-<span class="number">1</span>) == s3.charAt(j-<span class="number">1</span>)) matched[<span class="number">0</span>][j] = matched[<span class="number">0</span>][j-<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=len1; i++)&#123;    <span class="comment">//i一维初始</span></span><br><span class="line">            <span class="keyword">if</span> (s1.charAt(i-<span class="number">1</span>) == s3.charAt(i-<span class="number">1</span>)) matched[i][<span class="number">0</span>] = matched[i-<span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=len1; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=len2; j++)&#123;</span><br><span class="line">                matched[i][j] = s1.charAt(i-<span class="number">1</span>)==s3.charAt(i+j-<span class="number">1</span>) &amp;&amp; matched[i-<span class="number">1</span>][j] ||</span><br><span class="line">                                s2.charAt(j-<span class="number">1</span>)==s3.charAt(i+j-<span class="number">1</span>) &amp;&amp; matched[i][j-<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> matched[len1][len2];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
   </nav>
 
  </div>
@@ -700,7 +694,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">80</span>
+              <span class="site-state-item-count">81</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

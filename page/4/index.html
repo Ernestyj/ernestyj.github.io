@@ -221,6 +221,100 @@
           
           
             
+              <a class="post-title-link" href="/2016/01/08/Scramble String - 字符串重组/" itemprop="url">
+                Scramble String - 字符串重组
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-01-08T20:44:47+08:00" content="2016-01-08">
+            2016-01-08
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/01/08/Scramble String - 字符串重组/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/08/Scramble String - 字符串重组/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Scramble_String_-_字符串重组">Scramble String - 字符串重组</h3><p><strong>Description</strong>: Given a string s1, we may represent it as a binary tree by partitioning it to two non-empty substrings recursively. Given two strings s1 and s2 of the same length, determine if s2 is a scrambled string of s1.</p>
+<p>原题链接：<a href="https://leetcode.com/problems/scramble-string/" target="_blank" rel="external">https://leetcode.com/problems/scramble-string/</a></p>
+<p>题解：<br>方法一：递归解法：时间复杂度最差为O(3^n)，要通过OJ需要加上剪枝条件：把两个字符串的字符排序后，然后比较是否相同。</p>
+<p>方法二：三维动态规划解法：提出维护量res[i][j][n]，其中i是s1的起始字符，j是s2的起始字符，而n是当前的字符串长度，res[i][j][len]表示的是以i和j分别为s1和s2起点的长度为len的字符串是不是互为scramble。</p>
+<p>递推式：首先是把当前s1[i…i+len-1]字符串劈一刀分成两部分，然后分两种情况：<br>第一种是左边和s2[j…j+len-1]左边部分是不是scramble，以及右边和s2[j…j+len-1]右边部分是不是scramble；<br>第二种情况是左边和s2[j…j+len-1]右边部分是不是scramble，以及右边和s2[j…j+len-1]左边部分是不是scramble。<br>如果以上两种情况有一种成立，说明s1[i…i+len-1]和s2[j…j+len-1]是scramble的。<br>上面说的是劈一刀的情况，对于s1[i…i+len-1]我们有len-1种劈法，在这些劈法中只要有一种成立，那么两个串就是scramble的。</p>
+<p>总结：res[i][j][len] |= (res[i][j][k]&amp;&amp;res[i+k][j+k][len-k] || res[i][j+len-k][k]&amp;&amp;res[i+k][j][len-k]),1&lt;=k&lt;len，也就是对于所有len-1种劈法的结果求或运算。</p>
+<p>复杂度：因为信息都是计算过的，对于每种劈法只需要常量操作，因此求解递推式需要线性时间（因为len-1种劈法）。如此总时间复杂度因为是三维动态规划需要三层循环，加上每一步需要线行时间求解递推式，所以是O(n\^4)。空间复杂度是O(n\^3)。</p>
+<p>参考：<a href="http://blog.csdn.net/fightforyourdream/article/details/17707187" target="_blank" rel="external">http://blog.csdn.net/fightforyourdream/article/details/17707187</a></p>
+<p>完整的java代码如下（不包括方法一）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScrambleString</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * http://blog.csdn.net/fightforyourdream/article/details/17707187</span><br><span class="line">     * 递归解法：时间复杂度最差为O(3^n)，要通过OJ需要加上剪枝条件：把两个字符串的字符排序后，然后比较是否相同。</span><br><span class="line">     * 三维动态规划解法：提出维护量res[i][j][n]，其中i是s1的起始字符，j是s2的起始字符，而n是当前的字符串长度，</span><br><span class="line">      res[i][j][len]表示的是以i和j分别为s1和s2起点的长度为len的字符串是不是互为scramble。</span><br><span class="line">     * 递推式：首先是把当前s1[i...i+len-1]字符串劈一刀分成两部分，然后分两种情况：</span><br><span class="line">      第一种是左边和s2[j...j+len-1]左边部分是不是scramble，以及右边和s2[j...j+len-1]右边部分是不是scramble；</span><br><span class="line">      第二种情况是左边和s2[j...j+len-1]右边部分是不是scramble，以及右边和s2[j...j+len-1]左边部分是不是scramble。</span><br><span class="line">      如果以上两种情况有一种成立，说明s1[i...i+len-1]和s2[j...j+len-1]是scramble的。</span><br><span class="line">     上面说的是劈一刀的情况，对于s1[i...i+len-1]我们有len-1种劈法，在这些劈法中只要有一种成立，那么两个串就是scramble的。</span><br><span class="line">     总结：res[i][j][len] |= (res[i][j][k]&amp;&amp;res[i+k][j+k][len-k] || res[i][j+len-k][k]&amp;&amp;res[i+k][j][len-k]),1&lt;=k&lt;len，</span><br><span class="line">     也就是对于所有len-1种劈法的结果求或运算。</span><br><span class="line">     * 复杂度：因为信息都是计算过的，对于每种劈法只需要常量操作，因此求解递推式需要线性时间（因为len-1种劈法）。</span><br><span class="line">     如此总时间复杂度因为是三维动态规划需要三层循环，加上每一步需要线行时间求解递推式，所以是O(n^4)。空间复杂度是O(n^3)。</span><br><span class="line">     * <span class="doctag">@param</span> s1</span><br><span class="line">     * <span class="doctag">@param</span> s2</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isScramble</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = s1.length();</span><br><span class="line">        <span class="keyword">if</span>(len != s2.length()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">boolean</span>[][][] canScramble = <span class="keyword">new</span> <span class="keyword">boolean</span>[len][len][len+<span class="number">1</span>];   <span class="comment">// i,j with sub length</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;len; i++) &#123;  <span class="comment">// subLen=1</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;len; j++) &#123;</span><br><span class="line">                <span class="comment">// substring start from i with length 1, compared with substring start from j with length 1</span></span><br><span class="line">                canScramble[i][j][<span class="number">1</span>] = s1.charAt(i) == s2.charAt(j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> subLen=<span class="number">2</span>; subLen&lt;=len; subLen++) &#123;</span><br><span class="line">            <span class="comment">// (end_pos=i+subLen-1) &lt;= len-1, so i &lt;= len-subLen</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;=len-subLen; i++) &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;=len-subLen; j++) &#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> p=<span class="number">1</span>; p&lt;subLen; p++) &#123;   <span class="comment">// split position</span></span><br><span class="line">                        canScramble[i][j][subLen] |= (canScramble[i][j][p] &amp;&amp; canScramble[i+p][j+p][subLen-p]) ||</span><br><span class="line">                                (canScramble[i][j+subLen-p][p] &amp;&amp; canScramble[i+p][j][subLen-p]);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> canScramble[<span class="number">0</span>][<span class="number">0</span>][len];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/01/07/Partition List - 划分链表/" itemprop="url">
                 Partition List - 划分链表
               </a>
@@ -572,101 +666,11 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/01/03/Remove Duplicates from Sorted List II - 移除有序链表中的重复元素II/" itemprop="url">
-                Remove Duplicates from Sorted List II - 移除有序链表中的重复元素II
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-01-03T20:44:47+08:00" content="2016-01-03">
-            2016-01-03
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/01/03/Remove Duplicates from Sorted List II - 移除有序链表中的重复元素II/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/03/Remove Duplicates from Sorted List II - 移除有序链表中的重复元素II/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Remove_Duplicates_from_Sorted_List_II_-_移除有序链表中的重复元素II">Remove Duplicates from Sorted List II - 移除有序链表中的重复元素II</h3><p><strong>Description</strong>: Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.</p>
-<p> For example,<br> Given 1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5, return 1-&gt;2-&gt;5.<br> Given 1-&gt;1-&gt;1-&gt;2-&gt;3, return 2-&gt;3.</p>
-<p>思路：遍历中探测当前节点的下两个节点。<br>心得：这道题刚做的时候，思路非常不清晰，导致写到后面节点间关系理不清，算法无法写下去。对于链表类型的题目，要格外注意节点间关系，引入头节点前的dummy节点是很常用的技巧。</p>
-<p>参考：<a href="http://www.programcreek.com/2014/06/leetcode-remove-duplicates-from-sorted-list-ii-java/。" target="_blank" rel="external">http://www.programcreek.com/2014/06/leetcode-remove-duplicates-from-sorted-list-ii-java/。</a></p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RemoveDuplicatesFromSortedListII</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Definition for singly-linked list.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        ListNode next;</span><br><span class="line">        ListNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 遍历中探测当前节点的下两个节点</span><br><span class="line">     * http://www.programcreek.com/2014/06/leetcode-remove-duplicates-from-sorted-list-ii-java/</span><br><span class="line">     * <span class="doctag">@param</span> head</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        dummy.next = head;</span><br><span class="line">        ListNode p = dummy;</span><br><span class="line">        <span class="keyword">while</span>(p.next!=<span class="keyword">null</span> &amp;&amp; p.next.next!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p.next.val == p.next.next.val)&#123;</span><br><span class="line">                <span class="keyword">int</span> dup = p.next.val;</span><br><span class="line">                <span class="keyword">while</span>(p.next!=<span class="keyword">null</span> &amp;&amp; p.next.val==dup)&#123;</span><br><span class="line">                    p.next = p.next.next;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                p = p.next;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/5/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/5/">&raquo;</a>
   </nav>
 
  </div>
@@ -700,7 +704,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">80</span>
+              <span class="site-state-item-count">81</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
