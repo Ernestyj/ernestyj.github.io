@@ -2,8 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://eugeneyang.com/2016/01/22/Binary%20Tree%20Level%20Order%20Traversal%20-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/</loc>
-    <lastmod>2016-01-22T03:43:55.631Z</lastmod>
+    <loc>http://eugeneyang.com/2016/01/26/Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal%20-%20%E6%A0%B9%E6%8D%AE%E5%90%8E%E5%BA%8F%E5%92%8C%E4%B8%AD%E5%BA%8F%E5%BA%8F%E5%88%97%E9%87%8D%E6%9E%84%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
+    <lastmod>2016-01-26T13:03:09.522Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://eugeneyang.com/2016/01/25/Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal%20-%20%E6%A0%B9%E6%8D%AE%E5%85%88%E5%BA%8F%E5%92%8C%E4%B8%AD%E5%BA%8F%E5%BA%8F%E5%88%97%E9%87%8D%E6%9E%84%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
+    <lastmod>2016-01-26T13:03:09.516Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://eugeneyang.com/2016/01/24/Maximum%20Depth%20of%20Binary%20Tree%20-%20%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/</loc>
+    <lastmod>2016-01-26T13:03:09.496Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://eugeneyang.com/2016/01/23/Binary%20Tree%20Zigzag%20Level%20Order%20Traversal%20-%20%E4%BA%8C%E5%8F%89%E6%A0%91Z%E5%BD%A2%E9%81%8D%E5%8E%86/</loc>
+    <lastmod>2016-01-26T13:03:09.494Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://eugeneyang.com/2016/01/22/Binary%20Tree%20Level%20Order%20Traversal%20-%20%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/</loc>
+    <lastmod>2016-01-26T13:03:09.492Z</lastmod>
   </url>
   
   <url>

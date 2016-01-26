@@ -4,8 +4,104 @@
 
     
   <url>
-    <loc>http://eugeneyang.com/2016/01/22/Binary%20Tree%20Level%20Order%20Traversal%20-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/</loc>
-    <lastmod>2016-01-22T03:43:55.631Z</lastmod>
+    <loc>http://eugeneyang.com/2016/01/26/Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal%20-%20%E6%A0%B9%E6%8D%AE%E5%90%8E%E5%BA%8F%E5%92%8C%E4%B8%AD%E5%BA%8F%E5%BA%8F%E5%88%97%E9%87%8D%E6%9E%84%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
+    <lastmod>2016-01-26T13:03:09.522Z</lastmod>
+    <data>
+        <display>
+        <title>Construct Binary Tree from Inorder and Postorder Traversal - 根据后序和中序序列重构二叉树</title>
+        <pubTime>2016-01-26T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2016/01/25/Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal%20-%20%E6%A0%B9%E6%8D%AE%E5%85%88%E5%BA%8F%E5%92%8C%E4%B8%AD%E5%BA%8F%E5%BA%8F%E5%88%97%E9%87%8D%E6%9E%84%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
+    <lastmod>2016-01-26T13:03:09.516Z</lastmod>
+    <data>
+        <display>
+        <title>Construct Binary Tree from Preorder and Inorder Traversal - 根据先序和中序序列重构二叉树</title>
+        <pubTime>2016-01-25T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2016/01/24/Maximum%20Depth%20of%20Binary%20Tree%20-%20%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/</loc>
+    <lastmod>2016-01-26T13:03:09.496Z</lastmod>
+    <data>
+        <display>
+        <title>Maximum Depth of Binary Tree -二叉树最大深度</title>
+        <pubTime>2016-01-24T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2016/01/23/Binary%20Tree%20Zigzag%20Level%20Order%20Traversal%20-%20%E4%BA%8C%E5%8F%89%E6%A0%91Z%E5%BD%A2%E9%81%8D%E5%8E%86/</loc>
+    <lastmod>2016-01-26T13:03:09.494Z</lastmod>
+    <data>
+        <display>
+        <title>Binary Tree Zigzag Level Order Traversal -二叉树Z形遍历</title>
+        <pubTime>2016-01-23T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2016/01/22/Binary%20Tree%20Level%20Order%20Traversal%20-%20%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/</loc>
+    <lastmod>2016-01-26T13:03:09.492Z</lastmod>
     <data>
         <display>
         <title>Binary Tree Level Order Traversal -二叉树层次遍历</title>
