@@ -221,8 +221,8 @@
           
           
             
-              <a class="post-title-link" href="/2015/11/26/Multiply Strings - 大整数乘法/" itemprop="url">
-                Multiply Strings - 大整数乘法
+              <a class="post-title-link" href="/2015/12/03/Pow(x, n) - 求指数/" itemprop="url">
+                Pow(x, n) - 求指数
               </a>
             
           
@@ -232,8 +232,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-11-26T20:44:47+08:00" content="2015-11-26">
-            2015-11-26
+          <time itemprop="dateCreated" datetime="2015-12-03T20:44:47+08:00" content="2015-12-03">
+            2015-12-03
           </time>
         </span>
 
@@ -258,8 +258,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/11/26/Multiply Strings - 大整数乘法/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/26/Multiply Strings - 大整数乘法/" itemprop="commentsCount"></span>
+              <a href="/2015/12/03/Pow(x, n) - 求指数/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/03/Pow(x, n) - 求指数/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -275,10 +275,10 @@
 
       
         
-          <span itemprop="articleBody"><h3 id="Multiply_Strings_-_大整数乘法">Multiply Strings - 大整数乘法</h3><p><strong>Description</strong>: Given two numbers represented as strings, return multiplication of the numbers as a string.<br>Note: The numbers can be arbitrarily large and are non-negative.</p>
-<p>思路：首先我们把每一位相乘，得到一个没有进位的临时结果，然后把临时结果从低位起依次进位。对于一个m位整数乘以n位整数的结果，最多只有m+n位。<br>要点：1. 字符串逆转问题；2. 进位（开辟m+n长度数组足以存储所有进位）；3. 结果最高位为0的情况。<br>参考图：<a href="http://www.cnblogs.com/TenosDoIt/p/3735309.html" target="_blank" rel="external">http://www.cnblogs.com/TenosDoIt/p/3735309.html</a></p>
+          <span itemprop="articleBody"><h3 id="Pow(x,_n)_-_求指数">Pow(x, n) - 求指数</h3><p><strong>Description</strong>: Implement pow(x, n).</p>
+<p>思路：二分法（递归）。</p>
 <p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">    * http://www.cnblogs.com/TenosDoIt/p/3735309.html</span><br><span class="line">    * 首先我们把每一位相乘，得到一个没有进位的临时结果，然后把临时结果从低位起依次进位。</span><br><span class="line">    * 对于一个m位整数乘以n位整数的结果，最多只有m+n位。</span><br><span class="line">    * <span class="doctag">@param</span> num1</span><br><span class="line">    * <span class="doctag">@param</span> num2</span><br><span class="line">    * <span class="doctag">@return</span></span><br><span class="line">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">multiply</span><span class="params">(String num1, String num2)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (num1.equals(<span class="string">"0"</span>) || num2.equals(<span class="string">"0"</span>)) <span class="keyword">return</span> <span class="string">"0"</span>;</span><br><span class="line">       <span class="keyword">char</span>[] l = <span class="keyword">new</span> StringBuilder(num1).reverse().toString().toCharArray();</span><br><span class="line">       <span class="keyword">char</span>[] r = <span class="keyword">new</span> StringBuilder(num2).reverse().toString().toCharArray();</span><br><span class="line">       <span class="keyword">int</span>[] ints = <span class="keyword">new</span> <span class="keyword">int</span>[num1. length() + num2.length()];</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num1.length(); i++)&#123;</span><br><span class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; num2.length(); j++)&#123;</span><br><span class="line">               ints[i + j] += (l[i] - <span class="string">'0'</span>) * (r[j] - <span class="string">'0'</span>);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       StringBuilder builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ints.length; i++)&#123;</span><br><span class="line">           builder.append(ints[i] % <span class="number">10</span>);</span><br><span class="line">           <span class="keyword">if</span> (i + <span class="number">1</span> &lt; ints.length) ints[i + <span class="number">1</span>] += ints[i] / <span class="number">10</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (builder.charAt(ints.length - <span class="number">1</span>) == <span class="string">'0'</span>) builder.deleteCharAt(ints.length - <span class="number">1</span>);</span><br><span class="line">       <span class="keyword">return</span> builder.reverse().toString();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Pow</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        System.out.println(<span class="keyword">new</span> Pow().myPow(<span class="number">0.00001</span>, <span class="number">2147483647</span>));</span><br><span class="line"><span class="comment">//        System.out.println(new Pow().myPow(2, 5));</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//二分法（递归）</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">myPow</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span> / power(x, -n);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> power(x, n);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">double</span> <span class="title">power</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">double</span> v = power(x, n / <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> v * v;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> v * v * x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
         
       
@@ -309,8 +309,8 @@
           
           
             
-              <a class="post-title-link" href="/2015/11/25/Trapping Rain Water/" itemprop="url">
-                Trapping Rain Water
+              <a class="post-title-link" href="/2015/12/02/Group Anagrams - 易位构词分组/" itemprop="url">
+                Group Anagrams - 易位构词分组
               </a>
             
           
@@ -320,8 +320,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-11-25T20:44:47+08:00" content="2015-11-25">
-            2015-11-25
+          <time itemprop="dateCreated" datetime="2015-12-02T20:44:47+08:00" content="2015-12-02">
+            2015-12-02
           </time>
         </span>
 
@@ -346,8 +346,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/11/25/Trapping Rain Water/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/25/Trapping Rain Water/" itemprop="commentsCount"></span>
+              <a href="/2015/12/02/Group Anagrams - 易位构词分组/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/02/Group Anagrams - 易位构词分组/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -363,11 +363,11 @@
 
       
         
-          <span itemprop="articleBody"><h3 id="Trapping_Rain_Water">Trapping Rain Water</h3><p><strong>Description</strong>: Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.</p>
-<p>For example,<br> Given [0,1,0,2,1,0,1,3,2,1,2,1], return 6.<br> Ref: <a href="https://leetcode.com/problems/trapping-rain-water/" target="_blank" rel="external">https://leetcode.com/problems/trapping-rain-water/</a></p>
-<p>思路：对某个值A[i]来说，能trapped的最多的water取决于在i之前最高的值leftMostHeight[i]和在i右边的最高的值rightMostHeight[i]（均不包含自身）。如果min(left,right) &gt; A[i]，那么在i这个位置上能trapped的water就是min(left,right) – A[i]。<br>第一遍从左到右计算数组leftMostHeight，第二遍从右到左计算rightMostHeight，在第二遍的同时就可以计算出i位置的结果了，而且并不需要开空间来存放rightMostHeight数组。<br>时间复杂度是O(n)，只扫了两遍。<br>参考：<br><a href="http://blog.unieagle.net/2012/10/31/leetcode%E9%A2%98%E7%9B%AE%EF%BC%9Atrapping-rain-water/" target="_blank" rel="external">http://blog.unieagle.net/2012/10/31/leetcode%E9%A2%98%E7%9B%AE%EF%BC%9Atrapping-rain-water/</a></p>
+          <span itemprop="articleBody"><h3 id="Group_Anagrams_-_易位构词分组">Group Anagrams - 易位构词分组</h3><p><strong>Description</strong>: Given an array of strings, group anagrams together.</p>
+<p> For example, given: [“eat”, “tea”, “tan”, “ate”, “nat”, “bat”],<br> Return:<br> [<br> [“ate”, “eat”,”tea”],<br> [“nat”,”tan”],<br> [“bat”]<br> ]<br> Note:<br> For the return value, each inner list’s elements must follow the lexicographic order. All inputs will be in lower-case.</p>
+<p>思路：易位构词的排序结果是一样的。</p>
 <p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TrappingRainWater</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] height = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>&#125;;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        <span class="keyword">int</span> trapped = <span class="keyword">new</span> TrappingRainWater().trap(height);</span><br><span class="line">        System.out.println(trapped);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/** http://blog.unieagle.net/2012/10/31/leetcode%E9%A2%98%E7%9B%AE%EF%BC%9Atrapping-rain-water/</span><br><span class="line">     * 思路：对某个值A[i]来说，能trapped的最多的water取决于在i之前最高的值leftMostHeight[i]</span><br><span class="line">     和在i右边的最高的值rightMostHeight[i]（均不包含自身）。</span><br><span class="line">     如果min(left,right) &gt; A[i]，那么在i这个位置上能trapped的water就是min(left,right) – A[i]。</span><br><span class="line">     * 第一遍从左到右计算数组leftMostHeight，第二遍从右到左计算rightMostHeight，</span><br><span class="line">     在第二遍的同时就可以计算出i位置的结果了，而且并不需要开空间来存放rightMostHeight数组。</span><br><span class="line">     * 时间复杂度是O(n)，只扫了两遍。</span><br><span class="line">     * <span class="doctag">@param</span> height</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">trap</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (height == <span class="keyword">null</span> || height.length &lt;= <span class="number">2</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] leftMostHeight = <span class="keyword">new</span> <span class="keyword">int</span>[height.length];</span><br><span class="line">        <span class="keyword">int</span> len = height.length;</span><br><span class="line">        <span class="keyword">int</span> max = height[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> trapped = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;    <span class="comment">//left -&gt; right</span></span><br><span class="line">            leftMostHeight[i] = max;</span><br><span class="line">            <span class="keyword">if</span> (height[i] &gt; max) max = height[i];</span><br><span class="line">        &#125;</span><br><span class="line">        max = height[len - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = len - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;    <span class="comment">//right -&gt; left</span></span><br><span class="line">            <span class="keyword">if</span> (Math.min(leftMostHeight[i], max) &gt; height[i])&#123;</span><br><span class="line">                trapped += Math.min(leftMostHeight[i], max) - height[i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (height[i] &gt; max) max = height[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> trapped;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GroupAnagrams</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String[] strs = &#123; <span class="string">"eat"</span>, <span class="string">"tea"</span>, <span class="string">"tan"</span>, <span class="string">"ate"</span>, <span class="string">"nat"</span>, <span class="string">"bat"</span> &#125;;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        List&lt;List&lt;String&gt;&gt; result = <span class="keyword">new</span> GroupAnagrams().groupAnagrams(strs);</span><br><span class="line">        <span class="keyword">for</span> (List&lt;String&gt; list : result)&#123;</span><br><span class="line">            <span class="keyword">for</span> (String s : list)&#123;</span><br><span class="line">                System.out.print(s + <span class="string">" "</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//易位构词的排序结果是一样的</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) &#123;</span><br><span class="line">        <span class="keyword">if</span>(strs == <span class="keyword">null</span> || strs.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Arrays.sort(strs);</span><br><span class="line">        HashMap&lt;String, List&lt;String&gt;&gt; books = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        String s;</span><br><span class="line">        <span class="keyword">char</span>[] chars;</span><br><span class="line">        List&lt;String&gt; temp;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; strs.length; i++)&#123;</span><br><span class="line">            chars = strs[i].toCharArray();</span><br><span class="line">            Arrays.sort(chars);</span><br><span class="line">            s = String.valueOf(chars);</span><br><span class="line">            <span class="keyword">if</span> (books.containsKey(s))&#123;</span><br><span class="line">                books.get(s).add(strs[i]);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                temp.add(strs[i]);</span><br><span class="line">                books.put(s, temp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;(books.values());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//TODO 超时</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; groupAnagrams1(String[] strs) &#123;</span><br><span class="line">        Arrays.sort(strs);</span><br><span class="line">        List&lt;String&gt; temp;</span><br><span class="line">        HashMap&lt;HashMap&lt;Character, Integer&gt;, List&lt;String&gt;&gt; books = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        HashMap&lt;Character, Integer&gt; book;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; strs.length; i++)&#123;</span><br><span class="line">            book = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">            <span class="comment">//获取小字典</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">char</span> c : strs[i].toCharArray())&#123;</span><br><span class="line">                <span class="keyword">if</span> (book.containsKey(c)) book.put(c, book.get(c) + <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">else</span> book.put(c, <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//大字典中找小字典</span></span><br><span class="line">            <span class="keyword">if</span> (books.containsKey(book)) &#123;</span><br><span class="line">                temp = books.get(book);</span><br><span class="line">                temp.add(strs[i]);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                temp.add(strs[i]);</span><br><span class="line">                books.put(book, temp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;(books.values());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
         
       
@@ -398,8 +398,8 @@
           
           
             
-              <a class="post-title-link" href="/2015/11/24/First Missing Positive - 第一个缺失的正整数/" itemprop="url">
-                First Missing Positive - 第一个缺失的正整数
+              <a class="post-title-link" href="/2015/12/01/Rotate Image - 图像旋转/" itemprop="url">
+                Rotate Image - 图像旋转
               </a>
             
           
@@ -409,8 +409,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-11-24T20:44:47+08:00" content="2015-11-24">
-            2015-11-24
+          <time itemprop="dateCreated" datetime="2015-12-01T20:44:47+08:00" content="2015-12-01">
+            2015-12-01
           </time>
         </span>
 
@@ -435,8 +435,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/11/24/First Missing Positive - 第一个缺失的正整数/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/24/First Missing Positive - 第一个缺失的正整数/" itemprop="commentsCount"></span>
+              <a href="/2015/12/01/Rotate Image - 图像旋转/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/01/Rotate Image - 图像旋转/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -452,12 +452,11 @@
 
       
         
-          <span itemprop="articleBody"><h3 id="First_Missing_Positive_-_第一个缺失的正整数">First Missing Positive - 第一个缺失的正整数</h3><p><strong>Description</strong>: Given an unsorted integer array, find the first missing positive integer.</p>
-<p>For example,<br> Given [1,2,0] return 3,<br> and [3,4,-1,1] return 2.</p>
-<p> Your algorithm should run in O(n) time and uses constant space.</p>
-<p>思路：交换数组元素，使得数组中第i位存放数值(i+1)。最后遍历数组，寻找第一个不符合此要求的元素，返回这个元素。整个过程需要遍历两次数组，复杂度为O(n)。<br>参考图：<br><a href="http://www.cnblogs.com/AnnieKim/archive/2013/04/21/3034631.html" target="_blank" rel="external">http://www.cnblogs.com/AnnieKim/archive/2013/04/21/3034631.html</a></p>
+          <span itemprop="articleBody"><h3 id="Rotate_Image_-_图像旋转">Rotate Image - 图像旋转</h3><p><strong>Description</strong>: You are given an n x n 2D matrix representing an image.<br> Rotate the image by 90 degrees (clockwise).</p>
+<p> Follow up: Could you do this in-place?</p>
+<p>思路：先转置再行逆转。</p>
 <p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstMissingPositive</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;<span class="number">3</span>,-<span class="number">1</span>,<span class="number">23</span>,<span class="number">7</span>,<span class="number">21</span>,<span class="number">12</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">18</span>,<span class="number">21</span>,-<span class="number">1</span>,<span class="number">16</span>,<span class="number">1</span>,<span class="number">13</span>,-<span class="number">3</span>,<span class="number">22</span>,<span class="number">23</span>,<span class="number">13</span>,<span class="number">7</span>,<span class="number">14</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">4</span>,-<span class="number">3</span>&#125;;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        <span class="keyword">int</span> result = <span class="keyword">new</span> FirstMissingPositive().firstMissingPositive(nums);</span><br><span class="line">        System.out.println(result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 交换数组元素，使得数组中第i位存放数值(i+1)。最后遍历数组，寻找第一个不符合此要求的元素，</span><br><span class="line">     * 返回这个元素。整个过程需要遍历两次数组，复杂度为O(n)。</span><br><span class="line">     * 参考图：http://www.cnblogs.com/AnnieKim/archive/2013/04/21/3034631.html</span><br><span class="line">     * <span class="doctag">@param</span> nums</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstMissingPositive</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; nums.length)&#123;    <span class="comment">//这里不使用for循环</span></span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt; <span class="number">0</span> &amp;&amp; nums[i] &lt; nums.length &amp;&amp; nums[i] != i + <span class="number">1</span> &amp;&amp;</span><br><span class="line">                    nums[nums[i] - <span class="number">1</span>] != nums[i])&#123; <span class="comment">//TODO 此条件易漏，否则进入无限循环</span></span><br><span class="line">                swap(nums, i, nums[i] - <span class="number">1</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] != i + <span class="number">1</span>) <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = nums[i];</span><br><span class="line">        nums[i] = nums[j];</span><br><span class="line">        nums[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RotateImage</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] matrix = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,&#123;<span class="number">3</span>,<span class="number">4</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">int</span> len = matrix.length;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        <span class="keyword">new</span> RotateImage().rotate(matrix);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; j++)&#123;</span><br><span class="line">                System.out.print(matrix[i][j] + <span class="string">" "</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//先转置再行逆转</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = matrix.length;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; len; j++)&#123;</span><br><span class="line">                reverseSwap(matrix, i, j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len / <span class="number">2</span>; j++)&#123;</span><br><span class="line">                colSwap(matrix, i, j, len);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">reverseSwap</span><span class="params">(<span class="keyword">int</span>[][] matrix, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = matrix[i][j];</span><br><span class="line">        matrix[i][j] = matrix[j][i];</span><br><span class="line">        matrix[j][i] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">colSwap</span><span class="params">(<span class="keyword">int</span>[][] matrix, <span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = matrix[i][j];</span><br><span class="line">        matrix[i][j] = matrix[i][len - j - <span class="number">1</span>];</span><br><span class="line">        matrix[i][len - j - <span class="number">1</span>] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
         
       
@@ -488,8 +487,8 @@
           
           
             
-              <a class="post-title-link" href="/2015/11/23/Combination Sum II (unique) - 组合数求和 II/" itemprop="url">
-                Combination Sum II (unique) - 组合数求和 II
+              <a class="post-title-link" href="/2015/11/30/Permutations II - 含重复元素的全排列/" itemprop="url">
+                Permutations II - 含重复元素的全排列
               </a>
             
           
@@ -499,8 +498,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-11-23T20:44:47+08:00" content="2015-11-23">
-            2015-11-23
+          <time itemprop="dateCreated" datetime="2015-11-30T20:44:47+08:00" content="2015-11-30">
+            2015-11-30
           </time>
         </span>
 
@@ -525,8 +524,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/11/23/Combination Sum II (unique) - 组合数求和 II/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/23/Combination Sum II (unique) - 组合数求和 II/" itemprop="commentsCount"></span>
+              <a href="/2015/11/30/Permutations II - 含重复元素的全排列/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/30/Permutations II - 含重复元素的全排列/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -542,108 +541,116 @@
 
       
         
-          <span itemprop="articleBody"><h3 id="Combination_Sum_II_(unique)_-_组合数求和_II">Combination Sum II (unique) - 组合数求和 II</h3><p><strong>Description</strong>: Given a collection of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T. Each number in C may only be used once in the combination.</p>
-<p> Note: All numbers (including target) will be positive integers.<br> Elements in a combination (a1, a2, … , ak) must be in non-descending order. (ie, a1 ≤ a2 ≤ … ≤ ak).<br> The solution set must not contain duplicate combinations.</p>
-<p> For example, given candidate set 10,1,2,7,6,1,5 and target 8,<br> A solution set is:<br> [1, 7]<br> [1, 2, 5]<br> [2, 6]<br> [1, 1, 6] </p>
-<p>思路：回溯法（与Combination Sum I的思路基本一致）。此题是典型的回溯法类型，注意元素不可以重复。</p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CombinationSumUnique</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;<span class="number">10</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">1</span>,<span class="number">5</span>&#125;;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        CombinationSumUnique instance = <span class="keyword">new</span> CombinationSumUnique();</span><br><span class="line">        instance.combinationSum2(nums, <span class="number">8</span>);</span><br><span class="line">        <span class="keyword">for</span> (List&lt;Integer&gt; ints : instance.result)&#123;</span><br><span class="line">            <span class="keyword">for</span> (Integer i : ints) System.out.print(i + <span class="string">" "</span>);</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; combinationSum2(<span class="keyword">int</span>[] candidates, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">if</span>(candidates == <span class="keyword">null</span> || candidates.length == <span class="number">0</span>) <span class="keyword">return</span> result;</span><br><span class="line">        Arrays.sort(candidates);</span><br><span class="line">        backTrack(candidates, target, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//入参candidates增序</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">backTrack</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (target == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span> (!result.contains(temp)) <span class="comment">//可能有重复结果</span></span><br><span class="line">                result.add(<span class="keyword">new</span> ArrayList&lt;&gt;(temp));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = k; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (target &lt; nums[i]) <span class="keyword">return</span>;</span><br><span class="line">            temp.add(nums[i]);</span><br><span class="line">            backTrack(nums, target - nums[i], i + <span class="number">1</span>);   <span class="comment">//传入i + 1而非i表明不可以重复</span></span><br><span class="line">            temp.remove(temp.size() - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/11/22/Combination Sum - 组合数求和/" itemprop="url">
-                Combination Sum - 组合数求和
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-11-22T20:44:47+08:00" content="2015-11-22">
-            2015-11-22
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/11/22/Combination Sum - 组合数求和/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/22/Combination Sum - 组合数求和/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Combination_Sum_-_组合数求和">Combination Sum - 组合数求和</h3><p><strong>Description</strong>: Given a set of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.<br> The same repeated number may be chosen from C unlimited number of times.</p>
-<p> Note:</p>
+          <span itemprop="articleBody"><h3 id="Permutations_II_-_含重复元素的全排列">Permutations II - 含重复元素的全排列</h3><p><strong>Description</strong>: Given a collection of numbers that might contain duplicates, return all possible unique permutations.</p>
+<p> For example,<br> [1,1,2] have the following unique permutations:<br> [1,1,2], [1,2,1], and [2,1,1].</p>
+<p>此题与Permutations（无重复元素）思路一致，如下。<br>回溯法：从集合依次选出每一个元素，作为排列的第一个元素，然后对剩余的元素进行全排列，如此递归处理。<br>时间复杂度：n! 空间复杂度：（in place置换）</p>
+<p>以abc为例子：</p>
 <ol>
-<li>All numbers (including target) will be positive temp.</li>
-<li>Elements in a combination (a1, a2, … , ak) must be in non-descending order. (ie, a1 ≤ a2 ≤ … ≤ ak).</li>
-<li><p>The solution set must not contain duplicate combinations.</p>
-<p>For example, given candidate set 2,3,6,7 and target 7,<br>A solution set is:<br>[7]<br>[2, 2, 3]</p>
-</li>
+<li>a和a交换(固定a), 求后面bc的全排列： abc, acb。 求完后，a 和 b交换； 得到bac,开始第二轮</li>
+<li>b和b交换(固定b), 求后面ac的全排列： bac, bca。 求完后，b 和 c交换； 得到cab,开始第三轮</li>
+<li>c和c交换(固定c), 求后面ba的全排列： cab, cba.</li>
 </ol>
-<p>思路：回溯法。此题是典型的回溯法类型，注意元素可以重复。</p>
+<p>分析图：<a href="http://segmentfault.com/a/1190000002710424" target="_blank" rel="external">http://segmentfault.com/a/1190000002710424</a></p>
+<p>注意：此题与Permutations（无重复元素）的不同在于输入集合含有重复元素。注意在回溯中添加跳过重复的判断（若不加则用例{1,-1,1,2,-1,2,2,-1}不通过）：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (i + <span class="number">1</span> &lt; len &amp;&amp; nums[i] == nums[i + <span class="number">1</span>]) <span class="keyword">continue</span>;    <span class="comment">//跳过重复</span></span><br></pre></td></tr></table></figure></p>
+<p>此外，若算法过程中用List存储元素，再通过判同过滤元素将无法通过用例{2,2,-1,2,3}，而算法过程中用Set则可以通过。</p>
 <p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CombinationSum</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        CombinationSum instance = <span class="keyword">new</span> CombinationSum();</span><br><span class="line">        instance.combinationSum(nums, <span class="number">7</span>);</span><br><span class="line">        <span class="keyword">for</span> (List&lt;Integer&gt; ints : instance.result)&#123;</span><br><span class="line">            <span class="keyword">for</span> (Integer i : ints) System.out.print(i + <span class="string">" "</span>);</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; combinationSum(<span class="keyword">int</span>[] candidates, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">if</span>(candidates == <span class="keyword">null</span> || candidates.length == <span class="number">0</span>) <span class="keyword">return</span> result;</span><br><span class="line">        Arrays.sort(candidates);</span><br><span class="line">        backTrack(candidates, target, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//入参candidates增序</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">backTrack</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (target == <span class="number">0</span>)&#123;</span><br><span class="line">            result.add(<span class="keyword">new</span> ArrayList&lt;&gt;(temp));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = k; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (target &lt; nums[i]) <span class="keyword">return</span>;</span><br><span class="line">            temp.add(nums[i]);</span><br><span class="line">            backTrack(nums, target - nums[i], i);   <span class="comment">//传入i而非i + 1表明可以重复</span></span><br><span class="line">            temp.remove(temp.size() - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PermutationsII</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> nums[] = &#123; <span class="number">2</span>,<span class="number">2</span>,-<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span> &#125;;</span><br><span class="line">        <span class="keyword">new</span> PermutationsII().permuteUnique(nums);</span><br><span class="line">        <span class="keyword">for</span> (List&lt;Integer&gt; list : result)&#123;</span><br><span class="line">            <span class="keyword">for</span> (Integer i : list) System.out.print(i);</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> Set&lt;List&lt;Integer&gt;&gt; resultSet = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; temp;</span><br><span class="line">    <span class="comment">/**注意：用例&#123;1,-1,1,2,-1,2,2,-1&#125;&#123;2,2,-1,2,3&#125;容易超时，注意添加跳过重复的逻辑判断</span><br><span class="line">     * 回溯法：从集合依次选出每一个元素，作为排列的第一个元素，然后对剩余的元素进行全排列，如此递归处理。</span><br><span class="line">     * 时间复杂度：n! 空间复杂度：（in place置换）</span><br><span class="line">     * 以abc为例子：</span><br><span class="line">     1. a和a交换(固定a), 求后面bc的全排列： abc, acb。 求完后，a 和 b交换； 得到bac,开始第二轮</span><br><span class="line">     2. b和b交换(固定b), 求后面ac的全排列： bac, bca。 求完后，b 和 c交换； 得到cab,开始第三轮</span><br><span class="line">     3. c和c交换(固定c), 求后面ba的全排列： cab, cba.</span><br><span class="line">     * http://blog.csdn.net/randyjiawenjie/article/details/6313729</span><br><span class="line">     * 分析图：http://segmentfault.com/a/1190000002710424</span><br><span class="line">     * <span class="doctag">@param</span> nums</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permuteUnique(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        permutation(nums, <span class="number">0</span>, nums.length);</span><br><span class="line">        result = <span class="keyword">new</span> ArrayList&lt;&gt;(resultSet);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">permutation</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> start, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (start == len - <span class="number">1</span>) &#123;</span><br><span class="line">            temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i ++) &#123;</span><br><span class="line">                temp.add(nums[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            resultSet.add(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt; len; i ++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i + <span class="number">1</span> &lt; len &amp;&amp; nums[i] == nums[i + <span class="number">1</span>]) <span class="keyword">continue</span>;    <span class="comment">//跳过重复</span></span><br><span class="line">                swap(nums, start, i);</span><br><span class="line">                permutation(nums, start + <span class="number">1</span>, len);</span><br><span class="line">                swap(nums, start, i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] s, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = s[i];</span><br><span class="line">        s[i] = s[j];</span><br><span class="line">        s[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/11/29/Permutations - 全排列/" itemprop="url">
+                Permutations - 全排列
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-29T20:44:47+08:00" content="2015-11-29">
+            2015-11-29
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/29/Permutations - 全排列/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/29/Permutations - 全排列/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Permutations_-_全排列">Permutations - 全排列</h3><p><strong>Description</strong>: Given a collection of numbers, return all possible permutations.</p>
+<p> For example,<br> [1,2,3] have the following permutations:<br> [1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], and [3,2,1].</p>
+<p>回溯法：从集合依次选出每一个元素，作为排列的第一个元素，然后对剩余的元素进行全排列，如此递归处理。<br>时间复杂度：n! 空间复杂度：（in place置换）</p>
+<p>以abc为例子：</p>
+<ol>
+<li>a和a交换(固定a), 求后面bc的全排列： abc, acb。 求完后，a 和 b交换； 得到bac,开始第二轮</li>
+<li>b和b交换(固定b), 求后面ac的全排列： bac, bca。 求完后，b 和 c交换； 得到cab,开始第三轮</li>
+<li>c和c交换(固定c), 求后面ba的全排列： cab, cba.</li>
+</ol>
+<p>分析图：<a href="http://segmentfault.com/a/1190000002710424" target="_blank" rel="external">http://segmentfault.com/a/1190000002710424</a></p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Permutations</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> nums[] = &#123; <span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span> &#125;;</span><br><span class="line">        <span class="keyword">new</span> Permutations().permute(nums);</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; temp;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 回溯法：从集合依次选出每一个元素，作为排列的第一个元素，然后对剩余的元素进行全排列，如此递归处理。</span><br><span class="line">     * 时间复杂度：n! 空间复杂度：（in place置换）</span><br><span class="line">     * 以abc为例子：</span><br><span class="line">     1. a和a交换(固定a), 求后面bc的全排列： abc, acb。 求完后，a 和 b交换； 得到bac,开始第二轮</span><br><span class="line">     2. b和b交换(固定b), 求后面ac的全排列： bac, bca。 求完后，b 和 c交换； 得到cab,开始第三轮</span><br><span class="line">     3. c和c交换(固定c), 求后面ba的全排列： cab, cba.</span><br><span class="line">     * http://blog.csdn.net/randyjiawenjie/article/details/6313729</span><br><span class="line">     * <span class="doctag">@param</span> nums</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permute(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        permutation(nums, <span class="number">0</span>, nums.length);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">permutation</span><span class="params">(<span class="keyword">int</span>[] str, <span class="keyword">int</span> start, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (start == len - <span class="number">1</span>) &#123;</span><br><span class="line">            temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i ++) &#123;</span><br><span class="line">                temp.add(str[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            result.add(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt; len; i ++) &#123;</span><br><span class="line">                swap(str, start, i);</span><br><span class="line">                permutation(str, start + <span class="number">1</span>, len);</span><br><span class="line">                swap(str, start, i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] s, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = s[i];</span><br><span class="line">        s[i] = s[j];</span><br><span class="line">        s[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
         
       
@@ -667,7 +674,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/15/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/17/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/15/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/17/">&raquo;</a>
   </nav>
 
  </div>
@@ -701,7 +708,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">101</span>
+              <span class="site-state-item-count">107</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
