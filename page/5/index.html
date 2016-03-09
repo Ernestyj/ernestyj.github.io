@@ -221,6 +221,96 @@
           
           
             
+              <a class="post-title-link" href="/2016/02/18/Surrounded Regions - 环绕区域/" itemprop="url">
+                Surrounded Regions - 环绕区域
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-02-18T20:44:47+08:00" content="2016-02-18">
+            2016-02-18
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/02/18/Surrounded Regions - 环绕区域/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/18/Surrounded Regions - 环绕区域/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Surrounded_Regions_-_环绕区域">Surrounded Regions - 环绕区域</h3><p><strong>Description</strong>: Given a 2D board containing ‘X’ and ‘O’, capture all regions surrounded by ‘X’. A region is captured by flipping all ‘O’s into ‘X’s in that surrounded region.</p>
+<p>For example,<br> X X X X<br> X O O X<br> X X O X<br> X O X X<br> After running your function, the board should be:<br> X X X X<br> X X X X<br> X X X X<br> X O X X</p>
+<p>思路：边界处的O不能被包围,可以先遍历一次将与边界相连的所有O找出并替换成#,再遍历一次将O换成X,#换回O. 注意如果采用DFS可能会产生栈溢出,因此用BFS.</p>
+<p>参考：<a href="http://www.programcreek.com/2014/04/leetcode-surrounded-regions-java/" target="_blank" rel="external">http://www.programcreek.com/2014/04/leetcode-surrounded-regions-java/</a></p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SurroundedRegions</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Queue&lt;Integer&gt; queue = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * http://www.programcreek.com/2014/04/leetcode-surrounded-regions-java/</span><br><span class="line">     * 边界处的O不能被包围,可以先遍历一次将与边界相连的所有O找出并替换成#,再遍历一次将O换成X,#换回O.</span><br><span class="line">     如果采用DFS可能会产生栈溢出,因此用BFS.</span><br><span class="line">     * <span class="doctag">@param</span> board</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">char</span>[][] board)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (board == <span class="keyword">null</span> || board.length == <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> m = board.length;</span><br><span class="line">        <span class="keyword">int</span> n = board[<span class="number">0</span>].length;</span><br><span class="line">        <span class="comment">// merge O's on left &amp; right boarder</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (board[i][<span class="number">0</span>] == <span class="string">'O'</span>) bfs(board, i, <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">if</span> (board[i][n - <span class="number">1</span>] == <span class="string">'O'</span>) bfs(board, i, n - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// merge O's on top &amp; bottom boarder</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (board[<span class="number">0</span>][j] == <span class="string">'O'</span>) bfs(board, <span class="number">0</span>, j);</span><br><span class="line">            <span class="keyword">if</span> (board[m - <span class="number">1</span>][j] == <span class="string">'O'</span>) bfs(board, m - <span class="number">1</span>, j);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// process the board</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (board[i][j] == <span class="string">'O'</span>) board[i][j] = <span class="string">'X'</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (board[i][j] == <span class="string">'#'</span>)  board[i][j] = <span class="string">'O'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">bfs</span><span class="params">(<span class="keyword">char</span>[][] board, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = board[<span class="number">0</span>].length;</span><br><span class="line">        <span class="comment">// fill current first and then its neighbors</span></span><br><span class="line">        fillCell(board, i, j);</span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">int</span> cur = queue.poll();</span><br><span class="line">            <span class="keyword">int</span> x = cur / n;</span><br><span class="line">            <span class="keyword">int</span> y = cur % n;</span><br><span class="line">            fillCell(board, x - <span class="number">1</span>, y);</span><br><span class="line">            fillCell(board, x + <span class="number">1</span>, y);</span><br><span class="line">            fillCell(board, x, y - <span class="number">1</span>);</span><br><span class="line">            fillCell(board, x, y + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">fillCell</span><span class="params">(<span class="keyword">char</span>[][] board, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = board.length;</span><br><span class="line">        <span class="keyword">int</span> n = board[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">if</span> (i &lt; <span class="number">0</span> || i &gt;= m || j &lt; <span class="number">0</span> || j &gt;= n || board[i][j] != <span class="string">'O'</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">// add current cell is queue &amp; then process its neighbors in bfs</span></span><br><span class="line">        queue.offer(i * n + j);</span><br><span class="line">        board[i][j] = <span class="string">'#'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/02/17/Sum Root to Leaf Numbers - 二叉树所有路径之和/" itemprop="url">
                 Sum Root to Leaf Numbers - 二叉树所有路径之和
               </a>
@@ -574,96 +664,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/02/13/Valid Palindrome - 回文判断/" itemprop="url">
-                Valid Palindrome - 回文判断
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-02-13T20:44:47+08:00" content="2016-02-13">
-            2016-02-13
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/02/13/Valid Palindrome - 回文判断/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/13/Valid Palindrome - 回文判断/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Valid_Palindrome_-_回文判断">Valid Palindrome - 回文判断</h3><p><strong>Description</strong>: Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>
-<p>For example, “A man, a plan, a canal: Panama” is a palindrome.(amanaplanacanalpanama)<br> “race a car” is not a palindrome.(raceacar)</p>
-<p>Note: Have you consider that the string might be empty? For the purpose of this problem, we define empty string as valid palindrome.</p>
-<p>思路：正则表达式与双指针。</p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ValidPalindrome</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 正则表达式与双指针。</span><br><span class="line">     * <span class="doctag">@param</span> s</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s==<span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (s.length()&lt;=<span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        s = s.replaceAll(<span class="string">"[^a-zA-Z0-9]"</span>, <span class="string">""</span>).toLowerCase();</span><br><span class="line">        <span class="keyword">int</span> l=<span class="number">0</span>, r=s.length()-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (l&lt;r)&#123;</span><br><span class="line">            <span class="keyword">if</span> (s.charAt(l++)!=s.charAt(r--)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -702,7 +702,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">127</span>
+              <span class="site-state-item-count">128</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -221,6 +221,99 @@
           
           
             
+              <a class="post-title-link" href="/2015/12/20/Text Justification - 文本对齐/" itemprop="url">
+                Text Justification - 文本对齐
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-12-20T20:44:47+08:00" content="2015-12-20">
+            2015-12-20
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/12/20/Text Justification - 文本对齐/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/20/Text Justification - 文本对齐/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Text_Justification_-_文本对齐">Text Justification - 文本对齐</h3><p><strong>Description</strong>: Given an array of words and a length L, format the text such that each line has exactly L characters and is fully (left and right) justified.</p>
+<p> You should pack your words in a greedy approach; that is, pack as many words as you can in each line. Pad extra spaces ‘ ‘ when necessary so that each line has exactly L characters.</p>
+<p> Extra spaces between words should be distributed as evenly as possible. If the number of spaces on a line do not divide evenly between words, the empty slots on the left will be assigned more spaces than the slots on the right.</p>
+<p> For the last line of text, it should be left justified and no extra space is inserted<br> between words.</p>
+<p> 注意两个点：<br> a、当该行只放一个单词时，空格全部在右边<br> b、最后一行中单词间只有一个空格，其余空格全部在右边。然后只要贪心选择，在一行中尽量放多的单词。</p>
+<p>一些坑：每行中，有下一个单词，才需要补一个空格。算法中，跳到新一行首个单词，才将上一行写入结果（而不是在上一行末单词判断写入）。</p>
+<p>此题非常容易出错，正确率很低。<br>参考：<a href="http://blog.csdn.net/linhuanmars/article/details/24063271" target="_blank" rel="external">http://blog.csdn.net/linhuanmars/article/details/24063271</a></p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TextJustification</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String[] words = &#123;<span class="string">"This"</span>, <span class="string">"is"</span>, <span class="string">"an"</span>, <span class="string">"example"</span>, <span class="string">"of"</span>, <span class="string">"text"</span>, <span class="string">"justification."</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> maxWidth = <span class="number">16</span>;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        System.out.println(<span class="keyword">new</span> TextJustification().fullJustify(words, maxWidth));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**TODO 边界极易出错 HARD</span><br><span class="line">     * 每行中，有下一个单词，才需要补一个空格。</span><br><span class="line">     * 算法中，跳到新一行首个单词，才将上一行写入结果（而不是在上一行末单词判断写入）。</span><br><span class="line">     * http://blog.csdn.net/linhuanmars/article/details/24063271</span><br><span class="line">     * <span class="doctag">@param</span> words</span><br><span class="line">     * <span class="doctag">@param</span> maxWidth</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">fullJustify</span><span class="params">(String[] words, <span class="keyword">int</span> maxWidth)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;String&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(words==<span class="keyword">null</span> || words.length==<span class="number">0</span>) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> lastHead = <span class="number">0</span>;   <span class="comment">//上一行第一个元素</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;words.length; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> wordCount = i-lastHead; <span class="comment">//wordCount不含当前第i个</span></span><br><span class="line">            <span class="keyword">if</span>(count + words[i].length() + wordCount &gt; maxWidth) &#123;  <span class="comment">//此时i是新一行的首个单词</span></span><br><span class="line">                <span class="keyword">int</span> avgSpaceNum = <span class="number">0</span>;   <span class="comment">//上一行平均空格数</span></span><br><span class="line">                <span class="keyword">int</span> extraSpaceNum = <span class="number">0</span>;   <span class="comment">//上一行额外空格数</span></span><br><span class="line">                <span class="keyword">if</span>(wordCount-<span class="number">1</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    avgSpaceNum = (maxWidth-count)/(wordCount-<span class="number">1</span>);</span><br><span class="line">                    extraSpaceNum = (maxWidth-count)%(wordCount-<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                StringBuilder str = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=lastHead; j&lt;i; j++) &#123;</span><br><span class="line">                    str.append(words[j]);</span><br><span class="line">                    <span class="keyword">if</span>(j &lt; i-<span class="number">1</span>) &#123;</span><br><span class="line">                        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>; k&lt;avgSpaceNum; k++) str.append(<span class="string">" "</span>);   <span class="comment">//补平均空格</span></span><br><span class="line">                        <span class="keyword">if</span>(extraSpaceNum&gt;<span class="number">0</span>) str.append(<span class="string">" "</span>);    <span class="comment">//补额外空格</span></span><br><span class="line">                        extraSpaceNum--;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=str.length(); j&lt;maxWidth; j++) str.append(<span class="string">" "</span>);   <span class="comment">//一个单词时，补末尾</span></span><br><span class="line">                res.add(str.toString());</span><br><span class="line">                count=<span class="number">0</span>;    <span class="comment">//新一行</span></span><br><span class="line">                lastHead=i; <span class="comment">//新一行</span></span><br><span class="line">            &#125;</span><br><span class="line">            count += words[i].length();</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuilder str = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=lastHead; i&lt;words.length; i++) &#123;  <span class="comment">//最后一行</span></span><br><span class="line">            str.append(words[i]);</span><br><span class="line">            <span class="keyword">if</span>(str.length() &lt; maxWidth) str.append(<span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=str.length(); i&lt;maxWidth; i++) str.append(<span class="string">" "</span>);</span><br><span class="line">        res.add(str.toString());</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/12/19/Add Binary - 二进制数加法/" itemprop="url">
                 Add Binary - 二进制数加法
               </a>
@@ -583,95 +676,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/12/16/Unique Paths II - 唯一路径II/" itemprop="url">
-                Unique Paths II - 唯一路径II
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-12-16T20:44:47+08:00" content="2015-12-16">
-            2015-12-16
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/12/16/Unique Paths II - 唯一路径II/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/16/Unique Paths II - 唯一路径II/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Unique_Paths_II_-_唯一路径II">Unique Paths II - 唯一路径II</h3><p><strong>Description</strong>: Follow up for “Unique Paths”:<br> Now consider if some obstacles are added to the grids. How many unique paths would there be?<br> An obstacle and empty space is marked as 1 and 0 respectively in the grid.</p>
-<p> Note: m and n will be at most 100.</p>
-<p>思路：动态规划：res[i][j]=res[i-1][j]+res[i][j-1]。</p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UniquePathsII</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        int[][] obstacleGrid = &#123;&#123;0,0,0&#125;,</span></span><br><span class="line"><span class="comment">//                                &#123;0,1,0&#125;,</span></span><br><span class="line"><span class="comment">//                                &#123;0,0,0&#125;&#125;;</span></span><br><span class="line">        <span class="keyword">int</span>[][] obstacleGrid = &#123;&#123;<span class="number">1</span>&#125;&#125;;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        System.out.println(<span class="keyword">new</span> UniquePathsII().uniquePathsWithObstacles(obstacleGrid));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 动态规划：res[i][j]=res[i-1][j]+res[i][j-1]</span><br><span class="line">     * <span class="doctag">@param</span> obstacleGrid</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">uniquePathsWithObstacles</span><span class="params">(<span class="keyword">int</span>[][] obstacleGrid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = obstacleGrid.length;</span><br><span class="line">        <span class="keyword">int</span> n = obstacleGrid[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">if</span> (obstacleGrid[<span class="number">0</span>][<span class="number">0</span>] == <span class="number">1</span> || obstacleGrid[m-<span class="number">1</span>][n-<span class="number">1</span>] == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[][] res = <span class="keyword">new</span> <span class="keyword">int</span>[m][n];</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>, j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;m; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (obstacleGrid[i][<span class="number">0</span>] == <span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">            res[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (j=<span class="number">0</span>; j&lt;n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (obstacleGrid[<span class="number">0</span>][j] == <span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">            res[<span class="number">0</span>][j] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (i=<span class="number">1</span>; i&lt;m; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (j=<span class="number">1</span>; j&lt;n; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span> (obstacleGrid[i][j] != <span class="number">1</span>)&#123;</span><br><span class="line">                    res[i][j] = res[i-<span class="number">1</span>][j] + res[i][j-<span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res[i-<span class="number">1</span>][j-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -710,7 +714,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">127</span>
+              <span class="site-state-item-count">128</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -221,6 +221,96 @@
           
           
             
+              <a class="post-title-link" href="/2016/02/13/Valid Palindrome - 回文判断/" itemprop="url">
+                Valid Palindrome - 回文判断
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-02-13T20:44:47+08:00" content="2016-02-13">
+            2016-02-13
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/02/13/Valid Palindrome - 回文判断/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/13/Valid Palindrome - 回文判断/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Valid_Palindrome_-_回文判断">Valid Palindrome - 回文判断</h3><p><strong>Description</strong>: Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>
+<p>For example, “A man, a plan, a canal: Panama” is a palindrome.(amanaplanacanalpanama)<br> “race a car” is not a palindrome.(raceacar)</p>
+<p>Note: Have you consider that the string might be empty? For the purpose of this problem, we define empty string as valid palindrome.</p>
+<p>思路：正则表达式与双指针。</p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ValidPalindrome</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 正则表达式与双指针。</span><br><span class="line">     * <span class="doctag">@param</span> s</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s==<span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (s.length()&lt;=<span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        s = s.replaceAll(<span class="string">"[^a-zA-Z0-9]"</span>, <span class="string">""</span>).toLowerCase();</span><br><span class="line">        <span class="keyword">int</span> l=<span class="number">0</span>, r=s.length()-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (l&lt;r)&#123;</span><br><span class="line">            <span class="keyword">if</span> (s.charAt(l++)!=s.charAt(r--)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/02/12/Binary Tree Maximum Path Sum - 二叉树最大路径和/" itemprop="url">
                 Binary Tree Maximum Path Sum - 二叉树最大路径和
               </a>
@@ -580,97 +670,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/02/07/Pascal's Triangle II/" itemprop="url">
-                Pascal's Triangle II
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-02-07T20:44:47+08:00" content="2016-02-07">
-            2016-02-07
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/02/07/Pascal's Triangle II/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/07/Pascal's Triangle II/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Pascal’s_Triangle_II">Pascal’s Triangle II</h3><p><strong>Description</strong>: Given an index k, return the kth row of the Pascal’s triangle.</p>
-<p>For example, given k = 3, Return [1,3,3,1].</p>
-<p> Note: Could you optimize your algorithm to use only O(k) extra space?</p>
-<p> 示例：k=5时Pascal三角如下<br> [<br>&nbsp;&nbsp;&nbsp;&nbsp;[1],<br>&nbsp;&nbsp;&nbsp;[1,1],<br>&nbsp;&nbsp;[1,2,1],<br>&nbsp;[1,3,3,1],<br> [1,4,6,4,1]<br> ]</p>
-<p>思路：与Pascal’s Triangle类似,但是空间可以压缩为O(k).注意in-place更新值时要逆序(观察Pascal三角的特点)</p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PascalTriangleII</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 与Pascal's Triangle类似,但是空间可以压缩为O(k).注意in-place更新值时要逆序(观察Pascal三角的特点)</span><br><span class="line">     * <span class="doctag">@param</span> rowIndex</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">getRow</span><span class="params">(<span class="keyword">int</span> rowIndex)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (rowIndex&lt;<span class="number">0</span>) <span class="keyword">return</span> result;</span><br><span class="line">        result.add(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> row=<span class="number">1</span>; row&lt;rowIndex+<span class="number">1</span>; row++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=result.size()-<span class="number">1</span>; j&gt;<span class="number">0</span>; j--)&#123;    <span class="comment">//注意一定要倒序遍历,因为顺序会覆盖值</span></span><br><span class="line">                result.set(j, result.get(j-<span class="number">1</span>) + result.get(j));</span><br><span class="line">            &#125;</span><br><span class="line">            result.add(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -709,7 +708,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">127</span>
+              <span class="site-state-item-count">128</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

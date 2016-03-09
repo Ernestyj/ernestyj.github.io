@@ -221,6 +221,94 @@
           
           
             
+              <a class="post-title-link" href="/2016/03/03/Binary Tree Preorder Traversal - 二叉树先序遍历(迭代)/" itemprop="url">
+                Binary Tree Preorder Traversal - 二叉树先序遍历(迭代)
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-03-03T20:44:47+08:00" content="2016-03-03">
+            2016-03-03
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/03/03/Binary Tree Preorder Traversal - 二叉树先序遍历(迭代)/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/03/Binary Tree Preorder Traversal - 二叉树先序遍历(迭代)/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Binary_Tree_Preorder_Traversal_-_二叉树先序遍历(迭代)">Binary Tree Preorder Traversal - 二叉树先序遍历(迭代)</h3><p><strong>Description</strong>: Given a binary tree, return the preorder traversal of its nodes’ values.</p>
+<p>思路：迭代法使用栈.</p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BinaryTreePreorderTraversal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (root==<span class="keyword">null</span>) <span class="keyword">return</span> result;</span><br><span class="line">        Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        stack.push(root);</span><br><span class="line">        <span class="keyword">while</span> (!stack.isEmpty())&#123;</span><br><span class="line">            TreeNode node = stack.pop();</span><br><span class="line">            result.add(node.val);</span><br><span class="line">            <span class="keyword">if</span> (node.right!=<span class="keyword">null</span>) stack.push(node.right);</span><br><span class="line">            <span class="keyword">if</span> (node.left!=<span class="keyword">null</span>) stack.push(node.left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/03/02/Reorder List - 重排序链表/" itemprop="url">
                 Reorder List - 重排序链表
               </a>
@@ -570,97 +658,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/02/27/Word Break - 单词划分/" itemprop="url">
-                Word Break - 单词划分
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-02-27T20:44:47+08:00" content="2016-02-27">
-            2016-02-27
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/02/27/Word Break - 单词划分/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/27/Word Break - 单词划分/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Word_Break_-_单词划分">Word Break - 单词划分</h3><p><strong>Description</strong>: Given a string s and a dictionary of words dict, determine if s can be segmented into a space-separated sequence of one or more dictionary words.</p>
-<p> For example, given<br> s = “leetcode”,<br> dict = [“leet”, “code”].<br> Return true because “leetcode” can be segmented as “leet code”.</p>
-<p>思路：<br>一、原始办法:回溯,超时。<br>二、看到这题第一反应是DFS枚举查找，直到“探”到string尾部则算成功。但题目并不要求给出是如何break的，而只要判断是否能break。对这类判断“是”与“否”的可以用DFS暴力解决的题，可以尝试用DP做book keeping中间判断状态，避免DFS的反复搜索。<br>定义t[i]为区间[0,i-1]能否被分割,注意初始状态t[0]=True.<br>t[i+1]=True时应满足:1.s[k,i]在字典中,0&lt;=k&lt;=i;2.t[k]==True.</p>
-<p>注意：本题边界情况极易出错。</p>
-<p>参考链接：<a href="http://www.programcreek.com/2012/12/leetcode-solution-word-break/" target="_blank" rel="external">http://www.programcreek.com/2012/12/leetcode-solution-word-break/</a></p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordBreak</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**http://www.programcreek.com/2012/12/leetcode-solution-word-break/</span><br><span class="line">     * 看到这题第一反应是DFS枚举查找，直到“探”到string尾部则算成功。但题目并不要求给出是如何break的，</span><br><span class="line">     而只要判断是否能break。对这类判断“是”与“否”的可以用DFS暴力解决的题，</span><br><span class="line">     可以尝试用DP做book keeping中间判断状态，避免DFS的反复搜索。</span><br><span class="line">     * 定义t[i]为区间[0,i-1]能否被分割,注意初始状态t[0]=True.</span><br><span class="line">     t[i+1]=True时应满足:1.s[k,i]在字典中,0&lt;=k&lt;=i;2.t[k]==True.</span><br><span class="line">     * <span class="doctag">@param</span> s</span><br><span class="line">     * <span class="doctag">@param</span> wordDict</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">wordBreak</span><span class="params">(String s, Set&lt;String&gt; wordDict)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span>[] t = <span class="keyword">new</span> <span class="keyword">boolean</span>[s.length()+<span class="number">1</span>];</span><br><span class="line">        t[<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;=i; j++)&#123;   <span class="comment">//TODO 边界极易出错</span></span><br><span class="line">                <span class="keyword">if</span> (t[j] &amp;&amp; wordDict.contains(s.substring(j, i+<span class="number">1</span>)))&#123;</span><br><span class="line">                    t[i+<span class="number">1</span>] = <span class="keyword">true</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> t[s.length()];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//基于给定字典遍历的DP,注意代码中if (t[end]) continue;部分易错</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">wordBreak1</span><span class="params">(String s, Set&lt;String&gt; wordDict)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span>[] t = <span class="keyword">new</span> <span class="keyword">boolean</span>[s.length()+<span class="number">1</span>];</span><br><span class="line">        t[<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (!t[i]) <span class="keyword">continue</span>;    <span class="comment">//不能分割,跳过</span></span><br><span class="line">            <span class="keyword">for</span> (String word : wordDict)&#123;</span><br><span class="line">                <span class="keyword">int</span> end = i+word.length();</span><br><span class="line">                <span class="keyword">if</span> (end&gt;s.length()) <span class="keyword">continue</span>;   <span class="comment">//超过字符串s长度</span></span><br><span class="line">                <span class="comment">//注意用例"programcreek", ["programcree","program","creek"]</span></span><br><span class="line">                <span class="comment">//下面的语句保证不会停在programcree,而是读完所有programcreek</span></span><br><span class="line">                <span class="keyword">if</span> (t[end]) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (s.substring(i, end).equals(word)) t[end] = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> t[s.length()];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//原始办法:回溯,超时</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">wordBreak2</span><span class="params">(String s, Set&lt;String&gt; wordDict)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> wordBreakHelper(s, wordDict, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//基于给定字典遍历</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">wordBreakHelper</span><span class="params">(String s, Set&lt;String&gt; wordDict, <span class="keyword">int</span> start)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (start==s.length()) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (String word : wordDict)&#123;</span><br><span class="line">            <span class="keyword">int</span> len = word.length();</span><br><span class="line">            <span class="keyword">int</span> end = start+len;</span><br><span class="line">            <span class="keyword">if</span> (end &gt; s.length()) <span class="keyword">continue</span>; <span class="comment">//超过字符串s长度</span></span><br><span class="line">            <span class="keyword">if</span> (s.substring(start, end).equals(word))&#123;</span><br><span class="line">                <span class="keyword">if</span> (wordBreakHelper(s, wordDict, end)) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//基于给定字符串s遍历</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">wordBreakHelper1</span><span class="params">(String s, Set&lt;String&gt; wordDict, <span class="keyword">int</span> start)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (start==s.length()) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=start+<span class="number">1</span>; i&lt;s.length(); i++)&#123;</span><br><span class="line">            String str = s.substring(start, i+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (!wordDict.contains(str)) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> (wordBreakHelper(s, wordDict, i+<span class="number">1</span>)) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -699,7 +696,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">127</span>
+              <span class="site-state-item-count">128</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

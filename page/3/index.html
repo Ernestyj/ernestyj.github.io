@@ -221,6 +221,97 @@
           
           
             
+              <a class="post-title-link" href="/2016/02/27/Word Break - 单词划分/" itemprop="url">
+                Word Break - 单词划分
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-02-27T20:44:47+08:00" content="2016-02-27">
+            2016-02-27
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/02/27/Word Break - 单词划分/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/27/Word Break - 单词划分/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Word_Break_-_单词划分">Word Break - 单词划分</h3><p><strong>Description</strong>: Given a string s and a dictionary of words dict, determine if s can be segmented into a space-separated sequence of one or more dictionary words.</p>
+<p> For example, given<br> s = “leetcode”,<br> dict = [“leet”, “code”].<br> Return true because “leetcode” can be segmented as “leet code”.</p>
+<p>思路：<br>一、原始办法:回溯,超时。<br>二、看到这题第一反应是DFS枚举查找，直到“探”到string尾部则算成功。但题目并不要求给出是如何break的，而只要判断是否能break。对这类判断“是”与“否”的可以用DFS暴力解决的题，可以尝试用DP做book keeping中间判断状态，避免DFS的反复搜索。<br>定义t[i]为区间[0,i-1]能否被分割,注意初始状态t[0]=True.<br>t[i+1]=True时应满足:1.s[k,i]在字典中,0&lt;=k&lt;=i;2.t[k]==True.</p>
+<p>注意：本题边界情况极易出错。</p>
+<p>参考链接：<a href="http://www.programcreek.com/2012/12/leetcode-solution-word-break/" target="_blank" rel="external">http://www.programcreek.com/2012/12/leetcode-solution-word-break/</a></p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordBreak</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**http://www.programcreek.com/2012/12/leetcode-solution-word-break/</span><br><span class="line">     * 看到这题第一反应是DFS枚举查找，直到“探”到string尾部则算成功。但题目并不要求给出是如何break的，</span><br><span class="line">     而只要判断是否能break。对这类判断“是”与“否”的可以用DFS暴力解决的题，</span><br><span class="line">     可以尝试用DP做book keeping中间判断状态，避免DFS的反复搜索。</span><br><span class="line">     * 定义t[i]为区间[0,i-1]能否被分割,注意初始状态t[0]=True.</span><br><span class="line">     t[i+1]=True时应满足:1.s[k,i]在字典中,0&lt;=k&lt;=i;2.t[k]==True.</span><br><span class="line">     * <span class="doctag">@param</span> s</span><br><span class="line">     * <span class="doctag">@param</span> wordDict</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">wordBreak</span><span class="params">(String s, Set&lt;String&gt; wordDict)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span>[] t = <span class="keyword">new</span> <span class="keyword">boolean</span>[s.length()+<span class="number">1</span>];</span><br><span class="line">        t[<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;=i; j++)&#123;   <span class="comment">//TODO 边界极易出错</span></span><br><span class="line">                <span class="keyword">if</span> (t[j] &amp;&amp; wordDict.contains(s.substring(j, i+<span class="number">1</span>)))&#123;</span><br><span class="line">                    t[i+<span class="number">1</span>] = <span class="keyword">true</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> t[s.length()];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//基于给定字典遍历的DP,注意代码中if (t[end]) continue;部分易错</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">wordBreak1</span><span class="params">(String s, Set&lt;String&gt; wordDict)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span>[] t = <span class="keyword">new</span> <span class="keyword">boolean</span>[s.length()+<span class="number">1</span>];</span><br><span class="line">        t[<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (!t[i]) <span class="keyword">continue</span>;    <span class="comment">//不能分割,跳过</span></span><br><span class="line">            <span class="keyword">for</span> (String word : wordDict)&#123;</span><br><span class="line">                <span class="keyword">int</span> end = i+word.length();</span><br><span class="line">                <span class="keyword">if</span> (end&gt;s.length()) <span class="keyword">continue</span>;   <span class="comment">//超过字符串s长度</span></span><br><span class="line">                <span class="comment">//注意用例"programcreek", ["programcree","program","creek"]</span></span><br><span class="line">                <span class="comment">//下面的语句保证不会停在programcree,而是读完所有programcreek</span></span><br><span class="line">                <span class="keyword">if</span> (t[end]) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (s.substring(i, end).equals(word)) t[end] = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> t[s.length()];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//原始办法:回溯,超时</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">wordBreak2</span><span class="params">(String s, Set&lt;String&gt; wordDict)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> wordBreakHelper(s, wordDict, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//基于给定字典遍历</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">wordBreakHelper</span><span class="params">(String s, Set&lt;String&gt; wordDict, <span class="keyword">int</span> start)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (start==s.length()) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (String word : wordDict)&#123;</span><br><span class="line">            <span class="keyword">int</span> len = word.length();</span><br><span class="line">            <span class="keyword">int</span> end = start+len;</span><br><span class="line">            <span class="keyword">if</span> (end &gt; s.length()) <span class="keyword">continue</span>; <span class="comment">//超过字符串s长度</span></span><br><span class="line">            <span class="keyword">if</span> (s.substring(start, end).equals(word))&#123;</span><br><span class="line">                <span class="keyword">if</span> (wordBreakHelper(s, wordDict, end)) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//基于给定字符串s遍历</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">wordBreakHelper1</span><span class="params">(String s, Set&lt;String&gt; wordDict, <span class="keyword">int</span> start)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (start==s.length()) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=start+<span class="number">1</span>; i&lt;s.length(); i++)&#123;</span><br><span class="line">            String str = s.substring(start, i+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (!wordDict.contains(str)) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> (wordBreakHelper(s, wordDict, i+<span class="number">1</span>)) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/02/26/Copy List with Random Pointer - 复制带随机指针的链表/" itemprop="url">
                 Copy List with Random Pointer - 复制带随机指针的链表
               </a>
@@ -403,94 +494,6 @@
           
           
             
-              <a class="post-title-link" href="/2016/02/24/Single Number - 寻找单一整数/" itemprop="url">
-                Single Number - 寻找单一整数
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-02-24T20:44:47+08:00" content="2016-02-24">
-            2016-02-24
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/02/24/Single Number - 寻找单一整数/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/24/Single Number - 寻找单一整数/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Single_Number_-_寻找单一整数">Single Number - 寻找单一整数</h3><p><strong>Description</strong>: Given an array of integers, every element appears twice except for one. Find that single one.<br> Note: Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p>
-<p>思路：<br>1 异或(此法不消耗额外空间),只有两不同位异或才会返回1,所有相同整数异或结果为整数0.<br>2 集合<br>3 哈希表</p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingleNumber</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//异或(此法不消耗额外空间),只有两不同位异或才会返回1,所有相同整数异或结果为整数0.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length==<span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;nums.length; i++) nums[<span class="number">0</span>] = nums[<span class="number">0</span>]^nums[i];</span><br><span class="line">        <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//集合</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber1</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> n : nums)&#123;</span><br><span class="line">            <span class="keyword">if</span> (!set.add(n)) set.remove(n);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>)set.toArray()[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//哈希表</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber2</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (!map.containsKey(nums[i]))&#123;</span><br><span class="line">                map.put(nums[i], <span class="number">1</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                map.put(nums[i], map.get(nums[i])+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (Integer i : map.keySet())&#123;</span><br><span class="line">            <span class="keyword">if</span> (map.get(i)==<span class="number">1</span>) <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
               <a class="post-title-link" href="/2016/02/24/Longest Valid Parentheses - 最长匹配括号序列/" itemprop="url">
                 Longest Valid Parentheses - 最长匹配括号序列
               </a>
@@ -581,8 +584,8 @@
           
           
             
-              <a class="post-title-link" href="/2016/02/23/Candy - 糖果游戏/" itemprop="url">
-                Candy - 糖果游戏
+              <a class="post-title-link" href="/2016/02/24/Single Number - 寻找单一整数/" itemprop="url">
+                Single Number - 寻找单一整数
               </a>
             
           
@@ -592,8 +595,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2016-02-23T20:44:47+08:00" content="2016-02-23">
-            2016-02-23
+          <time itemprop="dateCreated" datetime="2016-02-24T20:44:47+08:00" content="2016-02-24">
+            2016-02-24
           </time>
         </span>
 
@@ -618,8 +621,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2016/02/23/Candy - 糖果游戏/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/23/Candy - 糖果游戏/" itemprop="commentsCount"></span>
+              <a href="/2016/02/24/Single Number - 寻找单一整数/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/24/Single Number - 寻找单一整数/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -635,11 +638,10 @@
 
       
         
-          <span itemprop="articleBody"><h3 id="Candy_-_糖果游戏">Candy - 糖果游戏</h3><p><strong>Description</strong>: There are N children standing in a line. Each child is assigned a rating value. You are giving candies to these children subjected to the following requirements:<br> Each child must have at least one candy. Children with a higher rating get more candies than their neighbors. What is the minimum candies you must give?</p>
-<p>思路：涉及相邻元素问题,类似Trapping Rain Water,总体思路也是从左从右双向遍历.<br>贪心:只要遇到更大的相邻值,则可以加一;但要总数最小,则需按升序来加一.<br>首先从左向右遍历,升序加一;再从右向左遍历,升序加一.</p>
-<p>参考链接：<a href="http://www.programcreek.com/2014/03/leetcode-candy-java/" target="_blank" rel="external">http://www.programcreek.com/2014/03/leetcode-candy-java/</a></p>
+          <span itemprop="articleBody"><h3 id="Single_Number_-_寻找单一整数">Single Number - 寻找单一整数</h3><p><strong>Description</strong>: Given an array of integers, every element appears twice except for one. Find that single one.<br> Note: Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p>
+<p>思路：<br>1 异或(此法不消耗额外空间),只有两不同位异或才会返回1,所有相同整数异或结果为整数0.<br>2 集合<br>3 哈希表</p>
 <p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Candy</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 涉及相邻元素问题,类似Trapping Rain Water,总体思路也是从左从右双向遍历.</span><br><span class="line">     * 贪心:只要遇到更大的相邻值,则可以加一;但要总数最小,则需按升序来加一.</span><br><span class="line">     首先从左向右遍历,升序加一;再从右向左遍历,升序加一.</span><br><span class="line">     http://www.programcreek.com/2014/03/leetcode-candy-java/</span><br><span class="line">     * <span class="doctag">@param</span> ratings</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">candy</span><span class="params">(<span class="keyword">int</span>[] ratings)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] candies = <span class="keyword">new</span> <span class="keyword">int</span>[ratings.length];</span><br><span class="line">        candies[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> total = candies[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;ratings.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (ratings[i-<span class="number">1</span>]&lt;ratings[i])&#123;</span><br><span class="line">                candies[i] = candies[i-<span class="number">1</span>]+<span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                candies[i] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            total += candies[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=ratings.length-<span class="number">2</span>; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">if</span> (ratings[i]&gt;ratings[i+<span class="number">1</span>])&#123;</span><br><span class="line">                <span class="keyword">if</span> (! (candies[i]&gt;candies[i+<span class="number">1</span>])) &#123;</span><br><span class="line">                    <span class="keyword">int</span> old = candies[i];   <span class="comment">//TODO 易错(用例[5,3,1]),并非新增值都是1,应存储原值,用以计算新增值</span></span><br><span class="line">                    candies[i] = candies[i+<span class="number">1</span>]+<span class="number">1</span>;</span><br><span class="line">                    total += candies[i]-old;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> total;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingleNumber</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//异或(此法不消耗额外空间),只有两不同位异或才会返回1,所有相同整数异或结果为整数0.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length==<span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;nums.length; i++) nums[<span class="number">0</span>] = nums[<span class="number">0</span>]^nums[i];</span><br><span class="line">        <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//集合</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber1</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> n : nums)&#123;</span><br><span class="line">            <span class="keyword">if</span> (!set.add(n)) set.remove(n);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>)set.toArray()[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//哈希表</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber2</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (!map.containsKey(nums[i]))&#123;</span><br><span class="line">                map.put(nums[i], <span class="number">1</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                map.put(nums[i], map.get(nums[i])+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (Integer i : map.keySet())&#123;</span><br><span class="line">            <span class="keyword">if</span> (map.get(i)==<span class="number">1</span>) <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
         
       
@@ -697,7 +699,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">127</span>
+              <span class="site-state-item-count">128</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
