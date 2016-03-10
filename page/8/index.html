@@ -221,6 +221,188 @@
           
           
             
+              <a class="post-title-link" href="/2016/02/04/Populating Next Right Pointers in Each Node - 填充二叉树每个节点的右指针/" itemprop="url">
+                Populating Next Right Pointers in Each Node - 填充二叉树每个节点的右指针
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-02-04T20:44:47+08:00" content="2016-02-04">
+            2016-02-04
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/02/04/Populating Next Right Pointers in Each Node - 填充二叉树每个节点的右指针/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/04/Populating Next Right Pointers in Each Node - 填充二叉树每个节点的右指针/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Populating_Next_Right_Pointers_in_Each_Node_-_填充二叉树每个节点的右指针">Populating Next Right Pointers in Each Node - 填充二叉树每个节点的右指针</h3><p><strong>Description</strong>: Populate each next pointer to point to its next right node.<br> If there is no next right node, the next pointer should be set to NULL. Initially, all next pointers are set to NULL.</p>
+<p> Note:<br> You may only use constant extra space.<br> You may assume that it is a perfect binary tree (ie, all leaves are at the same level, and every parent has two children).</p>
+<p> 思路：<br> 1 用Populating Next Right Pointers in Each Node II解法可行(类似二叉树层次遍历)；<br>2 由于题目中的二叉树是完全二叉树,找到规律可用递归求解(OJ排名82%);<br>（1）根节点的左子树，其next是该根节点的右子树;<br>（2）根节点的右子树，其next是该根节点next节点的左子树.<br>参考：<a href="https://gist.github.com/benjaminwu7/4700435" target="_blank" rel="external">https://gist.github.com/benjaminwu7/4700435</a></p>
+<p>完整的java代码如下（第二种方法）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PopulatingNextRightPointersInEachNode</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeLinkNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeLinkNode left, right, next;</span><br><span class="line">        TreeLinkNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//用Populating Next Right Pointers in Each Node II解法可行(类似二叉树层次遍历)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 由于题目中的二叉树是完全二叉树,找到规律可用递归求解(OJ排名82%);</span><br><span class="line">     1. 根节点的左子树，其next是该根节点的右子树;</span><br><span class="line">     2. 根节点的右子树，其next是该根节点next节点的左子树.</span><br><span class="line">     * https://gist.github.com/benjaminwu7/4700435</span><br><span class="line">     * <span class="doctag">@param</span> root</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connect</span><span class="params">(TreeLinkNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        TreeLinkNode leftN = root.left;</span><br><span class="line">        TreeLinkNode rightN = root.right;</span><br><span class="line">        <span class="keyword">while</span>(leftN != <span class="keyword">null</span>)&#123;   <span class="comment">//链接兄弟节点,及这对兄弟节点下所有相邻的堂兄弟节点对</span></span><br><span class="line">            leftN.next = rightN;</span><br><span class="line">            leftN = leftN.right;</span><br><span class="line">            rightN = rightN.left;</span><br><span class="line">        &#125;</span><br><span class="line">        connect(root.left);</span><br><span class="line">        connect(root.right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/02/03/Distinct Subsequences - 求不同的子串序列数/" itemprop="url">
+                Distinct Subsequences - 求不同的子串序列数
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-02-03T20:44:47+08:00" content="2016-02-03">
+            2016-02-03
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/02/03/Distinct Subsequences - 求不同的子串序列数/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/03/Distinct Subsequences - 求不同的子串序列数/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Distinct_Subsequences_-_求不同的子串序列数">Distinct Subsequences - 求不同的子串序列数</h3><p><strong>Description</strong>: Given a string S and a string T, count the number of distinct subsequences of T in S.</p>
+<p>Here is an example:S = “rabbbit”, T = “rabbit”, Return 3.</p>
+<p>原题链接：<a href="https://leetcode.com/problems/distinct-subsequences/" target="_blank" rel="external">https://leetcode.com/problems/distinct-subsequences/</a> </p>
+<p> 思路：二维动态规划(与Interleaving String思路一致)。<br> W(i,j)表示S(0,i)的子串与T(0,j)相同的个数,</p>
+<p>递推式:W(i,j)=W(i-1,j-1)+W(i-1,j),当S(i)==T(j)时;<br>     W(i,j)=W(i-1,j),当S(i)!=T(j)时.</p>
+<p>边界条件:S,T均为空串,W(0,0)=1;<br>     仅S为空串,W(0,j)=0;<br>     仅T为空串,W(i,0)=1;</p>
+<p>参考：<a href="http://www.programcreek.com/2013/01/leetcode-distinct-subsequences-total-java/" target="_blank" rel="external">http://www.programcreek.com/2013/01/leetcode-distinct-subsequences-total-java/</a><br>图解：<a href="http://blog.csdn.net/abcbc/article/details/8978146" target="_blank" rel="external">http://blog.csdn.net/abcbc/article/details/8978146</a></p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DistinctSubsequences</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**http://www.programcreek.com/2013/01/leetcode-distinct-subsequences-total-java/</span><br><span class="line">     * 图解:http://blog.csdn.net/abcbc/article/details/8978146</span><br><span class="line">     * 二维动态规划(与Interleaving String思路一致):W(i,j)表示S(0,i)的子串与T(0,j)相同的个数,</span><br><span class="line">     递推式:W(i,j)=W(i-1,j-1)+W(i-1,j),当S(i)==T(j)时;</span><br><span class="line">     W(i,j)=W(i-1,j),当S(i)!=T(j)时.</span><br><span class="line">     边界条件:S,T均为空串,W(0,0)=1;</span><br><span class="line">     仅S为空串,W(0,j)=0;</span><br><span class="line">     仅T为空串,W(i,0)=1;</span><br><span class="line">     * <span class="doctag">@param</span> s</span><br><span class="line">     * <span class="doctag">@param</span> t</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numDistinct</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> lenS = s.length(), lenT = t.length();</span><br><span class="line">        <span class="keyword">int</span>[][] result = <span class="keyword">new</span> <span class="keyword">int</span>[lenS+<span class="number">1</span>][lenT+<span class="number">1</span>];</span><br><span class="line">        result[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//for (int j=1; j&lt;=lenT; j++) result[0][j] = 0; //冗余</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=lenS; i++) result[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=lenS; i++)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=lenT; j++)&#123;</span><br><span class="line">                result[i][j] = result[i-<span class="number">1</span>][j];</span><br><span class="line">                <span class="keyword">if</span> (s.charAt(i-<span class="number">1</span>) == t.charAt(j-<span class="number">1</span>)) result[i][j] += result[i-<span class="number">1</span>][j-<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> result[lenS][lenT];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/02/02/Flatten Binary Tree to Linked List - 将二叉树转化为链表/" itemprop="url">
                 Flatten Binary Tree to Linked List - 将二叉树转化为链表
               </a>
@@ -475,182 +657,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/01/30/Minimum Depth of Binary Tree - 二叉树最小深度/" itemprop="url">
-                Minimum Depth of Binary Tree - 二叉树最小深度
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-01-30T20:44:47+08:00" content="2016-01-30">
-            2016-01-30
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/01/30/Minimum Depth of Binary Tree - 二叉树最小深度/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/30/Minimum Depth of Binary Tree - 二叉树最小深度/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Minimum_Depth_of_Binary_Tree_-_二叉树最小深度">Minimum Depth of Binary Tree - 二叉树最小深度</h3><p><strong>Description</strong>: Given a binary tree, find its minimum depth.<br> The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.</p>
-<p> 思路：1 递归。类似Maximum Depth Of Binary Tree,注意边界条件不同.<br>2 类似层次遍历,使用队列,并额外使用一个队列存储深度.</p>
-<p>完整的java代码如下（含两种方法）：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MinimumDepthOfBinaryTree</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Definition for a binary tree node.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 类似Maximum Depth Of Binary Tree,注意边界条件不同.</span><br><span class="line">     * <span class="doctag">@param</span> root</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> getMin(root);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getMin</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> Integer.MAX_VALUE; <span class="comment">//不是返回0</span></span><br><span class="line">        <span class="keyword">if</span> (root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>) &#123;  <span class="comment">//新增条件</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.min(getMin(root.left), getMin(root.right)) + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 类似层次遍历,使用队列,并额外使用一个队列存储深度.</span><br><span class="line">     * <span class="doctag">@param</span> root</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minDepth1</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root==<span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        Queue&lt;TreeNode&gt; nodes = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        Queue&lt;Integer&gt; counts = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        nodes.offer(root);</span><br><span class="line">        counts.offer(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">while</span> (!nodes.isEmpty())&#123;</span><br><span class="line">            TreeNode node = nodes.poll();</span><br><span class="line">            <span class="keyword">int</span> count = counts.poll();</span><br><span class="line">            <span class="keyword">if</span> (node.left!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                nodes.offer(node.left);</span><br><span class="line">                counts.offer(count+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (node.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                nodes.offer(node.right);</span><br><span class="line">                counts.offer(count+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (node.left==<span class="keyword">null</span> &amp;&amp; node.right==<span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> count;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/01/29/Balanced Binary Tree - 平衡二叉树/" itemprop="url">
-                Balanced Binary Tree - 平衡二叉树
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-01-29T20:44:47+08:00" content="2016-01-29">
-            2016-01-29
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/01/29/Balanced Binary Tree - 平衡二叉树/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/29/Balanced Binary Tree - 平衡二叉树/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Balanced_Binary_Tree_-_平衡二叉树">Balanced Binary Tree - 平衡二叉树</h3><p><strong>Description</strong>: Given a binary tree, determine if it is height-balanced.<br> For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.</p>
-<p> 思路：递归。类似Maximum Depth of Binary Tree。</p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BalancedBinaryTree</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Definition for a binary tree node.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBalanced</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root==<span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (maxBalancedDepth(root)==-<span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">maxBalancedDepth</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root==<span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> lDepth = maxBalancedDepth(root.left);</span><br><span class="line">        <span class="keyword">int</span> rDepth = maxBalancedDepth(root.right);</span><br><span class="line">        <span class="comment">//TODO 增加以下剪枝条件提速</span></span><br><span class="line">        <span class="keyword">if</span> (lDepth==-<span class="number">1</span> || rDepth==-<span class="number">1</span>) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (Math.abs(lDepth-rDepth)&gt;<span class="number">1</span>) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Math.max(lDepth, rDepth)+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//此法直观,但存在大量计算冗余</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBalanced1</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root==<span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">int</span> lDepth = maxDepth(root.left);</span><br><span class="line">        <span class="keyword">int</span> rDepth = maxDepth(root.right);</span><br><span class="line">        <span class="keyword">if</span> (Math.abs(lDepth-rDepth) &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> isBalanced(root.left) &amp;&amp; isBalanced(root.right);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root==<span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> lDepth = maxDepth(root.left);</span><br><span class="line">        <span class="keyword">int</span> rDepth = maxDepth(root.right);</span><br><span class="line">        <span class="keyword">return</span> Math.max(lDepth, rDepth)+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -689,7 +695,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">128</span>
+              <span class="site-state-item-count">130</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

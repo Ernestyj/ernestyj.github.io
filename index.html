@@ -221,6 +221,184 @@
           
           
             
+              <a class="post-title-link" href="/2016/03/10/Reverse Words in a String - 逆转字符串中的词语/" itemprop="url">
+                Reverse Words in a String - 逆转字符串中的词语
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-03-10T20:44:47+08:00" content="2016-03-10">
+            2016-03-10
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/03/10/Reverse Words in a String - 逆转字符串中的词语/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/10/Reverse Words in a String - 逆转字符串中的词语/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Reverse_Words_in_a_String_-_逆转字符串中的词语">Reverse Words in a String - 逆转字符串中的词语</h3><p><strong>Description</strong>: Given an input string, reverse the string word by word.</p>
+<p>For example,<br> Given s = “the sky is blue”,<br> return “blue is sky the”.</p>
+<p>思路：字符串裁剪与分割。</p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReverseWordsInString</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="keyword">new</span> ReverseWordsInString().reverseWords(<span class="string">"a"</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">reverseWords</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.length()==<span class="number">0</span>) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        String trimed = s.trim();</span><br><span class="line">        <span class="keyword">if</span> (trimed.length()==<span class="number">0</span>) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        String[] strings = trimed.split(<span class="string">"\\s+"</span>);</span><br><span class="line">        StringBuilder builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=strings.length-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">            builder.append(strings[i]+<span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> builder.toString().trim();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/03/09/Evaluate Reverse Polish Notation - 计算逆波兰表达式/" itemprop="url">
+                Evaluate Reverse Polish Notation - 计算逆波兰表达式
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-03-09T20:44:47+08:00" content="2016-03-09">
+            2016-03-09
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/03/09/Evaluate Reverse Polish Notation - 计算逆波兰表达式/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/09/Evaluate Reverse Polish Notation - 计算逆波兰表达式/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Evaluate_Reverse_Polish_Notation_-_计算逆波兰表达式">Evaluate Reverse Polish Notation - 计算逆波兰表达式</h3><p><strong>Description</strong>: Evaluate the value of an arithmetic expression in Reverse Polish Notation.<br>Valid operators are +, -, *, /. Each operand may be an integer or another expression.</p>
+<p>Some examples:<br>  [“2”, “1”, “+”, “3”, “<em>“] -&gt; ((2 + 1) </em> 3) -&gt; 9<br>  [“4”, “13”, “5”, “/“, “+”] -&gt; (4 + (13 / 5)) -&gt; 6</p>
+<p>思路：利用栈。</p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EvaluateReversePolishNotation</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">evalRPN</span><span class="params">(String[] tokens)</span> </span>&#123;</span><br><span class="line">        Stack&lt;String&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        stack.push(tokens[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;tokens.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (!isOperator(tokens[i])) stack.push(tokens[i]);</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">char</span> c = tokens[i].charAt(<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">int</span> y = Integer.valueOf(stack.pop());</span><br><span class="line">                <span class="keyword">int</span> x = Integer.valueOf(stack.pop());</span><br><span class="line">                stack.push(String.valueOf(calculate(x, y, c)));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Integer.valueOf(stack.pop());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isOperator</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.length()&gt;<span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">char</span> c = s.charAt(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">'0'</span>&lt;=c &amp;&amp; c&lt;=<span class="string">'9'</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">calculate</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (c)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'+'</span>: <span class="keyword">return</span> x+y;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'-'</span>: <span class="keyword">return</span> x-y;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'*'</span>: <span class="keyword">return</span> x*y;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'/'</span>: <span class="keyword">return</span> x/y;</span><br><span class="line">            <span class="keyword">default</span>: <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/03/08/Max Points on a Line - 直线上最大点数/" itemprop="url">
                 Max Points on a Line - 直线上最大点数
               </a>
@@ -476,184 +654,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/03/05/LRU Cache - 最近最少访问缓存机制实现/" itemprop="url">
-                LRU Cache - 最近最少访问缓存机制实现
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-03-05T20:44:47+08:00" content="2016-03-05">
-            2016-03-05
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/03/05/LRU Cache - 最近最少访问缓存机制实现/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/05/LRU Cache - 最近最少访问缓存机制实现/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="LRU_Cache_-_最近最少访问缓存机制实现">LRU Cache - 最近最少访问缓存机制实现</h3><p><strong>Description</strong>: Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and set.<br>get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.<br>set(key, value) - Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.</p>
-<p>思路：如果要O(1)的查找复杂度，肯定要用哈希表.<br>如果要O(1)的cache替换复杂度,可以采用链表,保证从头到尾的顺序就是cache从新到旧的顺序.对于任何一个节点，如果被访问了，那么就将该节点移至头部;如果cache已满，那么就把尾部的删掉，从头部插入新节点。</p>
-<p>参考链接：<a href="http://www.programcreek.com/2013/03/leetcode-lru-cache-java/" target="_blank" rel="external">http://www.programcreek.com/2013/03/leetcode-lru-cache-java/</a></p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LRUCache</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">CacheEntry</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> key;</span><br><span class="line">        <span class="keyword">int</span> value;</span><br><span class="line">        CacheEntry pre;</span><br><span class="line">        CacheEntry next;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">CacheEntry</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> value)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.key = key;</span><br><span class="line">            <span class="keyword">this</span>.value = value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> capacity;</span><br><span class="line">    <span class="keyword">private</span> Map&lt;Integer, CacheEntry&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> CacheEntry head=<span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">private</span> CacheEntry end=<span class="keyword">null</span>;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * http://www.programcreek.com/2013/03/leetcode-lru-cache-java/</span><br><span class="line">     * 如果要O(1)的查找复杂度，肯定要用哈希表.</span><br><span class="line">     * 如果要O(1)的cache替换复杂度,可以采用链表,保证从头到尾的顺序就是cache从新到旧的顺序.</span><br><span class="line">     对于任何一个节点，如果被访问了，那么就将该节点移至头部;</span><br><span class="line">     如果cache已满，那么就把尾部的删掉，从头部插入新节点。</span><br><span class="line">     * <span class="doctag">@param</span> capacity</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LRUCache</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.capacity = capacity;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (map.containsKey(key))&#123;</span><br><span class="line">            CacheEntry cacheEntry = map.get(key);</span><br><span class="line">            <span class="comment">//对于任何一个节点，如果被访问了，那么就将该节点移至头部</span></span><br><span class="line">            remove(cacheEntry);</span><br><span class="line">            setHead(cacheEntry);</span><br><span class="line">            <span class="keyword">return</span> cacheEntry.value;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (map.containsKey(key))&#123;</span><br><span class="line">            CacheEntry old = map.get(key);</span><br><span class="line">            old.value = value;</span><br><span class="line">            <span class="comment">//对于任何一个节点，如果被访问了，那么就将该节点移至头部</span></span><br><span class="line">            remove(old);</span><br><span class="line">            setHead(old);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            CacheEntry newCacheEntry = <span class="keyword">new</span> CacheEntry(key, value);</span><br><span class="line">            <span class="keyword">if</span> (map.size()&gt;=capacity)&#123;</span><br><span class="line">                <span class="comment">//如果cache已满，那么就把尾部的删掉，从头部插入新节点</span></span><br><span class="line">                map.remove(end.key);</span><br><span class="line">                remove(end);</span><br><span class="line">            &#125;</span><br><span class="line">            setHead(newCacheEntry);</span><br><span class="line">            map.put(key, newCacheEntry);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(CacheEntry cacheEntry)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (cacheEntry.pre!=<span class="keyword">null</span>) cacheEntry.pre.next = cacheEntry.next;</span><br><span class="line">        <span class="keyword">else</span> head = cacheEntry.next;</span><br><span class="line">        <span class="keyword">if</span> (cacheEntry.next!=<span class="keyword">null</span>) cacheEntry.next.pre = cacheEntry.pre;</span><br><span class="line">        <span class="keyword">else</span> end = cacheEntry.pre;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setHead</span><span class="params">(CacheEntry cacheEntry)</span></span>&#123;</span><br><span class="line">        cacheEntry.next = head;</span><br><span class="line">        cacheEntry.pre = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (head!=<span class="keyword">null</span>) head.pre = cacheEntry;</span><br><span class="line">        head = cacheEntry;</span><br><span class="line">        <span class="keyword">if</span> (end==<span class="keyword">null</span>) end = head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/03/04/Binary Tree Postorder Traversal- 二叉树后序遍历(迭代)/" itemprop="url">
-                Binary Tree Postorder Traversal- 二叉树后序遍历(迭代)
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-03-04T20:44:47+08:00" content="2016-03-04">
-            2016-03-04
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/03/04/Binary Tree Postorder Traversal- 二叉树后序遍历(迭代)/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/04/Binary Tree Postorder Traversal- 二叉树后序遍历(迭代)/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Binary_Tree_Postorder_Traversal-_二叉树后序遍历(迭代)">Binary Tree Postorder Traversal- 二叉树后序遍历(迭代)</h3><p><strong>Description</strong>: Given a binary tree, return the postorder traversal of its nodes’ values.</p>
-<p>思路：<br>一、遍历的同时将访问过的节点的相应左或右孩子指针置空，思路简单。<br>二、后序遍历的情况相对复杂,需要维护当前遍历的cur指针和前一个遍历的pre指针来追溯当前的情况（注意这里是遍历的指针，并不是真正按后序访问顺序的结点）。具体分为几种情况：<br>     （1）如果pre的左孩子或者右孩子是cur，那么说明遍历在往下走，按访问顺序继续，即如果有左孩子，则是左孩子进栈，否则如果有右孩子，则是右孩子进栈，<br>     如果左右孩子都没有，则说明该结点是叶子，可以直接访问并把结点出栈了。<br>     （2）如果反过来，cur的左孩子是pre，则说明已经在回溯往上走了，但是后序遍历要左右孩子走完才可以访问自己，所以这里如果有右孩子还需要把右孩子进栈，否则说明已经到自己了，可以访问并且出栈了。<br>     （3）如果cur的右孩子是pre，那么说明左右孩子都访问结束了，可以轮到自己了，访问并且出栈即可。<br>     与递归法一样,算法时间复杂度也是O(n)，空间复杂度是栈的大小O(logn)。</p>
-<p>参考链接：<br><a href="http://www.programcreek.com/2012/12/leetcode-solution-of-iterative-binary-tree-postorder-traversal-in-java/" target="_blank" rel="external">http://www.programcreek.com/2012/12/leetcode-solution-of-iterative-binary-tree-postorder-traversal-in-java/</a></p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BinaryTreePostorderTraversal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 后序遍历的情况相对复杂,需要维护当前遍历的cur指针和前一个遍历的pre指针来追溯当前的情况</span><br><span class="line">     （注意这里是遍历的指针，并不是真正按后序访问顺序的结点）。具体分为几种情况：</span><br><span class="line">     （1）如果pre的左孩子或者右孩子是cur，那么说明遍历在往下走，按访问顺序继续，</span><br><span class="line">     即如果有左孩子，则是左孩子进栈，否则如果有右孩子，则是右孩子进栈，</span><br><span class="line">     如果左右孩子都没有，则说明该结点是叶子，可以直接访问并把结点出栈了。</span><br><span class="line">     （2）如果反过来，cur的左孩子是pre，则说明已经在回溯往上走了，</span><br><span class="line">     但是后序遍历要左右孩子走完才可以访问自己，所以这里如果有右孩子还需要把右孩子进栈，</span><br><span class="line">     否则说明已经到自己了，可以访问并且出栈了。</span><br><span class="line">     （3）如果cur的右孩子是pre，那么说明左右孩子都访问结束了，可以轮到自己了，访问并且出栈即可。</span><br><span class="line">     与递归法一样,算法时间复杂度也是O(n)，空间复杂度是栈的大小O(logn)。</span><br><span class="line">     * http://www.programcreek.com/2012/12/leetcode-solution-of-iterative-binary-tree-postorder-traversal-in-java/</span><br><span class="line">     * <span class="doctag">@param</span> root</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">postorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (root==<span class="keyword">null</span>) <span class="keyword">return</span> result;</span><br><span class="line">        Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        stack.push(root);</span><br><span class="line">        TreeNode prev = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">while</span> (!stack.isEmpty())&#123;</span><br><span class="line">            TreeNode curr = stack.peek();</span><br><span class="line">            <span class="keyword">if</span> (prev==<span class="keyword">null</span> || prev.left==curr || prev.right==curr)&#123; <span class="comment">//往下走</span></span><br><span class="line">                <span class="keyword">if</span> (curr.left!=<span class="keyword">null</span>) stack.push(curr.left);</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (curr.right!=<span class="keyword">null</span>) stack.push(curr.right);</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    result.add(curr.val);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (curr.left==prev)&#123;    <span class="comment">//从左节点往上走</span></span><br><span class="line">                <span class="keyword">if</span> (curr.right!=<span class="keyword">null</span>) stack.push(curr.right);</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    result.add(curr.val);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (curr.right==prev)&#123;   <span class="comment">//从右节点往上走</span></span><br><span class="line">                stack.pop();</span><br><span class="line">                result.add(curr.val);</span><br><span class="line">            &#125;</span><br><span class="line">            prev = curr;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//这种方法简单,但是会改变原树结构</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">postorderTraversal1</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> list;</span><br><span class="line">        Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        stack.push(root);</span><br><span class="line">        <span class="keyword">while</span> (stack.size() != <span class="number">0</span>)&#123;</span><br><span class="line">            TreeNode top = stack.peek();</span><br><span class="line">            <span class="keyword">if</span> (top.left == <span class="keyword">null</span> &amp;&amp; top.right == <span class="keyword">null</span>)&#123;</span><br><span class="line">                list.add(top.val);</span><br><span class="line">                stack.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (top.left != <span class="keyword">null</span>)&#123;</span><br><span class="line">                stack.push(top.left);</span><br><span class="line">                top.left = <span class="keyword">null</span>;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (top.right != <span class="keyword">null</span>)&#123;</span><br><span class="line">                stack.push(top.right);</span><br><span class="line">                top.right = <span class="keyword">null</span>;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -692,7 +692,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">128</span>
+              <span class="site-state-item-count">130</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

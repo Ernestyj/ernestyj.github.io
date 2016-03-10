@@ -221,6 +221,194 @@
           
           
             
+              <a class="post-title-link" href="/2016/02/10/Best Time to Buy and Sell Stock I & II - 买股票的最佳时机I&II/" itemprop="url">
+                Best Time to Buy and Sell Stock I & II - 买股票的最佳时机I&II
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-02-10T20:44:47+08:00" content="2016-02-10">
+            2016-02-10
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/02/10/Best Time to Buy and Sell Stock I & II - 买股票的最佳时机I&II/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/10/Best Time to Buy and Sell Stock I & II - 买股票的最佳时机I&II/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Best_Time_to_Buy_and_Sell_Stock_I_&amp;_II_-_买股票的最佳时机I&amp;II">Best Time to Buy and Sell Stock I &amp; II - 买股票的最佳时机I&amp;II</h3><p>Best Time to Buy and Sell Stock I</p>
+<p><strong>Description</strong>: Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.</p>
+<p>思路：最一般的方法是嵌套遍历找到最大买入卖出差,但超时.<br>用一维动态规划(双重):记录出现过的最低价作为买入价格,计算当天售出的收益.</p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BestTimeToBuyAndSellStock</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 最一般的方法是嵌套遍历找到最大买入卖出差,但超时.</span><br><span class="line">     一维动态规划(双重):记录出现过的最低价作为买入价格,计算当天售出的收益.</span><br><span class="line">     P(i)=Max(P(i-1), price[i]-B(i))</span><br><span class="line">     B(i)=Min(B(i-1), price[i])</span><br><span class="line">     * <span class="doctag">@param</span> prices</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">int</span> profit = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;prices.length; i++)&#123;</span><br><span class="line">            min = Math.min(min, prices[i]);</span><br><span class="line">            profit = Math.max(profit, prices[i]-min);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> profit;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Best Time to Buy and Sell Stock II</p>
+<p><strong>Description</strong>: Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). </p>
+<p>However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
+<p>思路：贪心方法:递增序前后元素差之和.</p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BestTimeToBuyAndSellStockII</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 贪心方法:递增序前后元素差之和.</span><br><span class="line">     * <span class="doctag">@param</span> prices</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (prices.length&lt;<span class="number">2</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> profit = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;prices.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (prices[i]&gt;prices[i-<span class="number">1</span>])</span><br><span class="line">                profit += prices[i]-prices[i-<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> profit;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/02/08/Triangle - 三角形中最短路径和/" itemprop="url">
+                Triangle - 三角形中最短路径和
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-02-08T20:44:47+08:00" content="2016-02-08">
+            2016-02-08
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/02/08/Triangle - 三角形中最短路径和/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/08/Triangle - 三角形中最短路径和/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Triangle_-_三角形中最短路径和">Triangle - 三角形中最短路径和</h3><p><strong>Description</strong>: Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.</p>
+<p> Note: Bonus point if you are able to do this using only O(n) extra space, where n is the total number of rows in the triangle.</p>
+<p>原题链接：<a href="https://leetcode.com/submissions/detail/52958615/" target="_blank" rel="external">https://leetcode.com/submissions/detail/52958615/</a></p>
+<p>思路：二维动态规划(自顶向下):在某一个元素i，j的最小路径和就是它上层对应的相邻两个元素的最小路径和加上自己的值，递推式是sum[i][j]=min(sum[i-1][j-1],sum[i-1][j])+triangle[i][j],最后扫描一遍最后一层的路径和，取出最小的即可。</p>
+<p>复杂度:每个元素需要维护一次，总共有1+2+…+n=n*(n+1)/2个元素，所以时间复杂度是O(n^2)；而空间上每次只需维护一层即可（因为当前层只用到上一层的元素），所以空间复杂度是O(n).</p>
+<p>或者采用动态规划(自底向上):sum[i][j]=min(sum[i+1][j],sum[i+1][j+1])+triangle[i][j]，自底向上的方式省去了对每层首尾元素的特殊处理,更简洁.</p>
+<p>参考：<a href="http://blog.csdn.net/linhuanmars/article/details/23230657" target="_blank" rel="external">http://blog.csdn.net/linhuanmars/article/details/23230657</a></p>
+<p>完整的java代码如下（自底向上）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PascalTriangleII</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 与Pascal's Triangle类似,但是空间可以压缩为O(k).注意in-place更新值时要逆序(观察Pascal三角的特点)</span><br><span class="line">     * <span class="doctag">@param</span> rowIndex</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">getRow</span><span class="params">(<span class="keyword">int</span> rowIndex)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (rowIndex&lt;<span class="number">0</span>) <span class="keyword">return</span> result;</span><br><span class="line">        result.add(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> row=<span class="number">1</span>; row&lt;rowIndex+<span class="number">1</span>; row++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=result.size()-<span class="number">1</span>; j&gt;<span class="number">0</span>; j--)&#123;    <span class="comment">//注意一定要倒序遍历,因为顺序会覆盖值</span></span><br><span class="line">                result.set(j, result.get(j-<span class="number">1</span>) + result.get(j));</span><br><span class="line">            &#125;</span><br><span class="line">            result.add(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/02/07/Pascal's Triangle II/" itemprop="url">
                 Pascal's Triangle II
               </a>
@@ -479,188 +667,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/02/04/Populating Next Right Pointers in Each Node - 填充二叉树每个节点的右指针/" itemprop="url">
-                Populating Next Right Pointers in Each Node - 填充二叉树每个节点的右指针
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-02-04T20:44:47+08:00" content="2016-02-04">
-            2016-02-04
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/02/04/Populating Next Right Pointers in Each Node - 填充二叉树每个节点的右指针/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/04/Populating Next Right Pointers in Each Node - 填充二叉树每个节点的右指针/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Populating_Next_Right_Pointers_in_Each_Node_-_填充二叉树每个节点的右指针">Populating Next Right Pointers in Each Node - 填充二叉树每个节点的右指针</h3><p><strong>Description</strong>: Populate each next pointer to point to its next right node.<br> If there is no next right node, the next pointer should be set to NULL. Initially, all next pointers are set to NULL.</p>
-<p> Note:<br> You may only use constant extra space.<br> You may assume that it is a perfect binary tree (ie, all leaves are at the same level, and every parent has two children).</p>
-<p> 思路：<br> 1 用Populating Next Right Pointers in Each Node II解法可行(类似二叉树层次遍历)；<br>2 由于题目中的二叉树是完全二叉树,找到规律可用递归求解(OJ排名82%);<br>（1）根节点的左子树，其next是该根节点的右子树;<br>（2）根节点的右子树，其next是该根节点next节点的左子树.<br>参考：<a href="https://gist.github.com/benjaminwu7/4700435" target="_blank" rel="external">https://gist.github.com/benjaminwu7/4700435</a></p>
-<p>完整的java代码如下（第二种方法）：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PopulatingNextRightPointersInEachNode</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeLinkNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeLinkNode left, right, next;</span><br><span class="line">        TreeLinkNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//用Populating Next Right Pointers in Each Node II解法可行(类似二叉树层次遍历)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 由于题目中的二叉树是完全二叉树,找到规律可用递归求解(OJ排名82%);</span><br><span class="line">     1. 根节点的左子树，其next是该根节点的右子树;</span><br><span class="line">     2. 根节点的右子树，其next是该根节点next节点的左子树.</span><br><span class="line">     * https://gist.github.com/benjaminwu7/4700435</span><br><span class="line">     * <span class="doctag">@param</span> root</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connect</span><span class="params">(TreeLinkNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        TreeLinkNode leftN = root.left;</span><br><span class="line">        TreeLinkNode rightN = root.right;</span><br><span class="line">        <span class="keyword">while</span>(leftN != <span class="keyword">null</span>)&#123;   <span class="comment">//链接兄弟节点,及这对兄弟节点下所有相邻的堂兄弟节点对</span></span><br><span class="line">            leftN.next = rightN;</span><br><span class="line">            leftN = leftN.right;</span><br><span class="line">            rightN = rightN.left;</span><br><span class="line">        &#125;</span><br><span class="line">        connect(root.left);</span><br><span class="line">        connect(root.right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/02/03/Distinct Subsequences - 求不同的子串序列数/" itemprop="url">
-                Distinct Subsequences - 求不同的子串序列数
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-02-03T20:44:47+08:00" content="2016-02-03">
-            2016-02-03
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/02/03/Distinct Subsequences - 求不同的子串序列数/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/03/Distinct Subsequences - 求不同的子串序列数/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Distinct_Subsequences_-_求不同的子串序列数">Distinct Subsequences - 求不同的子串序列数</h3><p><strong>Description</strong>: Given a string S and a string T, count the number of distinct subsequences of T in S.</p>
-<p>Here is an example:S = “rabbbit”, T = “rabbit”, Return 3.</p>
-<p>原题链接：<a href="https://leetcode.com/problems/distinct-subsequences/" target="_blank" rel="external">https://leetcode.com/problems/distinct-subsequences/</a> </p>
-<p> 思路：二维动态规划(与Interleaving String思路一致)。<br> W(i,j)表示S(0,i)的子串与T(0,j)相同的个数,</p>
-<p>递推式:W(i,j)=W(i-1,j-1)+W(i-1,j),当S(i)==T(j)时;<br>     W(i,j)=W(i-1,j),当S(i)!=T(j)时.</p>
-<p>边界条件:S,T均为空串,W(0,0)=1;<br>     仅S为空串,W(0,j)=0;<br>     仅T为空串,W(i,0)=1;</p>
-<p>参考：<a href="http://www.programcreek.com/2013/01/leetcode-distinct-subsequences-total-java/" target="_blank" rel="external">http://www.programcreek.com/2013/01/leetcode-distinct-subsequences-total-java/</a><br>图解：<a href="http://blog.csdn.net/abcbc/article/details/8978146" target="_blank" rel="external">http://blog.csdn.net/abcbc/article/details/8978146</a></p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DistinctSubsequences</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**http://www.programcreek.com/2013/01/leetcode-distinct-subsequences-total-java/</span><br><span class="line">     * 图解:http://blog.csdn.net/abcbc/article/details/8978146</span><br><span class="line">     * 二维动态规划(与Interleaving String思路一致):W(i,j)表示S(0,i)的子串与T(0,j)相同的个数,</span><br><span class="line">     递推式:W(i,j)=W(i-1,j-1)+W(i-1,j),当S(i)==T(j)时;</span><br><span class="line">     W(i,j)=W(i-1,j),当S(i)!=T(j)时.</span><br><span class="line">     边界条件:S,T均为空串,W(0,0)=1;</span><br><span class="line">     仅S为空串,W(0,j)=0;</span><br><span class="line">     仅T为空串,W(i,0)=1;</span><br><span class="line">     * <span class="doctag">@param</span> s</span><br><span class="line">     * <span class="doctag">@param</span> t</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numDistinct</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> lenS = s.length(), lenT = t.length();</span><br><span class="line">        <span class="keyword">int</span>[][] result = <span class="keyword">new</span> <span class="keyword">int</span>[lenS+<span class="number">1</span>][lenT+<span class="number">1</span>];</span><br><span class="line">        result[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//for (int j=1; j&lt;=lenT; j++) result[0][j] = 0; //冗余</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=lenS; i++) result[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=lenS; i++)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=lenT; j++)&#123;</span><br><span class="line">                result[i][j] = result[i-<span class="number">1</span>][j];</span><br><span class="line">                <span class="keyword">if</span> (s.charAt(i-<span class="number">1</span>) == t.charAt(j-<span class="number">1</span>)) result[i][j] += result[i-<span class="number">1</span>][j-<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> result[lenS][lenT];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -699,7 +705,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">128</span>
+              <span class="site-state-item-count">130</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

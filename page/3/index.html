@@ -221,6 +221,185 @@
           
           
             
+              <a class="post-title-link" href="/2016/02/29/Linked List Cycle- 判断链表回环/" itemprop="url">
+                Linked List Cycle- 判断链表回环
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-02-29T20:44:47+08:00" content="2016-02-29">
+            2016-02-29
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/02/29/Linked List Cycle- 判断链表回环/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/29/Linked List Cycle- 判断链表回环/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Linked_List_Cycle-_判断链表回环">Linked List Cycle- 判断链表回环</h3><p><strong>Description</strong>: Given a linked list, determine if it has a cycle in it.</p>
+<p>Follow up: Can you solve it without using extra space?</p>
+<p>思路：<br>一、将访问过的节点都指向一个预设的特殊节点,有回环则会访问到此特殊节点。<br>二、使用快慢双指针,有回环则快指针会追上慢指针。</p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkedListCycle</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        ListNode next;</span><br><span class="line">        ListNode(<span class="keyword">int</span> x) &#123;</span><br><span class="line">            val = x;</span><br><span class="line">            next = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//使用快慢双指针,有回环则快指针会追上慢指针</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode slow = head;</span><br><span class="line">        ListNode fast = head;</span><br><span class="line">        <span class="keyword">while</span> (fast!=<span class="keyword">null</span> &amp;&amp; fast.next!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            <span class="keyword">if</span> (slow==fast) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//将访问过的节点都指向一个预设的特殊节点,有回环则会访问到此特殊节点</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle1</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode p = head;</span><br><span class="line">        ListNode dummy = <span class="keyword">new</span> ListNode(Integer.MAX_VALUE);</span><br><span class="line">        ListNode next = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">while</span> (p!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span> (p==dummy) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            next = p.next;</span><br><span class="line">            p.next = dummy;</span><br><span class="line">            p = next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/02/28/Word Break II - 单词划分 II/" itemprop="url">
+                Word Break II - 单词划分 II
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-02-28T20:44:47+08:00" content="2016-02-28">
+            2016-02-28
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/02/28/Word Break II - 单词划分 II/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/28/Word Break II - 单词划分 II/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Word_Break_II_-_单词划分_II">Word Break II - 单词划分 II</h3><p><strong>Description</strong>: Given a string s and a dictionary of words dict, add spaces in s<br> to construct a sentence where each word is a valid dictionary word.<br> Return all such possible sentences.</p>
+<p> For example, given<br> s = “catsanddog”,<br> dict = [“cat”, “cats”, “and”, “sand”, “dog”].<br> A solution is [“cats and dog”, “cat sand dog”].</p>
+<p>思路：<br>一、回溯,但无法过大数据集(可以尝试引入剪枝函数提速)。<br>二、DP+回溯,与Word Break I不同在于用数组记录断词处有哪些单词,而不是简单记录布尔数组.DP之后再回溯得到所有可能的断词方式.</p>
+<p>参考链接：<a href="http://www.programcreek.com/2014/03/leetcode-word-break-ii-java/" target="_blank" rel="external">http://www.programcreek.com/2014/03/leetcode-word-break-ii-java/</a></p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordBreakII</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * DP+回溯,与Word Break I不同在于用数组记录断词处有哪些单词,而不是简单记录布尔数组.</span><br><span class="line">     DP之后再回溯得到所有可能的断词方式.</span><br><span class="line">     http://www.programcreek.com/2014/03/leetcode-word-break-ii-java/</span><br><span class="line">     * <span class="doctag">@param</span> s</span><br><span class="line">     * <span class="doctag">@param</span> wordDict</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">wordBreak</span><span class="params">(String s, Set&lt;String&gt; wordDict)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;String&gt; dp[] = <span class="keyword">new</span> ArrayList[s.length()+<span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (dp[i]==<span class="keyword">null</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">for</span> (String word : wordDict)&#123;</span><br><span class="line">                <span class="keyword">int</span> end = i+word.length();</span><br><span class="line">                <span class="keyword">if</span> (end&gt;s.length()) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (s.substring(i, end).equals(word))&#123;</span><br><span class="line">                    <span class="keyword">if</span> (dp[end]==<span class="keyword">null</span>) dp[end] = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                    dp[end].add(word);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (dp[s.length()]==<span class="keyword">null</span>) <span class="keyword">return</span> result;</span><br><span class="line">        dfs(dp, s.length(), result, <span class="keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//回溯</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(List&lt;String&gt;[] dp, <span class="keyword">int</span> end, List&lt;String&gt; result, List&lt;String&gt; tmp)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (end&lt;=<span class="number">0</span>)&#123;</span><br><span class="line">            String path = tmp.get(tmp.size()-<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=tmp.size()-<span class="number">2</span>; i&gt;=<span class="number">0</span>; i--) path += <span class="string">" "</span> + tmp.get(i);</span><br><span class="line">            result.add(path);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (String str : dp[end])&#123;</span><br><span class="line">            tmp.add(str);</span><br><span class="line">            dfs(dp, end-str.length(), result, tmp);</span><br><span class="line">            tmp.remove(tmp.size()-<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//回溯,但无法过大数据集(可以尝试引入剪枝函数提速)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">wordBreak1</span><span class="params">(String s, Set&lt;String&gt; wordDict)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        wordBreakHelper(s, wordDict, <span class="number">0</span>, result, <span class="keyword">new</span> StringBuilder());</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">wordBreakHelper</span><span class="params">(String s, Set&lt;String&gt; wordDict, <span class="keyword">int</span> start,</span><br><span class="line">                                 List&lt;String&gt; result, StringBuilder builder)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (start==s.length())&#123;</span><br><span class="line">            result.add(builder.toString().trim());</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=start+<span class="number">1</span>; i&lt;s.length(); i++)&#123;</span><br><span class="line">            String str = s.substring(start, i+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (wordDict.contains(str)) &#123;</span><br><span class="line">                <span class="keyword">int</span> len = builder.length();</span><br><span class="line">                builder.append(<span class="string">" "</span>+str);</span><br><span class="line">                wordBreakHelper(s, wordDict, i+<span class="number">1</span>, result, builder);</span><br><span class="line">                builder.delete(len, len+str.length()+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/02/27/Word Break - 单词划分/" itemprop="url">
                 Word Break - 单词划分
               </a>
@@ -483,184 +662,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/02/24/Longest Valid Parentheses - 最长匹配括号序列/" itemprop="url">
-                Longest Valid Parentheses - 最长匹配括号序列
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-02-24T20:44:47+08:00" content="2016-02-24">
-            2016-02-24
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/02/24/Longest Valid Parentheses - 最长匹配括号序列/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/24/Longest Valid Parentheses - 最长匹配括号序列/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Longest_Valid_Parentheses_-_最长匹配括号序列">Longest Valid Parentheses - 最长匹配括号序列</h3><p><strong>Description</strong>: Given a string containing just the characters ‘(‘ and ‘)’, find the length of the longest valid (well-formed) parentheses substring.</p>
-<p> For “(()”, the longest valid parentheses substring is “()”, which has length = 2.<br> Another example is “)()())”, where the longest valid parentheses substring is “()()”, which has length = 4.</p>
-<p>思路：DP可解,但是大数据超时.<br>用栈来存左括号的index，遍历s，遇到’(‘就放入lefts栈。<br>如果遇到’)’，如果lefts是空，说明这是一个无法匹配的’)’，记录下last。<br>last里面存放的其实是最后一个无法匹配的’)’,主要是为了计算后面完整的表达式的长度。可以这样理解：所有无法匹配的’)’的index其实都是各个group的分界点。</p>
-<p>参考链接：<br><a href="http://www.cnblogs.com/lichen782/p/leetcode_Longest_Valid_Parentheses.html" target="_blank" rel="external">http://www.cnblogs.com/lichen782/p/leetcode_Longest_Valid_Parentheses.html</a></p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LongestValidParentheses</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="keyword">new</span> LongestValidParentheses()</span><br><span class="line">                .longestValidParentheses(<span class="string">")))))(((()("</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        System.out.println(index);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**TODO 重温理解及记忆,尤其是代码最后一个else部分</span><br><span class="line">     * http://www.cnblogs.com/lichen782/p/leetcode_Longest_Valid_Parentheses.html</span><br><span class="line">     * DP可解,但是大数据超时.</span><br><span class="line">     * 用栈来存左括号的index，遍历s，遇到'('就放入lefts栈。</span><br><span class="line">     如果遇到')'，如果lefts是空，说明这是一个无法匹配的')'，记录下last。</span><br><span class="line">     last里面存放的其实是最后一个无法匹配的')',主要是为了计算后面完整的表达式的长度。</span><br><span class="line">     可以这样理解：所有无法匹配的')'的index其实都是各个group的分界点。</span><br><span class="line">     * <span class="doctag">@param</span> s</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestValidParentheses</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxLen = <span class="number">0</span>, last = -<span class="number">1</span>;</span><br><span class="line">        Stack&lt;Integer&gt; lefts = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s.charAt(i)==<span class="string">'('</span>) &#123;</span><br><span class="line">                lefts.push(i);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (lefts.isEmpty()) &#123;</span><br><span class="line">                    <span class="comment">// no matching left</span></span><br><span class="line">                    last = i;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// find a matching pair</span></span><br><span class="line">                    lefts.pop();</span><br><span class="line">                    <span class="keyword">if</span> (lefts.isEmpty()) &#123;<span class="comment">//有一个完整的valid的group。计算该group的长度</span></span><br><span class="line">                        maxLen = Math.max(maxLen, i - last);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="comment">//栈内还有‘(',一个最外层完整的group还没有匹配完成，</span></span><br><span class="line">                        <span class="comment">//但是通过查询下一个即将匹配还未匹配的"("的index来更新maxLen。</span></span><br><span class="line">                        <span class="keyword">int</span> k = lefts.peek();</span><br><span class="line">                        maxLen = Math.max(maxLen, i - k);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxLen;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/02/24/Single Number - 寻找单一整数/" itemprop="url">
-                Single Number - 寻找单一整数
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-02-24T20:44:47+08:00" content="2016-02-24">
-            2016-02-24
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/02/24/Single Number - 寻找单一整数/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/24/Single Number - 寻找单一整数/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Single_Number_-_寻找单一整数">Single Number - 寻找单一整数</h3><p><strong>Description</strong>: Given an array of integers, every element appears twice except for one. Find that single one.<br> Note: Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p>
-<p>思路：<br>1 异或(此法不消耗额外空间),只有两不同位异或才会返回1,所有相同整数异或结果为整数0.<br>2 集合<br>3 哈希表</p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingleNumber</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//异或(此法不消耗额外空间),只有两不同位异或才会返回1,所有相同整数异或结果为整数0.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length==<span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;nums.length; i++) nums[<span class="number">0</span>] = nums[<span class="number">0</span>]^nums[i];</span><br><span class="line">        <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//集合</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber1</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> n : nums)&#123;</span><br><span class="line">            <span class="keyword">if</span> (!set.add(n)) set.remove(n);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>)set.toArray()[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//哈希表</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber2</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (!map.containsKey(nums[i]))&#123;</span><br><span class="line">                map.put(nums[i], <span class="number">1</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                map.put(nums[i], map.get(nums[i])+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (Integer i : map.keySet())&#123;</span><br><span class="line">            <span class="keyword">if</span> (map.get(i)==<span class="number">1</span>) <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -699,7 +700,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">128</span>
+              <span class="site-state-item-count">130</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

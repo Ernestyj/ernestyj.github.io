@@ -221,6 +221,188 @@
           
           
             
+              <a class="post-title-link" href="/2016/02/20/Palindrome Partitioning II - 回文划分II/" itemprop="url">
+                Palindrome Partitioning II - 回文划分II
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-02-20T20:44:47+08:00" content="2016-02-20">
+            2016-02-20
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/02/20/Palindrome Partitioning II - 回文划分II/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/20/Palindrome Partitioning II - 回文划分II/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Palindrome_Partitioning_II_-_回文划分II">Palindrome Partitioning II - 回文划分II</h3><p><strong>Description</strong>: Given a string s, partition s such that every substring of the partition is a palindrome. Return the minimum cuts needed for a palindrome partitioning of s.</p>
+<p>For example, given s = “aab”,<br> Return 1 since the palindrome partitioning [“aa”,”b”] could be produced using 1 cut. </p>
+<p>思路：DP(双重二维),也可以用回溯法(参考Palindrome Partitioning).</p>
+<p>定义cutNum(i)为[0,i]间最小切割数,n为字符串长度,0&lt;i&lt;=n,<br>有cutNum(0,i)=min[curNum(0,j-1)+curNum(j,i)],<br>存在一个回文的情况下,简化为<br>cutNum(i)=min[cutNum(j-1)+1],0&lt;j=&lt;i;cutNum(i)=0,j=0.<br>     核心思想在于”j从0到i的过程中每找到一个回文,若要切割则在前次切割的基础上加1次”.</p>
+<p>判断[j,i]间是否为回文也是DP问题,定义palindrome(j,i)为[j,i]间是否为回文,<br>     有palindrome(j,i)= str(j)==str(i) &amp;&amp; (i-j&lt;=1 || palindrome(j+1, i-1)).<br>     i-j&lt;=1因为一个字符一定也是回文(这个条件使得边界情况初始化可以省略).</p>
+<p>参考：<a href="http://www.programcreek.com/2014/04/leetcode-palindrome-partitioning-ii-java/" target="_blank" rel="external">http://www.programcreek.com/2014/04/leetcode-palindrome-partitioning-ii-java/</a></p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PalindromePartitioningII</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**http://www.programcreek.com/2014/04/leetcode-palindrome-partitioning-ii-java/</span><br><span class="line">     * DP(双重二维),也可以用回溯法(参考Palindrome Partitioning).</span><br><span class="line">     * 定义cutNum(i)为[0,i]间最小切割数,n为字符串长度,0&lt;i&lt;=n,</span><br><span class="line">     有cutNum(0,i)=min[curNum(0,j-1)+curNum(j,i)],</span><br><span class="line">     存在一个回文的情况下,简化为cutNum(i)=min[cutNum(j-1)+1],0&lt;j=&lt;i;cutNum(i)=0,j=0.</span><br><span class="line">     核心思想在于"j从0到i的过程中每找到一个回文,若要切割则在前次切割的基础上加1次".</span><br><span class="line">     * 判断[j,i]间是否为回文也是DP问题,定义palindrome(j,i)为[j,i]间是否为回文,</span><br><span class="line">     有palindrome(j,i)= str(j)==str(i) &amp;&amp; (i-j&lt;=1 || palindrome(j+1, i-1)).</span><br><span class="line">     i-j&lt;=1因为一个字符一定也是回文(这个条件使得边界情况初始化可以省略).</span><br><span class="line">     * <span class="doctag">@param</span> s</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minCut</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = s.length();</span><br><span class="line">        <span class="keyword">boolean</span>[][] palindrome = <span class="keyword">new</span> <span class="keyword">boolean</span>[len][len];</span><br><span class="line">        <span class="keyword">int</span>[] cutNum = <span class="keyword">new</span> <span class="keyword">int</span>[len];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;len; i++)&#123;</span><br><span class="line">            cutNum[i] = Integer.MAX_VALUE;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;=i; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span> (s.charAt(j)==s.charAt(i) &amp;&amp; (i-j&lt;=<span class="number">1</span> || palindrome[j+<span class="number">1</span>][i-<span class="number">1</span>]))&#123;</span><br><span class="line">                    palindrome[j][i] = <span class="keyword">true</span>;</span><br><span class="line">                    <span class="keyword">if</span> (j==<span class="number">0</span>) cutNum[i] = <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">else</span> cutNum[i] = Math.min(cutNum[i], cutNum[j-<span class="number">1</span>]+<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cutNum[len-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/02/19/Palindrome Partitioning - 回文划分/" itemprop="url">
+                Palindrome Partitioning - 回文划分
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-02-19T20:44:47+08:00" content="2016-02-19">
+            2016-02-19
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/02/19/Palindrome Partitioning - 回文划分/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/19/Palindrome Partitioning - 回文划分/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Palindrome_Partitioning_-_回文划分">Palindrome Partitioning - 回文划分</h3><p><strong>Description</strong>: Given a string s, partition s such that every substring of the partition is a palindrome.<br> Return all possible palindrome partitioning of s.</p>
+<p>For example, given s = “aab”,<br> Return [ [“aa”,”b”], [“a”,”a”,”b”] ]</p>
+<p>思路：回溯法(DFS),当然DP也可以(可参考Palindrome Partitioning II).</p>
+<p>参考：<a href="http://www.programcreek.com/2013/03/leetcode-palindrome-partitioning-java/" target="_blank" rel="external">http://www.programcreek.com/2013/03/leetcode-palindrome-partitioning-java/</a></p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PalindromePartitioning</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;List&lt;String&gt;&gt; result = <span class="keyword">new</span> PalindromePartitioning().partition(<span class="string">"amanaplanacanalpanama"</span>);</span><br><span class="line">        <span class="keyword">for</span> (List&lt;String&gt; list : result)&#123;</span><br><span class="line">            <span class="keyword">for</span> (String s : list)&#123;</span><br><span class="line">                System.out.print(s + <span class="string">" "</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * http://www.programcreek.com/2013/03/leetcode-palindrome-partitioning-java/</span><br><span class="line">     * 回溯法(DFS),当然DP也可以(可参考Palindrome Partitioning II).</span><br><span class="line">     * <span class="doctag">@param</span> s</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; partition(String s) &#123;</span><br><span class="line">        List&lt;List&lt;String&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (s==<span class="keyword">null</span> || s.length()==<span class="number">0</span>) <span class="keyword">return</span> result;</span><br><span class="line">        List&lt;String&gt; partitionList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        partitionHepler(s, <span class="number">0</span>, partitionList, result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">partitionHepler</span><span class="params">(String s, <span class="keyword">int</span> start, List&lt;String&gt; partitionList, List&lt;List&lt;String&gt;&gt; result)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (start==s.length())&#123;</span><br><span class="line">            result.add(<span class="keyword">new</span> ArrayList&lt;&gt;(partitionList));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=start+<span class="number">1</span>; i&lt;=s.length(); i++)&#123;</span><br><span class="line">            String str = s.substring(start, i);</span><br><span class="line">            <span class="keyword">if</span> (isPalindrome(str))&#123;</span><br><span class="line">                partitionList.add(str);</span><br><span class="line">                partitionHepler(s, i, partitionList, result);</span><br><span class="line">                partitionList.remove(partitionList.size()-<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l=<span class="number">0</span>, r=str.length()-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (l&lt;r)&#123;</span><br><span class="line">            <span class="keyword">if</span> (str.charAt(l++)!=str.charAt(r--)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/02/18/Surrounded Regions - 环绕区域/" itemprop="url">
                 Surrounded Regions - 环绕区域
               </a>
@@ -481,189 +663,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/02/15/Word Ladder II - 词梯II/" itemprop="url">
-                Word Ladder II - 词梯II
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-02-15T20:44:47+08:00" content="2016-02-15">
-            2016-02-15
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/02/15/Word Ladder II - 词梯II/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/15/Word Ladder II - 词梯II/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Word_Ladder_II_-_词梯II">Word Ladder II - 词梯II</h3><p><strong>Description</strong>: Given two words (beginWord and endWord), and a dictionary’s word list, find all shortest transformation sequence(s) from beginWord to endWord, such that:<br> 1 Only one letter can be changed at a time<br> 2 Each intermediate word must exist in the word list</p>
-<p> For example,<br> Given: beginWord = “hit” endWord = “cog”<br> wordList = [“hot”,”dot”,”dog”,”lot”,”log”]<br> Return<br> [ [“hit”,”hot”,”dot”,”dog”,”cog”],<br> [“hit”,”hot”,”lot”,”log”,”cog”] ]</p>
-<p> Note:<br> All words have the same length.<br> All words contain only lowercase alphabetic characters.</p>
-<p>思路：分支限界法(BFS,最短路径),与Word Ladder思路类似,不同点在于<br>     1 不能直接从wordList中直接删除访问过的字符串,需要引入两个新的集合,只有转换步数发生变化,才从字典中移除(观察到不同转换序列不可能出现重复的词,除了首尾两个词);<br>     2 引入的数据结构WordNode多一个字段</p>
-<p>参考：<a href="http://www.programcreek.com/2014/06/leetcode-word-ladder-ii-java/" target="_blank" rel="external">http://www.programcreek.com/2014/06/leetcode-word-ladder-ii-java/</a></p>
-<p>注意：将chars字符数组转换成String千万别写成了chars.toString(); ，不小心犯了这个低级错误会很麻烦。</p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordLadderII</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String beginWord = <span class="string">"a"</span>;</span><br><span class="line">        String endWord = <span class="string">"c"</span>;</span><br><span class="line">        Set&lt;String&gt; wordList = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        wordList.add(<span class="string">"a"</span>);</span><br><span class="line">        wordList.add(<span class="string">"b"</span>);</span><br><span class="line">        wordList.add(<span class="string">"c"</span>);</span><br><span class="line">        List&lt;List&lt;String&gt;&gt; result = <span class="keyword">new</span> WordLadderII().findLadders(beginWord, endWord, wordList);</span><br><span class="line">        <span class="keyword">for</span> (List&lt;String&gt; list : result)&#123;</span><br><span class="line">            <span class="keyword">for</span> (String s : list)&#123;</span><br><span class="line">                System.out.print(s + <span class="string">" "</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">WordNode</span></span>&#123;</span><br><span class="line">        String word;</span><br><span class="line">        List&lt;String&gt; transformList; <span class="comment">//TODO 这里可以改成存储WordNode pre来优化性能</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">WordNode</span><span class="params">(String word, List&lt;String&gt; oldTransformList)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.word = word;</span><br><span class="line">            transformList = <span class="keyword">new</span> ArrayList&lt;&gt;(oldTransformList);</span><br><span class="line">            transformList.add(word);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSteps</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> transformList.size();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 分支限界法(BFS,最短路径),与Word Ladder思路类似,不同点在于</span><br><span class="line">     1 不能直接从wordList中直接删除访问过的字符串,需要引入两个新的集合;</span><br><span class="line">     2 引入的数据结构WordNode多一个字段</span><br><span class="line">     * http://www.programcreek.com/2014/06/leetcode-word-ladder-ii-java/</span><br><span class="line">     * <span class="doctag">@param</span> beginWord</span><br><span class="line">     * <span class="doctag">@param</span> endWord</span><br><span class="line">     * <span class="doctag">@param</span> wordList</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; findLadders(String beginWord, String endWord, Set&lt;String&gt; wordList) &#123;</span><br><span class="line">        List&lt;List&lt;String&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Queue&lt;WordNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        queue.offer(<span class="keyword">new</span> WordNode(beginWord, <span class="keyword">new</span> ArrayList&lt;&gt;()));</span><br><span class="line">        wordList.add(endWord);</span><br><span class="line">        <span class="comment">//不能直接从wordList中直接删除访问过的字符串,引入两个新的集合</span></span><br><span class="line">        Set&lt;String&gt; visited = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        Set&lt;String&gt; unVisited = <span class="keyword">new</span> HashSet&lt;&gt;(wordList);</span><br><span class="line">        <span class="keyword">int</span> minSteps = Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">int</span> preSteps = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty())&#123;</span><br><span class="line">            WordNode top = queue.poll();</span><br><span class="line">            <span class="keyword">int</span> curSteps = top.getSteps();</span><br><span class="line">            <span class="keyword">if</span> (top.word.equals(endWord)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (curSteps &gt; minSteps) <span class="keyword">return</span> result;</span><br><span class="line">                minSteps = curSteps;</span><br><span class="line">                result.add(top.transformList);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//只有转换步数发生变化,才从字典中移除(观察到不同转换序列不可能出现重复的词,除了首尾两个词)</span></span><br><span class="line">            <span class="keyword">if</span> (curSteps &gt; preSteps) &#123;</span><br><span class="line">                unVisited.removeAll(visited);</span><br><span class="line">                preSteps = curSteps;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">char</span>[] chars = top.word.toCharArray();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;chars.length; i++)&#123;</span><br><span class="line">                <span class="keyword">char</span> origin = chars[i];</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">char</span> c=<span class="string">'a'</span>; c&lt;=<span class="string">'z'</span>; c++)&#123;</span><br><span class="line">                    <span class="keyword">if</span> (chars[i]!=c) chars[i] = c;</span><br><span class="line">                    String newString = <span class="keyword">new</span> String(chars);   <span class="comment">//TODO 千万别写成了chars.toString();</span></span><br><span class="line">                    <span class="keyword">if</span> (unVisited.contains(newString))&#123;</span><br><span class="line">                        queue.offer(<span class="keyword">new</span> WordNode(newString, top.transformList));</span><br><span class="line">                        visited.add(newString);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                chars[i] = origin;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/02/14/Word Ladder - 词梯/" itemprop="url">
-                Word Ladder - 词梯
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-02-14T20:44:47+08:00" content="2016-02-14">
-            2016-02-14
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/02/14/Word Ladder - 词梯/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/14/Word Ladder - 词梯/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Word_Ladder_-_词梯">Word Ladder - 词梯</h3><p><strong>Description</strong>: Given two words (beginWord and endWord), and a dictionary’s word list, find the length of shortest transformation sequence from beginWord to endWord, such that:<br> 1 Only one letter can be changed at a time<br> 2 Each intermediate word must exist in the word list</p>
-<p>For example,<br> Given:<br> beginWord = “hit” endWord = “cog”<br> wordList = [“hot”,”dot”,”dog”,”lot”,”log”]<br> As one shortest transformation is “hit” -&gt; “hot” -&gt; “dot” -&gt; “dog” -&gt; “cog”,<br> return its length 5.</p>
-<p>Note:<br> Return 0 if there is no such transformation sequence.<br> All words have the same length.<br> All words contain only lowercase alphabetic characters.</p>
-<p>思路：分支限界法(BFS,最短路径)</p>
-<p>参考：<a href="http://www.programcreek.com/2012/12/leetcode-word-ladder/" target="_blank" rel="external">http://www.programcreek.com/2012/12/leetcode-word-ladder/</a></p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordLadder</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">WordNode</span></span>&#123;</span><br><span class="line">        String word;</span><br><span class="line">        <span class="keyword">int</span> numSteps;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">WordNode</span><span class="params">(String word, <span class="keyword">int</span> numSteps)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.word = word;</span><br><span class="line">            <span class="keyword">this</span>.numSteps = numSteps;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * http://www.programcreek.com/2012/12/leetcode-word-ladder/</span><br><span class="line">     * 分支限界法(BFS,最短路径)</span><br><span class="line">     * <span class="doctag">@param</span> beginWord</span><br><span class="line">     * <span class="doctag">@param</span> endWord</span><br><span class="line">     * <span class="doctag">@param</span> wordList</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">ladderLength</span><span class="params">(String beginWord, String endWord, Set&lt;String&gt; wordList)</span> </span>&#123;</span><br><span class="line">        Queue&lt;WordNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        queue.add(<span class="keyword">new</span> WordNode(beginWord, <span class="number">1</span>));</span><br><span class="line">        wordList.add(endWord);</span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">            WordNode top = queue.remove();</span><br><span class="line">            String word = top.word;</span><br><span class="line">            <span class="keyword">if</span>(word.equals(endWord)) <span class="keyword">return</span> top.numSteps;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">char</span>[] chars = word.toCharArray();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;chars.length; i++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">char</span> c=<span class="string">'a'</span>; c&lt;=<span class="string">'z'</span>; c++)&#123;</span><br><span class="line">                    <span class="keyword">char</span> temp = chars[i];</span><br><span class="line">                    <span class="keyword">if</span>(chars[i]!=c) chars[i] = c;</span><br><span class="line">                    String newWord = <span class="keyword">new</span> String(chars);</span><br><span class="line">                    <span class="keyword">if</span>(wordList.contains(newWord))&#123;</span><br><span class="line">                        queue.add(<span class="keyword">new</span> WordNode(newWord, top.numSteps+<span class="number">1</span>));</span><br><span class="line">                        wordList.remove(newWord);</span><br><span class="line">                    &#125;</span><br><span class="line">                    chars[i] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -702,7 +701,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">128</span>
+              <span class="site-state-item-count">130</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

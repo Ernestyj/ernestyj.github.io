@@ -221,6 +221,188 @@
           
           
             
+              <a class="post-title-link" href="/2015/12/28/Minimum Window Substring - 最小子串窗口/" itemprop="url">
+                Minimum Window Substring - 最小子串窗口
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-12-28T20:44:47+08:00" content="2015-12-28">
+            2015-12-28
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/12/28/Minimum Window Substring - 最小子串窗口/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/28/Minimum Window Substring - 最小子串窗口/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Minimum_Window_Substring_-_最小子串窗口">Minimum Window Substring - 最小子串窗口</h3><p><strong>Description</strong>: Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).</p>
+<p> For example,<br> S = “ADOBECODEBANC”<br> T = “ABC”<br> Minimum window is “BANC”.</p>
+<p> Note:<br> If there is no such window in S that covers all characters in T, return the empty string “”.<br> If there are multiple such windows, you are guaranteed that there will always be only one unique minimum window in S.</p>
+<p>思路：双指针，动态维护一个区间。尾指针不断往后扫，当扫到有一个窗口包含了所有T的字符后，然后再收缩头指针，直到不能再收缩为止。最后记录所有可能的情况中窗口最小的。</p>
+<p>参考：<a href="http://blog.csdn.net/linhuanmars/article/details/20343903" target="_blank" rel="external">http://blog.csdn.net/linhuanmars/article/details/20343903</a></p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MinimumWindowSubstring</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * http://blog.csdn.net/linhuanmars/article/details/20343903</span><br><span class="line">     * 双指针，动态维护一个区间。尾指针不断往后扫，当扫到有一个窗口包含了所有T的字符后，</span><br><span class="line">     * 然后再收缩头指针，直到不能再收缩为止。最后记录所有可能的情况中窗口最小的。</span><br><span class="line">     * <span class="doctag">@param</span> s</span><br><span class="line">     * <span class="doctag">@param</span> t</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">minWindow</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s==<span class="keyword">null</span> || s.length()==<span class="number">0</span>) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        HashMap&lt;Character, Integer&gt; bookT = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="comment">//建立T字典</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;t.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(bookT.containsKey(t.charAt(i))) &#123;</span><br><span class="line">                bookT.put(t.charAt(i), bookT.get(t.charAt(i))+<span class="number">1</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                bookT.put(t.charAt(i), <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> minLen = s.length()+<span class="number">1</span>;  <span class="comment">//+1用来判断无匹配的极端情况</span></span><br><span class="line">        <span class="keyword">int</span> minStart = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//尾指针不断往后扫</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> right=<span class="number">0</span>; right&lt;s.length(); right++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(bookT.containsKey(s.charAt(right))) &#123;</span><br><span class="line">                bookT.put(s.charAt(right), bookT.get(s.charAt(right))-<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span>(bookT.get(s.charAt(right))&gt;=<span class="number">0</span>) &#123;</span><br><span class="line">                    count++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//当扫到有一个窗口包含了所有T的字符后，然后再收缩头指针，直到不能再收缩为止</span></span><br><span class="line">                <span class="keyword">while</span>(count == t.length()) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(right-left+<span class="number">1</span> &lt; minLen) &#123; <span class="comment">//更新</span></span><br><span class="line">                        minLen = right-left+<span class="number">1</span>;</span><br><span class="line">                        minStart = left;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span>(bookT.containsKey(s.charAt(left))) &#123;     <span class="comment">//left收缩</span></span><br><span class="line">                        bookT.put(s.charAt(left), bookT.get(s.charAt(left))+<span class="number">1</span>);</span><br><span class="line">                        <span class="keyword">if</span>(bookT.get(s.charAt(left))&gt;<span class="number">0</span>) &#123;</span><br><span class="line">                            count--;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    left++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(minLen&gt;s.length()) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        <span class="comment">//最后记录所有可能的情况中窗口最小的</span></span><br><span class="line">        <span class="keyword">return</span> s.substring(minStart, minStart+minLen);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/12/27/Sort Colors - 颜色排序/" itemprop="url">
+                Sort Colors - 颜色排序
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-12-27T20:44:47+08:00" content="2015-12-27">
+            2015-12-27
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/12/27/Sort Colors - 颜色排序/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/27/Sort Colors - 颜色排序/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Sort_Colors_-_颜色排序">Sort Colors - 颜色排序</h3><p><strong>Description</strong>: Given an array with n objects colored red, white or blue, sort them so that objects of the same color are adjacent, with the colors in the order red, white and blue.</p>
+<p>Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.</p>
+<p> Could you come up with an one-pass algorithm using only constant space?</p>
+<p>思路：先计算每种颜色数，然后在原数组基础上填充值。</p>
+<p>参考：<a href="http://www.programcreek.com/2014/06/leetcode-sort-colors-java/" target="_blank" rel="external">http://www.programcreek.com/2014/06/leetcode-sort-colors-java/</a></p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SortColors</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * http://www.programcreek.com/2014/06/leetcode-sort-colors-java/</span><br><span class="line">     * Since we already get the count of each element, we can directly project them to</span><br><span class="line">     * the original array, instead of creating a new one.</span><br><span class="line">     * <span class="doctag">@param</span> nums</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sortColors</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums==<span class="keyword">null</span> || nums.length&lt;<span class="number">2</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span>[] counts = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.length; i++) counts[nums[i]]++;</span><br><span class="line">        <span class="keyword">int</span> color = <span class="number">0</span>;  <span class="comment">//0:red 1:white 2:blue</span></span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(color&lt;=<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(counts[color]!=<span class="number">0</span>)&#123;</span><br><span class="line">                nums[k++]=color;</span><br><span class="line">                counts[color] = counts[color]-<span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                color++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/12/26/Search 2D Matrix - 搜索2D矩阵/" itemprop="url">
                 Search 2D Matrix - 搜索2D矩阵
               </a>
@@ -484,184 +666,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/12/23/Simplify Path - 路径简化/" itemprop="url">
-                Simplify Path - 路径简化
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-12-23T20:44:47+08:00" content="2015-12-23">
-            2015-12-23
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/12/23/Simplify Path - 路径简化/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/23/Simplify Path - 路径简化/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Simplify_Path_-_路径简化">Simplify Path - 路径简化</h3><p><strong>Description</strong>: Given an absolute path for a file (Unix-style), simplify it.</p>
-<p> For example,<br> path = “/home/“, =&gt; “/home”<br> path = “/a/./b/../../c/“, =&gt; “/c”</p>
-<p> 思路：先将输入用/分隔开得到字符数组，然后再分情况判断。算法过程使用到栈数据结构。</p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimplifyPath</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        String path = "/a/./b/../../c/";</span></span><br><span class="line"><span class="comment">//        String path = "/home/";</span></span><br><span class="line">        String path = <span class="string">"/home//foo/"</span>;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        System.out.println(<span class="keyword">new</span> SimplifyPath().simplifyPath(path));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">simplifyPath</span><span class="params">(String path)</span> </span>&#123;</span><br><span class="line">        String[] strings = path.split(<span class="string">"/"</span>);</span><br><span class="line">        Stack&lt;String&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;strings.length; i++)&#123;</span><br><span class="line">            String s = strings[i];</span><br><span class="line">            <span class="keyword">if</span> (s.length() != <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span> (s.equals(<span class="string">"."</span>))&#123;</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span> (s.equals(<span class="string">".."</span>))&#123;</span><br><span class="line">                    <span class="keyword">if</span> (!stack.isEmpty()) stack.pop();</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    stack.push(strings[i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (stack.isEmpty()) <span class="keyword">return</span> <span class="string">"/"</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            StringBuilder builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            Object[] array = stack.toArray();</span><br><span class="line">            <span class="keyword">for</span> (Object o : array) builder.append(<span class="string">"/"</span> + o);</span><br><span class="line">            <span class="keyword">return</span> builder.toString();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/12/21/Sqrt(x) - 求平方根/" itemprop="url">
-                Sqrt(x) - 求平方根
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-12-21T20:44:47+08:00" content="2015-12-21">
-            2015-12-21
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/12/21/Sqrt(x) - 求平方根/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/21/Sqrt(x) - 求平方根/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Sqrt(x)_-_求平方根">Sqrt(x) - 求平方根</h3><p><strong>Description</strong>: Implement int sqrt(int x).<br> Compute and return the square root of x.</p>
-<p>二分搜索：对于一个非负数n，它的平方根不会大于（n/2+1）。<br>在[0, n/2+1]这个范围内可以进行二分搜索，求出n的平方根。</p>
-<p>参考：<a href="http://www.cnblogs.com/AnnieKim/archive/2013/04/18/3028607.html" target="_blank" rel="external">http://www.cnblogs.com/AnnieKim/archive/2013/04/18/3028607.html</a></p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sqrtx</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        System.out.println(<span class="keyword">new</span> Sqrtx().mySqrt(<span class="number">64</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 二分搜索：对于一个非负数n，它的平方根不会大于（n/2+1）。</span><br><span class="line">     * 在[0, n/2+1]这个范围内可以进行二分搜索，求出n的平方根。</span><br><span class="line">     * http://www.cnblogs.com/AnnieKim/archive/2013/04/18/3028607.html</span><br><span class="line">     * <span class="doctag">@param</span> x</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">mySqrt</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> l = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> r = x/<span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">long</span> mid = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> square = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (l &lt;= r)&#123;</span><br><span class="line">            mid = (l+r)/<span class="number">2</span>;</span><br><span class="line">            square = mid*mid;</span><br><span class="line">            <span class="keyword">if</span> (square == x) <span class="keyword">return</span> (<span class="keyword">int</span>) mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (square &lt; x) l = mid + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> r = mid -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>) r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -700,7 +704,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">128</span>
+              <span class="site-state-item-count">130</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

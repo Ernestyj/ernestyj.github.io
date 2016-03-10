@@ -221,6 +221,185 @@
           
           
             
+              <a class="post-title-link" href="/2016/01/26/Construct Binary Tree from Inorder and Postorder Traversal - 根据后序和中序序列重构二叉树/" itemprop="url">
+                Construct Binary Tree from Inorder and Postorder Traversal - 根据后序和中序序列重构二叉树
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-01-26T20:44:47+08:00" content="2016-01-26">
+            2016-01-26
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/01/26/Construct Binary Tree from Inorder and Postorder Traversal - 根据后序和中序序列重构二叉树/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/26/Construct Binary Tree from Inorder and Postorder Traversal - 根据后序和中序序列重构二叉树/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal_-_根据后序和中序序列重构二叉树">Construct Binary Tree from Inorder and Postorder Traversal - 根据后序和中序序列重构二叉树</h3><p><strong>Description</strong>: Given inorder and postorder traversal of a tree, construct the binary tree.</p>
+<p>Note: You may assume that duplicates do not exist in the tree.</p>
+<p> 思路：递归，与Construct Binary Tree from Preorder and Inorder Traversal思路一致。后序序列最后一个为根.中序序列的根的左侧序列为左子树,右侧序列为右子树。根据左右序列长度可以在后序序列中找到左右子树.<br>示例:<br>     in-order:   4 2 5 (1) 6 7 3 8<br>     post-order: 4 5 2  6 7 8 3  (1)</p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConstructBinaryTreeFromInorderAndPostorderTraversal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Definition for a binary tree node.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 递归:后序序列最后一个为根.中序序列的根的左侧序列为左子树,右侧序列为右子树.</span><br><span class="line">     根据左右序列长度可以在后序序列中找到左右子树.</span><br><span class="line">     * 示例:</span><br><span class="line">     in-order:   4 2 5 (1) 6 7 3 8</span><br><span class="line">     post-order: 4 5 2  6 7 8 3  (1)</span><br><span class="line">     * <span class="doctag">@param</span> inorder</span><br><span class="line">     * <span class="doctag">@param</span> postorder</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">buildTree</span><span class="params">(<span class="keyword">int</span>[] inorder, <span class="keyword">int</span>[] postorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> rebuild(postorder, inorder, <span class="number">0</span>, postorder.length-<span class="number">1</span>, <span class="number">0</span>, inorder.length-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> TreeNode <span class="title">rebuild</span><span class="params">(<span class="keyword">int</span>[] postorder, <span class="keyword">int</span>[] inorder, <span class="keyword">int</span> postL, <span class="keyword">int</span> postR, <span class="keyword">int</span> inL, <span class="keyword">int</span> inR)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (postL&gt;postR || inL&gt;inR) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        TreeNode root = <span class="keyword">new</span> TreeNode(postorder[postR]);</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (; i&lt;inorder.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (inorder[i] == postorder[postR]) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> postLeftLen = i - inL;</span><br><span class="line">        root.left = rebuild(postorder, inorder, postL, postL+postLeftLen-<span class="number">1</span>, inL, i-<span class="number">1</span>);</span><br><span class="line">        root.right = rebuild(postorder, inorder, postL+postLeftLen, postR-<span class="number">1</span>, i+<span class="number">1</span>, inR);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/01/25/Construct Binary Tree from Preorder and Inorder Traversal - 根据先序和中序序列重构二叉树/" itemprop="url">
+                Construct Binary Tree from Preorder and Inorder Traversal - 根据先序和中序序列重构二叉树
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-01-25T20:44:47+08:00" content="2016-01-25">
+            2016-01-25
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/01/25/Construct Binary Tree from Preorder and Inorder Traversal - 根据先序和中序序列重构二叉树/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/25/Construct Binary Tree from Preorder and Inorder Traversal - 根据先序和中序序列重构二叉树/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Construct_Binary_Tree_from_Preorder_and_Inorder_Traversal_-_根据先序和中序序列重构二叉树">Construct Binary Tree from Preorder and Inorder Traversal - 根据先序和中序序列重构二叉树</h3><p><strong>Description</strong>: Given preorder and inorder traversal of a tree, construct the binary tree.</p>
+<p>Note: You may assume that duplicates do not exist in the tree.</p>
+<p> 思路：递归。先序序列第一个为根.中序序列的根的左侧序列为左子树,右侧序列为右子树。根据左右序列长度可以在先序序列中找到左右子树.<br>示例:<br>     in-order:   4 2 5 (1) 6 7 3 8<br>     pre-order: (1) 2 4 5  3 7 6 8</p>
+<p>参考：<a href="http://www.programcreek.com/2014/06/leetcode-construct-binary-tree-from-preorder-and-inorder-traversal-java/" target="_blank" rel="external">http://www.programcreek.com/2014/06/leetcode-construct-binary-tree-from-preorder-and-inorder-traversal-java/</a></p>
+<p>完整的java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConstructBinaryTreeFromPreorderAndInorderTraversal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Definition for a binary tree node.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**http://www.programcreek.com/2014/06/leetcode-construct-binary-tree-from-preorder-and-inorder-traversal-java/</span><br><span class="line">     * 递归:先序序列第一个为根.中序序列的根的左侧序列为左子树,右侧序列为右子树.</span><br><span class="line">     根据左右序列长度可以在先序序列中找到左右子树.</span><br><span class="line">     * 示例:</span><br><span class="line">     in-order:   4 2 5 (1) 6 7 3 8</span><br><span class="line">     pre-order: (1) 2 4 5  3 7 6 8</span><br><span class="line">     * <span class="doctag">@param</span> preorder</span><br><span class="line">     * <span class="doctag">@param</span> inorder</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">buildTree</span><span class="params">(<span class="keyword">int</span>[] preorder, <span class="keyword">int</span>[] inorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> rebuild(preorder, inorder, <span class="number">0</span>, preorder.length-<span class="number">1</span>, <span class="number">0</span>, inorder.length-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> TreeNode <span class="title">rebuild</span><span class="params">(<span class="keyword">int</span>[] preorder, <span class="keyword">int</span>[] inorder, <span class="keyword">int</span> preL, <span class="keyword">int</span> preR, <span class="keyword">int</span> inL, <span class="keyword">int</span> inR)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (preL&gt;preR || inL&gt;inR) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        TreeNode root = <span class="keyword">new</span> TreeNode(preorder[preL]);</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (; i&lt;inorder.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (inorder[i] == preorder[preL]) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> preLeftLen = i - inL;</span><br><span class="line">        root.left = rebuild(preorder, inorder, preL+<span class="number">1</span>, preL+preLeftLen, inL, i-<span class="number">1</span>);</span><br><span class="line">        root.right = rebuild(preorder, inorder, preL+preLeftLen+<span class="number">1</span>, preR, i+<span class="number">1</span>, inR);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/01/24/Maximum Depth of Binary Tree - 二叉树最大深度/" itemprop="url">
                 Maximum Depth of Binary Tree -二叉树最大深度
               </a>
@@ -475,185 +654,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/01/21/Symmetric Tree - 对称二叉树/" itemprop="url">
-                Symmetric Tree - 对称二叉树
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-01-21T20:44:47+08:00" content="2016-01-21">
-            2016-01-21
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/01/21/Symmetric Tree - 对称二叉树/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/21/Symmetric Tree - 对称二叉树/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Symmetric_Tree_-_对称二叉树">Symmetric Tree - 对称二叉树</h3><p><strong>Description</strong>: Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p>
-<p>Note: Bonus points if you could solve it both recursively and iteratively.</p>
-<p>原题链接：<a href="https://leetcode.com/problems/symmetric-tree/" target="_blank" rel="external">https://leetcode.com/problems/symmetric-tree/</a></p>
-<p> 思路：递归（与Same Tree类似），或者迭代（使用两个队列）。</p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SymmetricTree</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Definition for a binary tree node.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 递归:思路类似Same Tree</span><br><span class="line">     * <span class="doctag">@param</span> root</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSymmetric</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root==<span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> isSymmetricHelper(root.left, root.right);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isSymmetricHelper</span><span class="params">(TreeNode p, TreeNode q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(p == <span class="keyword">null</span> &amp;&amp; q == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(p != <span class="keyword">null</span> &amp;&amp; q != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p.val == q.val)  <span class="comment">//TODO 注意交换次序</span></span><br><span class="line">                <span class="keyword">return</span> isSymmetricHelper(p.left, q.right) &amp;&amp; isSymmetricHelper(p.right, q.left);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 迭代:使用两个队列</span><br><span class="line">     * <span class="doctag">@param</span> root</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSymmetric1</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root==<span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        Queue&lt;TreeNode&gt; leftQ = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        Queue&lt;TreeNode&gt; rightQ = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        leftQ.offer(root.left);</span><br><span class="line">        rightQ.offer(root.right);</span><br><span class="line">        <span class="keyword">while</span> (!leftQ.isEmpty() &amp;&amp; !rightQ.isEmpty())&#123;</span><br><span class="line">            TreeNode l = leftQ.poll();</span><br><span class="line">            TreeNode r = rightQ.poll();</span><br><span class="line">            <span class="keyword">if</span> (l==<span class="keyword">null</span> &amp;&amp; r==<span class="keyword">null</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (l==<span class="keyword">null</span> || r==<span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (l.val != r.val) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">else</span>&#123;   <span class="comment">//TODO 注意交换次序</span></span><br><span class="line">                leftQ.offer(l.left);</span><br><span class="line">                leftQ.offer(l.right);</span><br><span class="line">                rightQ.offer(r.right);</span><br><span class="line">                rightQ.offer(r.left);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/01/20/Same Tree - 相同二叉树/" itemprop="url">
-                Same Tree - 是否为同一二叉树
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-01-20T20:44:47+08:00" content="2016-01-20">
-            2016-01-20
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/01/20/Same Tree - 相同二叉树/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/20/Same Tree - 相同二叉树/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="Same_Tree_-_是否为同一二叉树">Same Tree - 是否为同一二叉树</h3><p><strong>Description</strong>: Given two binary trees, write a function to check if they are equal or not.</p>
-<p>Two binary trees are considered equal if they are structurally identical and the nodes have the same value.</p>
-<p> 思路：递归。</p>
-<p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SameTree</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        TreeNode p = <span class="keyword">new</span> TreeNode(<span class="number">0</span>);</span><br><span class="line">        TreeNode q = <span class="keyword">new</span> TreeNode(<span class="number">0</span>);</span><br><span class="line">        System.out.println(<span class="string">"*****RESULT*****"</span>);</span><br><span class="line">        System.out.println(<span class="keyword">new</span> SameTree().isSameTree(p, q));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//Definition for a binary tree node.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSameTree</span><span class="params">(TreeNode p, TreeNode q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(p == <span class="keyword">null</span> &amp;&amp; q == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(p != <span class="keyword">null</span> &amp;&amp; q != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p.val == q.val)</span><br><span class="line">                <span class="keyword">return</span> isSameTree(p.left, q.left) &amp;&amp; isSameTree(q.right, p.right);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSameTree1</span><span class="params">(TreeNode p, TreeNode q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (p==<span class="keyword">null</span> &amp;&amp; q==<span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        List&lt;Integer&gt; pInts = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; qInts = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        inOrderTraverse(p, pInts, <span class="keyword">true</span>);</span><br><span class="line">        inOrderTraverse(q, qInts, <span class="keyword">false</span>);</span><br><span class="line">        <span class="keyword">if</span> (pInts.size() != qInts.size()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;pInts.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> ((<span class="keyword">int</span>)pInts.get(i) != (<span class="keyword">int</span>)qInts.get(i)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;   <span class="comment">//TODO Integer.MIN_VALUE != Integer.MIN_VALUE 必须转成int</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">inOrderTraverse</span><span class="params">(TreeNode root, List&lt;Integer&gt; ints, <span class="keyword">boolean</span> isLeft)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (isLeft) ints.add(Integer.MIN_VALUE);</span><br><span class="line">            <span class="keyword">else</span> ints.add(Integer.MAX_VALUE);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        inOrderTraverse(root.left, ints, <span class="keyword">true</span>);</span><br><span class="line">        ints.add(root.val);</span><br><span class="line">        inOrderTraverse(root.right, ints, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -692,7 +692,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">128</span>
+              <span class="site-state-item-count">130</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
