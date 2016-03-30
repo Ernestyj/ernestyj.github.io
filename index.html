@@ -221,8 +221,8 @@
           
           
             
-              <a class="post-title-link" href="/2016/03/20/Factorial Trailing Zeroes - 阶乘结果末尾为零的个数/" itemprop="url">
-                Factorial Trailing Zeroes - 阶乘结果末尾为零的个数
+              <a class="post-title-link" href="/2016/03/30/Number of Islands - 小岛个数/" itemprop="url">
+                Number of Islands - 小岛个数
               </a>
             
           
@@ -232,8 +232,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2016-03-20T20:44:47+08:00" content="2016-03-20">
-            2016-03-20
+          <time itemprop="dateCreated" datetime="2016-03-30T20:44:47+08:00" content="2016-03-30">
+            2016-03-30
           </time>
         </span>
 
@@ -258,8 +258,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2016/03/20/Factorial Trailing Zeroes - 阶乘结果末尾为零的个数/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/20/Factorial Trailing Zeroes - 阶乘结果末尾为零的个数/" itemprop="commentsCount"></span>
+              <a href="/2016/03/30/Number of Islands - 小岛个数/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/30/Number of Islands - 小岛个数/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -275,10 +275,11 @@
 
       
         
-          <span itemprop="articleBody"><h3 id="Factorial_Trailing_Zeroes_-_阶乘结果末尾为零的个数">Factorial Trailing Zeroes - 阶乘结果末尾为零的个数</h3><p><strong>Description</strong>: Given an integer n, return the number of trailing zeroes in n!.<br> Note: Your solution should be in logarithmic time complexity.</p>
-<p>思路：1. 先求阶乘再统计末尾为零的个数，但是输入值大的时候会栈溢出。<br>2.需要统计阶乘质因子的(2,5)对的个数，因为2×5=10.很容易观察到质因子中2的个数总是大于等于5的个数,因此只要计数5的个数就可以了。<br>     一个简单的方法是计算floor(n/5)。例如，7!有一个5，10!有两个5。除此之外，还有一件事情要考虑,诸如25，125之类的数字有不止一个5。<br>     解法就是对n/5+n/25+n/125+…进行求和，当n小于分母的时候停止。这样的话在计算5^2 的时候，能被25整除的数里面的两个5，其中一个已经在5^1 中计算过了,所以5^2直接加到count上。</p>
+          <span itemprop="articleBody"><h3 id="Number_of_Islands_-_小岛个数">Number of Islands - 小岛个数</h3><p><strong>Description</strong>: Given a 2d grid map of ‘1’s (land) and ‘0’s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p>
+<p>原题链接：<a href="https://leetcode.com/problems/number-of-islands/" target="_blank" rel="external">https://leetcode.com/problems/number-of-islands/</a></p>
+<p>思路：遍历数组，搜到小岛则按上下左右扩展进行递归搜索，搜过的点标记为’2’。</p>
 <p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FactorialTrailingZeroes</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**http://www.danielbit.com/blog/puzzle/leetcode/leetcode-factorial-trailing-zeroes</span><br><span class="line">     * 需要统计阶乘质因子的(2,5)对的个数，因为2×5=10.很容易观察到质因子中2的个数总是大于等于5的个数,因此只要计数5的个数就可以了。</span><br><span class="line">     一个简单的方法是计算floor(n/5)。例如，7!有一个5，10!有两个5。</span><br><span class="line">     除此之外，还有一件事情要考虑,诸如25，125之类的数字有不止一个5。</span><br><span class="line">     解法就是对n/5+n/25+n/125+…进行求和，当n小于分母的时候停止。</span><br><span class="line">     这样的话在计算5^2的时候，能被25整除的数里面的两个5，其中一个已经在5^1中计算过了,所以5^2直接加到count上。</span><br><span class="line">     * <span class="doctag">@param</span> n</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">trailingZeroes</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">long</span> i = <span class="number">5</span>; n/i &gt;= <span class="number">1</span>; i *= <span class="number">5</span>) &#123;</span><br><span class="line">            count += n/i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//对于大的输入值会栈溢出</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">trailingZeroes1</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        String s = String.valueOf(factorial(n));</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=s.length()-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">if</span> (s.charAt(i)==<span class="string">'0'</span>) count++;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">return</span> count;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">long</span> <span class="title">factorial</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n==<span class="number">0</span>||n==<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> factorial(n-<span class="number">1</span>)*n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NumberOfIslands</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="keyword">char</span>[][] grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (grid.length==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;grid.length; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;grid[<span class="number">0</span>].length; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span> (grid[i][j]==<span class="string">'2'</span>) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (grid[i][j]==<span class="string">'1'</span>) &#123;</span><br><span class="line">                    count++;</span><br><span class="line">                    findAnIsland(grid, i, j);</span><br><span class="line">                &#125; <span class="keyword">else</span> grid[i][j] = <span class="string">'2'</span>; <span class="comment">//searched</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">findAnIsland</span><span class="params">(<span class="keyword">char</span>[][] grid, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (grid[x][y]!=<span class="string">'1'</span>) <span class="keyword">return</span>;</span><br><span class="line">        grid[x][y] = <span class="string">'2'</span>; <span class="comment">//searched</span></span><br><span class="line">        <span class="keyword">if</span> (x-<span class="number">1</span>&gt;=<span class="number">0</span>) findAnIsland(grid, x-<span class="number">1</span>, y);    <span class="comment">//上</span></span><br><span class="line">        <span class="keyword">if</span> (x+<span class="number">1</span>&lt;grid.length) findAnIsland(grid, x+<span class="number">1</span>, y);    <span class="comment">//下</span></span><br><span class="line">        <span class="keyword">if</span> (y-<span class="number">1</span>&gt;=<span class="number">0</span>) findAnIsland(grid, x, y-<span class="number">1</span>); <span class="comment">//左</span></span><br><span class="line">        <span class="keyword">if</span> (y+<span class="number">1</span>&lt;grid[<span class="number">0</span>].length) findAnIsland(grid, x, y+<span class="number">1</span>); <span class="comment">//右</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
         
       
@@ -309,8 +310,8 @@
           
           
             
-              <a class="post-title-link" href="/2016/03/19/Excel Sheet Column Title - Excel表单列标题转换/" itemprop="url">
-                Excel Sheet Column Title - Excel表单列标题转换
+              <a class="post-title-link" href="/2016/03/29/Binary Tree Right Side View - 二叉树右视图/" itemprop="url">
+                Binary Tree Right Side View - 二叉树右视图
               </a>
             
           
@@ -320,8 +321,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2016-03-19T20:44:47+08:00" content="2016-03-19">
-            2016-03-19
+          <time itemprop="dateCreated" datetime="2016-03-29T20:44:47+08:00" content="2016-03-29">
+            2016-03-29
           </time>
         </span>
 
@@ -346,8 +347,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2016/03/19/Excel Sheet Column Title - Excel表单列标题转换/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/19/Excel Sheet Column Title - Excel表单列标题转换/" itemprop="commentsCount"></span>
+              <a href="/2016/03/29/Binary Tree Right Side View - 二叉树右视图/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/29/Binary Tree Right Side View - 二叉树右视图/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -363,11 +364,11 @@
 
       
         
-          <span itemprop="articleBody"><h3 id="Excel_Sheet_Column_Title_-_Excel表单列标题转换">Excel Sheet Column Title - Excel表单列标题转换</h3><p><strong>Description</strong>: Given a positive integer, return its corresponding column title as appear in an Excel sheet.<br> For example:<br> 1 -&gt; A<br> 2 -&gt; B<br> 3 -&gt; C<br> …<br> 26 -&gt; Z<br> 27 -&gt; AA<br> 28 -&gt; AB</p>
-<p>思路：利用循环求余和商。注意标号从1开始，且结果要逆序。</p>
-<p>参考链接：<a href="http://www.programcreek.com/2014/03/leetcode-excel-sheet-column-title-java/" target="_blank" rel="external">http://www.programcreek.com/2014/03/leetcode-excel-sheet-column-title-java/</a></p>
+          <span itemprop="articleBody"><h3 id="Binary_Tree_Right_Side_View_-_二叉树右视图">Binary Tree Right Side View - 二叉树右视图</h3><p><strong>Description</strong>: Given a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.</p>
+<p>原题链接：<a href="https://leetcode.com/problems/binary-tree-right-side-view/" target="_blank" rel="external">https://leetcode.com/problems/binary-tree-right-side-view/</a></p>
+<p>思路：层次遍历取最后一个元素。</p>
 <p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExcelSheetColumnTitle</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="keyword">new</span> ExcelSheetColumnTitle().convertToTitle(<span class="number">1000</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//http://www.programcreek.com/2014/03/leetcode-excel-sheet-column-title-java/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">convertToTitle</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">while</span>(n &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            n--;    <span class="comment">//TODO 关键点,因为从1开始</span></span><br><span class="line">            <span class="keyword">char</span> ch = (<span class="keyword">char</span>) (n % <span class="number">26</span> + <span class="string">'A'</span>);</span><br><span class="line">            sb.append(ch);</span><br><span class="line">            n /= <span class="number">26</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.reverse().toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BinaryTreeRightSideView</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        TreeNode left;</span><br><span class="line">        TreeNode right;</span><br><span class="line">        TreeNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">rightSideView</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (root==<span class="keyword">null</span>) <span class="keyword">return</span> result;</span><br><span class="line">        Queue&lt;TreeNode&gt; q = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        Queue&lt;TreeNode&gt; qNext = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        q.offer(root);</span><br><span class="line">        <span class="keyword">while</span> (!q.isEmpty())&#123;</span><br><span class="line">            TreeNode n = q.poll();</span><br><span class="line">            <span class="keyword">if</span> (n.left!=<span class="keyword">null</span>) qNext.offer(n.left);</span><br><span class="line">            <span class="keyword">if</span> (n.right!=<span class="keyword">null</span>) qNext.offer(n.right);</span><br><span class="line">            <span class="keyword">if</span> (q.isEmpty())&#123;</span><br><span class="line">                result.add(n.val);</span><br><span class="line">                <span class="keyword">if</span> (!qNext.isEmpty())&#123;</span><br><span class="line">                    q = <span class="keyword">new</span> LinkedList&lt;&gt;(qNext);</span><br><span class="line">                    qNext = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
         
       
@@ -398,8 +399,8 @@
           
           
             
-              <a class="post-title-link" href="/2016/03/19/Majority Element/" itemprop="url">
-                Majority Element
+              <a class="post-title-link" href="/2016/03/28/House Robber - 房屋偷窃/" itemprop="url">
+                House Robber - 房屋偷窃
               </a>
             
           
@@ -409,8 +410,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2016-03-19T20:44:47+08:00" content="2016-03-19">
-            2016-03-19
+          <time itemprop="dateCreated" datetime="2016-03-28T20:44:47+08:00" content="2016-03-28">
+            2016-03-28
           </time>
         </span>
 
@@ -435,8 +436,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2016/03/19/Majority Element/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/19/Majority Element/" itemprop="commentsCount"></span>
+              <a href="/2016/03/28/House Robber - 房屋偷窃/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/28/House Robber - 房屋偷窃/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -452,10 +453,10 @@
 
       
         
-          <span itemprop="articleBody"><h3 id="Majority_Element">Majority Element</h3><p><strong>Description</strong>: Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.<br> You may assume that the array is non-empty and the majority element always exist in the array.</p>
-<p>思路：1.先排序，O(nlog(n))<br>2.使用哈希表，O(n)<br>但是测试用例显示方法1速度更快。</p>
+          <span itemprop="articleBody"><h3 id="House_Robber_-_房屋偷窃">House Robber - 房屋偷窃</h3><p><strong>Description</strong>: You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.<br> Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.</p>
+<p>思路：DP, s(i)=max{s(i-1), s(i-2)+nums(i)}</p>
 <p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MajorityElement</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//nlog(n)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length&lt;=<span class="number">2</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">return</span> nums[nums.length / <span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//n</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">majorityElement1</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length&lt;=<span class="number">2</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> indice = nums.length/<span class="number">2</span>;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> n : nums)&#123;</span><br><span class="line">            <span class="keyword">if</span> (!map.containsKey(n)) map.put(n, <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">int</span> temp = map.get(n);</span><br><span class="line">                <span class="keyword">if</span> (temp+<span class="number">1</span>&gt;indice) <span class="keyword">return</span> n;</span><br><span class="line">                map.put(n, temp+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HouseRobber</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//DP, s(i)=max&#123;s(i-1), s(i-2)+nums(i)&#125;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums.length==<span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span>[] s = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">        s[<span class="number">0</span>] = nums[<span class="number">0</span>];</span><br><span class="line">        s[<span class="number">1</span>] = Math.max(s[<span class="number">0</span>], nums[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">if</span> (nums.length==<span class="number">2</span>) <span class="keyword">return</span> s[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;nums.length; i++)&#123;</span><br><span class="line">            s[i] = Math.max(s[i-<span class="number">1</span>], s[i-<span class="number">2</span>]+nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s[nums.length-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
         
       
@@ -486,8 +487,8 @@
           
           
             
-              <a class="post-title-link" href="/2016/03/19/Excel Sheet Column Number - Excel表单列序号转换/" itemprop="url">
-                Excel Sheet Column Number - Excel表单列序号转换
+              <a class="post-title-link" href="/2016/03/28/Number of 1 Bits - 1位的个数/" itemprop="url">
+                Number of 1 Bits - 1位的个数
               </a>
             
           
@@ -497,8 +498,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2016-03-19T20:44:47+08:00" content="2016-03-19">
-            2016-03-19
+          <time itemprop="dateCreated" datetime="2016-03-28T20:44:47+08:00" content="2016-03-28">
+            2016-03-28
           </time>
         </span>
 
@@ -523,8 +524,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2016/03/19/Excel Sheet Column Number - Excel表单列序号转换/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/19/Excel Sheet Column Number - Excel表单列序号转换/" itemprop="commentsCount"></span>
+              <a href="/2016/03/28/Number of 1 Bits - 1位的个数/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/28/Number of 1 Bits - 1位的个数/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -540,9 +541,9 @@
 
       
         
-          <span itemprop="articleBody"><h3 id="Excel_Sheet_Column_Number_-_Excel表单列序号转换">Excel Sheet Column Number - Excel表单列序号转换</h3><p><strong>Description</strong>: Related to question Excel Sheet Column Title<br> Given a column title as appear in an Excel sheet, return its corresponding column number.<br> For example:<br> A -&gt; 1<br> B -&gt; 2<br> C -&gt; 3<br> …<br> Z -&gt; 26<br> AA -&gt; 27<br> AB -&gt; 28</p>
+          <span itemprop="articleBody"><h3 id="Number_of_1_Bits_-_1位的个数">Number of 1 Bits - 1位的个数</h3><p><strong>Description</strong>: Write a function that takes an unsigned integer and returns the number of ’1’ bits it has (also known as the Hamming weight).<br> For example, the 32-bit integer ’11’ has binary representation 00000000000000000000000000001011, so the function should return 3.</p>
 <p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExcelSheetColumnNumber</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="keyword">new</span> ExcelSheetColumnNumber().titleToNumber(<span class="string">"AA"</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">titleToNumber</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[] chars = <span class="keyword">new</span> StringBuilder(s).reverse().toString().toCharArray();</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;chars.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (i==<span class="number">0</span>) n += (chars[i]-<span class="string">'A'</span>);</span><br><span class="line">            <span class="keyword">else</span> n += (chars[i]-<span class="string">'A'</span>+<span class="number">1</span>)*Math.pow(<span class="number">26</span>, i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NumberOf1Bits</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// you need to treat n as an unsigned value</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">32</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (((n&gt;&gt;i)&amp;<span class="number">1</span>)==<span class="number">1</span>) count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
         
       
@@ -573,8 +574,8 @@
           
           
             
-              <a class="post-title-link" href="/2016/03/18/Fraction to Recurring Decimal - 分数表示成循环小数/" itemprop="url">
-                Fraction to Recurring Decimal - 分数表示成循环小数
+              <a class="post-title-link" href="/2016/03/27/Reverse Bits - 位逆转/" itemprop="url">
+                Reverse Bits - 位逆转
               </a>
             
           
@@ -584,8 +585,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2016-03-18T20:44:47+08:00" content="2016-03-18">
-            2016-03-18
+          <time itemprop="dateCreated" datetime="2016-03-27T20:44:47+08:00" content="2016-03-27">
+            2016-03-27
           </time>
         </span>
 
@@ -610,8 +611,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2016/03/18/Fraction to Recurring Decimal - 分数表示成循环小数/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/18/Fraction to Recurring Decimal - 分数表示成循环小数/" itemprop="commentsCount"></span>
+              <a href="/2016/03/27/Reverse Bits - 位逆转/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/27/Reverse Bits - 位逆转/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -627,11 +628,9 @@
 
       
         
-          <span itemprop="articleBody"><h3 id="Fraction_to_Recurring_Decimal_-_分数表示成循环小数">Fraction to Recurring Decimal - 分数表示成循环小数</h3><p><strong>Description</strong>: Given two integers representing the numerator and denominator of a fraction, return the fraction in string format.<br> If the fractional part is repeating, enclose the repeating part in parentheses.<br> For example,<br> Given numerator = 1, denominator = 2, return “0.5”.<br> Given numerator = 2, denominator = 1, return “2”.<br> Given numerator = 2, denominator = 3, return “0.(6)”.</p>
-<p>思路：不断求余，利用哈希表找到重复模式。</p>
-<p>参考链接：<a href="http://www.programcreek.com/2014/03/leetcode-fraction-to-recurring-decimal-java/" target="_blank" rel="external">http://www.programcreek.com/2014/03/leetcode-fraction-to-recurring-decimal-java/</a></p>
+          <span itemprop="articleBody"><h3 id="Reverse_Bits_-_位逆转">Reverse Bits - 位逆转</h3><p><strong>Description</strong>: Reverse bits of a given 32 bits unsigned integer.<br> For example, given input 43261596 (represented in binary as 00000010100101000001111010011100), return 964176192 (represented in binary as 00111001011110000010100101000000).</p>
 <p>完整的java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FractionToRecurringDecimal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="keyword">new</span> FractionToRecurringDecimal().fractionToDecimal(<span class="number">13</span>,<span class="number">97</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//http://www.programcreek.com/2014/03/leetcode-fraction-to-recurring-decimal-java/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">fractionToDecimal</span><span class="params">(<span class="keyword">int</span> numerator, <span class="keyword">int</span> denominator)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (numerator == <span class="number">0</span>) <span class="keyword">return</span> <span class="string">"0"</span>;</span><br><span class="line">        <span class="keyword">if</span> (denominator == <span class="number">0</span>) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        StringBuilder builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">if</span> ((numerator &lt; <span class="number">0</span>) ^ (denominator &lt; <span class="number">0</span>)) &#123;</span><br><span class="line">            builder.append(<span class="string">"-"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> num = numerator, den = denominator;</span><br><span class="line">        num = Math.abs(num);</span><br><span class="line">        den = Math.abs(den);</span><br><span class="line">        <span class="keyword">long</span> quitient = num / den;   <span class="comment">//商</span></span><br><span class="line">        builder.append(String.valueOf(quitient));</span><br><span class="line">        <span class="keyword">long</span> remainder = (num % den) * <span class="number">10</span>;  <span class="comment">//余数</span></span><br><span class="line">        <span class="keyword">if</span> (remainder == <span class="number">0</span>) <span class="keyword">return</span> builder.toString();</span><br><span class="line">        Map&lt;Long, Integer&gt; remainderToPos = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        builder.append(<span class="string">"."</span>);</span><br><span class="line">        <span class="keyword">while</span> (remainder!=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span> (remainderToPos.containsKey(remainder))&#123;</span><br><span class="line">                <span class="keyword">int</span> beg = remainderToPos.get(remainder);</span><br><span class="line">                String part1 = builder.substring(<span class="number">0</span>, beg);</span><br><span class="line">                String part2 = builder.substring(beg, builder.length());</span><br><span class="line">                <span class="keyword">return</span> part1 + <span class="string">"("</span> + part2 + <span class="string">")"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            remainderToPos.put(remainder, builder.length());</span><br><span class="line">            quitient = remainder/den;</span><br><span class="line">            builder.append(String.valueOf(quitient));</span><br><span class="line">            remainder = (remainder%den)*<span class="number">10</span>; <span class="comment">//TODO 注意要乘以10</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> builder.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReverseBits</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// you need treat n as an unsigned value</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverseBits</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">16</span>; i++)</span><br><span class="line">            n = swapBit(n, i, <span class="number">32</span>-i-<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">swapBit</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a = (n&gt;&gt;i)&amp;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> b = (n&gt;&gt;j)&amp;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> ((a^b)!=<span class="number">0</span>) <span class="keyword">return</span> n ^= (<span class="number">1</span>&lt;&lt;i)|(<span class="number">1</span>&lt;&lt;j);</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
         
       
@@ -655,7 +654,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
   </nav>
 
  </div>
@@ -689,7 +688,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">143</span>
+              <span class="site-state-item-count">154</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
