@@ -4,6 +4,414 @@
 
     
   <url>
+    <loc>http://eugeneyang.com/2016/04/12/Combination%20Sum%20III%20-%20%E7%BB%84%E5%90%88%E5%92%8CIII/</loc>
+    <lastmod>2016-04-12T03:04:15.041Z</lastmod>
+    <data>
+        <display>
+        <title>Combination Sum III - 组合和III</title>
+        <pubTime>2016-04-12T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2016/04/11/Kth%20Largest%20Element%20in%20an%20Array%20-%20%E6%95%B0%E7%BB%84%E4%B8%AD%E7%AC%ACK%E5%A4%A7%E5%85%83%E7%B4%A0/</loc>
+    <lastmod>2016-04-12T03:04:15.037Z</lastmod>
+    <data>
+        <display>
+        <title>Kth Largest Element in an Array - 数组中第K大元素</title>
+        <pubTime>2016-04-11T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2016/04/10/Shortest%20Palindrome%20-%20%E6%9C%80%E7%9F%AD%E5%9B%9E%E6%96%87/</loc>
+    <lastmod>2016-04-12T03:04:15.035Z</lastmod>
+    <data>
+        <display>
+        <title>Shortest Palindrome - 最短回文</title>
+        <pubTime>2016-04-10T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2016/04/09/House%20Robber%20II%20-%20%E6%88%BF%E5%B1%8B%E5%81%B7%E7%AA%83II/</loc>
+    <lastmod>2016-04-12T03:04:15.032Z</lastmod>
+    <data>
+        <display>
+        <title>House Robber II - 房屋偷窃II</title>
+        <pubTime>2016-04-09T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2016/04/08/Word%20Search%20II%20-%20%E5%8D%95%E8%AF%8D%E6%90%9C%E7%B4%A2II/</loc>
+    <lastmod>2016-04-12T03:04:15.029Z</lastmod>
+    <data>
+        <display>
+        <title>Word Search II - 单词搜索II</title>
+        <pubTime>2016-04-08T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2016/04/07/Add%20and%20Search%20Word%20-%20Data%20structure%20design%20-%20%E6%B7%BB%E5%8A%A0%E4%B8%8E%E6%9F%A5%E6%89%BE%E5%8D%95%E8%AF%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1/</loc>
+    <lastmod>2016-04-12T03:04:15.026Z</lastmod>
+    <data>
+        <display>
+        <title>Add and Search Word - Data structure design - 添加与查找单词数据结构设计</title>
+        <pubTime>2016-04-07T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2016/04/06/Course%20Schedule%20II%20-%20%E8%AF%BE%E7%A8%8B%E8%B0%83%E5%BA%A6II/</loc>
+    <lastmod>2016-04-12T03:04:15.023Z</lastmod>
+    <data>
+        <display>
+        <title>Course Schedule II - 课程调度II</title>
+        <pubTime>2016-04-06T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2016/04/05/Minimum%20Size%20Subarray%20Sum%20-%20%E6%9C%80%E5%B0%8F%E5%AD%90%E4%B8%B2%E5%92%8C/</loc>
+    <lastmod>2016-04-12T03:04:15.008Z</lastmod>
+    <data>
+        <display>
+        <title>Minimum Size Subarray Sum - 最小子串和</title>
+        <pubTime>2016-04-05T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2016/04/04/Implement%20Trie%20(Prefix%20Tree)%20-%20Trie%E6%A0%91(%E5%89%8D%E7%BC%80%E6%A0%91)%E5%AE%9E%E7%8E%B0/</loc>
+    <lastmod>2016-04-12T03:04:15.006Z</lastmod>
+    <data>
+        <display>
+        <title>Implement Trie (Prefix Tree) - Trie树(前缀树)实现</title>
+        <pubTime>2016-04-04T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2016/04/03/Course%20Schedule%20-%20%E8%AF%BE%E7%A8%8B%E8%B0%83%E5%BA%A6/</loc>
+    <lastmod>2016-04-12T03:04:15.004Z</lastmod>
+    <data>
+        <display>
+        <title>Course Schedule - 课程调度</title>
+        <pubTime>2016-04-03T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2016/04/02/ZigZag%20Conversion%20-%20Z%E5%AD%97%E5%BD%A2%E8%BD%AC%E6%8D%A2/</loc>
+    <lastmod>2016-04-12T03:04:15.002Z</lastmod>
+    <data>
+        <display>
+        <title>ZigZag Conversion - Z字形转换</title>
+        <pubTime>2016-04-02T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2016/04/02/Reverse%20Linked%20List%20-%20%E9%80%86%E8%BD%AC%E9%93%BE%E8%A1%A8/</loc>
+    <lastmod>2016-04-12T03:04:14.986Z</lastmod>
+    <data>
+        <display>
+        <title>Reverse Linked List - 逆转链表</title>
+        <pubTime>2016-04-02T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2016/04/02/Longest%20Palindromic%20Substring%20-%20%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/</loc>
+    <lastmod>2016-04-12T03:04:14.984Z</lastmod>
+    <data>
+        <display>
+        <title>Longest Palindromic Substring - 最长回文子串</title>
+        <pubTime>2016-04-02T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2016/04/01/Happy%20Number%20-%20%E5%BF%AB%E4%B9%90%E6%95%B0/</loc>
+    <lastmod>2016-04-12T03:04:14.981Z</lastmod>
+    <data>
+        <display>
+        <title>Happy Number - 快乐数</title>
+        <pubTime>2016-04-01T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2016/04/01/Count%20Primes%20-%20%E8%AE%A1%E7%AE%97%E8%B4%A8%E6%95%B0%E4%B8%AA%E6%95%B0/</loc>
+    <lastmod>2016-04-12T03:04:14.978Z</lastmod>
+    <data>
+        <display>
+        <title>Count Primes - 计算质数个数</title>
+        <pubTime>2016-04-01T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2016/03/31/Bitwise%20AND%20of%20Numbers%20Range%20-%20%E6%95%B4%E6%95%B0%E5%8C%BA%E9%97%B4%E6%8C%89%E4%BD%8D%E4%B8%8E/</loc>
+    <lastmod>2016-04-12T03:04:14.952Z</lastmod>
+    <data>
+        <display>
+        <title>Bitwise AND of Numbers Range - 整数区间按位与</title>
+        <pubTime>2016-03-31T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://eugeneyang.com/2015/10/29/Add%20Two%20Numbers%20-%20%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E6%95%B0%E7%9B%B8%E5%8A%A0/</loc>
+    <lastmod>2016-04-12T03:04:14.949Z</lastmod>
+    <data>
+        <display>
+        <title>Add Two Numbers - 两个链表数相加</title>
+        <pubTime>2015-10-29T12:44:47.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+        <tag>java</tag>
+         
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://eugeneyang.com/2016/03/30/Number%20of%20Islands%20-%20%E5%B0%8F%E5%B2%9B%E4%B8%AA%E6%95%B0/</loc>
     <lastmod>2016-03-30T05:16:40.011Z</lastmod>
     <data>
@@ -3612,30 +4020,6 @@
         <display>
         <title>Three Sum - 三数和</title>
         <pubTime>2015-10-30T12:44:47.000Z</pubTime>
-        
-        <tag>LeetCode</tag>
-         
-        <tag>java</tag>
-         
-        <tag>算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="算法" url="http://eugeneyang.com/categories/%E7%AE%97%E6%B3%95/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://eugeneyang.com/2015/10/29/Add%20Two%20Numbers%20-%20%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E6%95%B0%E7%9B%B8%E5%8A%A0/</loc>
-    <lastmod>2015-11-09T03:46:56.741Z</lastmod>
-    <data>
-        <display>
-        <title>Add Two Numbers - 两个链表数相加</title>
-        <pubTime>2015-10-29T12:44:47.000Z</pubTime>
         
         <tag>LeetCode</tag>
          
